@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/main/Movie%20Shelf%20-%20logo.png?raw=true" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Movie Shelf</h3>
@@ -8,15 +8,15 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/FabioFSS/Movie-Shelf/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/FabioFSS/Movie-Shelf/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> A website designed for you to organize you movies and tv shows.
     <br> 
 </p>
 
@@ -34,7 +34,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Movie Shelf is a content management website, projected do make it easier for the user to follow their favorite movies, tv shows and more. It is possible to find information about the content you want to watch, such as description, images, casts, duration and number of episodes for tv shows, user reviews and more. It is also possible to create personalized lists with content you want to watch or the ones you like the most.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
