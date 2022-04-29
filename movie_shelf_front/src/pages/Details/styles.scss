@@ -12,10 +12,10 @@
 
     .backgrundImg::before {
         content: " ";
-        height: 100%;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
         background-size: cover;
-        background-image: linear-gradient(to top, #010117, 85%, transparent);
+        background-image: linear-gradient(to top, #010117, 70%, transparent);
         position: absolute;
     }
 
@@ -34,11 +34,11 @@
             text-align: center;
 
             .poster {
-                margin-right: 2px;
                 border-radius: 20px;
             }
 
             .vote {
+                margin-top: 10px;
                 color: white;
                 font-size: 25PX;
             }
@@ -48,7 +48,6 @@
             width: 800px;
             height: 800px;
             margin-left: 57px;
-
 
             .title {
                 color: white;
@@ -77,7 +76,6 @@
                     .imgActors {
                         height: 170px;
                         width: 110px;
-
                     }
 
                     .nameActor {

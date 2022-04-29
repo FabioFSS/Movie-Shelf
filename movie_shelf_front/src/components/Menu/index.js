@@ -3,7 +3,7 @@ import './styles.scss'
 import logo from "../../assets/logo.png";
 import profile from "../../assets/profile.png";
 
-export default function Menu() {
+export const Menu = () => {
     return (
         <div className='navbar'>
             <div style={{ display: "flex", width: "600px" }}>

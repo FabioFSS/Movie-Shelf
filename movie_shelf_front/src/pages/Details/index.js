@@ -1,54 +1,88 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles.scss'
-import Menu from '../../components/Menu/index.js';
+import { Menu } from '../../components/Menu';
+import { Trailer } from '../../components/Trailer';
+import { api, apiKey, language, page, section } from "../../services/api";
 
-export default function Scroll() {
+export default function Scroll({ id }) {
 
-    const [data] = useState({
-        id: 634649,
-        media_type: "movie",
-        original_language: "en",
-        original_title: "Spider-Man: No Way Home",
-        overview: "Peter Parker é desmascarado e não consegue mais separar sua vida normal dos grandes riscos de ser um super-herói. Quando ele pede ajuda ao Doutor Estranho, os riscos se tornam ainda mais perigosos, e o forçam a descobrir o que realmente significa ser o Homem-Aranha.",
-        popularity: 5792.421,
-        poster_path: "/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg",
-        release_date: "2021-12-15",
-        title: "Homem-Aranha: Sem Volta Para Casa",
-        video: false,
-        vote_average: 8.2,
-        vote_count: 11398,
-        actors: [
-            `https://image.tmdb.org/t/p/w500//2qhIDp44cAqP2clOgt2afQI07X8.jpg`,
-            `https://image.tmdb.org/t/p/w500//xWOU0S7AqGEkyk8scLwwz66R2GO.jpg`,
-            `https://image.tmdb.org/t/p/w500//fBEucxECxGLKVHBznO0qHtCGiMO.jpg`,
-            `https://image.tmdb.org/t/p/w500//3sJJHI672zXZDQyQ6HycToHAfCR.jpg`,
-            `https://image.tmdb.org/t/p/w500//8MtRRnEHaBSw8Ztdl8saXiw1egP.jpg`
-        ],
-        uriBackground: `https://image.tmdb.org/t/p/original//iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg`
-    });
+    id = 335787;
+    
+    const [movieId, setMovieId] = useState(id || null);
+    const [details, setDetails] = useState(null);
+    const [reiews, setReviews] = useState(null);
+    const [trailerId, setTrailerId] = useState(null);
 
-    const uri = `https://image.tmdb.org/t/p/w342/${data.poster_path}`;
+    const [background, setBackground] = useState(null);
+    const [poster, setPoster] = useState(null);
+ 
+    useEffect(() => {
+        (async () => {
+            const response = (
+                await api.get(`trending/movie/week?api_key=${apiKey}&language=${language}&page=${page}`              )
+            ).data;
+            setMovieId(response.results[section].id) 
+        })()     
+    }, [id]);
 
-    return (
-        <div className='wrapper'>
-            <div className='backgrundImg' style={{ backgroundImage: `url(${data.uriBackground})` }} />
+    useEffect(() => {
+        (async () => {
+            const response = (
+                await api.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=${language}`)
+            ).data;
+            setDetails(response) 
+            setBackground(`https://image.tmdb.org/t/p/original/${response.backdrop_path}`);
+            setPoster(`https://image.tmdb.org/t/p/w342/${response.poster_path}`);
+        })()             
+    }, [movieId]);
+
+    useEffect(() => {
+        (async () => {
+            const response = (
+                await api.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}&language=${language}`)
+            ).data;
+            setReviews(response.cast.slice(0, 5))
+        })()      
+    }, [movieId]);
+
+    useEffect(() => {
+        (async () => {
+            const response = (
+                await api.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=${language}`)
+            ).data;
+            setTrailerId(response.results[0].key) 
+        })()   
+             
+    }, [movieId]);
+    
+    return ( 
+        movieId && <div className='wrapper'>
+            <div className='backgrundImg' style={{ backgroundImage: `url(${background})` }} />
             <Menu/>
             <div className='container'>
-                <div className='containerPoster'>
-                    <img className='poster' src={uri} />
-                    <p className='vote'>{data.vote_average}</p>
-                </div>
-                <div className='detailsContainer'>
-                    <h1 className='title'>{data.title}</h1>
-                    <p className='overview'>{data.overview}</p>
-                    <div className='casts'>
-                        {data.actors.map((actor) =>
-                            <div className='containerInfoCasts'>
-                                <img className='imgActors' src={actor} />
-                                <p className='nameActor'>Name Actor</p>
-                            </div>
-                        )}
+                {details && <>
+                    <div className='containerPoster'>
+                        <img className='poster' src={poster} />
+                        <p className='vote'>{details.vote_average}</p>
                     </div>
+                    <div className='detailsContainer'>
+                        <h1 className='title'>{details.title}</h1>
+                        <p className='overview'>{details.overview}</p>
+                        <div className='casts'>
+                            {reiews && reiews.map((actor, key) =>
+                                <div className='containerInfoCasts' key={key}>
+                                    <img className='imgActors' src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
+                                    <p className='nameActor'>{actor.name}</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>    
+                </>}
+            </div>
+            <div style={{width: "100%", height: "600px", alignItems: "center", justifyContent: "center", display: "flex"}}>
+                <div style={{marginTop: "100px"}}>
+                    <h2 style={{color: "#fff"}}>Trailer</h2>
+                    <Trailer trailerId={trailerId} />
                 </div>
             </div>
         </div>
