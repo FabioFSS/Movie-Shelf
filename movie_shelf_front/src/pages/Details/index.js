@@ -3,6 +3,7 @@ import './styles.scss'
 import { Menu } from '../../components/Menu';
 import { Trailer } from '../../components/Trailer';
 import { api, apiKey, language, page, section } from "../../services/api";
+import { FaStar } from "react-icons/fa";
 
 export default function Scroll({ id }) {
 
@@ -63,7 +64,19 @@ export default function Scroll({ id }) {
                 {details && <>
                     <div className='containerPoster'>
                         <img className='poster' src={poster} />
-                        <p className='vote'>{details.vote_average}</p>
+                        
+                        <div 
+                            style={{
+                                marginTop: "5px", 
+                                display: "flex", 
+                                flexDirection: "row", 
+                                alignItems: 'center', 
+                                justifyContent: 'center'
+                            }}
+                        >
+                            <FaStar size={40} color="yellow"/>
+                            <p className='vote'>{details.vote_average}</p>
+                        </div>
                     </div>
                     <div className='detailsContainer'>
                         <h1 className='title'>{details.title}</h1>
@@ -79,9 +92,25 @@ export default function Scroll({ id }) {
                     </div>    
                 </>}
             </div>
-            <div style={{width: "100%", height: "600px", alignItems: "center", justifyContent: "center", display: "flex"}}>
-                <div style={{marginTop: "100px"}}>
-                    <h2 style={{color: "#fff"}}>Trailer</h2>
+            <div 
+                style={{
+                    width: "100%", 
+                    height: "600px", 
+                    alignItems: "center", 
+                    justifyContent: "center", 
+                    display: "flex"
+                }}
+            >
+                <div 
+                    style={{
+                        marginTop: "100px"
+                    }}
+                >
+                    <h2 
+                        style={{
+                            color: "#fff"
+                        }}
+                    >Trailer</h2>
                     <Trailer trailerId={trailerId} />
                 </div>
             </div>

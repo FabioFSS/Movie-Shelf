@@ -23,11 +23,12 @@
 
         .content {
             width: 80%;
-            height: 60%;
+            height: 80%;
             max-width: 300px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
 
             .pageName {
                 color: #ffffff;
@@ -54,10 +55,10 @@
                 }
 
                 &:focus-within {
-                    border-color: #8257e5;
+                    border-color: #0077B6;
 
                     svg {
-                        color: #8257e5;
+                        color: #0077B6;
                     }
                 }
 
@@ -82,16 +83,16 @@
             }
 
             .buttonLogin {
-                width: 100%;
+                width: 71%;
                 cursor: pointer;
                 background: #0077B6;
-                border-radius: 5px;
+                border-radius: 3px;
                 border: none;
                 color: white;
                 font-weight: bold;
-                height: 50px;
+                height: 45px;
                 opacity: 0.9;
-                margin: 20px 0;
+                margin: 15px 0;
 
             }
         }

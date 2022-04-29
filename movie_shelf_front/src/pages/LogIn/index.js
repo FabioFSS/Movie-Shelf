@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './styles.scss'
+import { Auth } from "../../components/Auth"
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Scroll() {
@@ -39,8 +40,8 @@ export default function Scroll() {
                     <span className="span">Forget Password</span>
 
                     <button className="buttonLogin" disabled={!email || !password}>LOGAR</button>
-
-                    <div>
+                    <Auth />
+                    <div style={{marginTop: "20px"}}>
                         <span className="span">Don't have an account? </span>
                         <span className="span" style={{ color: "#ffffff" }}>Register</span>
                     </div>
