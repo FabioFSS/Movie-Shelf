@@ -105,6 +105,7 @@ Add additional notes about how to deploy this on a live system.
 
 - [@FabioFSS](https://github.com/FabioFSS) - Idea & Initial work
 - [@WelvisSS](https://github.com/WelvisSS) - Idea & Initial work
+- [@KiritoKi](https://github.com/KiritoKi) - Idea & Initial work
 
 See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
 
