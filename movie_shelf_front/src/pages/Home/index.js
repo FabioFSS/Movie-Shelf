@@ -1,8 +1,8 @@
 import './style.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Navbar from '../../Components/scripts/Navbar';
-import SliderWrap from '../../Components/scripts/SliderWrap';
-import SliderMain from '../../Components/scripts/SliderMain';
+import Navbar from '../../components/scripts/Navbar';
+import SliderWrap from '../../components/scripts/SliderWrap';
+import SliderMain from '../../components/scripts/SliderMain';
 
 function home() {
   return (
