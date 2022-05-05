@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // .navbar {
 //     display: flex;
 //     width: 100vw;
@@ -41,18 +42,33 @@
     height: 60px;
     font-size: 10px;
     font-family: "Lato";
+=======
+.navbar {
+    display: flex;
+    width: 100vw;
+    height: 80px;
+    font-size: 14px;
+>>>>>>> e47083bc0710f8ab21bbc991f926d918ebafa8bc
     position: fixed;
     background: #001F30;
     top: 0;
     z-index: 999;
+<<<<<<< HEAD
     align-items: center;
     justify-content: space-between;
 
 }
+=======
+    //background: linear-gradient(to top, transparent 50%, rgba(0, 31, 48, 1) 50%);
+    align-items: center;
+    justify-content: space-between;
+
+>>>>>>> e47083bc0710f8ab21bbc991f926d918ebafa8bc
     .menu {
         margin-left: 100px;
         color: white;
     }
+<<<<<<< HEAD
     
     .logo {
         margin-top: 30px;
@@ -77,3 +93,24 @@
         border-radius: 50px;
         margin-left: 200px;
     }
+=======
+
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .serch {
+        height: 20px;
+        margin-left: 100px;
+
+    }
+
+    .profile {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        margin-left: 200px;
+    }
+}
+>>>>>>> e47083bc0710f8ab21bbc991f926d918ebafa8bc

@@ -17,8 +17,13 @@ export default function Scroll() {
     };
 
     return (
+<<<<<<< HEAD
         <div className="wrapper-signup">
             <div className="container-signup">
+=======
+        <div className="wrapper">
+            <div className="container">
+>>>>>>> e47083bc0710f8ab21bbc991f926d918ebafa8bc
                 <div className="content">
                     <h1 className="pageName">Sign Up</h1>
                     <span className="span" style={{ marginBottom: "20px", fontSize: "18px" }}>Create an account to access</span>
