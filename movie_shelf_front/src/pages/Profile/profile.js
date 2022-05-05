@@ -1,17 +1,20 @@
 import React from "react";
 import Navbar from "../../components/scripts/Navbar";
+import { Menu } from "../../components/Menu";
 import './profile.scss';
 import profile_pic from "../../assets/profile.png";
 import { BrowserRouter as Router } from 'react-router-dom';
 import SliderWrap from "../../components/scripts/SliderWrap";
 
-function Profile () {
+function Profile() {
     return (
         <div>
-            <Router>
-                <Navbar></Navbar>
-            </Router>
             <div className="page_body">
+                <div className="navbar_profile">
+                    <Router>
+                        <Navbar></Navbar>
+                    </Router>
+                </div>
                 <div className='background_img'/>
                 <div className='teste'>
                     <div className="profile_body">
@@ -42,4 +45,4 @@ function Profile () {
     );
 }
 
-export default Profile
+export default Profile;

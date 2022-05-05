@@ -15,7 +15,6 @@ function Navbar() {
 
     return (
         <nav className="Navbar">
-
             <div className="leftSide">
                 <div className="links">
                     <NavLink to="/">Tv series</NavLink>
