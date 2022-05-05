@@ -17,8 +17,8 @@ function Profile() {
             <div className="profile_body">
                 <ProfileHeader></ProfileHeader>
                 <div className="sliders">
-                    <SliderWrap title="Recently Watched"></SliderWrap>
-                    <SliderWrap title="Calendar"></SliderWrap>
+                    <SliderWrap title="Recently Watched" page={1}></SliderWrap>
+                    <SliderWrap title="Calendar" page={2}></SliderWrap>
                 </div>
             </div>
         </div>
