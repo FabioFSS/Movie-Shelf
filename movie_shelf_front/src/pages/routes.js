@@ -7,9 +7,12 @@ import {
 import Details from "./Details/index"
 import Home from "./Home/index"
 import Login from "./LogIn/index"
-import Profile from "./Profile/profile"
+import Profile from "./Profile/index"
 import Reset from "./Reset/index"
 import Signup from "./SignUp/index"
+import Lists from "./Lists/index"
+import Progress from "./Progress/index"
+
 
 export default function Routes() {
   return (
@@ -17,6 +20,8 @@ export default function Routes() {
         <Route component = { Details }  path="/details:id"/>
         <Route component = { Home }  path="/home"/>
         <Route component = { Profile }  path="/profile"/>
+        <Route component = { Lists }  path="/lists"/>
+        <Route component = { Progress }  path="/progress"/>
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
         <Route component = { Login }  path="/login"/>
