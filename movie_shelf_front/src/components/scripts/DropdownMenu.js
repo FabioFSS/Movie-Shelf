@@ -22,9 +22,9 @@ function DropdownMenu() {
 
     return (
         <div className="dropdown">
-            <DropdownItem page="http://localhost:3000/profile">Hi, Kirito!</DropdownItem>
-            <DropdownItem page="http://localhost:3000/profile">My Profile</DropdownItem>
-            <DropdownItem page="#">Favorites</DropdownItem>
+            <DropdownItem page="/profile">Hi, Kirito!</DropdownItem>
+            <DropdownItem page="/profile">My Profile</DropdownItem>
+            <DropdownItem page="/lists">Favorites</DropdownItem>
             <DropdownItem page="#">Settings</DropdownItem>
             <DropdownItem page="#">Log out</DropdownItem>
         </div>
