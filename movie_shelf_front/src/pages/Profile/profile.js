@@ -1,28 +1,31 @@
 import React from "react";
-import {Menu} from "../../components/Menu/index";
+import Navbar from "../../components/scripts/Navbar";
 import './profile.scss';
 import profile_pic from "../../assets/profile.png";
 import img1 from "./images/img1.jpg"
 import img2 from "./images/img2.jpg"
 import img3 from "./images/img3.jpg"
 import img4 from "./images/img4.jpg"
+import { BrowserRouter as Router } from 'react-router-dom';
+import SliderWrap from "../../components/scripts/SliderWrap";
 
-export default () => {
-
+function Profile () {
     return (
         <div>
-            <Menu></Menu>
-            <div class="page_body">
-                <div class='background_img'/>
-                <div class='teste'>
-                    <div class="profile_body">
-                        <div class="profile_data">
-                            <img class="profile_data_pic" src={profile_pic} alt="profile data pic"></img>
-                            <p class="profile_name">Nome</p>
-                            <p class="profile_info">Info: cidade, idade, genero</p>
+            <Router>
+                <Navbar></Navbar>
+            </Router>
+            <div className="page_body">
+                <div className='background_img'/>
+                <div className='teste'>
+                    <div className="profile_body">
+                        <div className="profile_data">
+                            <img className="profile_data_pic" src={profile_pic} alt="profile data pic"></img>
+                            <p className="profile_name">Nome</p>
+                            <p className="profile_info">Info: cidade, idade, genero</p>
                         </div>
-                        <div class="profile_menu">
-                            <ul class="profile_menu_options">
+                        <div className="profile_menu">
+                            <ul className="profile_menu_options">
                                 <li>My lists</li>
                                 <li>Progress</li>
                                 <li>Ratings</li>
@@ -32,15 +35,9 @@ export default () => {
                         </div>
                     </div>
 
-                    <div class="activities">
-                            <p>Recently watched</p>
-
-                            <div class='images_grid'>
-                                <img src={img1}></img>
-                                <img src={img2}></img>
-                                <img src={img3}></img>
-                                <img src={img4}></img>
-                            </div>
+                    <div className="activities">
+                        <SliderWrap title="Recently Watched"></SliderWrap>
+                        <SliderWrap title="Calendar"></SliderWrap>
                     </div>
                 </div>
                 
@@ -48,3 +45,5 @@ export default () => {
         </div>
     );
 }
+
+export default Profile

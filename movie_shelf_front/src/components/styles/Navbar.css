@@ -1,11 +1,8 @@
 .Navbar {
     background-color: #001F30;
     width: 100%;
-    height: 104px;
-
+    height: 60px;
     display: flex;
-
-
 }
 
 .Navbar .leftSide {
@@ -42,16 +39,10 @@
 }
 
 .Navbar .middleSide .logo {
-    height: 170px;
-    width: 130px;
-
-
-    width: 170px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     left: 635px;
     padding-top: 0px;
-
-
 }
 
 .Navbar .rightSide {
