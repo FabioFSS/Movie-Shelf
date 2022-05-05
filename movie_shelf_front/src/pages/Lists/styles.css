@@ -1,0 +1,36 @@
+.page_body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.lists_navbar{
+    z-index: 999;
+    width: 100vw;
+}
+
+.my_lists_label{
+    text-align: center;
+    font-weight: bold;
+    padding: 25px;
+}
+
+.background_img {
+    z-index: -1;
+    position: absolute;
+    background-image: url('../../assets/profile_background.jpg');
+    width: 100vw;   
+    height: 75vh;
+    background-size: cover;
+    filter:blur(8px);
+}
+
+.background_img::before {
+    content: "";
+    height: 75vh;
+    width: 100vw;
+    background-size: cover;
+    background-image: linear-gradient(to top, #010117, 50%, transparent);
+    position: absolute;
+}
