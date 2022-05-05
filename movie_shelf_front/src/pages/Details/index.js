@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './styles.scss'
-import { Menu } from '../../components/Menu';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from '../../components/scripts/Navbar';
 import { Trailer } from '../../components/Trailer';
 import { api, apiKey, language, page, section } from "../../services/api";
 import { FaStar } from "react-icons/fa";
 
-export default function Scroll({ id }) {
-
-    id = 335787;
+export default function Details({ id }) {
     
-    const [movieId, setMovieId] = useState(id || null);
+    const [movieId, setMovieId] = useState(window.location.href.split('=')[1]);
     const [details, setDetails] = useState(null);
     const [reiews, setReviews] = useState(null);
     const [trailerId, setTrailerId] = useState(null);
@@ -17,14 +16,21 @@ export default function Scroll({ id }) {
     const [background, setBackground] = useState(null);
     const [poster, setPoster] = useState(null);
  
-    useEffect(() => {
-        (async () => {
-            const response = (
-                await api.get(`trending/movie/week?api_key=${apiKey}&language=${language}&page=${page}`              )
-            ).data;
-            setMovieId(response.results[section].id) 
-        })()     
-    }, [id]);
+    // useEffect(() => {
+    //     (async () => {
+    //         const response = (
+    //             await api.get(`trending/movie/week?api_key=${apiKey}&language=${language}&page=${page}`              )
+    //         ).data;
+    //         setMovieId(response.results[section].id) 
+    //     })()     
+    // }, [id]);
+
+    // useEffect(() => {
+    //     (async () => {
+    //         id = await window.location.href.split('=')[1];
+    //         setMovieId(id) 
+    //     })()     
+    // }, []);
 
     useEffect(() => {
         (async () => {
@@ -57,63 +63,69 @@ export default function Scroll({ id }) {
     }, [movieId]);
     
     return ( 
-        movieId && <div className='wrapper'>
-            <div className='backgrundImg' style={{ backgroundImage: `url(${background})` }} />
-            <Menu/>
-            <div className='container'>
-                {details && <>
-                    <div className='containerPoster'>
-                        <img className='poster' src={poster} />
-                        
-                        <div 
-                            style={{
-                                marginTop: "5px", 
-                                display: "flex", 
-                                flexDirection: "row", 
-                                alignItems: 'center', 
-                                justifyContent: 'center'
-                            }}
-                        >
-                            <FaStar size={40} color="yellow"/>
-                            <p className='vote'>{details.vote_average}</p>
+        <div>
+            <Router>
+                <Navbar />
+            </Router>
+            <div className='wrapper'>
+                <div className='backgrundImg' style={{ backgroundImage: `url(${background})` }} />
+                
+                <div className='container-movie'>
+                    {details && <>
+                        <div className='containerPoster'>
+                            <img className='poster' src={poster} />
+                            
+                            <div 
+                                style={{
+                                    marginTop: "5px", 
+                                    display: "flex", 
+                                    flexDirection: "row", 
+                                    alignItems: 'center', 
+                                    justifyContent: 'center'
+                                }}
+                            >
+                                <FaStar size={40} color="yellow"/>
+                                <p className='vote'>{details.vote_average}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className='detailsContainer'>
-                        <h1 className='title'>{details.title}</h1>
-                        <p className='overview'>{details.overview}</p>
-                        <div className='casts'>
-                            {reiews && reiews.map((actor, key) =>
-                                <div className='containerInfoCasts' key={key}>
-                                    <img className='imgActors' src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
-                                    <p className='nameActor'>{actor.name}</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>    
-                </>}
-            </div>
-            <div 
-                style={{
-                    width: "100%", 
-                    height: "600px", 
-                    alignItems: "center", 
-                    justifyContent: "center", 
-                    display: "flex"
-                }}
-            >
+                        <div className='detailsContainer'>
+                            <h1 className='title'>{details.title}</h1>
+                            <p className='overview'>{details.overview}</p>
+                            <div className='casts'>
+                                {reiews && reiews.map((actor, key) =>
+                                    <div className='containerInfoCasts' key={key}>
+                                        <img className='imgActors' src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
+                                        <p className='nameActor'>{actor.name}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>    
+                    </>}
+                </div>
                 <div 
                     style={{
-                        marginTop: "100px"
+                        width: "100%", 
+                        height: "600px", 
+                        alignItems: "center", 
+                        justifyContent: "center", 
+                        display: "flex"
                     }}
                 >
-                    <h2 
+                    <div 
                         style={{
-                            color: "#fff"
+                            marginTop: "100px"
                         }}
-                    >Trailer</h2>
-                    <Trailer trailerId={trailerId} />
+                    >
+                        <h2 
+                            style={{
+                                color: "#fff"
+                            }}
+                        >Trailer</h2>
+                        <Trailer trailerId={trailerId} />
+                    </div>
                 </div>
             </div>
+            
         </div>
     );
 }

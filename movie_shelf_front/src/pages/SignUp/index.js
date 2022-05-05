@@ -17,8 +17,8 @@ export default function Scroll() {
     };
 
     return (
-        <div className="wrapper">
-            <div className="container">
+        <div className="wrapper-signup">
+            <div className="container-signup">
                 <div className="content">
                     <h1 className="pageName">Sign Up</h1>
                     <span className="span" style={{ marginBottom: "20px", fontSize: "18px" }}>Create an account to access</span>
@@ -44,10 +44,14 @@ export default function Scroll() {
                             <FaEyeSlash onClick={changeTypePassword} />
                         )}
                     </div>
-                    <button className="buttonLogin" disabled={!email || !password}>CREATE</button>
+                    <button className="buttonLogin" disabled={!email || !password}>
+                        <a href="http://localhost:3000/home">CREATE</a>
+                    </button>
                     <div>
                         <span className="span">Already have an account? </span>
-                        <span className="span" style={{ color: "#ffffff" }}>Log In</span>
+                        <span className="span" style={{ color: "#ffffff" }}>
+                            <a href="http://localhost:3000/login">Log In</a>
+                        </span>
                     </div>
                 </div>
             </div>
