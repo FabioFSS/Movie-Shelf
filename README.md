@@ -1,18 +1,9 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/main/Movie%20Shelf%20-%20logo.png?raw=true" alt="Project logo"></a>
+ <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/main/logo.png?raw=true" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Movie Shelf</h3>
-
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/FabioFSS/Movie-Shelf/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/FabioFSS/Movie-Shelf/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
 
 ---
 
@@ -24,7 +15,6 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
 - [TODO](../TODO.md)
@@ -34,37 +24,41 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Movie Shelf is a content management website, projected do make it easier for the user to follow their favorite movies, tv shows and more. It is possible to find information about the content you want to watch, such as description, images, casts, duration and number of episodes for tv shows, user reviews and more. It is also possible to create personalized lists with content you want to watch or the ones you like the most.
+Movie Shelf is a content management website, projected do make it easier for the user to follow their favorite movies, tv shows and more. It is possible to find information about the content you want to watch, such as description, images, casts, duration and number of episodes for tv shows, user reviews and much more. It is also possible to create personalized lists with content you want to watch or the ones you like the most.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
 
 ```
-Give examples
+node.js - https://nodejs.org/pt-br/download/?msclkid=923a22f3cc6b11ec8427a774fba05166
 ```
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running.
 
-Say what the step will be
+After cloning the repository, open a terminal on the "/movie_shelf_front" directory and follow the next steps
+
+Install the dependecies using the following command
 
 ```
-Give the example
+npm install
 ```
 
-And repeat
+Run the application server using
 
 ```
-until finished
+npm start
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+The front page should open automatically on your standard web browser, and you should see something like this.
+
+![front page]()
+
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
