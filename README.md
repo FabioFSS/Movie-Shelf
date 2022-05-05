@@ -60,7 +60,7 @@ npm start
 
 The front page should open automatically on your standard web browser, and you should see something like this.
 
-![front page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/front_page.png?raw=true)
+![front page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/front_page.pnge)
 
 
 ## 🎈 Pages <a name="Pages"></a>
@@ -68,13 +68,13 @@ The front page should open automatically on your standard web browser, and you s
 Aside from the front page of the website, we have made a few other pages from listed bellow.
 
 Login Page - A page for the user to login with his credentials.
-![login page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/login_page.png?raw=true)
+![login page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/login_page.png)
 
 Profile Page - A profile page for the user that is logged in.
-![profile page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/profile_page.png?raw=true)
+![profile page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/profile_page.png)
 
 Details - A page that show the details of the movies or tv shows you want.
-![details page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/details_page.png?raw=true)
+![details page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/details_page.png)
 
 More pages will be added as you can see on our project page on [figma](https://www.figma.com/file/XxM1qbxqN5B1RfbDEyTjPO/Movie-Shelf?node-id=0%3A1).
 
