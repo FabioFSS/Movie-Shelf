@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/main/logo.png?raw=true" alt="Project logo"></a>
+ <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/logo.png?raw=true" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Movie Shelf</h3>
@@ -49,6 +49,9 @@ Install the dependecies using the following command
 npm install
 ```
 
+
+## 🔧 Running the tests <a name = "tests"></a>
+
 Run the application server using
 
 ```
@@ -57,43 +60,29 @@ npm start
 
 The front page should open automatically on your standard web browser, and you should see something like this.
 
-![front page]()
+![front page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/front_page.png?raw=true)
 
 
-## 🔧 Running the tests <a name = "tests"></a>
+## 🎈 Pages <a name="Pages"></a>
 
-Explain how to run the automated tests for this system.
+Aside from the front page of the website, we have made a few other pages from listed bellow.
 
-### Break down into end to end tests
+Login Page - A page for the user to login with his credentials.
+![login page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/login_page.png?raw=true)
 
-Explain what these tests test and why
+Profile Page - A profile page for the user that is logged in.
+![profile page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/profile_page.png?raw=true)
 
-```
-Give an example
-```
+Details - A page that show the details of the movies or tv shows you want.
+![details page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/details_page.png?raw=true)
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
+More pages will be added as you can see on our project page on [figma](https://www.figma.com/file/XxM1qbxqN5B1RfbDEyTjPO/Movie-Shelf?node-id=0%3A1).
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
+- [React.Js](https://reactjs.org/) - Front End Framework
+- [Django](https://www.djangoproject.com/) - Back End Framework
 
 ## ✍️ Authors <a name = "authors"></a>
 
@@ -101,10 +90,5 @@ Add additional notes about how to deploy this on a live system.
 - [@WelvisSS](https://github.com/WelvisSS) - Idea & Initial work
 - [@KiritoKi](https://github.com/KiritoKi) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/FabioFSS/Movie-Shelf/contributors) who participated in this project.
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
