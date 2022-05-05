@@ -44,10 +44,14 @@ export default function Scroll() {
                             <FaEyeSlash onClick={changeTypePassword} />
                         )}
                     </div>
-                    <button className="buttonLogin" disabled={!email || !password}>CREATE</button>
+                    <button className="buttonLogin" disabled={!email || !password}>
+                        <a href="http://localhost:3000/home">CREATE</a>
+                    </button>
                     <div>
                         <span className="span">Already have an account? </span>
-                        <span className="span" style={{ color: "#ffffff" }}>Log In</span>
+                        <span className="span" style={{ color: "#ffffff" }}>
+                            <a href="http://localhost:3000/login">Log In</a>
+                        </span>
                     </div>
                 </div>
             </div>

@@ -17,11 +17,15 @@ export default function Scroll() {
                         <input className="input" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
-                    <button className="buttonLogin" disabled={!email}>SENDE</button>
+                    <button className="buttonLogin" disabled={!email}>
+                        <a href="http://localhost:3000/login">SENDE</a>
+                    </button>
 
                     <div>
                         <span className="span">Have you recovered your password? </span>
-                        <span className="span" style={{ color: "#ffffff" }}>Log in</span>
+                        <span className="span" style={{ color: "#ffffff" }}>
+                            <a href="http://localhost:3000/login">Log in</a>
+                        </span>
                     </div>
                 </div>
             </div>

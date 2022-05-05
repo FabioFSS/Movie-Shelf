@@ -15,11 +15,11 @@ export default function Routes() {
   return (
     <Router>
         <Route component = { Details }  path="/details:id"/>
-        <Route component = { Home }  path="/" exact/>
-        <Route component = { Login }  path="/login"/>
+        <Route component = { Home }  path="/home"/>
         <Route component = { Profile }  path="/profile"/>
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
+        <Route component = { Login }  path="/login"/>
     </Router>
   );
 }
