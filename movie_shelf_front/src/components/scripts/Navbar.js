@@ -18,8 +18,8 @@ function Navbar() {
 
             <div className="leftSide">
                 <div className="links">
-                <a href="http://localhost:3000/home">Tv series</a>
-                <a href="http://localhost:3000/home">Movies</a>
+                <a href="/home">Tv series</a>
+                <a href="/home">Movies</a>
                     {/* <NavLink to="/">Tv series</NavLink>
                     <NavLink to="/">Movies</NavLink> */}
                 </div>
@@ -27,7 +27,7 @@ function Navbar() {
 
 
             <div className="middleSide">
-                <a href="http://localhost:3000/home">
+                <a href="/home">
                     <img src={logo} className="logo" />
                 </a>
                 {/* <NavLink to="/">

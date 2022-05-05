@@ -22,9 +22,9 @@ function Lists() {
                 <ProfileHeader></ProfileHeader>
                 <h1 className="my_lists_label">My lists</h1>
                 <div className="lists">
-                    <ListSummary title="Favorites" description="Movies and TV Shows you like the most" banner={banner1} link="/"></ListSummary>
-                    <ListSummary title="Custom list 1" description="One of your custom lists" banner={banner2} link="/"></ListSummary>
-                    <ListSummary title="Custom list 2" description="One of your custom lists" banner={banner3} link="/"></ListSummary>
+                    <ListSummary title="Favorites" description="Movies and TV Shows you like the most" banner={banner1} link="/lists"></ListSummary>
+                    <ListSummary title="Custom list 1" description="One of your custom lists" banner={banner2} link="/lists"></ListSummary>
+                    <ListSummary title="Custom list 2" description="One of your custom lists" banner={banner3} link="/lists"></ListSummary>
                 </div>
             </div>
         </div>

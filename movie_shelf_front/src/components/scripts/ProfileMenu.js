@@ -1,9 +1,9 @@
-import "../styles/ProfileMenu.css"
+import styles from "../styles/ProfileMenu.module.css"
 
 function ProfileMenu(){
     return (
-    <div className="profile_menu">
-        <ul className="profile_menu_options">
+    <div className={styles.profile_menu}>
+        <ul className={styles.profile_menu_options}>
             <li><a href="/profile">Profile</a></li>
             <li><a href="/lists">My lists</a></li>
             <li><a href="/progress">Progress</a></li>

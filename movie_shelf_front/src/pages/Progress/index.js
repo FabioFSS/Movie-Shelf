@@ -1,7 +1,7 @@
 import React from "react";
-import './styles.css';
+import "./styles.css";
 import Navbar from "../../components/scripts/Navbar";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import TVShowProgerss from "../../components/scripts/TVShowProgress"
 import banner1 from "../../components/image-item/berserk.jpg"
@@ -21,9 +21,9 @@ function Progress() {
                 <ProfileHeader></ProfileHeader>
                 <h1 className="progress_label">Progress</h1>
                 <div className="tv_shows">
-                    <TVShowProgerss title="TV Show 1" description="Description of the next episode" banner={banner1} link="/" value={70}></TVShowProgerss>
-                    <TVShowProgerss title="TV Show 2" description="Description of the next episode" banner={banner2} link="/" value={20}></TVShowProgerss>
-                    <TVShowProgerss title="TV Show 3" description="Description of the next episode" banner={banner3} link="/" value={35}></TVShowProgerss>
+                    <TVShowProgerss title="TV Show 1" description="Description of the next episode" banner={banner1} link="/progress" value={70}></TVShowProgerss>
+                    <TVShowProgerss title="TV Show 2" description="Description of the next episode" banner={banner2} link="/progress" value={20}></TVShowProgerss>
+                    <TVShowProgerss title="TV Show 3" description="Description of the next episode" banner={banner3} link="/progress" value={35}></TVShowProgerss>
                 </div>
             </div>
         </div>
