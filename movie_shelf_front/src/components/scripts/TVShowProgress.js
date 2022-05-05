@@ -9,8 +9,6 @@ function TVShowProgress(props){
                 <div className="description_box">
                     <p className="description_label">Episode description</p>
                     <p className="description_text">{props.description}</p>
-                    {/* <div className="progress_bar">
-                    </div> */}
                     <progress className="progress_bar" max={100} value={props.value}></progress>
                 </div>
             </div>
