@@ -6,13 +6,8 @@ export default function Scroll() {
     const [email, setEmail] = useState();
 
     return (
-<<<<<<< HEAD
         <div className="wrapper-reset">
             <div className="container-reset">
-=======
-        <div className="wrapper">
-            <div className="container">
->>>>>>> e47083bc0710f8ab21bbc991f926d918ebafa8bc
                 <div className="content">
                     <h1 className="pageName">Recover</h1>
 
