@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/logo.png?raw=true" alt="Project logo"></a>
+ <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/logo.png?raw=true" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Movie Shelf</h3>
@@ -15,12 +15,10 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Usage](#usage)
+- [Pages](#pages)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+
 
 ## 🧐 About <a name = "about"></a>
 
@@ -60,21 +58,21 @@ npm start
 
 The front page should open automatically on your standard web browser, and you should see something like this.
 
-![front page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/front_page.png?raw=true)
+![front page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/front_page.png?raw=true)
 
 
-## 🎈 Pages <a name="Pages"></a>
+## 🎈 Pages <a name="pages"></a>
 
 Aside from the front page of the website, we have made a few other pages from listed bellow.
 
 Login Page - A page for the user to login with his credentials.
-![login page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/login_page.png?raw=true)
+![login page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/login_page.png?raw=true)
 
 Profile Page - A profile page for the user that is logged in.
-![profile page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/profile_page.png?raw=true)
+![profile page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/profile_page.png?raw=true)
 
 Details - A page that show the details of the movies or tv shows you want.
-![details page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/details_page.png?raw=true)
+![details page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/details_page.png?raw=true)
 
 More pages will be added as you can see on our project page on [figma](https://www.figma.com/file/XxM1qbxqN5B1RfbDEyTjPO/Movie-Shelf?node-id=0%3A1).
 
