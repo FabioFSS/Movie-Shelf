@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/logo.png?raw=true" alt="Project logo"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">Movie Shelf</h3>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+<p align="center"> A website designed for you to organize you movies and tv shows.
+    <br> 
+</p>
 
-### `npm start`
+## 📝 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [TODO](../TODO.md)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧐 About <a name = "about"></a>
 
-### `npm test`
+Movie Shelf is a content management website, projected do make it easier for the user to follow their favorite movies, tv shows and more. It is possible to find information about the content you want to watch, such as description, images, casts, duration and number of episodes for tv shows, user reviews and much more. It is also possible to create personalized lists with content you want to watch or the ones you like the most.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-### `npm run build`
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+node.js - https://nodejs.org/pt-br/download/?msclkid=923a22f3cc6b11ec8427a774fba05166
+```
 
-### `npm run eject`
+### Installing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A step by step series of examples that tell you how to get a development env running.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+After cloning the repository, open a terminal on the "/movie_shelf_front" directory and follow the next steps
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Install the dependecies using the following command
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+npm install
+```
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔧 Running the tests <a name = "tests"></a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Run the application server using
 
-### Code Splitting
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The front page should open automatically on your standard web browser, and you should see something like this.
 
-### Analyzing the Bundle Size
+![front page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/front_page.png?raw=true)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## 🎈 Pages <a name="Pages"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Aside from the front page of the website, we have made a few other pages from listed bellow.
 
-### Advanced Configuration
+Login Page - A page for the user to login with his credentials.
+![login page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/login_page.png?raw=true)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Profile Page - A profile page for the user that is logged in.
+![profile page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/profile_page.png?raw=true)
 
-### Deployment
+Details - A page that show the details of the movies or tv shows you want.
+![details page](https://github.com/FabioFSS/Movie-Shelf/blob/dev_Fabiano/readme_assets/details_page.png?raw=true)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+More pages will be added as you can see on our project page on [figma](https://www.figma.com/file/XxM1qbxqN5B1RfbDEyTjPO/Movie-Shelf?node-id=0%3A1).
 
-### `npm run build` fails to minify
+## ⛏️ Built Using <a name = "built_using"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [React.Js](https://reactjs.org/) - Front End Framework
+- [Django](https://www.djangoproject.com/) - Back End Framework
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@FabioFSS](https://github.com/FabioFSS) - Idea & Initial work
+- [@WelvisSS](https://github.com/WelvisSS) - Idea & Initial work
+- [@KiritoKi](https://github.com/KiritoKi) - Idea & Initial work
+
+See also the list of [contributors](https://github.com/FabioFSS/Movie-Shelf/contributors) who participated in this project.
+
