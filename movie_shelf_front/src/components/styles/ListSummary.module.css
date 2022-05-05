@@ -1,47 +1,47 @@
-.tv_show_progress_body{
+.summary_body{
     margin: 0px 200px;
     display: flex;
     flex-direction: column;
 }
 
 
-.tv_show_image_and_description{
+.image_and_description{
     display: flex;
     flex-direction: row;
 }
 
-.tv_show_title{
+.title{
     font-size: 24px;
     font-weight: bold;
     margin: 25px;
 }
 
-.tv_show_title a{
+.title a{
     text-decoration: none;
     padding: 10px;
     transition: background 500ms;
     border-radius: 10px;
 }
 
-.tv_show_title a:hover{
+.title a:hover{
     background-color: #0D5462AA;
 }
 
 
-.tv_show_banner{
+.banner{
     width: 200px;
     border-radius: 20px;
 }
 
-.tv_show_description_box{
+.description_box{
     margin: 0px 25px;
     border-radius: 20px;
     padding: 25px;
     width: 100%;
     position: relative;
-} 
+}
 
-.tv_show_description_box::before{
+.description_box::before{
     content: "";
     position: absolute;
     top: 0; left: 0;
@@ -51,20 +51,13 @@
     border: 1px solid #002734;
 }
 
-.tv_show_description_label{
+.description_label{
     position: relative;
     font-size: 24px;
     font-weight: bold;
 }
 
-.tv_show_description_text{
+.description_text{
     position: relative;
     margin: 20px 0;
-}
-
-.tv_show_progress_bar{
-    position: absolute;
-    width: 95%;
-    height: 10%;
-    bottom: 10%;
 }
