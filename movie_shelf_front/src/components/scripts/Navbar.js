@@ -7,7 +7,7 @@ import NavItem from './NavItem';
 import DropdownMenu from './DropdownMenu';
 
 
-import logo from '../../logo.png';
+import logo from '../../assets/logo.png';
 import kiritoicon from '../image-item/kiritoprofile.png';//'./image-item/kiritoprofile.png';
 
 function Navbar() {
