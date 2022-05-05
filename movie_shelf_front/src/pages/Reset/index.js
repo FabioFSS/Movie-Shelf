@@ -6,8 +6,8 @@ export default function Scroll() {
     const [email, setEmail] = useState();
 
     return (
-        <div className="wrapper">
-            <div className="container">
+        <div className="wrapper-reset">
+            <div className="container-reset">
                 <div className="content">
                     <h1 className="pageName">Recover</h1>
 

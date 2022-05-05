@@ -1,11 +1,8 @@
-// import Details from './pages/Details/index'
-import Profile from "./pages/Profile/profile";
-import Home from "./pages/Home/index"
+import React from 'react';
+import Routes from "./pages/routes";
 
-function App() {
-  return (
-    <Profile />
-  );
+export default function App() {
+   return (
+       <Routes/>
+   );
 }
-
-export default App;
