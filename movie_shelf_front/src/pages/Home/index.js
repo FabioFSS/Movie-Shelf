@@ -11,9 +11,9 @@ function home() {
         <Navbar />
       </Router>
       <SliderMain title="Releases" />
-      <SliderWrap title="Most Seen" />
-      <SliderWrap title="Adventure" />
-      <SliderWrap title="Action" />
+      <SliderWrap title="Most Seen" page={1}/>
+      <SliderWrap title="Adventure" page={2}/>
+      <SliderWrap title="Action" page={3}/>
     </div>
   );
 }

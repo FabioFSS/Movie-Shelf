@@ -15,18 +15,24 @@ function Navbar() {
 
     return (
         <nav className="Navbar">
+
             <div className="leftSide">
                 <div className="links">
-                    <NavLink to="/">Tv series</NavLink>
-                    <NavLink to="/">Movies</NavLink>
+                <a href="http://localhost:3000/home">Tv series</a>
+                <a href="http://localhost:3000/home">Movies</a>
+                    {/* <NavLink to="/">Tv series</NavLink>
+                    <NavLink to="/">Movies</NavLink> */}
                 </div>
             </div>
 
 
             <div className="middleSide">
-                <NavLink to="/">
+                <a href="http://localhost:3000/home">
                     <img src={logo} className="logo" />
-                </NavLink>
+                </a>
+                {/* <NavLink to="/">
+                    <img src={logo} className="logo" />
+                </NavLink> */}
             </div>
             <div className="rightSide">
                 <input type="text" placeholder="Search..." />

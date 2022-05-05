@@ -11,7 +11,7 @@ function DropdownMenu() {
 
     function DropdownItem(props) {
         return (
-            <a href="#" className="menu-item">
+            <a href={props.page} className="menu-item">
                 <span className="icon-left">{props.leftIcon}</span>
                 {props.children}
                 <span className="icon-right">{props.rightIcon}</span>
@@ -22,11 +22,11 @@ function DropdownMenu() {
 
     return (
         <div className="dropdown">
-            <DropdownItem>Hi, Kirito!</DropdownItem>
-            <DropdownItem>My Profile</DropdownItem>
-            <DropdownItem>Favorites</DropdownItem>
-            <DropdownItem>Settings</DropdownItem>
-            <DropdownItem>Log out</DropdownItem>
+            <DropdownItem page="http://localhost:3000/profile">Hi, Kirito!</DropdownItem>
+            <DropdownItem page="http://localhost:3000/profile">My Profile</DropdownItem>
+            <DropdownItem page="#">Favorites</DropdownItem>
+            <DropdownItem page="#">Settings</DropdownItem>
+            <DropdownItem page="#">Log out</DropdownItem>
         </div>
     )
 

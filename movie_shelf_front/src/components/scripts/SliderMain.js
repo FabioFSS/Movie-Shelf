@@ -9,7 +9,7 @@ function SliderMain(props) {
 
             <h1 className="title-slider">{props.title}</h1>
             <div>
-                <a href="">
+                <a href="http://localhost:3000/details:id=526896">
                     <div className="itemImg">
                         <img className="lazyloaded" id="slidermain" src={img1} alt="Assistir Spy x Family" />
                     </div>
