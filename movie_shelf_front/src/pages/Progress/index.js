@@ -1,7 +1,7 @@
 import React from "react";
-import './styles.css';
+import "./styles.css";
 import Navbar from "../../components/scripts/Navbar";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import TVShowProgerss from "../../components/scripts/TVShowProgress"
 import banner1 from "../../components/image-item/berserk.jpg"

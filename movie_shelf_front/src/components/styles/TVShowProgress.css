@@ -5,7 +5,7 @@
 }
 
 
-.image_and_description{
+.tv_show_image_and_description{
     display: flex;
     flex-direction: row;
 }
@@ -33,15 +33,15 @@
     border-radius: 20px;
 }
 
-.description_box{
+.tv_show_description_box{
     margin: 0px 25px;
     border-radius: 20px;
     padding: 25px;
     width: 100%;
     position: relative;
-}
+} 
 
-.description_box::before{
+.tv_show_description_box::before{
     content: "";
     position: absolute;
     top: 0; left: 0;
@@ -54,18 +54,18 @@
     border: 1px solid #002734;
 }
 
-.description_label{
+.tv_show_description_label{
     position: relative;
     font-size: 24px;
     font-weight: bold;
 }
 
-.description_text{
+.tv_show_description_text{
     position: relative;
     margin: 20px 0;
 }
 
-.progress_bar{
+.tv_show_progress_bar{
     position: absolute;
     width: 95%;
     height: 10%;
