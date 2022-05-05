@@ -60,7 +60,7 @@ npm start
 
 The front page should open automatically on your standard web browser, and you should see something like this.
 
-![front page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/front_page.pnge)
+![front page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/front_page.png)
 
 
 ## 🎈 Pages <a name="Pages"></a>
