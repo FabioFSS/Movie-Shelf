@@ -1,0 +1,17 @@
+.page_body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.progress_navbar{
+    z-index: 999;
+    width: 100vw;
+}
+
+.progress_label{
+    text-align: center;
+    font-weight: bold;
+    padding: 25px;
+}
