@@ -4,12 +4,10 @@ import ProfileMenu from "./ProfileMenu";
 
 function ProfileHeader(){
     return (
-        <>
         <div className={styles.profile_header}>
             <ProfileData></ProfileData>
             <ProfileMenu></ProfileMenu>
         </div>
-        </>
     );
 }
 
