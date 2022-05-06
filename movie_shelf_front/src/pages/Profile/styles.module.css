@@ -1,0 +1,11 @@
+.page_body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.profile_navbar{
+    z-index: 999;
+    width: 100vw;
+}
