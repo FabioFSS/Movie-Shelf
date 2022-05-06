@@ -46,7 +46,7 @@ After cloning the repository, open a terminal on the "/movie_shelf_front" direct
 Install the dependecies using the following command
 
 ```
-npm install
+npm install --force
 ```
 
 
