@@ -21,7 +21,7 @@ export default function Scroll() {
             <div className="container-signup">
                 <div className="content">
                     <h1 className="pageName">Sign Up</h1>
-                    <span className="span" style={{ marginBottom: "20px", fontSize: "18px" }}>Create an account to access</span>
+                    <span className="info-signup">Create an account to access</span>
                     <div className="inputContent">
                         <FaEnvelope />
                         <input className="input" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -29,27 +29,27 @@ export default function Scroll() {
                     <div className="inputContent">
                         <FaLock />
                         <input className="input" type={typePassword} placeholder="Password" value={password} onChange={(e) => setPasword(e.target.value)} />
-                        {typePassword === "password" ? (
-                            <FaEye onClick={changeTypePassword} />
-                        ) : (
-                            <FaEyeSlash onClick={changeTypePassword} />
-                        )}
+                        {typePassword === "password" ? 
+                            (<FaEye onClick={changeTypePassword} />) 
+                            : 
+                            (<FaEyeSlash onClick={changeTypePassword} />)
+                        }
                     </div>
                     <div className="inputContent">
                         <FaLock />
                         <input className="input" type={typePassword} placeholder="Confirm password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                        {typePassword === "password" ? (
-                            <FaEye onClick={changeTypePassword} />
-                        ) : (
-                            <FaEyeSlash onClick={changeTypePassword} />
-                        )}
+                        {typePassword === "password" ? 
+                            (<FaEye onClick={changeTypePassword} />) 
+                            : 
+                            (<FaEyeSlash onClick={changeTypePassword} />)
+                        }
                     </div>
                     <button className="buttonLogin" disabled={!email || !password}>
                         <a href="http://localhost:3000/home">CREATE</a>
                     </button>
                     <div>
                         <span className="span">Already have an account? </span>
-                        <span className="span" style={{ color: "#ffffff" }}>
+                        <span className="login-text">
                             <a href="http://localhost:3000/login">Log In</a>
                         </span>
                     </div>

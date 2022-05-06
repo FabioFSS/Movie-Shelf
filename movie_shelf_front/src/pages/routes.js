@@ -18,7 +18,7 @@ export default function Routes() {
   return (
     <Router>
         <Route component = { Details }  path="/details:id"/>
-        <Route component = { Home }  path="/"/>
+        <Route component = { Home }  path="/home"/>
         <Route component = { Profile }  path="/profile"/>
         <Route component = { Lists }  path="/lists"/>
         <Route component = { Progress }  path="/progress"/>

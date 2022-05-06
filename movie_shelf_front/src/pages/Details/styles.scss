@@ -37,6 +37,14 @@
                 border-radius: 20px;
             }
 
+            .container-vote {
+                margin-top: 5px; 
+                display: flex; 
+                flex-direction: row; 
+                align-items: center; 
+                justify-content: center;
+            }
+
             .vote {
                 margin-top: 10px;
                 margin-left: 5px;
@@ -85,6 +93,22 @@
                         margin-top: 0px;
                     }
                 }
+            }
+        }
+    }
+    .container-trailer {
+        width: 100%; 
+        height: 600px; 
+        align-items: center; 
+        justify-content: center; 
+        display: flex;
+
+        .box-trailer {
+            margin-top: 100px;
+
+            .text-trailer {
+                color: #fff;
+                margin-bottom: 20px;
             }
         }
     }

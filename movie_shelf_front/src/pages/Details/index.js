@@ -73,17 +73,8 @@ export default function Details({ id }) {
                 <div className='container-movie'>
                     {details && <>
                         <div className='containerPoster'>
-                            <img className='poster' src={poster} />
-                            
-                            <div 
-                                style={{
-                                    marginTop: "5px", 
-                                    display: "flex", 
-                                    flexDirection: "row", 
-                                    alignItems: 'center', 
-                                    justifyContent: 'center'
-                                }}
-                            >
+                            <img className='poster' src={poster} />                            
+                            <div className='container-vote'>
                                 <FaStar size={40} color="yellow"/>
                                 <p className='vote'>{details.vote_average}</p>
                             </div>
@@ -102,25 +93,9 @@ export default function Details({ id }) {
                         </div>    
                     </>}
                 </div>
-                <div 
-                    style={{
-                        width: "100%", 
-                        height: "600px", 
-                        alignItems: "center", 
-                        justifyContent: "center", 
-                        display: "flex"
-                    }}
-                >
-                    <div 
-                        style={{
-                            marginTop: "100px"
-                        }}
-                    >
-                        <h2 
-                            style={{
-                                color: "#fff"
-                            }}
-                        >Trailer</h2>
+                <div className='container-trailer'>
+                    <div className='box-trailer'>
+                        <h2 className='text-trailer'>Trailer</h2>
                         <Trailer trailerId={trailerId} />
                     </div>
                 </div>
