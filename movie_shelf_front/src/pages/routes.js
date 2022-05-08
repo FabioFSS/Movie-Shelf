@@ -12,6 +12,8 @@ import Reset from "./Reset/index"
 import Signup from "./SignUp/index"
 import Lists from "./Lists/index"
 import Progress from "./Progress/index"
+import Settings from "./Settings/index"
+import Ratings from "./Ratings/index"
 
 
 export default function Routes() {
@@ -25,6 +27,8 @@ export default function Routes() {
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
         <Route component = { Login }  path="/login"/>
+        <Route component = { Settings }  path="/settings"/>
+        <Route component = { Ratings }  path="/ratings"/>
     </Router>
   );
 }

@@ -1,0 +1,11 @@
+.wrapper {
+    display: flex;
+    background: #010117;
+    align-items: center;
+    flex-direction: column;
+
+    .details-navbar {
+        z-index: 900;
+        width: 100vw;
+    }        
+}

@@ -25,8 +25,8 @@ function DropdownMenu() {
             <DropdownItem page="/profile">Hi, Kirito!</DropdownItem>
             <DropdownItem page="/profile">My Profile</DropdownItem>
             <DropdownItem page="/lists">Favorites</DropdownItem>
-            <DropdownItem page="#">Settings</DropdownItem>
-            <DropdownItem page="#">Log out</DropdownItem>
+            <DropdownItem page="/settings">Settings</DropdownItem>
+            <DropdownItem page="/login">Log out</DropdownItem>
         </div>
     )
 
