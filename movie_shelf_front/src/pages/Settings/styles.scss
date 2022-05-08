@@ -2,10 +2,18 @@
     display: flex;
     background: #010117;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
 
     .details-navbar {
         z-index: 900;
         width: 100vw;
-    }        
+    } 
+
+    .container-settings {
+        background: #fff;
+        width: 200px;
+        height: 200px;
+    }
 }
