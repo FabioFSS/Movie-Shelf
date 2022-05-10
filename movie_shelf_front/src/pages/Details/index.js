@@ -52,7 +52,7 @@ export default function Details() {
     }, [movieId]);
     
     return (           
-        <div className='wrapper'>
+        <div className='wrapper-details'>
             <div className='details-navbar'>
                 <Router>
                     <Navbar />

@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from '../../components/scripts/Navbar';
 import imgProfile from "../../assets/profile.png"
-// import './styles.scss'
+import './styles.scss'
 
 export default function Settings() {
     
