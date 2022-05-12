@@ -7,7 +7,7 @@ import './styles.scss'
 export default function Settings() {
     
     return (           
-        <div className='wrapper'>
+        <div className='wrapper-settings'>
             <div className='details-navbar'>
                 <Router>
                     <Navbar />
