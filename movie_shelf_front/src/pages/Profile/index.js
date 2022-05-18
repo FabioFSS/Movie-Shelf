@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import SliderWrap from "../../components/scripts/SliderWrap";
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
+import ProfileStatistics from "../../components/scripts/ProfileStatistics";
 
 function Profile() {
     return (
@@ -12,14 +13,15 @@ function Profile() {
             <ProfileBackground></ProfileBackground>
             <div className={styles.profile_navbar}>
                 <Router>
-                    <Navbar></Navbar>
+                    <Navbar></Navbar>   
                 </Router>
             </div>
             <div className={styles.profile_body}>
                 <ProfileHeader></ProfileHeader>
+                <ProfileStatistics completed={15} reviews={8} average_ratings={4.4}></ProfileStatistics>
                 <div className={styles.sliders}>
-                    <SliderWrap title="Recently Watched" page={1}></SliderWrap>
                     <SliderWrap title="Calendar" page={2}></SliderWrap>
+                    <SliderWrap title="Recently Watched" page={1}></SliderWrap>
                 </div>
             </div>
         </div>

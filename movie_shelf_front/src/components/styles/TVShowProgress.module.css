@@ -4,7 +4,6 @@
     flex-direction: column;
 }
 
-
 .image_and_description{
     display: flex;
     flex-direction: row;
