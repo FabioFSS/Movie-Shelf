@@ -13,6 +13,7 @@ import Signup from "./SignUp/index"
 import Lists from "./Lists/index"
 import ListDetails from "./ListDetails";
 import Progress from "./Progress/index"
+import ProgressDetailsOverview from "./ProgressDetailsOverview";
 
 
 export default function Routes() {
@@ -24,6 +25,7 @@ export default function Routes() {
         <Route component = { Lists }  path="/lists"/>
         <Route component = { ListDetails }  path="/listdetails"/>
         <Route component = { Progress }  path="/progress"/>
+        <Route component = { ProgressDetailsOverview }  path="/progressdetailsoverview"/>
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
         <Route component = { Login }  path="/login"/>
