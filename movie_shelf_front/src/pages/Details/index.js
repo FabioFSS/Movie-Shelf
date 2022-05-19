@@ -53,11 +53,6 @@ export default function Details() {
     
     return (           
         <div className='wrapper-details'>
-            <div className='details-navbar'>
-                <Router>
-                    <Navbar />
-                </Router>
-            </div>
             <div className='backgrundImg' style={{ backgroundImage: `url(${background})` }} />            
             <div className='container-movie'>
                 {details && <>

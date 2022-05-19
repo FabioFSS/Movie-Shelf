@@ -11,11 +11,6 @@ function Profile() {
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>
-            <div className={styles.profile_navbar}>
-                <Router>
-                    <Navbar></Navbar>   
-                </Router>
-            </div>
             <div className={styles.profile_body}>
                 <ProfileHeader></ProfileHeader>
                 <ProfileStatistics completed={15} reviews={8} average_ratings={4.4}></ProfileStatistics>
