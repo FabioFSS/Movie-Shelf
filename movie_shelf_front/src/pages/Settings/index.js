@@ -14,10 +14,8 @@ export default function Settings() {
                 </Router>
             </div>
             <div className="container-settings">
-
                 <div className='div-transparence'>
                     <h1 className='neme-screen'>Settings</h1>
-
                     <div className="options">
                         <img src={imgProfile} className="img-profile"/>
                         <div>
@@ -33,17 +31,14 @@ export default function Settings() {
                             </select>
                         </div>
                     </div>
-
                     <div>
                         <h3 className="user-name">Name</h3>
                         <input className="input" type="text" placeholder="User Name"/>
                     </div>
-
                     <div>
                         <h3 className="user-email">Email</h3>
                         <input className="input" type="text" placeholder="Email@gmailcom"/>
                     </div>
-
                     <div className='container-intern-settings'>
                         <div>
                             <h3 className="user-age">Age</h3>
@@ -57,7 +52,6 @@ export default function Settings() {
                             </select>
                         </div>
                     </div>
-
                     <div className="location-container">
                         <h3 className="user-location">Location</h3>
                         <select className="select">
@@ -66,7 +60,6 @@ export default function Settings() {
                             <option value="Select" className='option-select'>...</option>
                         </select>
                     </div>
-
                     <div className='caintainer-buttons'>
                         <button className='button'>
                             <p className='text-button'>SAVE</p>

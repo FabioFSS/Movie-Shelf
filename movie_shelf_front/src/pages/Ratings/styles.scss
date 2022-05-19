@@ -12,13 +12,62 @@
         width: 100vw;
     }   
 
-    .cotainer-cards {
-        margin-top: 400px;
+    .insert-item {
+        display: flex;
+        width: 900px;
+        margin-top: 650px;
+        align-items: center;
+        
+        .input {
+            height: 40px;
+            width: 85%;
+            background: #001F30;
+            border-radius: 5px;
+            border: 0;
+            padding: 10px;
+        }
+
+        .input::placeholder {
+            color: white;
+            font-size: 15px;
+        }
+
+        .container-vote {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 15px;
+
+            .vote {
+                color: black;
+                position: absolute;
+                font-weight: bold;
+                margin-top: 3px;
+                font-size: 15px;
+            }
+            .icon-vote {
+                width: 32px;
+                height: 32px;                
+            }
+        }
+
+        .button {
+            background: #11ffee00; //color transparent
+
+            .icon-img {
+                width: 30px;
+                height: 30px;
+                margin-left: 15px;
+            }
+        }
+    }
+
+    .cotainer-cards {       
 
         .container-ratings {
             display: flex;
             flex-direction: row;
-            background: #3d3d3f;
+            background: #001F30;
             width: 900px;
             border-radius: 10px;
             margin-top: 50px;
@@ -54,6 +103,22 @@
     
                 .comments-card {
                     margin-top: 20px;
+                }
+
+                .vote {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                    margin-top: 30px;
+                    .icon-vote {
+                        width: 20px;
+                        height: 20px;
+                    }
+                    .text-vote {
+                        color: white;
+                        margin-left: 10px;
+                    }
                 }
             }
         }
