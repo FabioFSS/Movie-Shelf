@@ -4,7 +4,7 @@ import Navbar from "../../components/scripts/Navbar";
 import { BrowserRouter as Router } from 'react-router-dom';
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
-import ListSummary from "../../components/scripts/ListSummary";
+import ContentSummary from "../../components/scripts/ContentSummary";
 import banner1 from "../../assets/lists_banners/favorites.png"
 import banner2 from "../../assets/lists_banners/banner2.png"
 import banner3 from "../../assets/lists_banners/banner3.png"
@@ -25,11 +25,11 @@ function Lists() {
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.my_lists_label}>My lists</h1>
                 <div className={styles.lists}>
-                    <ListSummary title="Favorites" description="Movies and TV Shows you like the most" banner={banner1} link="/lists"></ListSummary>
-                    <ListSummary title="Custom list 1" description="One of your custom lists" banner={banner2} link="/lists"></ListSummary>
-                    <ListSummary title="Custom list 2" description="One of your custom lists" banner={banner3} link="/lists"></ListSummary>
-                    <ListSummary title="Custom list 3" description="One of your custom lists" banner={banner4} link="/lists"></ListSummary>
-                    <ListSummary title="Custom list 4" description="One of your custom lists" banner={banner5} link="/lists"></ListSummary>
+                    <ContentSummary title="Favorites" description="Movies and TV Shows you like the most" banner={banner1} link="/lists"></ContentSummary>
+                    <ContentSummary title="Custom list 1" description="One of your custom lists" banner={banner2} link="/lists"></ContentSummary>
+                    <ContentSummary title="Custom list 2" description="One of your custom lists" banner={banner3} link="/lists"></ContentSummary>
+                    <ContentSummary title="Custom list 3" description="One of your custom lists" banner={banner4} link="/lists"></ContentSummary>
+                    <ContentSummary title="Custom list 4" description="One of your custom lists" banner={banner5} link="/lists"></ContentSummary>
                 </div>
             </div>
         </div>

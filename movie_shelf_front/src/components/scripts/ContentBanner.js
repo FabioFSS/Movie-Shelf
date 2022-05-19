@@ -1,0 +1,22 @@
+import styles from "../styles/ContentBanner.module.css"
+import PropTypes from "prop-types"
+
+function ContentBanner({banner, description}){
+    return (
+        <div className={styles.banner_body}>
+            <img className={styles.banner_image} src={banner} alt="banner"></img>
+            <p className={styles.banner_description}>{description}</p>
+        </div>
+    );
+}
+
+ContentBanner.propTypes = {
+    banner: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+}
+
+ContentBanner.defaultProps = {
+    description: "Missing description"
+}
+
+export default ContentBanner;
