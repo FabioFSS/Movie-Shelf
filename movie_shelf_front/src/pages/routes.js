@@ -15,7 +15,7 @@ export default function Routes() {
   return (
     <Router>
         <Route component = { Details }  path="/details:id"/>
-        <Route component = { Home }  path="/home"/>
+        <Route component = { Home }  path="/"/>
         <Route component = { Profile }  path="/profile"/>
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
