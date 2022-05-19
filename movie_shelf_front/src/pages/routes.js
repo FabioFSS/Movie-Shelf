@@ -14,6 +14,7 @@ import Lists from "./Lists/index"
 import ListDetails from "./ListDetails";
 import Progress from "./Progress/index"
 import ProgressDetailsOverview from "./ProgressDetailsOverview";
+import ProgressDetailsSeason from "./ProgressDetailsSeason";
 import Settings from "./Settings/index"
 import Ratings from "./Ratings/index"
 
@@ -27,6 +28,7 @@ export default function Routes() {
         <Route component = { ListDetails }  path="/listdetails"/>
         <Route component = { Progress }  path="/progress"/>
         <Route component = { ProgressDetailsOverview }  path="/progressdetailsoverview"/>
+        <Route component = { ProgressDetailsSeason }  path="/progressdetailsseason"/>
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
         <Route component = { Login }  path="/login"/>
