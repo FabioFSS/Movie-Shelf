@@ -1,0 +1,29 @@
+.banner_body{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.link{
+    padding: 10px;
+    text-decoration: none;
+    transition: background 100ms;
+    transition: transform 100ms;
+    border-radius: 10px;
+}
+
+.link:hover{
+    background-color: #0D5462AA;
+    transform: scale(1.2) !important;
+}
+
+.banner_image{
+    height: 350px;
+    border-radius: 15px;
+}
+
+.banner_title{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}
