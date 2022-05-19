@@ -4,7 +4,7 @@ import Navbar from '../../components/scripts/Navbar';
 import SliderWrap from '../../components/scripts/SliderWrap';
 import SliderMain from '../../components/scripts/SliderMain';
 
-function home() {
+function Home() {
   return (
     <div className="App">
       <Router>
@@ -18,4 +18,4 @@ function home() {
   );
 }
 
-export default home;
+export default Home;

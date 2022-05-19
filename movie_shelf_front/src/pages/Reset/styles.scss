@@ -35,6 +35,16 @@
                 font-size: 50px;
             }
 
+            .info-reset {
+                font-size: 14px;
+                font-weight: 600;
+                opacity: 0.9;
+                align-self: flex-start;
+                color: #343336;
+                margin-bottom: 20px; 
+                font-size: 18px;
+            }
+
             .inputContent {
                 background-color: #121214;
                 width: 100%;
@@ -81,7 +91,7 @@
                 color: #343336;
             }
 
-            .buttonLogin {
+            .button-send {
                 width: 100%;
                 cursor: pointer;
                 background: #0077B6;
@@ -93,6 +103,14 @@
                 opacity: 0.9;
                 margin: 20px 0;
 
+                .text-login {
+                    color: "#ffffff";
+                    font-size: 14px;
+                    font-weight: 600;
+                    opacity: 0.9;
+                    align-self: flex-start;
+                    color: #343336;
+                }
             }
         }
     }

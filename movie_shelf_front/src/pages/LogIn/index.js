@@ -21,8 +21,7 @@ export default function Scroll() {
             <div className="container-login">
                 <div className="content">
                     <h1 className="pageName">Log in</h1>
-
-                    <span className="span" style={{ marginBottom: "20px", fontSize: "18px" }}>Get login to access your account</span>
+                    <span className='info-login'>Get login to access your account</span>
                     <div className="inputContent">
                         <FaEnvelope />
                         <input className="input" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -31,11 +30,11 @@ export default function Scroll() {
                         <FaLock />
                         <input className="input" type={typePassword} placeholder="Password" value={password} onChange={(e) => setPasword(e.target.value)} />
 
-                        {typePassword === "password" ? (
-                            <FaEye onClick={changeTypePassword} />
-                        ) : (
-                            <FaEyeSlash onClick={changeTypePassword} />
-                        )}
+                        {typePassword === "password" ? 
+                            (<FaEye onClick={changeTypePassword} />) 
+                            : 
+                            (<FaEyeSlash onClick={changeTypePassword} />)
+                        }
                     </div>
                     <span className="span">
                         <a href="http://localhost:3000/reset">Forget Password</a>
@@ -44,9 +43,9 @@ export default function Scroll() {
                         <a href="http://localhost:3000/home">LOGAR</a>
                     </button>
                     {/* <Auth /> */}
-                    <div style={{marginTop: "20px"}}>
+                    <div className='container-register'>
                         <span className="span">Don't have an account? </span>
-                        <span className="span" style={{ color: "#ffffff" }}>                            
+                        <span className="register-text">                            
                             <a href="http://localhost:3000/signup">Register</a>
                         </span>
                     </div>
