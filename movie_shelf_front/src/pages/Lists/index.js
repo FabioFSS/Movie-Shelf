@@ -25,11 +25,11 @@ function Lists() {
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.my_lists_label}>My lists</h1>
                 <div className={styles.lists}>
-                    <ContentSummary title="Favorites" description="Movies and TV Shows you like the most" banner={banner1} link="/lists"></ContentSummary>
-                    <ContentSummary title="Custom list 1" description="One of your custom lists" banner={banner2} link="/lists"></ContentSummary>
-                    <ContentSummary title="Custom list 2" description="One of your custom lists" banner={banner3} link="/lists"></ContentSummary>
-                    <ContentSummary title="Custom list 3" description="One of your custom lists" banner={banner4} link="/lists"></ContentSummary>
-                    <ContentSummary title="Custom list 4" description="One of your custom lists" banner={banner5} link="/lists"></ContentSummary>
+                    <ContentSummary title="Favorites" description="Movies and TV Shows you like the most" banner={banner1} link="/listdetails"></ContentSummary>
+                    <ContentSummary title="Custom list 1" description="One of your custom lists" banner={banner2} link="/listdetails"></ContentSummary>
+                    <ContentSummary title="Custom list 2" description="One of your custom lists" banner={banner3} link="/listdetails"></ContentSummary>
+                    <ContentSummary title="Custom list 3" description="One of your custom lists" banner={banner4} link="/listdetails"></ContentSummary>
+                    <ContentSummary title="Custom list 4" description="One of your custom lists" banner={banner5} link="/listdetails"></ContentSummary>
                 </div>
             </div>
         </div>

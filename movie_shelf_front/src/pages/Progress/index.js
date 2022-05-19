@@ -22,9 +22,9 @@ function Progress() {
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.progress_label}>Progress</h1>
                 <div className={styles.tv_shows}>
-                    <TVShowProgerss title="TV Show 1" description="Description of the next episode" banner={banner1} link="/progress" value={70}></TVShowProgerss>
-                    <TVShowProgerss title="TV Show 2" description="Description of the next episode" banner={banner2} link="/progress" value={20}></TVShowProgerss>
-                    <TVShowProgerss title="TV Show 3" description="Description of the next episode" banner={banner3} link="/progress" value={35}></TVShowProgerss>
+                    <TVShowProgerss title="TV Show 1" description="Description of the next episode" banner={banner1} link="/progressdetailsoverview" value={70}></TVShowProgerss>
+                    <TVShowProgerss title="TV Show 2" description="Description of the next episode" banner={banner2} link="/progressdetailsoverview" value={20}></TVShowProgerss>
+                    <TVShowProgerss title="TV Show 3" description="Description of the next episode" banner={banner3} link="/progressdetailsoverview" value={35}></TVShowProgerss>
                 </div>
             </div>
         </div>

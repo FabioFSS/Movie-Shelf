@@ -30,13 +30,13 @@ function ProgressDetailsOverview() {
                 <h1 className={styles.tv_show_label}>TV Show name</h1>
                 <ContentBanner banner={description_banner} description="Description of your TV Show"></ContentBanner>
                 <div className={styles.seasons_grid}>
-                    <ContentBox banner={season1} title="Season 1" link="/progressdetailsoverview"></ContentBox>
-                    <ContentBox banner={season2} title="Season 2" link="/progressdetailsoverview"></ContentBox>
-                    <ContentBox banner={season3} title="Season 3" link="/progressdetailsoverview"></ContentBox>
-                    <ContentBox banner={season4} title="Season 4" link="/progressdetailsoverview"></ContentBox>
-                    <ContentBox banner={season5} title="Season 5" link="/progressdetailsoverview"></ContentBox>
-                    <ContentBox banner={season6} title="Season 6" link="/progressdetailsoverview"></ContentBox>
-                    <ContentBox banner={season7} title="Season 7" link="/progressdetailsoverview"></ContentBox>
+                    <ContentBox banner={season1} title="Season 1" link="/progressdetailsseason"></ContentBox>
+                    <ContentBox banner={season2} title="Season 2" link="/progressdetailsseason"></ContentBox>
+                    <ContentBox banner={season3} title="Season 3" link="/progressdetailsseason"></ContentBox>
+                    <ContentBox banner={season4} title="Season 4" link="/progressdetailsseason"></ContentBox>
+                    <ContentBox banner={season5} title="Season 5" link="/progressdetailsseason"></ContentBox>
+                    <ContentBox banner={season6} title="Season 6" link="/progressdetailsseason"></ContentBox>
+                    <ContentBox banner={season7} title="Season 7" link="/progressdetailsseason"></ContentBox>
                 </div>
             </div>
         </div>
