@@ -16,12 +16,6 @@ function ProgressDetailsSeason() {
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>
-            <div className={styles.progress_details_season_navbar}>
-                <Router>
-                    <Navbar></Navbar>
-                </Router>
-            </div>  
-
             <div className={styles.progress_details_season_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.season_label}>Season number</h1>

@@ -5,17 +5,18 @@ import ProfileIco from "../Icons/user-solid.svg";
 import FavoriteIco from "../Icons/star-solid.svg";
 import SettingsIco from "../Icons/gear-solid.svg";
 import LogoutIco from "../Icons/logout_icon.svg";
+import { Link } from 'react-router-dom';
 
 
 function DropdownMenu() {
 
     function DropdownItem(props) {
         return (
-            <a href={props.page} className="menu-item">
+            <Link to={props.page} className="menu-item">
                 <span className="icon-left">{props.leftIcon}</span>
                 {props.children}
                 <span className="icon-right">{props.rightIcon}</span>
-            </a>
+            </Link>
 
         );
     }

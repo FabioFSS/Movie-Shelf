@@ -32,11 +32,6 @@ export default function Ratings() {
       
     return (           
         <div className='wrapper-ratings'>  
-            <div className='details-navbar'>
-                <Router>
-                    <Navbar />
-                </Router>
-            </div> 
             <div className='insert-item'>
                 <input 
                     className="input" 

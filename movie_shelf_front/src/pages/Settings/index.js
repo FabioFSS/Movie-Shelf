@@ -8,11 +8,6 @@ export default function Settings() {
     
     return (           
         <div className='wrapper-settings'>
-            <div className='details-navbar'>
-                <Router>
-                    <Navbar />
-                </Router>
-            </div>
             <div className="container-settings">
                 <div className='div-transparence'>
                     <h1 className='neme-screen'>Settings</h1>

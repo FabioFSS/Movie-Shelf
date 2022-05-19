@@ -13,11 +13,6 @@ function Progress() {
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>
-            <div className={styles.progress_navbar}>
-                <Router>
-                    <Navbar></Navbar>
-                </Router>
-            </div>
             <div className={styles.progress_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.progress_label}>Progress</h1>

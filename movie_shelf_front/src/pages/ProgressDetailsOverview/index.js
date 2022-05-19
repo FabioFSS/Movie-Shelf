@@ -19,12 +19,6 @@ function ProgressDetailsOverview() {
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>
-            <div className={styles.progress_details_over_navbar}>
-                <Router>
-                    <Navbar></Navbar>
-                </Router>
-            </div>  
-
             <div className={styles.progress_details_over_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.tv_show_label}>TV Show name</h1>

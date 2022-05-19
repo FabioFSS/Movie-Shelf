@@ -7,9 +7,6 @@ import SliderMain from '../../components/scripts/SliderMain';
 function Home() {
   return (
     <div className="App">
-      <Router>
-        <Navbar />
-      </Router>
       <SliderMain title="Releases" />
       <SliderWrap title="Most Seen" page={1}/>
       <SliderWrap title="Adventure" page={2}/>

@@ -15,12 +15,6 @@ function Lists() {
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>
-            <div className={styles.lists_navbar}>
-                <Router>
-                    <Navbar></Navbar>
-                </Router>
-            </div>
-
             <div className={styles.lists_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.my_lists_label}>My lists</h1>
