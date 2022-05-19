@@ -11,56 +11,133 @@
         z-index: 900;
         width: 100vw;
     } 
-
+        
     .container-settings {
         width: 300px;
-        height: 300px;
+        margin-top: 50px;
+        height: 600px;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 1px solid #CCCCCC;
+        position: relative;                
 
-        .neme-screen {
-            margin-right: 100px;
-        }
-        
-        .options {
+        .div-transparence {
+            position: absolute;
             display: flex;
-            margin-top: 20px;
-
-            .img-profile {
-                width: 100px;
-                height: 100px;
-                margin-right: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            
+            .neme-screen {
+                margin-right: 100px;
             }
-            .select {
-                height: 20px;
-                width: 100px;
+            
+            .options {
+                display: flex;
+                margin-top: 20px;
+
+                .img-profile {
+                    width: 100px;
+                    height: 100px;
+                    margin-right: 20px;
+                    border-radius: 20px;
+                }
+                .select {
+                    height: 30px;
+                    width: 100px;
+                    background: black;
+                    color:white;
+                    margin-bottom: 10px;
+                    border: 0;
+                    border-radius: 5px;
+                    margin-top: 3px;
+
+                    .option-select {
+                        color: white;
+                    }
+                }
+
+            }        
+
+            .input {
+                height: 30px;
+                width: 220px;
                 background: black;
                 color:white;
                 margin-bottom: 10px;
+                border-radius: 5px;
+                border: 0;
+                margin-top: 3px;
+            }
+            
+            .container-intern-settings {
+                display: flex;
+                width: 220px;
+                justify-content: space-between;
 
-                .option-select {
-                    color: white;
+                .input-age {
+                    height: 30px;
+                    width: 103px;
+                    border-radius: 5px;
+                    background: black;
+                    color:white;
+                    border: 0;
+                    margin-top: 3px;
+                }
+
+                .select {
+                    height: 30px;
+                    width: 103px;
+                    border-radius: 5px;
+                    background: black;
+                    color:white;
+                    margin-bottom: 10px;
+                    border: 0;
+                    margin-top: 3px;
+                }
+                
+            }
+
+            .location-container {
+                width: 220px;
+
+                .select {
+                    height: 30px;
+                    width: 100%;
+                    border-radius: 5px;
+                    background: black;
+                    color:white;
+                    border: 0;
+                    margin-top: 3px;
                 }
             }
-        }
 
-        .caintainer-buttons {
-            margin-top: 20px;
+            .caintainer-buttons {
+                margin-top: 20px;
+                display: flex;
 
-            .button {
-                background: #ffffff;
-                height: 30px;
-                width: 100px;
-                margin: 10px 10px;
+                .button {
+                    background: #ffffff;
+                    height: 30px;
+                    width: 100px;
+                    margin: 10px 10px;
 
-                .text-button {
-                    color: black
+                    .text-button {
+                        color: black
+                    }
                 }
+        
             }
-    
         }
+    }
+
+    .container-settings::before{
+        content: "";
+        position: absolute;
+        background: #346e8daa;
+        width: 300px;
+        height: 520px;
+        border: 1px solid #0D5462;
+        border-radius: 15px;
     }
 }
