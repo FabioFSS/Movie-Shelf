@@ -1,0 +1,22 @@
+.page_body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.list_details_navbar{
+    z-index: 999;
+    width: 100vw;
+}
+
+
+.list_body h1{
+    text-align: center;
+    font-weight: bold;
+    padding: 25px;
+}
+
+.content_list>*{
+    height: 400px;
+}

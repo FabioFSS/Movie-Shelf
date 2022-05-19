@@ -11,6 +11,7 @@ import Profile from "./Profile/index"
 import Reset from "./Reset/index"
 import Signup from "./SignUp/index"
 import Lists from "./Lists/index"
+import ListDetails from "./ListDetails";
 import Progress from "./Progress/index"
 
 
@@ -21,6 +22,7 @@ export default function Routes() {
         <Route component = { Home }  path="/home"/>
         <Route component = { Profile }  path="/profile"/>
         <Route component = { Lists }  path="/lists"/>
+        <Route component = { ListDetails }  path="/listdetails"/>
         <Route component = { Progress }  path="/progress"/>
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
