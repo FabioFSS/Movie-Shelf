@@ -5,11 +5,6 @@
     align-items: center;
 }
 
-.lists_navbar{
-    z-index: 999;
-    width: 100vw;
-}
-
 .lists_body h1{
     text-align: center;
     font-weight: bold;
