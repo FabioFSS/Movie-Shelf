@@ -17,12 +17,6 @@ function ListDetails() {
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>
-            <div className={styles.list_details_navbar}>
-                <Router>
-                    <Navbar></Navbar>
-                </Router>
-            </div>  
-
             <div className={styles.list_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.list_name_label}>List name</h1>

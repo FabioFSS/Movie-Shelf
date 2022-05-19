@@ -4,8 +4,10 @@ import PropTypes from "prop-types"
 function ContentBanner({banner, description}){
     return (
         <div className={styles.banner_body}>
-            <img className={styles.banner_image} src={banner} alt="banner"></img>
-            <p className={styles.banner_description}>{description}</p>
+            <div className={styles.content_body}>
+                <img className={styles.banner_image} src={banner} alt="banner"></img>
+                <p className={styles.banner_description}>{description}</p>
+            </div>
         </div>
     );
 }

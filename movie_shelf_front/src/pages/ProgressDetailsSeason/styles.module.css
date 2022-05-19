@@ -1,0 +1,29 @@
+.page_body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.progress_details_season_navbar{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    z-index: 999;
+    width: 100vw;
+}
+
+
+.progress_details_season_body h1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    padding: 25px;
+}
+
+
+.episodes_grid>*{
+    height: 250px;
+}

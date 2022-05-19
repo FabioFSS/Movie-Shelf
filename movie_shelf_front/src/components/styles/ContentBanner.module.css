@@ -2,21 +2,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.content_body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1000px;
+    height: 250px;
     border-radius: 15px;
-    word-wrap: break-word;
-    padding: 25px;
+    overflow: hidden;
+    border: 1px solid #0D546250;
 }
 
 .banner_image{
-    width: 800px;
-    height: 250px;
     mix-blend-mode: normal;
-    border-radius: 15px;
     filter: blur(2px) brightness(25%);
-    border: 1px solid #0D5462;
 }
-
-
 
 .banner_description{
     font-size: 20px;

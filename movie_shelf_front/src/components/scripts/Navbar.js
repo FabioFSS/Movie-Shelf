@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Navbar.css';
 
-import { Link as NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AccountDropdown from './AccountDropdown';
 import NavItem from './NavItem';
 import DropdownMenu from './DropdownMenu';
@@ -18,21 +18,16 @@ function Navbar() {
 
             <div className="leftSide">
                 <div className="links">
-                <a href="/home">Tv series</a>
-                <a href="/home">Movies</a>
-                    {/* <NavLink to="/">Tv series</NavLink>
-                    <NavLink to="/">Movies</NavLink> */}
+                    <Link to='/'>TV Series</Link>
+                    <Link to='/'>Movies</Link>
                 </div>
             </div>
 
 
             <div className="middleSide">
-                <a href="/home">
+                <Link to="/">
                     <img src={logo} className="logo" />
-                </a>
-                {/* <NavLink to="/">
-                    <img src={logo} className="logo" />
-                </NavLink> */}
+                </Link>
             </div>
             <div className="rightSide">
                 <input type="text" placeholder="Search..." />
