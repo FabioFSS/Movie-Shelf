@@ -35,6 +35,16 @@
                 font-size: 50px;
             }
 
+            .info-signup {
+                font-size: 14px;
+                font-weight: 600;
+                opacity: 0.9;
+                align-self: flex-start;
+                color: #343336;
+                margin-bottom: 20px; 
+                font-size: 18px;
+            }
+
             .inputContent {
                 background-color: #121214;
                 width: 100%;
@@ -93,6 +103,15 @@
                 opacity: 0.9;
                 margin: 20px 0;
 
+            }
+
+            .login-text {
+                color: "#ffffff";
+                font-size: 14px;
+                font-weight: 600;
+                opacity: 0.9;
+                align-self: flex-start;
+                color: #343336;
             }
         }
     }

@@ -11,19 +11,19 @@ export default function Scroll() {
                 <div className="content">
                     <h1 className="pageName">Recover</h1>
 
-                    <span className="span" style={{ marginBottom: "20px", fontSize: "17px" }}>Enter your email to reset password</span>
+                    <span className="info-reset">Enter your email to reset password</span>
                     <div className="inputContent">
                         <FaEnvelope />
                         <input className="input" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
-                    <button className="buttonLogin" disabled={!email}>
+                    <button className="button-send" disabled={!email}>
                         <a href="http://localhost:3000/login">SENDE</a>
                     </button>
 
                     <div>
                         <span className="span">Have you recovered your password? </span>
-                        <span className="span" style={{ color: "#ffffff" }}>
+                        <span className="text-login">
                             <a href="http://localhost:3000/login">Log in</a>
                         </span>
                     </div>

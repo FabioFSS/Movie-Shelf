@@ -14,13 +14,14 @@ import Lists from "./Lists/index"
 import ListDetails from "./ListDetails";
 import Progress from "./Progress/index"
 import ProgressDetailsOverview from "./ProgressDetailsOverview";
-
+import Settings from "./Settings/index"
+import Ratings from "./Ratings/index"
 
 export default function Routes() {
   return (
     <Router>
-        <Route component = { Details }  path="/details:id"/>
         <Route component = { Home }  path="/home"/>
+        <Route component = { Details }  path="/details:id"/>
         <Route component = { Profile }  path="/profile"/>
         <Route component = { Lists }  path="/lists"/>
         <Route component = { ListDetails }  path="/listdetails"/>
@@ -29,6 +30,8 @@ export default function Routes() {
         <Route component = { Reset }  path="/reset"/>
         <Route component = { Signup }  path="/signup"/>
         <Route component = { Login }  path="/login"/>
+        <Route component = { Settings }  path="/settings"/>
+        <Route component = { Ratings }  path="/ratings"/>
     </Router>
   );
 }

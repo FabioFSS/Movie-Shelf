@@ -58,6 +58,12 @@ Run the application server using
 npm start
 ```
 
+After opening the browser, use the following url to access the application's home page
+
+```
+http://localhost:3000/home
+```
+
 The front page should open automatically on your standard web browser, and you should see something like this.
 
 ![front page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/front_page.png?raw=true)
