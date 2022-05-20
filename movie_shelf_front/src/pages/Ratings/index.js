@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from '../../components/scripts/Navbar';
 import capa from "../../components/image-item/berserk.jpg"
