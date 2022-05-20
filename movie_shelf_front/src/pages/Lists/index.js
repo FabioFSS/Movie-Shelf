@@ -1,7 +1,5 @@
 import React from "react";
 import styles from './styles.module.css';
-import Navbar from "../../components/scripts/Navbar";
-import { BrowserRouter as Router } from 'react-router-dom';
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ContentSummary from "../../components/scripts/ContentSummary";
