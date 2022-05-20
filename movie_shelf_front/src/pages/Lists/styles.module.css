@@ -1,8 +1,7 @@
 .page_body{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    align-items: center;
 }
 
 .lists_body h1{
