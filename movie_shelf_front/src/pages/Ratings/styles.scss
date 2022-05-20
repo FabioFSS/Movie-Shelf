@@ -3,20 +3,15 @@
     background: #010117;
     align-items: center;
     width: 100vw;
-    height: 100vh;
     justify-content: center;
     flex-direction: column;
 
-    .details-navbar {
-        z-index: 900;
-        width: 100vw;
-    }   
-
     .insert-item {
         display: flex;
-        width: 900px;
-        margin-top: 650px;
+        width: 880px;
+        margin-top: 150px;
         align-items: center;
+        margin-bottom: 50px;
         
         .input {
             height: 40px;
@@ -53,6 +48,7 @@
 
         .button {
             background: #11ffee00; //color transparent
+            border: 0px;
 
             .icon-img {
                 width: 30px;
@@ -62,19 +58,18 @@
         }
     }
 
-    .cotainer-cards {       
+    .cotainer-cards {
+        width: 880px;
 
         .container-ratings {
             display: flex;
             flex-direction: row;
-            background: #001F30;
-            width: 900px;
+            background: #001F30;            
             border-radius: 10px;
-            margin-top: 50px;
+            margin-bottom: 50px;
     
             .folder-rating {
-                width: 130px;
-                height: 200px;
+                width: 15%;
             }
     
             .container-info-card {
