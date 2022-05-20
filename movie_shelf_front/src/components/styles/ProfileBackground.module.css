@@ -2,16 +2,16 @@
     z-index: -1;
     position: absolute;
     background-image: url('../../assets/profile_background.jpg');
-    width: 100vw;   
-    height: 75vh;
+    width: 100%;   
+    height: 75%;
     background-size: cover;
     filter:blur(8px);
 }
 
 .background_img::before {
     content: "";
-    height: 75vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-size: cover;
     background-image: linear-gradient(to top, #010117, 50%, transparent);
     position: absolute;
