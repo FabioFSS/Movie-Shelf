@@ -14,6 +14,7 @@ import Ratings from './pages/Ratings'
 import Reset from './pages/Reset'
 import Settings from './pages/Settings'
 import SignUp from './pages/SignUp'
+import ConnectionTestPage from './pages/ConnectionTestPage';
 
 export default function App() {
     return (
@@ -34,6 +35,7 @@ export default function App() {
                     <Route path="/reset" element={<Reset/>} />
                     <Route path="/settings" element={<Settings/>} />
                     <Route path="/signup" element={<SignUp/>} />
+                    <Route path="/connectiontest" element={<ConnectionTestPage/>} />
                 </Routes>
             </main>
         </BrowserRouter>
