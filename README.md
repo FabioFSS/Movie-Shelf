@@ -34,6 +34,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 ```
+python - https://www.python.org/downloads/
+django - https://www.djangoproject.com/download/
 node.js - https://nodejs.org/pt-br/download/?msclkid=923a22f3cc6b11ec8427a774fba05166
 ```
 
@@ -41,6 +43,7 @@ node.js - https://nodejs.org/pt-br/download/?msclkid=923a22f3cc6b11ec8427a774fba
 
 A step by step series of examples that tell you how to get a development env running.
 
+#### React
 After cloning the repository, open a terminal on the "/movie_shelf_front" directory and follow the next steps
 
 Install the dependecies using the following command
@@ -49,19 +52,37 @@ Install the dependecies using the following command
 npm install --force
 ```
 
+#### Django
+After cloning the repository, open a terminal on the "/movie_shelf_front" directory and follow the next steps
+
+Install the dependecies using the following command
+
+```
+pip install -r requirements.txt
+```
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
-Run the application server using
+
+#### React
+Run the application front-end by going to the "/movie_shelf_front" folder and running the following command
 
 ```
 npm start
 ```
 
+#### Django
+Run the application front-end by opening the terminal on the root folder and running the following command
+
+```
+py manage.py runserver
+```
+
+
 After opening the browser, use the following url to access the application's home page
 
 ```
-http://localhost:3000/home
+http://localhost:3000/
 ```
 
 The front page should open automatically on your standard web browser, and you should see something like this.
