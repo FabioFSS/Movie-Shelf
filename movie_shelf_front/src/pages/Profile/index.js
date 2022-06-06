@@ -6,6 +6,11 @@ import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ProfileStatistics from "../../components/scripts/ProfileStatistics";
 
 function Profile() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>

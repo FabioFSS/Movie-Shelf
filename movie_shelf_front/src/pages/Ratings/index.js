@@ -20,6 +20,11 @@ export default function Ratings() {
     const [vote, setVote] = useState(0);
     const [message, setMessage] = useState("");
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
     function plusVote() {
         if (vote < 10) setVote(vote+1)
     }

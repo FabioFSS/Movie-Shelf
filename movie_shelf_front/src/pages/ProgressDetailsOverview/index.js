@@ -16,6 +16,11 @@ import season6 from "../../assets/seasons_banners/season6.jpg"
 import season7 from "../../assets/seasons_banners/season7.jpg"
 
 function ProgressDetailsOverview() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>

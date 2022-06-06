@@ -13,6 +13,11 @@ import episode3 from "../../assets/lists_banners/banner4.png"
 import episode4 from "../../assets/lists_banners/banner5.png"
 
 function ProgressDetailsSeason() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>

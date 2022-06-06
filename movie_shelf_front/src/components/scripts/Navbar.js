@@ -11,7 +11,7 @@ function Navbar() {
     <nav className="Navbar">
       <div className="leftSide">
         <div className="links">
-          <Link to="/">TV Series</Link>
+          <Link to="/">TV Shows</Link>
           <Link to="/">Movies</Link>
         </div>
       </div>
