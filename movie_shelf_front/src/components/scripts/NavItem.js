@@ -7,8 +7,8 @@ function NavItem(props) {
     const [open, setOpen] = useState(false);
     return (
         <li className='nav-item'>
-            <a href="#" className='icon-button' onClick={() => setOpen(!open)}>
-                <img src={props.icon} />
+            <a href="#"  onClick={() => setOpen(!open)}>
+                <img src={props.icon} className='icon-button' />
             </a>
 
             {open && props.children}
