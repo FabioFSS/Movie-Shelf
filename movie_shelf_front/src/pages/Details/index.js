@@ -16,8 +16,7 @@ export default function Details() {
     const [poster, setPoster] = useState(null);
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
 
     useEffect(() => {

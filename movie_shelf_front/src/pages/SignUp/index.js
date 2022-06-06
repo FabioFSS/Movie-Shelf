@@ -17,8 +17,7 @@ export default function Scroll() {
     };
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
 
     return (

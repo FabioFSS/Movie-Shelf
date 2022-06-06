@@ -7,8 +7,7 @@ import ProfileStatistics from "../../components/scripts/ProfileStatistics";
 
 function Profile() {
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
 
     return (
