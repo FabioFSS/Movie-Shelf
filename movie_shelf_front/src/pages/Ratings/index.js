@@ -21,8 +21,7 @@ export default function Ratings() {
     const [message, setMessage] = useState("");
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
 
     function plusVote() {

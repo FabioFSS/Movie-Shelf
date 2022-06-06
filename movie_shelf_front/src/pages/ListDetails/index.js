@@ -13,10 +13,9 @@ import description_banner from "../../assets/banner.png"
 
 function ListDetails() {
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
-    
+
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>

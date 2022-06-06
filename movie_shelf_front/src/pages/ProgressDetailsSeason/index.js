@@ -14,10 +14,9 @@ import episode4 from "../../assets/lists_banners/banner5.png"
 
 function ProgressDetailsSeason() {
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
-    
+
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>

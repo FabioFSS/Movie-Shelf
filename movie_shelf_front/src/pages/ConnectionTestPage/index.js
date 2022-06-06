@@ -3,10 +3,9 @@ import styles from './styles.module.css';
 
 function ConnectionTestPage (){
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
-    
+
     return (
         <div className={styles.page_body}>
             <ConnectionTest></ConnectionTest>

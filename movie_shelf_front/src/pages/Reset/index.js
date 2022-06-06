@@ -6,8 +6,7 @@ export default function Scroll() {
     const [email, setEmail] = useState();
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top: 0
     });
 
     return (
