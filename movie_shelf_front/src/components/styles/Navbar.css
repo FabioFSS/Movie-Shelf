@@ -21,31 +21,17 @@
 
 .Navbar .leftSide .links a {
     text-decoration: none;
-    color: #001F30;
-    margin-left: 69px;
+    margin-left: 75px;
     color: #FFFFFF;
-    /*position: absolute;
-    width: 114px;
-    height: 33px;
-    left: 69px;
-    top: 35px;
-
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;*/
 }
 
 .Navbar .middleSide {
     flex: 10%;
+    text-align: center;
 }
 
 .Navbar .middleSide .logo {
-    width: 150px;
-    height: 150px;
-    left: 635px;
-    padding-top: 0px;
+    height: 100px;
 }
 
 .Navbar .rightSide {
@@ -53,46 +39,27 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 25px;
+    margin-right: 75px;
 }
 
 .rightSide input {
-    width: 372px;
-    height: 56px;
+    width: 40%;
+    height: 75%;
     border: none;
     border-radius: 10px;
-    font-size: 24px;
-    padding-left: 15px;
+    font-size: 18px;
+    padding: 15px;
     margin-right: 22px;
     background-color: #01011C;
     color: white;
-
-    font-weight: 400;
-    font-style: normal;
-    line-height: 29px;
-    left: calc(50% - 372px/2 + 395px);
-    top: 26px;
 }
 
 .rightSide input::placeholder {
-    font-size: 24px;
+    font-size: 18px;
     color: white;
 }
 
-#profileImg {
-    margin-top: 21px;
-    margin-left: 15px;
-    left: calc(50% - 372px/2 + 395px);
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 58px;
-    height: 58px;
-    border-radius: 80px;
-
-    border: 1px solid black;
-
-
+.profileImg {
+    height: 50px;
+    border-radius: 50px;
 }
