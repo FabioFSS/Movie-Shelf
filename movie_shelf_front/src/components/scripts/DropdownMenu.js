@@ -1,10 +1,5 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/DropdownMenu.css';
-import ProfileIco from "../Icons/user-solid.svg";
-import FavoriteIco from "../Icons/star-solid.svg";
-import SettingsIco from "../Icons/gear-solid.svg";
-import LogoutIco from "../Icons/logout_icon.svg";
 import { Link } from 'react-router-dom';
 
 
@@ -23,7 +18,6 @@ function DropdownMenu() {
 
     return (
         <div className="dropdown">
-            <DropdownItem page="/profile">Hi, Kirito!</DropdownItem>
             <DropdownItem page="/profile">My Profile</DropdownItem>
             <DropdownItem page="/lists">Favorites</DropdownItem>
             <DropdownItem page="/settings">Settings</DropdownItem>
