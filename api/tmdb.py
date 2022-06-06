@@ -15,7 +15,21 @@ class TMDB:
         except ValueError:
             print("Request error")
 
-        return response['results']
+        # id, poster_path, backdrop_path, trailer, release_date, vote_average
+        list_movies = []
+
+        for movie in response['results']:
+            list_movies.append(movie['id'])
+            list_movies.append(movie['original_title'])
+            list_movies.append(movie['poster_path'])
+            list_movies.append(movie['backdrop_path'])
+            list_movies.append(movie['release_date'])
+            list_movies.append(movie['vote_average'])
+            list_movies.append(movie['overview'])
+            break
+        print(list_movies)
+
+        return 'tudo certo!'
 
     def get_details(self, movie_id):
 
@@ -64,3 +78,13 @@ class TMDB:
             print("Request error")
 
         return response['results']
+
+if __name__ == '__main__':
+
+    movies = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
+
+    print(movies.top_rated())
+    # print(movies.get_details(55))
+    # print(movies.get_videos(55))
+    # print(movies.get_credits(55))
+    # print(movies.search_movie('spider'))
