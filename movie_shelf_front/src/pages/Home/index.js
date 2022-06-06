@@ -1,18 +1,16 @@
-import './style.css';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Navbar from '../../components/scripts/Navbar';
-import SliderWrap from '../../components/scripts/SliderWrap';
-import SliderMain from '../../components/scripts/SliderMain';
+import React from "react";
+import styles from "./styles.module.css";
+import HomeHeader from "../../components/scripts/HomeHeader"
+import Slider from "../../components/scripts/Slider"
 
-function Home() {
-  return (
-    <div className="App">
-      <SliderMain title="Releases" />
-      <SliderWrap title="Most Seen" page={1}/>
-      <SliderWrap title="Adventure" page={2}/>
-      <SliderWrap title="Action" page={3}/>
-    </div>
-  );
+function Home(){
+    return (
+        <div className={styles.page_body}>
+            <HomeHeader></HomeHeader>
+            <Slider title="Upcoming" page={1}></Slider>
+            <Slider title="Releases" page={2}></Slider>
+        </div>
+    );
 }
 
 export default Home;
