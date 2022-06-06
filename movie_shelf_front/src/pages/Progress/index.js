@@ -10,6 +10,11 @@ import banner2 from "../../components/image-item/cue.jpg"
 import banner3 from "../../components/image-item/sabikui disco.jpg"
 
 function Progress() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>

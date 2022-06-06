@@ -3,6 +3,10 @@ import imgProfile from "../../assets/profile.png"
 import './styles.scss'
 
 export default function Settings() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
     
     return (           
         <div className='wrapper-settings'>

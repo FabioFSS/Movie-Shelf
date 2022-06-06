@@ -12,6 +12,11 @@ import banner5 from "../../components/image-item/spyxfamily.jpg"
 import description_banner from "../../assets/banner.png"
 
 function ListDetails() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    
     return (
         <div className={styles.page_body}>
             <ProfileBackground></ProfileBackground>

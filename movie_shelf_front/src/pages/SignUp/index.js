@@ -16,6 +16,11 @@ export default function Scroll() {
         }
     };
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
     return (
         <div className="wrapper-signup">
             <div className="container-signup">

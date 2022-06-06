@@ -5,6 +5,11 @@ import { FaEnvelope } from "react-icons/fa";
 export default function Scroll() {
     const [email, setEmail] = useState();
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
     return (
         <div className="wrapper-reset">
             <div className="container-reset">

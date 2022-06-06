@@ -15,6 +15,11 @@ export default function Details() {
     const [reiews, setReviews] = useState(null);
     const [poster, setPoster] = useState(null);
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
     useEffect(() => {
         (async () => {
             const response = (

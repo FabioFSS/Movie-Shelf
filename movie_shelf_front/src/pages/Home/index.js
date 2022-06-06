@@ -4,6 +4,11 @@ import HomeHeader from "../../components/scripts/HomeHeader"
 import Slider from "../../components/scripts/Slider"
 
 function Home(){
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    
     return (
         <div className={styles.page_body}>
             <HomeHeader></HomeHeader>
