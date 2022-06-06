@@ -5,7 +5,7 @@
     display: flex;
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 9999;
 }
 
 .Navbar .leftSide {
@@ -23,6 +23,13 @@
     text-decoration: none;
     margin-left: 75px;
     color: #FFFFFF;
+    padding: 10px;
+    transition: background 100ms;
+    border-radius: 15px;
+}
+
+.Navbar .leftSide .links a:hover{
+    background-color: #0D5462AA;
 }
 
 .Navbar .middleSide {
