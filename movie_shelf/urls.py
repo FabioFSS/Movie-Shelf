@@ -10,6 +10,10 @@ urlpatterns = [
     path('casts/', CastsView.as_view(), name="casts"),
     path('tvshows/', tvShowsView.as_view(), name="tvshows"),
     path('season/', SeasonView.as_view(), name="season"),
-    path('episode/', EpisodeView.as_view(), name="episode")
+    path('episode/', EpisodeView.as_view(), name="episode"),
+    path('user/', UserView.as_view(), name="user"),
+    path('list/', ListView.as_view(), name="list"),
+    path('rating/', RatingView.as_view(), name="rating"),
+    path('progress/', ProgressView.as_view(), name="progress"),
 ]
 
