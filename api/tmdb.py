@@ -108,7 +108,7 @@ class TMDB:
         except ValueError:
             print("Request error")
                
-        episode = {}
+        # episode = {}
         # episode['description'] = response['episode'][episode_number][]
         # episode['title'] = response['overview']
         # episode['number'] = episode_number
