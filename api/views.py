@@ -1,10 +1,7 @@
-from http.client import ResponseNotReady
-from django.shortcuts import render
 from rest_framework.views import APIView
 from . models import *
 from rest_framework.response import Response
 from .serializer import *
-# from .tmdb import TMDB
 
 
 class ReactView(APIView):

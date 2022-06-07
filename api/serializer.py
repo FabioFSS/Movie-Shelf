@@ -1,4 +1,3 @@
-from msilib.schema import SelfReg
 from rest_framework import serializers
 from .models import *
 
