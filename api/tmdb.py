@@ -46,7 +46,6 @@ class TMDB:
         return list_movies
 
 
-
     def get_credits(self, movie_id):
 
         base_url =  'https://api.themoviedb.org/3/movie'
@@ -82,6 +81,41 @@ class TMDB:
 
         return response['results']
 
+    def get_details_season(self, tv_id, season_number):
+
+        base_url = 'https://api.themoviedb.org/3/tv'
+        url = base_url+'/'+str(tv_id)+'/season/'+str(season_number)+'?api_key='+self.api_key+'&language='+self.language
+        
+        try:
+            response = get(url).json()
+        except ValueError:
+            print("Request error")
+               
+        season = {}
+        season['number'] = season_number
+        season['description'] = response['overview']
+        season['img_folder'] = response['poster_path']
+
+        return season
+
+    def get_details_episode(self, tv_id, season_number, episode_number):
+
+        base_url = 'https://api.themoviedb.org/3/tv'
+        url = base_url+'/'+str(tv_id)+'/season/'+str(season_number)+'?api_key='+self.api_key+'&language='+self.language
+        
+        try:
+            response = get(url).json()
+        except ValueError:
+            print("Request error")
+               
+        episode = {}
+        # episode['description'] = response['episode'][episode_number][]
+        # episode['title'] = response['overview']
+        # episode['number'] = episode_number
+        # episode['img_folder'] = response['still_path']
+
+        return response
+
 if __name__ == '__main__':
 
     movies = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
@@ -91,3 +125,4 @@ if __name__ == '__main__':
     # print(movies.get_videos(55))
     # print(movies.get_credits(55))
     # print(movies.search_movie('spider'))
+    # print(movies.get_details_episode(50, 1, 1))
