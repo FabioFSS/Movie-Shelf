@@ -9,14 +9,16 @@ class TMDB:
     def get_videos(self, movie_id):
 
         base_url =  'https://api.themoviedb.org/3/movie'
-        url = base_url+'/'+str(movie_id)+'/videos?api_key='+self.api_key+'&language='+self.language
+        url = base_url+'/'+str(667257)+'/videos?api_key='+self.api_key+'&language='+self.language
         
         try:
             response = get(url).json()
         except ValueError:
             print("Request error")
 
-        return response['results'][0]['key']
+        return None if response['results'] == [] else response['results'][0]['key']
+            
+        
 
     def top_rated(self):      
 
@@ -32,16 +34,19 @@ class TMDB:
 
         for movie in response['results']:
 
-            values_movie = {}
-            values_movie['title'] = movie['original_title']
-            values_movie['description'] = movie['overview']
-            values_movie['img_front'] = movie['poster_path']
-            values_movie['img_back'] = movie['backdrop_path']
-            # values_movie['trailer'] = self.get_videos(movie['id'])
-            values_movie['vote'] = movie['vote_average']
-            values_movie['launch_date'] = movie['release_date']
-            
-            list_movies.append(values_movie)            
+            values = [
+                'original_title', 'overview', 'poster_path', 
+                'backdrop_path', 'vote_average', 'release_date'
+            ]
+
+            values_movie = { key: movie[key] for key in values }
+
+            if movie['id'] == None:
+                continue
+
+            values_movie['trailer'] = str(self.get_videos(movie['id']))
+
+            list_movies.append(values_movie)
 
         return list_movies
 
@@ -59,10 +64,12 @@ class TMDB:
         casts_details = []
         max_casts = 0
 
+        values = ['name', 'profile_path']
+
         for credits in response['cast']:
-            cast = {}
-            cast['name'] = credits['name']
-            cast['picture'] = credits['profile_path']
+
+            cast = { key: credits[key] for key in values}
+            
             casts_details.append(cast)
             max_casts += 1
             if max_casts == 5: break
