@@ -20,10 +20,12 @@ export default function Settings() {
                                 <option value="Select" className='option-select'>pt-BR</option>
                                 <option value="Select" className='option-select'>en-US</option>
                             </select>
-                            <h3>Theme</h3>
+
+                            <h3 className="user-location">Location</h3>
                             <select className="select">
-                                <option value="Select" className='option-select'>Dark</option>
-                                <option value="Select" className='option-select'>Light</option>
+                                <option value="Select" className='option-select'>Bahia</option>
+                                <option value="Select" className='option-select'>São Paulo</option>
+                                <option value="Select" className='option-select'>...</option>
                             </select>
                         </div>
                     </div>
@@ -47,14 +49,6 @@ export default function Settings() {
                                 <option value="Select" className='option-select'>W</option>
                             </select>
                         </div>
-                    </div>
-                    <div className="location-container">
-                        <h3 className="user-location">Location</h3>
-                        <select className="select">
-                            <option value="Select" className='option-select'>Bahia</option>
-                            <option value="Select" className='option-select'>São Paulo</option>
-                            <option value="Select" className='option-select'>...</option>
-                        </select>
                     </div>
                     <div className='caintainer-buttons'>
                         <button className='button'>
