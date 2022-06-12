@@ -6,10 +6,6 @@
     width: 100%;
     height: 75px;
     background-color: #001F30;
-    /* Utilizar o visibility para ocultar a navbar */
-    /* visibility: visible; */
-    /* visibility: hidden;   */
-
 }
 
 .Navbar .leftSide {

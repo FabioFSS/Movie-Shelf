@@ -1,3 +1,4 @@
+import React, { useContext } from 'react'
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import AccountDropdown from "./AccountDropdown";
@@ -6,9 +7,14 @@ import DropdownMenu from "./DropdownMenu";
 import logo from "../../assets/logo.png";
 import profile_pic from "../../assets/profile.png";
 
+import { NavContext } from '../../contexts/navbar' 
+
 function Navbar() {
+
+  const { visibility } = useContext(NavContext)
+
   return (
-    <nav className="Navbar">
+    <nav className="Navbar" style={{ visibility: visibility }}>
       <div className="leftSide">
         <div className="links">
           <Link to="/">TV Shows</Link>
