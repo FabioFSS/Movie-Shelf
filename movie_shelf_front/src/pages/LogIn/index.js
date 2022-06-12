@@ -58,7 +58,7 @@ export default function Scroll() {
                     <button className="buttonLogin" disabled={!email || !password}>
                         <a href="http://localhost:3000">LOGAR</a>
                     </button>
-                    {/* <Auth /> */}
+                    
                     <div className='container-register'>
                         <span className="span">Don't have an account? </span>
                         <span className="register-text">                            

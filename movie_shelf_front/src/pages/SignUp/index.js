@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import './styles.scss'
+import './styles.css'
 
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -62,7 +62,7 @@ export default function Scroll() {
                             (<FaEyeSlash onClick={changeTypePassword} />)
                         }
                     </div>
-                    <button className="buttonLogin" disabled={!email || !password}>
+                    <button className="button-sign-up" disabled={!email || !password}>
                         <a href="http://localhost:3000">CREATE</a>
                     </button>
                     <div>
