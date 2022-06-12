@@ -4,10 +4,10 @@ export const NavContext = createContext({})
 
 export default function NavPrivider({ children }) {
 
-    const [visible, setVitible] = useState("hidden");
+    const [visible, setVitible] = useState("visible");
 
-    function isVisible() {
-        setVitible(visible == "hidden" ? "visible" : "hidden")
+    function isVisible(newVisible) {
+        setVitible(newVisible)
     }
 
     return(

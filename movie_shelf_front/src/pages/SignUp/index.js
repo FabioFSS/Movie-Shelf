@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import './styles.scss'
+
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
+import { NavContext } from "../../contexts/navbar";
+
 export default function Scroll() {
+    
     const [typePassword, setTypePassword] = useState("password");
     const [email, setEmail] = useState();
     const [password, setPasword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+
+    const { isVisible } = useContext(NavContext)
+    const [nav, setNav] = useState(true)
+
+    useEffect(() => {
+        if (nav) {
+            isVisible("hidden")
+            setNav(false)
+        }
+    }, [])
 
     const changeTypePassword = () => {
         if (typePassword === "password") {
@@ -49,7 +63,7 @@ export default function Scroll() {
                         }
                     </div>
                     <button className="buttonLogin" disabled={!email || !password}>
-                        <a href="http://localhost:3000/home">CREATE</a>
+                        <a href="http://localhost:3000">CREATE</a>
                     </button>
                     <div>
                         <span className="span">Already have an account? </span>
