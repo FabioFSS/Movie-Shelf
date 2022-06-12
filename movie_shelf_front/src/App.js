@@ -16,28 +16,32 @@ import Settings from './pages/Settings'
 import SignUp from './pages/SignUp'
 import ConnectionTestPage from './pages/ConnectionTestPage';
 
+import NavPrivider from './contexts/navbar';
+
 export default function App() {
     return (
         <BrowserRouter>
-            <Navbar />
-            <main>
-                <Routes>
-                    <Route path="/" element={<Home/>} />
-                    <Route path="/details:id" element={<Details/>} />
-                    <Route path="/listdetails" element={<ListDetails/>} />
-                    <Route path="/lists" element={<Lists/>} />
-                    <Route path="/login" element={<Login/>} />
-                    <Route path="/profile" element={<Profile/>} />
-                    <Route path="/progress" element={<Progress/>} />
-                    <Route path="/progressdetailsoverview" element={<ProgressDetailsOverview/>} />
-                    <Route path="/progressdetailsseason" element={<ProgressDetailsSeason/>} />
-                    <Route path="/ratings" element={<Ratings/>} />
-                    <Route path="/reset" element={<Reset/>} />
-                    <Route path="/settings" element={<Settings/>} />
-                    <Route path="/signup" element={<SignUp/>} />
-                    <Route path="/connectiontest" element={<ConnectionTestPage/>} />
-                </Routes>
-            </main>
+            <NavPrivider>
+                <Navbar />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home/>} />
+                        <Route path="/details:id" element={<Details/>} />
+                        <Route path="/listdetails" element={<ListDetails/>} />
+                        <Route path="/lists" element={<Lists/>} />
+                        <Route path="/login" element={<Login/>} />
+                        <Route path="/profile" element={<Profile/>} />
+                        <Route path="/progress" element={<Progress/>} />
+                        <Route path="/progressdetailsoverview" element={<ProgressDetailsOverview/>} />
+                        <Route path="/progressdetailsseason" element={<ProgressDetailsSeason/>} />
+                        <Route path="/ratings" element={<Ratings/>} />
+                        <Route path="/reset" element={<Reset/>} />
+                        <Route path="/settings" element={<Settings/>} />
+                        <Route path="/signup" element={<SignUp/>} />
+                        <Route path="/connectiontest" element={<ConnectionTestPage/>} />
+                    </Routes>
+                </main>
+            </NavPrivider>
         </BrowserRouter>
     );
 }
