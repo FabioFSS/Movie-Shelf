@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import './styles.scss'
+import './styles.css'
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { NavContext } from "../../contexts/navbar";
