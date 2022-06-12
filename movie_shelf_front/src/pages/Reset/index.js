@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import './styles.scss'
 import { FaEnvelope } from "react-icons/fa";
 
+import { NavContext } from "../../contexts/navbar";
+
 export default function Scroll() {
     const [email, setEmail] = useState();
+    const { isVisible } = useContext(NavContext)
+    const [nav, setNav] = useState(true)
+
+    useEffect(() => {
+        if (nav) {
+            isVisible("hidden")
+            setNav(false)
+        }
+    }, [])
 
     window.scrollTo({
         top: 0

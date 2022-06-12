@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './styles.scss'
-// import { Auth } from "../../components/Auth"
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
+import { NavContext } from "../../contexts/navbar";
+
 export default function Scroll() {
+
+    const { isVisible } = useContext(NavContext)
+    const [nav, setNav] = useState(true)
+
+    useEffect(() => {
+        if (nav) {
+            isVisible("hidden")
+            setNav(false)
+        }
+    }, [])
+
     const [typePassword, setTypePassword] = useState("password");
     const [email, setEmail] = useState("");
     const [password, setPasword] = useState("");
@@ -44,7 +56,7 @@ export default function Scroll() {
                         <a href="http://localhost:3000/reset">Forget Password</a>
                     </span>
                     <button className="buttonLogin" disabled={!email || !password}>
-                        <a href="http://localhost:3000/home">LOGAR</a>
+                        <a href="http://localhost:3000">LOGAR</a>
                     </button>
                     {/* <Auth /> */}
                     <div className='container-register'>
