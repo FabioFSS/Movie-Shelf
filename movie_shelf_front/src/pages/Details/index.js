@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom';
 import { api, apiKey, language } from "../../services/api";
-import Navbar from '../../components/scripts/Navbar';
-import { Trailer } from '../../components/Trailer';
-import { FaStar } from "react-icons/fa";
-import './styles.scss'
+import DetailMovie from '../../components/scripts/DetailMovie';
+import Trailer from '../../components/scripts/Trailer';
+import './styles.css'
 
 export default function Details() {
     
@@ -57,39 +55,15 @@ export default function Details() {
     
     return (           
         <div className='wrapper-details'>
-            <div className='backgrundImg' style={{ backgroundImage: `url(${background})` }} />            
-            <div className='container-movie'>
-                {details && <>
-                    <div className='containerPoster'>
-                        <img className='poster' src={poster} />                            
-                        <div className='container-vote'>
-                            <FaStar size={40} color="yellow"/>
-                            <p className='vote'>{details.vote_average}</p>
-                        </div>
-                    </div>
-                    <div className='detailsContainer'>
-                        <h1 className='title'>{details.title}</h1>
-                        <p className='overview'>{details.overview}</p>
-                        <div className='casts'>
-                            {reiews && reiews.map((actor, key) =>
-                                <div className='containerInfoCasts' key={key}>
-                                    <img 
-                                        className='imgActors' 
-                                        src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} 
-                                    />
-                                    <p className='nameActor'>{actor.name}</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>    
-                </>}
-            </div>
-            <div className='container-trailer'>
-                <div className='box-trailer'>
-                    <h2 className='text-trailer'>Trailer</h2>
-                    <Trailer trailerId={trailerId} />
-                </div>
-            </div>
+            <div className='backgrundImg' 
+                style={{ backgroundImage: `url(${background})` }} 
+            />            
+            <DetailMovie 
+                details={details} 
+                poster={poster} 
+                reiews={reiews} 
+            />
+            <Trailer trailerId={trailerId} />
         </div>
     );
 }

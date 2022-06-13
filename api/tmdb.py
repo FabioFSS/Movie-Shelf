@@ -128,8 +128,8 @@ if __name__ == '__main__':
     movies = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
     # print(movies.top_rated())
-    # print(movies.get_details(55))
+    # print(movies.get_details_season(55, 1))
     # print(movies.get_videos(55))
     # print(movies.get_credits(55))
     # print(movies.search_movie('spider'))
-    # print(movies.get_details_episode(50, 1, 1))
+    print(movies.get_details_episode(50, 1, 1))
