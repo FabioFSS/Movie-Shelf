@@ -1,6 +1,6 @@
 import React from 'react'
 import imgProfile from "../../assets/profile.png"
-import './styles.scss'
+import styles from './styles.module.css'
 
 export default function Settings() {
     window.scrollTo({
@@ -8,54 +8,54 @@ export default function Settings() {
     });
     
     return (           
-        <div className='wrapper-settings'>
-            <div className="container-settings">
-                <div className='div-transparence'>
-                    <h1 className='neme-screen'>Settings</h1>
-                    <div className="options">
-                        <img src={imgProfile} className="img-profile"/>
+        <div className={styles.wrapperSettings}>
+            <div className={styles.containerSettings}>
+                <div className={styles.divTransparence}>
+                    <h1 className={styles.nemeScreen}>Settings</h1>
+                    <div className={styles.options}>
+                        <img src={imgProfile} className={styles.imgProfile}/>
                         <div>
                             <h3>Language</h3>
-                            <select className="select">
-                                <option value="Select" className='option-select'>pt-BR</option>
-                                <option value="Select" className='option-select'>en-US</option>
+                            <select className={styles.select}>
+                                <option value="Select" className={styles.optionSelect}>pt-BR</option>
+                                <option value="Select" className={styles.optionSelect}>en-US</option>
                             </select>
 
-                            <h3 className="user-location">Location</h3>
-                            <select className="select">
-                                <option value="Select" className='option-select'>Bahia</option>
-                                <option value="Select" className='option-select'>São Paulo</option>
-                                <option value="Select" className='option-select'>...</option>
+                            <h3 className={styles.userLocation}>Location</h3>
+                            <select className={styles.select}>
+                                <option value="Select" className={styles.optionSelect}>Bahia</option>
+                                <option value="Select" className={styles.optionSelect}>São Paulo</option>
+                                <option value="Select" className={styles.optionSelect}>...</option>
                             </select>
                         </div>
                     </div>
                     <div>
-                        <h3 className="user-name">Name</h3>
-                        <input className="input" type="text" placeholder="User Name"/>
+                        <h3 className={styles.userName}>Name</h3>
+                        <input className={styles.input} type="text" placeholder="User Name"/>
                     </div>
                     <div>
-                        <h3 className="user-email">Email</h3>
-                        <input className="input" type="text" placeholder="Email@gmailcom"/>
+                        <h3 className={styles.userEmail}>Email</h3>
+                        <input className={styles.input} type="text" placeholder="Email@gmailcom"/>
                     </div>
-                    <div className='container-intern-settings'>
+                    <div className={styles.containerInternSettings}>
                         <div>
-                            <h3 className="user-age">Age</h3>
-                            <input className="input-age" type="text" placeholder="Age"/>
+                            <h3 className={styles.userAge}>Age</h3>
+                            <input className={styles.inputAge} type="text" placeholder="Age"/>
                         </div>
                         <div>
-                            <h3 className="user-gender">Gender</h3>
-                            <select className="select">
-                                <option value="Select" className='option-select'>M</option>
-                                <option value="Select" className='option-select'>W</option>
+                            <h3 className={styles.userGender}>Gender</h3>
+                            <select className={styles.select}>
+                                <option value="Select" className={styles.optionSelect}>M</option>
+                                <option value="Select" className={styles.optionSelect}>W</option>
                             </select>
                         </div>
                     </div>
-                    <div className='caintainer-buttons'>
-                        <button className='button'>
-                            <p className='text-button'>SAVE</p>
+                    <div className={styles.caintainerButtons}>
+                        <button className={styles.button}>
+                            <p className={styles.textButton}>SAVE</p>
                         </button>
-                        <button className='button'>
-                            <p className='text-button'>CANCEL</p>
+                        <button className={styles.button}>
+                            <p className={styles.textButton}>CANCEL</p>
                         </button>
                     </div>
                 </div>

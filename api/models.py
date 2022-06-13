@@ -57,7 +57,6 @@ class User(models.Model):
     content_completed = models.IntegerField()
     average_rating = models.FloatField()
 
-
 class List(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
