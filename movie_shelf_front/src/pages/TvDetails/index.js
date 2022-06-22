@@ -21,7 +21,7 @@ export default function Teste() {
             `trending/tv/week?api_key=68e356ae11aabb4bf082a0a61801672e&language=en-US&page=1`
           );
           const data = response.data.results.slice(0, 6);
-          console.log(data)
+        //   console.log(data)
         })();
     }, []);
 
@@ -47,6 +47,7 @@ export default function Teste() {
             setDetails(response)
             setBackground(`https://image.tmdb.org/t/p/original/${response.backdrop_path}`);
             setPoster(`https://image.tmdb.org/t/p/w342/${response.poster_path}`);
+            // console.log(response.last_episode_to_air.season_number)
         })()             
     }, []);
     
