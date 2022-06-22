@@ -6,7 +6,7 @@ import minus from "../../assets/comments/minus.png"
 import sende from "../../assets/comments/sende.png"
 import star from "../../assets/comments/star.png"
 import { FaTrash } from "react-icons/fa";
-import './styles.scss'
+import styles from './styles.module.css'
 
 const comments = [
     {comment: "Muito bom!"},
@@ -33,43 +33,43 @@ export default function Ratings() {
     }
       
     return (           
-        <div className='wrapper-ratings'>  
-            <div className='insert-item'>
+        <div className={styles.wrapper_ratings}>  
+            <div className={styles.insert_item}>
                 <input 
-                    className="input" 
+                    className={styles.input} 
                     type="text" value={message} 
                     onChange={(e) => setMessage(e.target.value)} 
                     placeholder="Leave your movie review here..."
                 />
-                <div className='container-vote'>
-                    <p className='vote'>{vote}</p>
-                    <img src={star} className="icon-vote"/>
+                <div className={styles.container_vote}>
+                    <p className={styles.vote}>{vote}</p>
+                    <img src={star} className={styles.icon_vote}/>
                 </div>
-                <button className='button' onClick={minusVote}>
-                    <img src={minus} className="icon-img"/>
+                <button className={styles.button} onClick={minusVote}>
+                    <img src={minus} className={styles.icon_img}/>
                 </button>
-                <button className='button' onClick={plusVote}>
-                    <img src={plus} className="icon-img"/>
+                <button className={styles.button} onClick={plusVote}>
+                    <img src={plus} className={styles.icon_img}/>
                 </button >
-                <button className='button'>
-                    <img src={sende} className="icon-img"/>
+                <button className={styles.button}>
+                    <img src={sende} className={styles.icon_img}/>
                 </button>
             </div>
-            <div className='cotainer-cards'>
+            <div className={styles.cotainer_cards}>
                 {
                     comments.map((item, key) => (
-                        <div className='container-ratings' key={key}>
-                            <img src={capa} className="folder-rating"/>
-                            <div className='container-info-card'>
-                                <div className='info-card'>
-                                    <img src={profile} className="profile-img"/>
-                                    <p className='name-user'>Name User</p>
-                                    <FaTrash size={20} color="white" className='icons-trash'/>
+                        <div className={styles.container_ratings} key={key}>
+                            <img src={capa} className={styles.folder_rating}/>
+                            <div className={styles.container_info_card}>
+                                <div className={styles.info_card}>
+                                    <img src={profile} className={styles.profile_img}/>
+                                    <p className={styles.name_user}>Name User</p>
+                                    <FaTrash size={20} color="white" className={styles.icons_trash}/>
                                 </div>
-                                <p className='comments-card'>{item.comment}</p>
-                                <div className='vote'>
-                                    <img src={star} className="icon-vote"/>
-                                    <p className='text-vote'>{vote}/10</p>
+                                <p className={styles.comments_card}>{item.comment}</p>
+                                <div className={styles.vote_image}>
+                                    <img src={star} className={styles.icon_vote}/>
+                                    <p className={styles.text_vote}>{vote}/10</p>
                                 </div>
                             </div>
                         </div>

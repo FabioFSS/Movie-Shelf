@@ -19,7 +19,6 @@ class TMDB:
         return None if response['results'] == [] else response['results'][0]['key']
             
         
-
     def top_rated(self):      
 
         base_url =  'https://api.themoviedb.org/3/movie/top_rated?'
@@ -45,6 +44,36 @@ class TMDB:
                 continue
 
             values_movie['trailer'] = str(self.get_videos(movie['id']))
+
+            list_movies.append(values_movie)
+
+        return list_movies
+
+    def top_rated_tv(self):      
+
+        base_url =  'https://api.themoviedb.org/3/tv/top_rated?'
+
+        url = base_url+'api_key='+self.api_key+'&language='+self.language+'&page='+self.page
+        
+        print('antes\n')
+
+        try:
+            response = get(url).json()
+        except ValueError:
+            print("Request error")
+        
+
+        print('depois\n')
+        list_movies = []
+
+        for movie in response['results']:
+
+            values = [
+                'name', 'overview', 'poster_path', 
+                'backdrop_path', 'vote_average', 'first_air_date'
+            ]
+
+            values_movie = { key: movie[key] for key in values }
 
             list_movies.append(values_movie)
 
@@ -115,21 +144,21 @@ class TMDB:
         except ValueError:
             print("Request error")
                
-        # episode = {}
-        # episode['description'] = response['episode'][episode_number][]
-        # episode['title'] = response['overview']
-        # episode['number'] = episode_number
-        # episode['img_folder'] = response['still_path']
+        episode = {}
+        episode['description'] = response['episodes'][episode_number-1]['overview']
+        episode['title'] = response['episodes'][episode_number-1]['name']
+        episode['number'] = episode_number
+        episode['img_folder'] = response['episodes'][episode_number-1]['still_path']
 
-        return response
+        return episode
 
 if __name__ == '__main__':
 
     movies = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
-    # print(movies.top_rated())
+    print(movies.top_rated())
     # print(movies.get_details_season(55, 1))
     # print(movies.get_videos(55))
     # print(movies.get_credits(55))
     # print(movies.search_movie('spider'))
-    print(movies.get_details_episode(50, 1, 1))
+    # print(movies.get_details_episode(50, 1, 4))

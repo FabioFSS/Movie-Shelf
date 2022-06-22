@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/scripts/Navbar';
 import Details from './pages/Details';
+import TvDetails from './pages/TvDetails';
 import Home from './pages/Home';
 import Profile from './pages/Profile'
 import ListDetails from './pages/ListDetails'
@@ -27,6 +28,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<Home/>} />
                         <Route path="/details:id" element={<Details/>} />
+                        <Route path="/tvdetails:id" element={<TvDetails/>} />
                         <Route path="/listdetails" element={<ListDetails/>} />
                         <Route path="/lists" element={<Lists/>} />
                         <Route path="/login" element={<Login/>} />

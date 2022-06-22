@@ -18,7 +18,7 @@ class MoviesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movies
         fields = ['title', 'description', 'img_front',
-                  'img_back', 'trailer', 'overview', 'lauch_date', 'cache_fk']
+                  'img_back', 'trailer', 'vote', 'lauch_date', 'cache_fk']
 
 
 class CastsSerializer(serializers.ModelSerializer):
@@ -31,7 +31,7 @@ class tvShowsSerializer(serializers.ModelSerializer):
     class Meta:
         model = tvShows
         fields = ['title', 'description', 'img_front', 'img_back',
-                  'trailer', 'overview', 'lauch_date', 'cache_fk']
+                  'trailer', 'vote', 'lauch_date', 'cache_fk']
 
 
 class SeasonSerializer(serializers.ModelSerializer):
