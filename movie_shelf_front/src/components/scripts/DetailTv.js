@@ -27,8 +27,21 @@ export default function DetailMovie({ details, poster, reiews }) {
                             </div>
                         )}
                     </div>
+                    <div>
+                        <h3 class={styles.textSeason}>Seasons</h3>
+                        <select class={styles.selectSeason}>
+                            <option value="Select">Season 1</option>
+                            <option value="Select">Season 2</option>
+                            <option value="Select">Season 3</option>
+                            <option value="Select">Season 4</option>
+                            <option value="Select">Season 5</option>
+                            <option value="Select">Season 6</option>
+                            <option value="Select">Season 7</option>
+                            <option value="Select">Season 8</option>
+                        </select>
+                    </div>
                 </div>    
-            </>}
+            </>}            
         </div>
     )
 }
