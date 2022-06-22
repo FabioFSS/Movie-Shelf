@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import styles from '../styles/DetailTv.module.css'
 
 export default function DetailMovie({ details, poster, reiews }) {
+
+    const [se, setSe] = useState([])
+    let seasons = []
+
+    useEffect(() => {
+        if (details != null){
+            for (let i = 1; i <= details.last_episode_to_air.season_number; i++) {
+                seasons.push(`Season ${i}`)
+            }
+            setSe(seasons)
+        }
+    }, [details])
+
     return (
         <div className={styles.containerMovie}>
             {details && <>
@@ -30,14 +43,9 @@ export default function DetailMovie({ details, poster, reiews }) {
                     <div>
                         <h3 class={styles.textSeason}>Seasons</h3>
                         <select class={styles.selectSeason}>
-                            <option value="Select">Season 1</option>
-                            <option value="Select">Season 2</option>
-                            <option value="Select">Season 3</option>
-                            <option value="Select">Season 4</option>
-                            <option value="Select">Season 5</option>
-                            <option value="Select">Season 6</option>
-                            <option value="Select">Season 7</option>
-                            <option value="Select">Season 8</option>
+                            {se.map((sasonNumber, key) =>
+                                <option value="Select" key={key}>{sasonNumber}</option>
+                            )}
                         </select>
                     </div>
                 </div>    
