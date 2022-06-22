@@ -17,7 +17,7 @@ function Navbar() {
     <nav className="Navbar" style={{ visibility: visibility }}>
       <div className="leftSide">
         <div className="links">
-          <Link to="/">TV Shows</Link>
+          <Link to="/tv">TV Shows</Link>
           <Link to="/">Movies</Link>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { api, apiKey, language } from "../../services/api";
-import DetailMovie from '../../components/scripts/DetailTv';
+import DetailTv from '../../components/scripts/DetailTv';
 import styles from './styles.module.css'
 
 export default function Teste() {
@@ -55,7 +55,7 @@ export default function Teste() {
             <div className={styles.backgrund_img} 
                 style={{ backgroundImage: `url(${background})` }} 
             />            
-            <DetailMovie 
+            <DetailTv 
                 details={details} 
                 poster={poster} 
                 reiews={reiews} 
