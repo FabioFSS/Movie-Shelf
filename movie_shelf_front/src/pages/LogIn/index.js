@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import './styles.css'
+import styles from './styles.module.css'
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { NavContext } from "../../contexts/navbar";
@@ -33,35 +33,35 @@ export default function Scroll() {
     });
 
     return (
-        <div className="wrapper-login">
-            <div className="container-login">
-                <div className="content">
-                    <h1 className="pageName">Log in</h1>
-                    <span className='info-login'>Get login to access your account</span>
-                    <div className="inputContent">
+        <div className={styles.wrapperLogin}>
+            <div className={styles.containerLogin}>
+                <div className={styles.content}>
+                    <h1 className={styles.pageName}>Log in</h1>
+                    <span className={styles.infoLogin}>Get login to access your account</span>
+                    <div className={styles.inputContent}>
                         <FaEnvelope />
-                        <input className="input" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input className={styles.input} type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
-                    <div className="inputContent">
+                    <div className={styles.inputContent}>
                         <FaLock />
-                        <input className="input" type={typePassword} placeholder="Password" value={password} onChange={(e) => setPasword(e.target.value)} />
+                        <input className={styles.input} type={typePassword} placeholder="Password" value={password} onChange={(e) => setPasword(e.target.value)} />
 
-                        {typePassword === "password" ? 
+                        {typePassword === {password} ? 
                             (<FaEye onClick={changeTypePassword} />) 
                             : 
                             (<FaEyeSlash onClick={changeTypePassword} />)
                         }
                     </div>
-                    <span className="span">
+                    <span className={styles.span}>
                         <a href="http://localhost:3000/reset">Forget Password</a>
                     </span>
-                    <button className="buttonLogin" disabled={!email || !password}>
+                    <button className={styles.buttonLogin} disabled={!email || !password}>
                         <a href="http://localhost:3000">LOGAR</a>
                     </button>
                     
-                    <div className='container-register'>
-                        <span className="span">Don't have an account? </span>
-                        <span className="register-text">                            
+                    <div className={styles.containerRegister}>
+                        <span className={styles.span}>Don't have an account? </span>
+                        <span className={styles.registerText}>                            
                             <a href="http://localhost:3000/signup">Register</a>
                         </span>
                     </div>

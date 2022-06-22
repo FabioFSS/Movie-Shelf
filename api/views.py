@@ -1,3 +1,4 @@
+from datetime import datetime
 from rest_framework.views import APIView
 from . models import *
 from rest_framework.response import Response
@@ -15,6 +16,7 @@ class ReactView(APIView):
     def post(self, request):
 
         serializer = ReactSerializer(data=request.data)
+        
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
@@ -30,12 +32,23 @@ class CacheView(APIView):
 
     def post(self, request):
 
-        # print(TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).search_movie('spider'))
-
         serializer = CacheSerializer(data=request.data)
+        print(request.data)
+    
+        teste = Cache(date_time='00:00')
+        # teste.save()
+        
+        # return Response(serializer.data)
 
+        # print('antes')
+        # teste = request.data
+        # teste = request.data['csrfmiddlewaretoken'] = '484fgdfg8d4fgd8g4dfadaweweawe'
+        # teste.pop('csrfmiddlewaretoken')
+        # print(teste)
+        # print('depois')
+        
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            teste.save()
             return Response(serializer.data)
 
 
@@ -45,7 +58,7 @@ class MoviesView(APIView):
     def get(self, request):
         detail = [{"title": detail.title, "description": detail.description,
                    "img_front": detail.img_front, "img_back": detail.img_back,
-                   "trailer": detail.trailer, "overview": detail.overview, "lauch_date": detail.lauch_date,
+                   "trailer": detail.trailer, "vote": detail.vote, "lauch_date": detail.lauch_date,
                    "cache_fk": detail.cache_fk}
                   for detail in Movies.objects.all()]
         return Response(detail)
@@ -80,7 +93,7 @@ class tvShowsView(APIView):
     def get(self, request):
         detail = [{"name": detail.name, "title": detail.title, "description": detail.description,
                    "img_front": detail.img_front, "img_back": detail.img_back, "trailer": detail.trailer,
-                   "overview": detail.overview, "lauch_date": detail.lauch_date, "cache_fk": detail.cache_fk}
+                   "vote": detail.vote, "lauch_date": detail.lauch_date, "cache_fk": detail.cache_fk}
                   for detail in tvShows.objects.all()]
         return Response(detail)
 
@@ -171,7 +184,9 @@ class RatingView(APIView):
         return Response(ratings)
 
     def post(self, request):
+
         serializer = RatingSerializer(data=request.data)
+        
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)

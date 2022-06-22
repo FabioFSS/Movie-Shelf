@@ -1,0 +1,125 @@
+.wrapper_ratings {
+    display: flex;
+    background: #010117;
+    align-items: center;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.insert_item {
+    display: flex;
+    width: 880px;
+    margin-top: 150px;
+    align-items: center;
+    margin-bottom: 50px;
+}      
+
+.input {
+    height: 40px;
+    width: 85%;
+    background: #001F30;
+    border-radius: 5px;
+    border: 0;
+    padding: 10px;
+}
+
+.input::placeholder {
+    color: white;
+    font-size: 15px;
+}
+
+.container_vote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.vote {
+    color: black;
+    position: absolute;
+    font-weight: bold;
+    margin-top: 3px;
+    font-size: 15px;
+}
+
+.icon_vote {
+    width: 32px;
+    height: 32px;                
+}
+        
+
+.button {
+    background: #11ffee00;
+    border: 0px;
+}
+
+.icon_img {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+.cotainer_cards {
+    width: 880px;
+}
+
+.container_ratings {
+    display: flex;
+    flex-direction: row;
+    background: #001F30;            
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+    
+.folder_rating {
+    width: 15%;
+}
+    
+.container_info_card {
+    margin-left: 10px;
+    margin-top: 10px;
+}   
+
+.info_card {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile_img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}
+.name_user {                    
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.icons_trash {
+    margin-left: 550px;
+    margin-top: 20px;
+}
+    
+.comments_card {
+    margin-top: 20px;
+}
+
+.vote_image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.icon_vote {
+    width: 30px;
+    height: 30px;
+}
+
+.text_vote {
+    color: white;
+    margin-left: 10px;
+}

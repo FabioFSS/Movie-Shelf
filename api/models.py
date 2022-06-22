@@ -13,7 +13,7 @@ class Movies(models.Model):
     img_front = models.ImageField()
     img_back = models.ImageField()
     trailer = models.TextField()
-    overview = models.FloatField(max_length=3)
+    vote = models.FloatField(max_length=3)
     lauch_date = models.DateField()
     cache_fk = models.ForeignKey(Cache, on_delete=models.CASCADE)
 
@@ -27,7 +27,7 @@ class tvShows(models.Model):
     img_front = models.ImageField()
     img_back = models.ImageField()
     trailer = models.TextField()
-    overview = models.FloatField()
+    vote = models.FloatField()
     lauch_date = models.DateField()
     cache_fk = models.ForeignKey(Cache, on_delete=models.CASCADE)
 
