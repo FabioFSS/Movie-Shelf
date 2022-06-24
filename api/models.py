@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 
 
@@ -14,7 +15,7 @@ class JSONCache(models.Model):
 class User(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=50)
-    profile_pic = models.ImageField()
+    profile_pic = models.ImageField(upload_to='profile_pics/')
     birth_date = models.DateField()
     gender = models.CharField(max_length=10)
     location = models.CharField(max_length=10)
@@ -32,7 +33,7 @@ class User(models.Model):
 class List(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='list_images')
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
