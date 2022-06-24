@@ -7,6 +7,10 @@ class ReactSerializer(serializers.ModelSerializer):
         model = React
         fields = ['name', 'detail']
 
+class SerializerJsonTableData(serializers.ModelSerializer):
+    class Meta:
+        model = JsonTableData
+        fields = ['movie', 'tv_shows']
 
 class CacheSerializer(serializers.ModelSerializer):
     class Meta:
