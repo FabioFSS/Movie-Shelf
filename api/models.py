@@ -1,52 +1,15 @@
 from django.db import models
-  
-class React(models.Model):
-    name = models.CharField(max_length=30)
-    detail = models.CharField(max_length=500)
 
-class JsonTableData(models.Model):
+
+class JSONCache(models.Model):
+    add_time = models.DateTimeField(auto_now_add=True)
     movie = models.JSONField()
     tv_shows = models.JSONField()
 
-class Cache(models.Model):
-    date_time = models.TimeField()
+    class Meta:
+        verbose_name = 'JSONCache'
+        verbose_name_plural = 'JSONCaches'
 
-class Movies(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    img_front = models.TextField()
-    img_back = models.TextField()
-    trailer = models.TextField()
-    vote = models.FloatField(max_length=3)
-    lauch_date = models.DateField()
-    cache_fk = models.ForeignKey(Cache, on_delete=models.CASCADE)
-
-class Casts(models.Model):
-    name = models.CharField(max_length=100)
-    picture = models.TextField()
-
-class tvShows(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    img_front = models.TextField()
-    img_back = models.TextField()
-    trailer = models.TextField()
-    vote = models.FloatField()
-    lauch_date = models.DateField()
-    cache_fk = models.ForeignKey(Cache, on_delete=models.CASCADE)
-
-class Season(models.Model):
-    number = models.IntegerField()
-    description = models.TextField()
-    img_folder = models.TextField()
-    tv_shows_fk = models.ForeignKey(tvShows, on_delete=models.CASCADE)
-
-class Episode(models.Model):
-    description = models.TextField()
-    title = models.CharField(max_length=100)
-    number = models.IntegerField()
-    img_folder = models.TextField()
-    season_fk = models.ForeignKey(Season, on_delete=models.CASCADE)
 
 class User(models.Model):
     username = models.CharField(max_length=100)
@@ -61,17 +24,36 @@ class User(models.Model):
     content_completed = models.IntegerField()
     average_rating = models.FloatField()
 
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+
+
 class List(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField()
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'List'
+        verbose_name_plural = 'Lists'
+
+
 class Rating(models.Model):
     value = models.FloatField()
     description = models.TextField()
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'Rating'
+        verbose_name_plural = 'Ratings'
+
+
 class Progress(models.Model):
     count = models.IntegerField()
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Progress'
+        verbose_name_plural = "Progresses"
