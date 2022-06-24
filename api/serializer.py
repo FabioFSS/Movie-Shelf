@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import JSONCache, User, List, Rating, Progress
+from .models import JSONCache, List, Rating, Progress, UserProfile
+from django.contrib.auth.models import User
 
 
 class JSONCacheSerializer(serializers.ModelSerializer):
@@ -7,13 +8,25 @@ class JSONCacheSerializer(serializers.ModelSerializer):
         model = JSONCache
         fields = ['movie', 'tv_shows']
 
-
-class UserSerializer(serializers.ModelSerializer):
-    profile_pic = serializers.ImageField(max_length=None, use_url=True)
+class DjangoUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'password', 'profile_pic', 'birth_date', 'gender',
-                  'location', 'email', 'language', 'bio', 'content_completed', 'average_rating', 'review_number']
+        fields = ['username', 'password', 'email']
+
+class UserLoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    profile_pic = serializers.ImageField(max_length=None, use_url=True)
+
+    class Meta:
+        model = UserProfile
+        fields = ['user', 'profile_pic', 'birth_date', 'gender',
+                  'location', 'language', 'bio', 'content_completed',
+                  'average_rating', 'review_number']
 
     def get_photo_url(self, obj):
         request = self.context.get('request')
