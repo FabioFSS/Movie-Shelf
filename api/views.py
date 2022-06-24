@@ -1,9 +1,11 @@
-from multiprocessing import context
+from dataclasses import fields
 from django.views.generic import TemplateView
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import JSONCache, User, List, Rating, Progress
-from .serializer import JSONCacheSerializer, UserSerializer, ListSerializer, RatingSerializer, ProgressSerializer
+from .models import JSONCache, UserProfile, List, Rating, Progress
+from .serializer import DjangoUserSerializer, JSONCacheSerializer, UserLoginSerializer, UserProfileSerializer, ListSerializer, RatingSerializer, ProgressSerializer
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from api.tmdb import TMDB
 
 
@@ -32,19 +34,69 @@ class JSONCacheView(APIView):
             return Response(serializer.data)
 
 
-class UserView(APIView):
-    serializer_class = UserSerializer
+class UserLoginView(APIView):
+    serializer_class = UserLoginSerializer
+    def get(self, request):
+        if request.user.is_authenticated:
+            return Response(['authenticated'])
+        else:
+            return Response(['not authenticated'])
 
-    def get(self, request, pk):
-        user = User.objects.get(id=pk)
-        serializer = UserSerializer(user, context={"request": request})
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+
+        return Response(['success'] if user else ['fail'])
+
+
+class UserLogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response(['success'])
+
+
+class UserRegisterView(APIView):
+    serializer_class = DjangoUserSerializer
+
+    def get(self, request):
+        users = User.objects.all()
+        serializer = DjangoUserSerializer(users, context={"request": request}, many=True)
         return Response([serializer.data])
 
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
+        serializer = DjangoUserSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            data = serializer.data
+            User.objects.create_user(username=data['username'], password=data['password'], email=data['email'])
             return Response(serializer.data)
+
+
+class UserProfileView(APIView):
+    serializer_class = UserProfileSerializer
+
+    def get(self, request, user_id):
+        user_profile = UserProfile.objects.get(id=user_id)
+        serializer = UserProfileSerializer(user_profile, context={"request": request})
+        return Response([serializer.data])
+
+    def post(self, request, user_id):
+        user_profile = UserProfile.objects.get(id=user_id)
+        data = request.data
+        user_profile.profile_pic = data['profile_pic']
+        user_profile.birth_date = data['birth_date']
+        user_profile.gender = data['gender']
+        user_profile.location = data['location']
+        user_profile.language = data['language']
+        user_profile.bio = data['bio']
+        user_profile.content_completed = data['content_completed']
+        user_profile.average_rating = data['average_rating']
+        user_profile.review_number = data['review_number']
+        user_profile.save()
+        return Response(['success'])
+
 
 
 class ListView(APIView):
