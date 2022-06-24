@@ -1,4 +1,5 @@
 from requests import get
+import json
 
 class TMDB:
     def __init__(self, api_key=None, page=0, language=0):
@@ -29,25 +30,25 @@ class TMDB:
         except ValueError:
             print("Request error")
         
-        list_movies = []
+        # list_movies = []
 
-        for movie in response['results']:
+        # for movie in response['results']:
 
-            values = [
-                'original_title', 'overview', 'poster_path', 
-                'backdrop_path', 'vote_average', 'release_date'
-            ]
+        #     values = [
+        #         'original_title', 'overview', 'poster_path', 
+        #         'backdrop_path', 'vote_average', 'release_date'
+        #     ]
 
-            values_movie = { key: movie[key] for key in values }
+        #     values_movie = { key: movie[key] for key in values }
 
-            if movie['id'] == None:
-                continue
+        #     if movie['id'] == None:
+        #         continue
 
-            values_movie['trailer'] = str(self.get_videos(movie['id']))
+        #     values_movie['trailer'] = str(self.get_videos(movie['id']))
 
-            list_movies.append(values_movie)
+        #     list_movies.append(values_movie)
 
-        return list_movies
+        return response
 
     def top_rated_tv(self):      
 
@@ -63,21 +64,21 @@ class TMDB:
             print("Request error")
         
 
-        print('depois\n')
-        list_movies = []
+        # print('depois\n')
+        # list_movies = []
 
-        for movie in response['results']:
+        # for movie in response['results']:
 
-            values = [
-                'name', 'overview', 'poster_path', 
-                'backdrop_path', 'vote_average', 'first_air_date'
-            ]
+        #     values = [
+        #         'name', 'overview', 'poster_path', 
+        #         'backdrop_path', 'vote_average', 'first_air_date'
+        #     ]
 
-            values_movie = { key: movie[key] for key in values }
+        #     values_movie = { key: movie[key] for key in values }
 
-            list_movies.append(values_movie)
+        #     list_movies.append(values_movie)
 
-        return list_movies
+        return response
 
 
     def get_credits(self, movie_id):

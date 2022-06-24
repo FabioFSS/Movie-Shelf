@@ -4,14 +4,18 @@ class React(models.Model):
     name = models.CharField(max_length=30)
     detail = models.CharField(max_length=500)
 
+class JsonTableData(models.Model):
+    movie = models.JSONField()
+    tv_shows = models.JSONField()
+
 class Cache(models.Model):
     date_time = models.TimeField()
 
 class Movies(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    img_front = models.ImageField()
-    img_back = models.ImageField()
+    img_front = models.TextField()
+    img_back = models.TextField()
     trailer = models.TextField()
     vote = models.FloatField(max_length=3)
     lauch_date = models.DateField()
@@ -19,13 +23,13 @@ class Movies(models.Model):
 
 class Casts(models.Model):
     name = models.CharField(max_length=100)
-    picture = models.ImageField()
+    picture = models.TextField()
 
 class tvShows(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    img_front = models.ImageField()
-    img_back = models.ImageField()
+    img_front = models.TextField()
+    img_back = models.TextField()
     trailer = models.TextField()
     vote = models.FloatField()
     lauch_date = models.DateField()
@@ -34,14 +38,14 @@ class tvShows(models.Model):
 class Season(models.Model):
     number = models.IntegerField()
     description = models.TextField()
-    img_folder = models.ImageField()
+    img_folder = models.TextField()
     tv_shows_fk = models.ForeignKey(tvShows, on_delete=models.CASCADE)
 
 class Episode(models.Model):
     description = models.TextField()
     title = models.CharField(max_length=100)
     number = models.IntegerField()
-    img_folder = models.ImageField()
+    img_folder = models.TextField()
     season_fk = models.ForeignKey(Season, on_delete=models.CASCADE)
 
 class User(models.Model):

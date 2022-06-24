@@ -1,9 +1,10 @@
 from datetime import datetime
+from api.tmdb import TMDB
 from rest_framework.views import APIView
 from . models import *
 from rest_framework.response import Response
 from .serializer import *
-
+from django.views import View
 
 class ReactView(APIView):
     serializer_class = ReactSerializer
@@ -21,6 +22,23 @@ class ReactView(APIView):
             serializer.save()
             return Response(serializer.data)
 
+class JsonTableDataView(APIView):
+    serializer_class = SerializerJsonTableData
+
+    def get(self, request):
+        json_table_data = [{"movie": json_table_data.movie, "tv_shows": json_table_data.tv_shows}
+                  for json_table_data in Movies.objects.all()]
+        return Response(json_table_data)
+
+    def post(self, request):
+        response_movie = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated()
+        response_tv_shows = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated_tv()
+        data = JsonTableData(movie=response_movie, tv_shows=response_tv_shows)
+
+        serializer = SerializerJsonTableData(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            data.save()
+            return Response(serializer.data)
 
 class CacheView(APIView):
     serializer_class = CacheSerializer
@@ -32,24 +50,22 @@ class CacheView(APIView):
 
     def post(self, request):
 
-        serializer = CacheSerializer(data=request.data)
-        print(request.data)
-    
-        teste = Cache(date_time='00:00')
-        # teste.save()
-        
-        # return Response(serializer.data)
+        for i in range(2):
 
-        # print('antes')
-        # teste = request.data
-        # teste = request.data['csrfmiddlewaretoken'] = '484fgdfg8d4fgd8g4dfadaweweawe'
-        # teste.pop('csrfmiddlewaretoken')
-        # print(teste)
-        # print('depois')
-        
-        if serializer.is_valid(raise_exception=True):
+            # serializer = CacheSerializer(data=request.data)    
+            teste = Cache(date_time='11:33')
             teste.save()
-            return Response(serializer.data)
+            # teste.save()
+            
+            return 
+
+            # print('antes')
+            # teste = request.data
+            # teste = request.data['csrfmiddlewaretoken'] = '484fgdfg8d4fgd8g4dfadaweweawe'
+            # teste.pop('csrfmiddlewaretoken')
+            # print(teste)
+            # print('depois')
+            
 
 
 class MoviesView(APIView):
@@ -80,7 +96,9 @@ class CastsView(APIView):
         return Response(detail)
 
     def post(self, request):
-
+        # serializer = Casts(name="testeeeeggg", picture="http://....")
+        # serializer.save()
+        # return Response(serializer)
         serializer = CastsSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()

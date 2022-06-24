@@ -15,5 +15,6 @@ urlpatterns = [
     path('list/', ListView.as_view(), name="list"),
     path('rating/', RatingView.as_view(), name="rating"),
     path('progress/', ProgressView.as_view(), name="progress"),
+    path('jsontabledata/', JsonTableDataView.as_view(), name="json"),
 ]
 
