@@ -1,7 +1,7 @@
 from requests import get
 import json
 
-class TMDB:
+class TMDB():
     def __init__(self, api_key=None, page=0, language=0):
         self.api_key = str(api_key)
         self.page = str(page)

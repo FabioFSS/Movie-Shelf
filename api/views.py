@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.views.generic import TemplateView
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -8,7 +9,7 @@ from api.tmdb import TMDB
 
 class IndexView(TemplateView):
     template_name = 'index.html'
-    
+
 
 class JSONCacheView(APIView):
     serializer_class = JSONCacheSerializer
@@ -34,14 +35,10 @@ class JSONCacheView(APIView):
 class UserView(APIView):
     serializer_class = UserSerializer
 
-    def get(self, request):
-        users = [{'username': user.username, 'password': user.password, 'profile_pic': user.profile_pic,
-                  'birth_date': user.birth_date, 'gender': user.gender, 'location': user.location,
-                  'email': user.email, 'language': user.language, 'bio': user.bio,
-                  'content_completed': user.content_completed, 'average_rating': user.average_rating}
-                 for user in User.objects.all()]
-
-        return Response(users)
+    def get(self, request, pk):
+        user = User.objects.get(id=pk)
+        serializer = UserSerializer(user, context={"request": request})
+        return Response([serializer.data])
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)

@@ -9,10 +9,16 @@ class JSONCacheSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    profile_pic = serializers.ImageField(max_length=None, use_url=True)
     class Meta:
         model = User
         fields = ['username', 'password', 'profile_pic', 'birth_date', 'gender',
                   'location', 'email', 'language', 'bio', 'content_completed', 'average_rating']
+
+    def get_photo_url(self, obj):
+        request = self.context.get('request')
+        photo_url = obj.fingerprint.url
+        return request.build_absolute_uri(photo_url)
 
 
 class ListSerializer(serializers.ModelSerializer):
