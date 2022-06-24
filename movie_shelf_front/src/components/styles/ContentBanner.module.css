@@ -1,10 +1,10 @@
-.banner_body{
+.banner_body {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.content_body{
+.content_body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,15 +12,15 @@
     height: 250px;
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid #0D546250;
+    border: 1px solid #0d546250;
 }
 
-.banner_image{
+.banner_image {
     mix-blend-mode: normal;
     filter: blur(2px) brightness(25%);
 }
 
-.banner_description{
+.banner_description {
     font-size: 20px;
-    position:absolute;
+    position: absolute;
 }

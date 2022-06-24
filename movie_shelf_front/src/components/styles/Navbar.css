@@ -5,7 +5,7 @@
     top: 0;
     width: 100%;
     height: 75px;
-    background-color: #001F30;
+    background-color: #001f30;
 }
 
 .Navbar .leftSide {
@@ -15,18 +15,17 @@
     align-items: center;
 }
 
-
 .Navbar .leftSide .links a {
     text-decoration: none;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-left: 75px;
     padding: 10px;
     border-radius: 15px;
     transition: background 100ms;
 }
 
-.Navbar .leftSide .links a:hover{
-    background-color: #0D5462AA;
+.Navbar .leftSide .links a:hover {
+    background-color: #0d5462aa;
 }
 
 .Navbar .middleSide {
@@ -54,7 +53,7 @@
     font-size: 18px;
     padding: 15px;
     margin-right: 22px;
-    background-color: #01011C;
+    background-color: #01011c;
     color: white;
 }
 

@@ -1,10 +1,10 @@
-.page_body{
+.page_body {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.progress_label{
+.progress_label {
     text-align: center;
     font-weight: bold;
     padding: 25px;

@@ -7,7 +7,7 @@
 }
 
 .containerPoster {
-    background: #0D5462;
+    background: #0d5462;
     margin-right: 34px;
     height: 580px;
     border-radius: 20px;
@@ -19,10 +19,10 @@
 }
 
 .containerVote {
-    margin-top: 5px; 
-    display: flex; 
-    flex-direction: row; 
-    align-items: center; 
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
 }
 
@@ -30,7 +30,7 @@
     margin-top: 10px;
     margin-left: 5px;
     color: white;
-    font-size: 25PX;
+    font-size: 25px;
 }
 
 .detailsContainer {

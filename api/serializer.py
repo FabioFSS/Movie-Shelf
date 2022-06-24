@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'password', 'profile_pic', 'birth_date', 'gender',
-                  'location', 'email', 'language', 'bio', 'content_completed', 'average_rating']
+                  'location', 'email', 'language', 'bio', 'content_completed', 'average_rating', 'review_number']
 
     def get_photo_url(self, obj):
         request = self.context.get('request')

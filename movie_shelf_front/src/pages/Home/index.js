@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./styles.module.css";
-import HomeHeader from "../../components/scripts/HomeHeader"
-import Slider from "../../components/scripts/Slider"
+import HomeHeader from "../../components/scripts/HomeHeader";
+import Slider from "../../components/scripts/Slider";
 
-function Home(){
+function Home() {
     window.scrollTo({
-        top: 0
+        top: 0,
     });
 
     return (

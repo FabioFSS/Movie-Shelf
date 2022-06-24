@@ -1,10 +1,8 @@
-import React from 'react';
-import '../styles/DropdownMenu.css';
-import { Link } from 'react-router-dom';
-
+import React from "react";
+import "../styles/DropdownMenu.css";
+import { Link } from "react-router-dom";
 
 function DropdownMenu() {
-
     function DropdownItem(props) {
         return (
             <Link to={props.page} className="menu-item">
@@ -12,7 +10,6 @@ function DropdownMenu() {
                 {props.children}
                 <span className="icon-right">{props.rightIcon}</span>
             </Link>
-
         );
     }
 
@@ -23,8 +20,7 @@ function DropdownMenu() {
             <DropdownItem page="/settings">Settings</DropdownItem>
             <DropdownItem page="/login">Log out</DropdownItem>
         </div>
-    )
-
+    );
 }
 
 export default DropdownMenu;

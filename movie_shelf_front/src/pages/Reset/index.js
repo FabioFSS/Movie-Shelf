@@ -1,23 +1,23 @@
 import React, { useState, useContext, useEffect } from "react";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 import { FaEnvelope } from "react-icons/fa";
 
 import { NavContext } from "../../contexts/navbar";
 
 export default function Scroll() {
     const [email, setEmail] = useState();
-    const { isVisible } = useContext(NavContext)
-    const [nav, setNav] = useState(true)
+    const { isVisible } = useContext(NavContext);
+    const [nav, setNav] = useState(true);
 
     useEffect(() => {
         if (nav) {
-            isVisible("hidden")
-            setNav(false)
+            isVisible("hidden");
+            setNav(false);
         }
-    }, [])
+    }, []);
 
     window.scrollTo({
-        top: 0
+        top: 0,
     });
 
     return (
@@ -26,10 +26,18 @@ export default function Scroll() {
                 <div className={styles.content}>
                     <h1 className={styles.page_name}>Recover</h1>
 
-                    <span className={styles.info_reset}>Enter your email to reset password</span>
+                    <span className={styles.info_reset}>
+                        Enter your email to reset password
+                    </span>
                     <div className={styles.input_content}>
                         <FaEnvelope />
-                        <input className={styles.input} type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input
+                            className={styles.input}
+                            type="email"
+                            placeholder="E-mail"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
 
                     <button className={styles.button_send} disabled={!email}>
@@ -37,7 +45,9 @@ export default function Scroll() {
                     </button>
 
                     <div>
-                        <span className={styles.span}>Have you recovered your password? </span>
+                        <span className={styles.span}>
+                            Have you recovered your password?{" "}
+                        </span>
                         <span className={styles.text_login}>
                             <a href="http://localhost:3000/login">Log in</a>
                         </span>
@@ -46,4 +56,4 @@ export default function Scroll() {
             </div>
         </div>
     );
-};
+}

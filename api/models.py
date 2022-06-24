@@ -3,9 +3,9 @@ from django.db import models
 
 
 class JSONCache(models.Model):
-    add_time = models.DateTimeField(auto_now_add=True)
-    movie = models.JSONField()
-    tv_shows = models.JSONField()
+    add_time = models.DateTimeField('Creation time', auto_now_add=True)
+    movie = models.JSONField('Movies')
+    tv_shows = models.JSONField('TV shows')
 
     class Meta:
         verbose_name = 'JSONCache'
@@ -13,17 +13,18 @@ class JSONCache(models.Model):
 
 
 class User(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=50)
-    profile_pic = models.ImageField(upload_to='profile_pics/')
-    birth_date = models.DateField()
-    gender = models.CharField(max_length=10)
-    location = models.CharField(max_length=10)
-    email = models.EmailField()
-    language = models.CharField(max_length=10)
-    bio = models.TextField()
-    content_completed = models.IntegerField()
-    average_rating = models.FloatField()
+    username = models.CharField('Username', max_length=100)
+    password = models.CharField('Password', max_length=50)
+    profile_pic = models.ImageField('Profile picture', upload_to='profile_pics/')
+    birth_date = models.DateField('Date of birth')
+    gender = models.CharField('Gender', max_length=10)
+    location = models.CharField('Location', max_length=10)
+    email = models.EmailField('Email')
+    language = models.CharField('Language', max_length=10)
+    bio = models.TextField('Biography')
+    content_completed = models.IntegerField('Content completed')
+    average_rating = models.FloatField('Average rating')
+    review_number = models.IntegerField('Number of reviews')
 
     class Meta:
         verbose_name = 'User'
@@ -31,9 +32,9 @@ class User(models.Model):
 
 
 class List(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField(upload_to='list_images')
+    name = models.CharField('List name', max_length=100)
+    description = models.TextField('Description')
+    image = models.ImageField('List image', upload_to='list_images')
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
@@ -42,8 +43,8 @@ class List(models.Model):
 
 
 class Rating(models.Model):
-    value = models.FloatField()
-    description = models.TextField()
+    value = models.FloatField('Rating value')
+    description = models.TextField('Description')
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
@@ -52,7 +53,7 @@ class Rating(models.Model):
 
 
 class Progress(models.Model):
-    count = models.IntegerField()
+    count = models.IntegerField('Progress count')
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:

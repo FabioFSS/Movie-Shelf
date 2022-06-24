@@ -1,10 +1,10 @@
-.banner_body{
+.banner_body {
     display: flex;
     align-items: center;
     text-align: center;
 }
 
-.link{
+.link {
     padding: 10px;
     text-decoration: none;
     transition: background 100ms;
@@ -12,17 +12,17 @@
     border-radius: 10px;
 }
 
-.link:hover{
-    background-color: #0D5462AA;
+.link:hover {
+    background-color: #0d5462aa;
     transform: scale(1.2) !important;
 }
 
-.banner_image{
+.banner_image {
     height: 350px;
     border-radius: 15px;
 }
 
-.banner_title{
+.banner_title {
     font-size: 20px;
     font-weight: bold;
     margin: 10px;

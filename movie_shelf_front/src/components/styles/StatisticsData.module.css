@@ -1,4 +1,4 @@
-.data_body{
+.data_body {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -7,23 +7,23 @@
     min-width: 400px;
 }
 
-.data_circle{
+.data_circle {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     border-radius: 50%;
-    background-color: #0C4E5B;
+    background-color: #0c4e5b;
     height: 200px;
     width: 200px;
     margin: 10px 0px;
 }
 
-.data_title{
+.data_title {
     position: relative;
     font-size: 20px;
 }
 
-.data_value{
+.data_value {
     font-size: 64px;
 }
