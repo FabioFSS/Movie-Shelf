@@ -7,6 +7,7 @@ from .serializer import DjangoUserSerializer, JSONCacheSerializer, UserLoginSeri
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from api.tmdb import TMDB
+from django.views import View
 
 
 class IndexView(TemplateView):
@@ -148,3 +149,20 @@ class ProgressView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
+
+class DetailMovieView(APIView):
+
+    def get(self, request, id):
+
+        response_movie = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_movie(id)
+
+        return Response([response_movie])
+
+class DetailTvView(APIView):
+
+    def get(self, request, id):
+
+        response_movie = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(id)
+
+        return Response([response_movie])
