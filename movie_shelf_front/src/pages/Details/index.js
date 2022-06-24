@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { api, apiKey, language } from "../../services/api";
 import DetailMovie from "../../components/scripts/DetailMovie";
 import Trailer from "../../components/scripts/Trailer";
@@ -11,6 +12,26 @@ export default function Details() {
     const [details, setDetails] = useState(null);
     const [reiews, setReviews] = useState(null);
     const [poster, setPoster] = useState(null);
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8000/detailsmovie/${movieId}`).then((res) => {
+
+    //         setDetails(res.data[0].details);
+
+    //         setReviews(res.data[0].casts.slice(0, 5));
+
+    //         setBackground(
+    //             `https://image.tmdb.org/t/p/original/${res.data[0].backdrop}`
+    //         );
+
+    //         setPoster(
+    //             `https://image.tmdb.org/t/p/w342/${res.data[0].poster}`
+    //         );
+
+    //         setTrailerId(res.data[0].trailer_id);
+            
+    //     });
+    // }, [movieId]);
 
     window.scrollTo({
         top: 0,

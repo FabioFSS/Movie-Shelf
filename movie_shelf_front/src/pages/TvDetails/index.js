@@ -1,14 +1,33 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { api, apiKey, language } from "../../services/api";
 import DetailTv from "../../components/scripts/DetailTv";
 import styles from "./styles.module.css";
 
-export default function Teste() {
+export default function TvDetails() {
     const [tvId] = useState(window.location.href.split("=")[1]);
     const [background, setBackground] = useState(null);
     const [details, setDetails] = useState(null);
     const [reiews, setReviews] = useState(null);
     const [poster, setPoster] = useState(null);
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8000/detailstv/${tvId}`).then((res) => {
+
+    //         setDetails(res.data[0].details);
+
+    //         setReviews(res.data[0].casts.slice(0, 5));
+
+    //         setBackground(
+    //             `https://image.tmdb.org/t/p/original/${res.data[0].backdrop}`
+    //         );
+
+    //         setPoster(
+    //             `https://image.tmdb.org/t/p/w342/${res.data[0].poster}`
+    //         );
+            
+    //     });
+    // }, [tvId]);
 
     window.scrollTo({
         top: 0,

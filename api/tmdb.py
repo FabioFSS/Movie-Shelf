@@ -1,3 +1,4 @@
+from ctypes import cast
 from requests import get
 import json
 
@@ -7,17 +8,60 @@ class TMDB():
         self.page = str(page)
         self.language = ['en-US', 'pt-BR'][language]
 
-    def get_videos(self, movie_id):
+    def get_details_movie(self, movie_id):
 
-        base_url =  'https://api.themoviedb.org/3/movie'
-        url = base_url+'/'+str(667257)+'/videos?api_key='+self.api_key+'&language='+self.language
+        url1 = 'https://api.themoviedb.org/3/movie/'+str(movie_id)+'?api_key='+self.api_key+'&language='+self.language
+        try:
+            response1 = get(url1).json()
+        except ValueError:
+            print("Request error")
+        
+        movie_detail = response1
+        backdrop_path = 'https://image.tmdb.org/t/p/original/'+str(response1['backdrop_path'])
+        poster_path = 'https://image.tmdb.org/t/p/w342/'+str(response1['poster_path'])
+
+        url1 = 'https://api.themoviedb.org/3/movie/'+str(movie_id)+'/credits?api_key='+self.api_key+'&language='+self.language
+        try:
+            response2 = get(url1).json()
+        except ValueError:
+            print("Request error")
+        
+        casts = response2['cast']        
+
+        url1 = 'https://api.themoviedb.org/3/movie/'+str(movie_id)+'/videos?api_key='+self.api_key+'&language='+self.language
         
         try:
-            response = get(url).json()
+            response2 = get(url1).json()
         except ValueError:
             print("Request error")
 
-        return None if response['results'] == [] else response['results'][0]['key']
+        trailer = response2['results'][0]['key']
+
+        return {'details': movie_detail, 'poster': poster_path, 'backdrop': backdrop_path, 'casts': casts, 'trailer_id': trailer}
+
+
+    def get_details_tv(self, tv_id):
+
+        url1 = 'https://api.themoviedb.org/3/tv/'+str(tv_id)+'?api_key='+self.api_key+'&language='+self.language
+        try:
+            response1 = get(url1).json()
+        except ValueError:
+            print("Request error")
+
+        
+        tv_detail = response1
+        poster_path = 'https://image.tmdb.org/t/p/w342/'+str(response1['poster_path'])
+        backdrop_path = 'https://image.tmdb.org/t/p/original/'+str(response1['backdrop_path'])
+
+        url1 = 'https://api.themoviedb.org/3/tv/'+str(tv_id)+'/credits?api_key='+self.api_key+'&language='+self.language
+        try:
+            response2 = get(url1).json()
+        except ValueError:
+            print("Request error")
+        
+        casts = response2['cast'] 
+
+        return {'details': tv_detail, 'poster': poster_path, 'backdrop': backdrop_path, 'casts': casts}
             
         
     def top_rated(self):      
@@ -29,24 +73,6 @@ class TMDB():
             response = get(url).json()
         except ValueError:
             print("Request error")
-        
-        # list_movies = []
-
-        # for movie in response['results']:
-
-        #     values = [
-        #         'original_title', 'overview', 'poster_path', 
-        #         'backdrop_path', 'vote_average', 'release_date'
-        #     ]
-
-        #     values_movie = { key: movie[key] for key in values }
-
-        #     if movie['id'] == None:
-        #         continue
-
-        #     values_movie['trailer'] = str(self.get_videos(movie['id']))
-
-        #     list_movies.append(values_movie)
 
         return response
 
@@ -62,49 +88,9 @@ class TMDB():
             response = get(url).json()
         except ValueError:
             print("Request error")
-        
-
-        # print('depois\n')
-        # list_movies = []
-
-        # for movie in response['results']:
-
-        #     values = [
-        #         'name', 'overview', 'poster_path', 
-        #         'backdrop_path', 'vote_average', 'first_air_date'
-        #     ]
-
-        #     values_movie = { key: movie[key] for key in values }
-
-        #     list_movies.append(values_movie)
 
         return response
 
-
-    def get_credits(self, movie_id):
-
-        base_url =  'https://api.themoviedb.org/3/movie'
-        url = base_url+'/'+str(movie_id)+'/credits?api_key='+self.api_key+'&language='+self.language
-        
-        try:
-            response = get(url).json()
-        except ValueError:
-            print("Request error")
-
-        casts_details = []
-        max_casts = 0
-
-        values = ['name', 'profile_path']
-
-        for credits in response['cast']:
-
-            cast = { key: credits[key] for key in values}
-            
-            casts_details.append(cast)
-            max_casts += 1
-            if max_casts == 5: break
-
-        return casts_details
 
     def search_movie(self, query):
 
@@ -116,7 +102,7 @@ class TMDB():
         except ValueError:
             print("Request error")
 
-        return response['results']
+        return response
 
     def get_details_season(self, tv_id, season_number):
 
@@ -127,13 +113,8 @@ class TMDB():
             response = get(url).json()
         except ValueError:
             print("Request error")
-               
-        season = {}
-        season['number'] = season_number
-        season['description'] = response['overview']
-        season['img_folder'] = response['poster_path']
 
-        return season
+        return response
 
     def get_details_episode(self, tv_id, season_number, episode_number):
 
@@ -144,22 +125,17 @@ class TMDB():
             response = get(url).json()
         except ValueError:
             print("Request error")
-               
-        episode = {}
-        episode['description'] = response['episodes'][episode_number-1]['overview']
-        episode['title'] = response['episodes'][episode_number-1]['name']
-        episode['number'] = episode_number
-        episode['img_folder'] = response['episodes'][episode_number-1]['still_path']
 
-        return episode
+        return response
 
 if __name__ == '__main__':
 
     movies = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
-    print(movies.top_rated())
+    # print(movies.top_rated())
     # print(movies.get_details_season(55, 1))
     # print(movies.get_videos(55))
     # print(movies.get_credits(55))
     # print(movies.search_movie('spider'))
     # print(movies.get_details_episode(50, 1, 4))
+    print(movies.get_details_tv(92782))
