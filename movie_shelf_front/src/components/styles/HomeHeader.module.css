@@ -1,4 +1,4 @@
-.page_body{
+.page_body {
     align-items: center;
     justify-content: center;
 }
@@ -6,11 +6,11 @@
 .background_img {
     z-index: -1;
     position: absolute;
-    background-image: url('../../assets/home_background.jpg');
-    width: 100%;   
+    background-image: url("../../assets/home_background.jpg");
+    width: 100%;
     height: 75%;
     background-size: cover;
-    filter:blur(8px);
+    filter: blur(8px);
 }
 
 .background_img::before {
@@ -21,36 +21,36 @@
     background-image: linear-gradient(to top, #010117, 50%, transparent);
     position: absolute;
 }
-.welcome_box{
+.welcome_box {
     text-align: center;
     margin: 150px;
-    background-color: #002E38AF;
+    background-color: #002e38af;
     padding: 50px;
     border-radius: 20px;
 }
 
-.welcome_box h1{
+.welcome_box h1 {
     font-size: 48px;
     padding: 15px;
 }
 
-.welcome_box p{
+.welcome_box p {
     font-size: 28px;
     padding: 15px;
 }
 
-.search_box{
+.search_box {
     height: 50px;
     width: 75%;
     margin: 20px;
     text-align: center;
-    background-color: #01011C;
+    background-color: #01011c;
     text-decoration: none;
     border: none;
     border-radius: 15px;
     font-size: 24px;
 }
 
-.search_box:focus{
+.search_box:focus {
     outline: none;
 }

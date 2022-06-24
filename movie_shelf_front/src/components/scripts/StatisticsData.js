@@ -1,7 +1,7 @@
-import styles from "../styles/StatisticsData.module.css"
-import PropTypes from "prop-types"
+import styles from "../styles/StatisticsData.module.css";
+import PropTypes from "prop-types";
 
-function StatisticsData({title, value, style}){
+function StatisticsData({ title, value, style }) {
     return (
         <div className={styles.data_body}>
             <p className={styles.data_title}>{title}</p>
@@ -15,13 +15,12 @@ function StatisticsData({title, value, style}){
 StatisticsData.propTypes = {
     title: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
-    style: PropTypes.object
-}
+    style: PropTypes.object,
+};
 
 StatisticsData.defaultProps = {
     title: "Missing title",
-    value: 0
-}
+    value: 0,
+};
 
-
-export default StatisticsData
+export default StatisticsData;

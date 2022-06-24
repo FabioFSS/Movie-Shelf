@@ -1,42 +1,40 @@
-.profile_menu{
+.profile_menu {
     position: relative;
     border-radius: 15px;
     word-wrap: break-word;
     padding: 25px;
 }
 
-.profile_menu::before{
+.profile_menu::before {
     content: "";
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: #001F30AA;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #001f30aa;
     border-radius: 16px;
     border: 1px solid #002734;
 }
 
-.profile_menu_options{
+.profile_menu_options {
     position: relative;
     list-style-type: none;
     font-size: 20px;
 }
 
-.profile_menu_options li{
+.profile_menu_options li {
     position: relative;
     padding: 5px;
 }
 
-.profile_menu_options li a{
+.profile_menu_options li a {
     text-decoration: none;
     padding: 10px;
     transition: background 100ms;
     border-radius: 10px;
-
 }
 
-.profile_menu_options li a:hover{
-    background-color: #0D5462AA;
+.profile_menu_options li a:hover {
+    background-color: #0d5462aa;
 }
-
-
-

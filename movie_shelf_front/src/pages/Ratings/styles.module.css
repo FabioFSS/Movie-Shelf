@@ -13,12 +13,12 @@
     margin-top: 150px;
     align-items: center;
     margin-bottom: 50px;
-}      
+}
 
 .input {
     height: 40px;
     width: 85%;
-    background: #001F30;
+    background: #001f30;
     border-radius: 5px;
     border: 0;
     padding: 10px;
@@ -46,9 +46,8 @@
 
 .icon_vote {
     width: 32px;
-    height: 32px;                
+    height: 32px;
 }
-        
 
 .button {
     background: #11ffee00;
@@ -68,19 +67,19 @@
 .container_ratings {
     display: flex;
     flex-direction: row;
-    background: #001F30;            
+    background: #001f30;
     border-radius: 10px;
     margin-bottom: 50px;
 }
-    
+
 .folder_rating {
     width: 15%;
 }
-    
+
 .container_info_card {
     margin-left: 10px;
     margin-top: 10px;
-}   
+}
 
 .info_card {
     display: flex;
@@ -92,7 +91,7 @@
     height: 70px;
     border-radius: 50px;
 }
-.name_user {                    
+.name_user {
     margin-top: 20px;
     margin-left: 5px;
 }
@@ -101,7 +100,7 @@
     margin-left: 550px;
     margin-top: 20px;
 }
-    
+
 .comments_card {
     margin-top: 20px;
 }

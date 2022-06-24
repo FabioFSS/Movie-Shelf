@@ -1,10 +1,10 @@
-.page_body{
+.page_body {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.progress_details_over_body h1{
+.progress_details_over_body h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@
     padding: 25px;
 }
 
-.seasons_grid{
+.seasons_grid {
     padding: 50px;
     display: flex;
     flex-wrap: wrap;

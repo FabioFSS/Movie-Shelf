@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import { api, apiKey, language } from "../../services/api";
-import DetailMovie from '../../components/scripts/DetailMovie';
-import Trailer from '../../components/scripts/Trailer';
-import './styles.css'
+import DetailMovie from "../../components/scripts/DetailMovie";
+import Trailer from "../../components/scripts/Trailer";
+import "./styles.css";
 
 export default function Details() {
-    
-    const [movieId] = useState(window.location.href.split('=')[1]);
+    const [movieId] = useState(window.location.href.split("=")[1]);
     const [background, setBackground] = useState(null);
     const [trailerId, setTrailerId] = useState(null);
     const [details, setDetails] = useState(null);
@@ -14,7 +13,7 @@ export default function Details() {
     const [poster, setPoster] = useState(null);
 
     window.scrollTo({
-        top: 0
+        top: 0,
     });
 
     useEffect(() => {
@@ -24,10 +23,14 @@ export default function Details() {
                     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=${language}`
                 )
             ).data;
-            setDetails(response) 
-            setBackground(`https://image.tmdb.org/t/p/original/${response.backdrop_path}`);
-            setPoster(`https://image.tmdb.org/t/p/w342/${response.poster_path}`);
-        })()             
+            setDetails(response);
+            setBackground(
+                `https://image.tmdb.org/t/p/original/${response.backdrop_path}`
+            );
+            setPoster(
+                `https://image.tmdb.org/t/p/w342/${response.poster_path}`
+            );
+        })();
     }, [movieId]);
 
     useEffect(() => {
@@ -37,8 +40,8 @@ export default function Details() {
                     `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}&language=${language}`
                 )
             ).data;
-            setReviews(response.cast.slice(0, 5))
-        })()      
+            setReviews(response.cast.slice(0, 5));
+        })();
     }, [movieId]);
 
     useEffect(() => {
@@ -48,21 +51,17 @@ export default function Details() {
                     `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=${language}`
                 )
             ).data;
-            setTrailerId(response.results[0].key) 
-        })()   
-             
+            setTrailerId(response.results[0].key);
+        })();
     }, [movieId]);
-    
-    return (           
-        <div className='wrapper-details'>
-            <div className='backgrundImg' 
-                style={{ backgroundImage: `url(${background})` }} 
-            />            
-            <DetailMovie 
-                details={details} 
-                poster={poster} 
-                reiews={reiews} 
+
+    return (
+        <div className="wrapper-details">
+            <div
+                className="backgrundImg"
+                style={{ backgroundImage: `url(${background})` }}
             />
+            <DetailMovie details={details} poster={poster} reiews={reiews} />
             <Trailer trailerId={trailerId} />
         </div>
     );

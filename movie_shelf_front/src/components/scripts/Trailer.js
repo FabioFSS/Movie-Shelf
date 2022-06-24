@@ -1,15 +1,14 @@
-import React, { useEffect, useRef } from 'react'
-import styles from "../styles/Trailer.module.css"
+import React, { useEffect, useRef } from "react";
+import styles from "../styles/Trailer.module.css";
 
-export default function Trailer ({ trailerId }){
-    
+export default function Trailer({ trailerId }) {
     const iframeRef = useRef(null);
 
     useEffect(() => {
-        const height = iframeRef.current.offsetWidth * 25 / 25 + 'px';
-        const width = iframeRef.current.offsetWidth * 25 / 15 + 'px';
-        iframeRef.current.setAttribute('height', height);
-        iframeRef.current.setAttribute('width', width);
+        const height = (iframeRef.current.offsetWidth * 25) / 25 + "px";
+        const width = (iframeRef.current.offsetWidth * 25) / 15 + "px";
+        iframeRef.current.setAttribute("height", height);
+        iframeRef.current.setAttribute("width", width);
     }, []);
 
     return (
@@ -26,5 +25,5 @@ export default function Trailer ({ trailerId }){
                 </div>
             </div>
         </div>
-    )    
+    );
 }

@@ -1,10 +1,12 @@
-import styles from "../styles/ContentSummary.module.css"
-import PropTypes from "prop-types"
+import styles from "../styles/ContentSummary.module.css";
+import PropTypes from "prop-types";
 
-function ContentSummary({link, title, banner, description}){
+function ContentSummary({ link, title, banner, description }) {
     return (
         <div className={styles.summary_body}>
-            <p className={styles.title}><a href={link}>{title}</a></p>
+            <p className={styles.title}>
+                <a href={link}>{title}</a>
+            </p>
             <div className={styles.image_and_description}>
                 <img className={styles.banner} src={banner} alt="banner"></img>
                 <div className={styles.description_box}>
@@ -21,11 +23,11 @@ ContentSummary.propTypes = {
     title: PropTypes.string.isRequired,
     banner: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-}
+};
 
 ContentSummary.defaultProps = {
     title: "Missing title",
-    description: "Missing description"
-}
+    description: "Missing description",
+};
 
 export default ContentSummary;
