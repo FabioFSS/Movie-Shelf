@@ -1,4 +1,3 @@
-from dataclasses import fields
 from django.views.generic import TemplateView
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -7,7 +6,6 @@ from .serializer import DjangoUserSerializer, JSONCacheSerializer, UserLoginSeri
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from api.tmdb import TMDB
-from django.views import View
 
 
 class IndexView(TemplateView):
@@ -44,8 +42,8 @@ class UserLoginView(APIView):
             return Response(['not authenticated'])
 
     def post(self, request):
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.data['username']
+        password = request.data['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -72,7 +70,9 @@ class UserRegisterView(APIView):
         if serializer.is_valid(raise_exception=True):
             data = serializer.data
             User.objects.create_user(username=data['username'], password=data['password'], email=data['email'])
-            return Response(serializer.data)
+            return Response(['success'])
+        else:
+            return Response(['fail'])
 
 
 class UserProfileView(APIView):

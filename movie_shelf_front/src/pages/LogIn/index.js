@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-
+import axios from "axios";
 import { NavContext } from "../../contexts/navbar";
 
 export default function Scroll() {
+    const navigate = useNavigate();
     const { isVisible } = useContext(NavContext);
     const [nav, setNav] = useState(true);
 
@@ -16,7 +18,7 @@ export default function Scroll() {
     }, []);
 
     const [typePassword, setTypePassword] = useState("password");
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPasword] = useState("");
 
     const changeTypePassword = () => {
@@ -43,15 +45,16 @@ export default function Scroll() {
                         <FaEnvelope />
                         <input
                             className={styles.input}
-                            type="email"
-                            placeholder="E-mail"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="username"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                     <div className={styles.inputContent}>
                         <FaLock />
                         <input
+                            name="password_input"
                             className={styles.input}
                             type={typePassword}
                             placeholder="Password"
@@ -72,9 +75,24 @@ export default function Scroll() {
                     </span>
                     <button
                         className={styles.buttonLogin}
-                        disabled={!email || !password}
+                        disabled={!username || !password}
+                        onClick={() => {
+                            const res = axios
+                                .post("http://localhost:8000/login/", {
+                                    username: username,
+                                    password: password,
+                                })
+                                .then((res) => {
+                                    console.log(res.data)
+                                    if (res.data[0] == "success") {
+                                        navigate("/");
+                                        isVisible('visible')
+                                        setNav(true);
+                                    }
+                                });
+                        }}
                     >
-                        <a href="http://localhost:3000">LOGAR</a>
+                        <p>LOGAR</p>
                     </button>
 
                     <div className={styles.containerRegister}>
