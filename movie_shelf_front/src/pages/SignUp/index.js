@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import styles from "./styles.module.css";
-
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-
 import { NavContext } from "../../contexts/navbar";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Scroll() {
+    const navigate = useNavigate();
     const [typePassword, setTypePassword] = useState("password");
+    const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPasword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
@@ -41,6 +43,16 @@ export default function Scroll() {
                     <span className={styles.info_signup}>
                         Create an account to access
                     </span>
+                    <div className={styles.input_content}>
+                        <FaEnvelope />
+                        <input
+                            className={styles.input}
+                            type="username"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
                     <div className={styles.input_content}>
                         <FaEnvelope />
                         <input
@@ -84,8 +96,23 @@ export default function Scroll() {
                     <button
                         className={styles.button_sign_up}
                         disabled={!email || !password}
+                        onClick={() => {
+                            if (password == confirmPassword) {
+                                axios.post("http://localhost:8000/register/", {
+                                    username: username,
+                                    password: password,
+                                    email: email,
+                                }).then(
+                                    (res) => {
+                                        if (res.data[0] == 'success'){
+                                            navigate('/login')
+                                        }
+                                    }
+                                );
+                            }
+                        }}
                     >
-                        <a href="http://localhost:3000">CREATE</a>
+                        <p>CREATE</p>
                     </button>
                     <div>
                         <span className={styles.span}>
