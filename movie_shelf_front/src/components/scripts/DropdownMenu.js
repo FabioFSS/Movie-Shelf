@@ -1,10 +1,15 @@
-import React, {useContext} from "react";
-import "../styles/DropdownMenu.css";
+// react
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+// styles
+import "../styles/DropdownMenu.css";
+
+// contexts
 import AuthContext from "../../contexts/AuthContext";
 
 function DropdownMenu() {
-    const {logoutUser} = useContext(AuthContext);
+    const { logoutUser } = useContext(AuthContext);
 
     function DropdownItem(props) {
         return (
@@ -21,7 +26,9 @@ function DropdownMenu() {
             <DropdownItem page="/profile">My Profile</DropdownItem>
             <DropdownItem page="/lists">Favorites</DropdownItem>
             <DropdownItem page="/settings">Settings</DropdownItem>
-            <DropdownItem page="/"><a onClick={logoutUser}>Log out</a></DropdownItem>
+            <DropdownItem page="/">
+                <a onClick={logoutUser}>Log out</a>
+            </DropdownItem>
         </div>
     );
 }

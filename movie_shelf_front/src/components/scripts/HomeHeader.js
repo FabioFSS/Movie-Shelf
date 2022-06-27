@@ -1,4 +1,7 @@
+// react
 import React from "react";
+
+// styles
 import styles from "../styles/HomeHeader.module.css";
 
 function HomeHeader() {

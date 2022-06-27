@@ -1,39 +1,13 @@
-from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from .models import JSONCache, RatingMovieTv, List, Rating, Progress, UserProfile
-from .serializers import JSONCacheSerializer, ListSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer, UserProfileSerializer
-from .serializers import MyTokenObtainPairSerializer, RegisterSerializer
+from .serializers import JSONCacheSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer
+from .tmdb import TMDB
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .tmdb import TMDB
-
-
-class IndexView(TemplateView):
-    template_name = 'index.html'
-
-
-class JSONCacheView(APIView):
-    serializer_class = JSONCacheSerializer
-
-    def get(self, request):
-        json_table_data = [{"movie": json_table_data.movie, "tv_shows": json_table_data.tv_shows}
-                           for json_table_data in JSONCache.objects.all()]
-        return Response(json_table_data)
-
-    def post(self, request):
-        response_movie = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated()
-        response_tv_shows = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated_tv()
-        data = JSONCache(movie=response_movie, tv_shows=response_tv_shows)
-
-        serializer = JSONCacheSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            data.save()
-            return Response(serializer.data)
 
 
 # Views para autenticação de usuário
@@ -60,31 +34,21 @@ class RegisterView(APIView):
         return Response({'response': serializer.data}, status=status.HTTP_201_CREATED)
 
 
-# Endpoint de teste que só funciona se estiver autenticado
-class testEndPoint(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        data = f"Congratulation {request.user}, your API just responded to GET request"
-        return Response({'response': data}, status=status.HTTP_200_OK)
-
-    def post(self, request):
-        text = request.POST.get('text')
-        data = f'Congratulation your API just responded to POST request with text: {text}'
-        return Response({'response': data}, status=status.HTTP_200_OK)
-
-
+# View de atualização e recuperação das informações do usuário
 class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = UserProfileSerializer
 
-    def get(self, request, user_id):
-        user_profile = UserProfile.objects.get(user=user_id)
-        serializer = UserProfileSerializer(user_profile, context={"request": request})
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        user_profile = UserProfile.objects.get(user=user)
+        serializer = UserProfileSerializer(
+            user_profile, context={"request": request})
         return Response([serializer.data])
 
-    def post(self, request, user_id):
-        user_profile = UserProfile.objects.get(user=user_id)
+    def post(self, request, username):
+        user = User.objects.get(username=username)
+        user_profile = UserProfile.objects.get(user=user)
         data = request.data
         user_profile.profile_pic = data['profile_pic']
         user_profile.birth_date = data['birth_date']
@@ -99,8 +63,30 @@ class UserProfileView(APIView):
         return Response(['success'])
 
 
+class JSONCacheView(APIView):
+    serializer_class = JSONCacheSerializer
+
+    def get(self, request):
+        json_table_data = [{"movie": json_table_data.movie, "tv_shows": json_table_data.tv_shows}
+                           for json_table_data in JSONCache.objects.all()]
+        return Response(json_table_data)
+
+    def post(self, request):
+        response_movie = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated()
+        response_tv_shows = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated_tv()
+        data = JSONCache(movie=response_movie, tv_shows=response_tv_shows)
+
+        serializer = JSONCacheSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            data.save()
+            return Response(serializer.data)
+
+
 # View para lists
 class ListView(APIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
 
     def get(self, request):
@@ -118,6 +104,7 @@ class ListView(APIView):
 
 # View para ratings de usuário
 class RatingView(APIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = RatingSerializer
 
     def get(self, request):
@@ -138,6 +125,7 @@ class RatingView(APIView):
 
 # View para progressos de usuário
 class ProgressView(APIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = ProgressSerializer
 
     def get(self, request):
@@ -170,7 +158,6 @@ class RatingsMovieTvView(APIView):
 
 
 class DetailMovieView(APIView):
-
     def get(self, request, id):
 
         response_movie = TMDB(
@@ -180,7 +167,6 @@ class DetailMovieView(APIView):
 
 
 class DetailTvView(APIView):
-
     def get(self, request, id):
 
         response_movie = TMDB(

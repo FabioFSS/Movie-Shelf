@@ -36,6 +36,7 @@ export default function App() {
                 <NavProvider>
                     <Navbar />
                     <Routes>
+                        {/* Profile routes */}
                         <Route path="/profile" element={<PrivateRoute />}>
                             <Route path="/profile" element={<Profile />} />
                         </Route>
@@ -67,16 +68,16 @@ export default function App() {
                         <Route path="/settings" element={<PrivateRoute />}>
                             <Route path="/settings" element={<Settings />} />
                         </Route>
+
+                        {/* Main routes */}
                         <Route path="/" element={<Home />} />
                         <Route path="/details:id" element={<Details />} />
                         <Route path="/tv" element={<TvShows />} />
                         <Route path="/tvdetails:id" element={<TvDetails />} />
                         <Route path="/listdetails" element={<ListDetails />} />
                         <Route path="/login" element={<Login />} />
-
                         <Route path="/ratings:id" element={<Ratings />} />
                         <Route path="/ratings" element={<Ratings />} />
-
                         <Route path="/reset" element={<Reset />} />
                         <Route path="/signup" element={<SignUp />} />
                     </Routes>

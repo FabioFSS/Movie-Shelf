@@ -17,15 +17,20 @@ import AuthContext from "../../contexts/AuthContext";
 import axios from "axios";
 
 function Navbar() {
-    const { user, logoutUser, authTokens } = useContext(AuthContext);
+    // contexts
+    const { user, authTokens } = useContext(AuthContext);
     const { visibility } = useContext(NavContext);
 
+    // states
     const [userData, setUserData] = useState([]);
 
+    // retrieves the user's data from backend server
     useEffect(() => {
         if (user) {
             axios
-                .get(`http://localhost:8000/user_profile/${user.id}`, {headers: { Authorization: `Bearer ${authTokens?.access}` }})
+                .get(`http://localhost:8000/user_profile/${user.username}`, {
+                    headers: { Authorization: `Bearer ${authTokens?.access}` },
+                })
                 .then((res) => {
                     console.log(res.data);
                     setUserData(res.data);
@@ -49,7 +54,7 @@ function Navbar() {
             </div>
 
             <div className="rightSide">
-                {user ?  (
+                {user ? (
                     userData.map((item, key) => (
                         <>
                             <input type="text" placeholder="Search" />
@@ -63,13 +68,10 @@ function Navbar() {
                             </AccountDropdown>
                             <ul className="account-dropdown"></ul>
                         </>
-                    )
-                    )
-
+                    ))
                 ) : (
-                    <Link to='/login'>Login</Link>
-                )
-                }
+                    <Link to="/login">Login</Link>
+                )}
             </div>
         </nav>
     );

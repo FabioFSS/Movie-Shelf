@@ -1,3 +1,4 @@
+// styles
 import styles from "../styles/ProfileData.module.css";
 
 function ProfileData({

@@ -16,14 +16,15 @@ export default function Scroll() {
     const [username, setUsername] = useState("");
     const [password, setPasword] = useState("");
     const [nav, setNav] = useState(true);
-    
+
     // contexts
     const { loginUser } = useContext(AuthContext);
     const { isVisible } = useContext(NavContext);
-    
+
     // hooks
     const navigate = useNavigate();
 
+    // makes the navbar invisible
     useEffect(() => {
         if (nav) {
             isVisible("hidden");
@@ -31,7 +32,7 @@ export default function Scroll() {
         }
     }, []);
 
-
+    // toggles the password visibility
     const changeTypePassword = () => {
         if (typePassword === "password") {
             setTypePassword("text");
@@ -40,6 +41,7 @@ export default function Scroll() {
         }
     };
 
+    // handles the user login
     const handleLogin = (e) => {
         e.preventDefault();
         username.length > 0 && loginUser(username, password);

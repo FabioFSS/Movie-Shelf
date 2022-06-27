@@ -1,12 +1,19 @@
+// react
 import React, { useState, useContext, useEffect } from "react";
-import styles from "./styles.module.css";
 import { FaEnvelope } from "react-icons/fa";
 
+// styles
+import styles from "./styles.module.css";
+
+// contexts
 import { NavContext } from "../../contexts/navbar";
 
 export default function Scroll() {
-    const [email, setEmail] = useState();
+    // contexts
     const { isVisible } = useContext(NavContext);
+
+    // states
+    const [email, setEmail] = useState();
     const [nav, setNav] = useState(true);
 
     useEffect(() => {

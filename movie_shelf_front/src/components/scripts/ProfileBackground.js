@@ -1,3 +1,4 @@
+// styles
 import styles from "../styles/ProfileBackground.module.css";
 
 function ProfileBackground() {

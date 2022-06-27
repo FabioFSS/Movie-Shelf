@@ -45,6 +45,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
+# Serializador para as informações de um perfil de usuário
 class UserProfileSerializer(serializers.ModelSerializer):
     profile_pic = serializers.ImageField(max_length=None, use_url=True)
 

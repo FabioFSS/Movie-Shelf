@@ -1,7 +1,10 @@
+// react
 import React, { useEffect, useState } from "react";
 import { FaStar, FaPlus, FaComment } from "react-icons/fa";
-import styles from "../styles/DetailTv.module.css";
 import { useNavigate } from "react-router-dom";
+
+// styles
+import styles from "../styles/DetailTv.module.css";
 
 export default function DetailMovie({ details, poster, reiews }) {
     const navigate = useNavigate();

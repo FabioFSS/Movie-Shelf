@@ -1,5 +1,8 @@
-import styles from "../styles/StatisticsData.module.css";
+// react
 import PropTypes from "prop-types";
+
+// styles
+import styles from "../styles/StatisticsData.module.css";
 
 function StatisticsData({ title, value, style }) {
     return (
