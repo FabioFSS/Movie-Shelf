@@ -84,11 +84,10 @@ export default function Scroll() {
                                 })
                                 .then((res) => {
                                     console.log(res.data)
-                                    if (res.data[0] == "success") {
-                                        navigate("/");
-                                        isVisible('visible')
-                                        setNav(true);
-                                    }
+                                    localStorage.setItem('csrftoken', res.data.key)
+                                    navigate("/");
+                                    isVisible('visible')
+                                    setNav(true);
                                 });
                         }}
                     >

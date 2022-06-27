@@ -1,11 +1,15 @@
 from django.views.generic import TemplateView
+from .models import JSONCache, UserProfile, List, Rating, Progress
+from .serializers import DjangoUserSerializer, JSONCacheSerializer, UserLoginSerializer, UserProfileSerializer, ListSerializer, RatingSerializer, ProgressSerializer
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout
+from api.tmdb import TMDB
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import JSONCache, UserProfile, List, Rating, Progress
-from .serializer import DjangoUserSerializer, JSONCacheSerializer, UserLoginSerializer, UserProfileSerializer, ListSerializer, RatingSerializer, ProgressSerializer
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from api.tmdb import TMDB
+from rest_framework import permissions, status
+from rest_framework.response import Response
+from rest_framework.generics import RetrieveAPIView
+
 
 
 class IndexView(TemplateView):
@@ -35,20 +39,15 @@ class JSONCacheView(APIView):
 
 class UserLoginView(APIView):
     serializer_class = UserLoginSerializer
-    def get(self, request):
-        if request.user.is_authenticated:
-            return Response(['authenticated'])
-        else:
-            return Response(['not authenticated'])
+    permission_classes = (permissions.AllowAny,)
 
-    def post(self, request):
-        username = request.data['username']
-        password = request.data['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-
-        return Response(['success'] if user else ['fail'])
+    def post(self, request, format=None):
+        serializer = UserLoginSerializer(data=self.request.data,
+            context={ 'request': self.request })
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)
+        return Response(None, status=status.HTTP_202_ACCEPTED)
 
 
 class UserLogoutView(APIView):
@@ -75,13 +74,12 @@ class UserRegisterView(APIView):
             return Response(['fail'])
 
 
-class UserProfileView(APIView):
+class UserProfileView(RetrieveAPIView):
+    permission_classes = (permissions.AllowAny,)
     serializer_class = UserProfileSerializer
 
-    def get(self, request, user_id):
-        user_profile = UserProfile.objects.get(id=user_id)
-        serializer = UserProfileSerializer(user_profile, context={"request": request})
-        return Response([serializer.data])
+    def get_object(self):
+        return self.request.user
 
     def post(self, request, user_id):
         user_profile = UserProfile.objects.get(id=user_id)

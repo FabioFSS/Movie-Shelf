@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'api',
     'corsheaders',
     'rest_framework',
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -56,11 +57,11 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 CORS_ORIGIN_ALLOW_ALL = True

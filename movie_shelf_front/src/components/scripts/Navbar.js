@@ -6,6 +6,7 @@ import DropdownMenu from "./DropdownMenu";
 import NavItem from "./NavItem";
 import logo from "../../assets/logo.png";
 import "../styles/Navbar.css";
+import Cookies from 'js-cookie'
 
 import { NavContext } from "../../contexts/navbar";
 
@@ -14,7 +15,7 @@ function Navbar() {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/user/${user_id}`).then((res) => {
+        axios.get(`http://localhost:8000/user_profile/`, {headers: {'X-CSRFToken': localStorage.getItem('csrftoken')}}).then((res) => {
             setUser(res.data);
         });
     }, [user_id]);

@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const NavContext = createContext({});
 
-export default function NavPrivider({ children }) {
+export default function NavPovider({ children }) {
     const [visible, setVitible] = useState("visible");
 
     function isVisible(newVisible) {
