@@ -1,25 +1,22 @@
-import React, { useContext, useState, useEffect } from "react";
+// react
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
+// components
 import AccountDropdown from "./AccountDropdown";
 import DropdownMenu from "./DropdownMenu";
 import NavItem from "./NavItem";
+
+// assets and styles
 import logo from "../../assets/logo.png";
 import "../styles/Navbar.css";
-import Cookies from 'js-cookie'
 
+// contexts
 import { NavContext } from "../../contexts/navbar";
+import AuthContext from "../../contexts/AuthContext";
 
 function Navbar() {
-    let user_id = 2;
-    const [user, setUser] = useState([]);
-
-    useEffect(() => {
-        axios.get(`http://localhost:8000/user_profile/`, {headers: {'X-CSRFToken': localStorage.getItem('csrftoken')}}).then((res) => {
-            setUser(res.data);
-        });
-    }, [user_id]);
-
+    const { user, logoutUser } = useContext(AuthContext);
     const { visibility } = useContext(NavContext);
 
     return (
@@ -38,15 +35,22 @@ function Navbar() {
             </div>
 
             <div className="rightSide">
-                <input type="text" placeholder="Search" />
-                <AccountDropdown>
-                    {user.map((user) => (
-                        <NavItem icon={user.profile_pic} className="profileImg">
-                            <DropdownMenu></DropdownMenu>
-                        </NavItem>
-                    ))}
-                </AccountDropdown>
-                <ul className="account-dropdown"></ul>
+                {user ? (
+                    <>
+                        <input type="text" placeholder="Search" />
+                        <AccountDropdown>
+                            <NavItem
+                                icon={user.profile_pic}
+                                className="profileImg"
+                            >
+                                <DropdownMenu></DropdownMenu>
+                            </NavItem>
+                        </AccountDropdown>
+                        <ul className="account-dropdown"></ul>
+                    </>
+                ) : (
+                    <></>
+                )}
             </div>
         </nav>
     );

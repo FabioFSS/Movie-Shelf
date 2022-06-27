@@ -1,14 +1,28 @@
+// react
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./styles.module.css";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import axios from "axios";
+
+// styles
+import styles from "./styles.module.css";
+
+// contexts
 import { NavContext } from "../../contexts/navbar";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function Scroll() {
-    const navigate = useNavigate();
-    const { isVisible } = useContext(NavContext);
+    // states
+    const [typePassword, setTypePassword] = useState("password");
+    const [username, setUsername] = useState("");
+    const [password, setPasword] = useState("");
     const [nav, setNav] = useState(true);
+    
+    // contexts
+    const { loginUser } = useContext(AuthContext);
+    const { isVisible } = useContext(NavContext);
+    
+    // hooks
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (nav) {
@@ -17,9 +31,6 @@ export default function Scroll() {
         }
     }, []);
 
-    const [typePassword, setTypePassword] = useState("password");
-    const [username, setUsername] = useState("");
-    const [password, setPasword] = useState("");
 
     const changeTypePassword = () => {
         if (typePassword === "password") {
@@ -27,6 +38,13 @@ export default function Scroll() {
         } else {
             setTypePassword("password");
         }
+    };
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        username.length > 0 && loginUser(username, password);
+        isVisible("visible");
+        setNav(true);
     };
 
     window.scrollTo({
@@ -76,20 +94,7 @@ export default function Scroll() {
                     <button
                         className={styles.buttonLogin}
                         disabled={!username || !password}
-                        onClick={() => {
-                            const res = axios
-                                .post("http://localhost:8000/login/", {
-                                    username: username,
-                                    password: password,
-                                })
-                                .then((res) => {
-                                    console.log(res.data)
-                                    localStorage.setItem('csrftoken', res.data.key)
-                                    navigate("/");
-                                    isVisible('visible')
-                                    setNav(true);
-                                });
-                        }}
+                        onClick={handleLogin}
                     >
                         <p>LOGAR</p>
                     </button>

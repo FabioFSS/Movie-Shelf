@@ -1,17 +1,14 @@
 from django.views.generic import TemplateView
-
-from api.serializer import RatingsMovieTvSerializer
-from .models import JSONCache, RatingMovieTv, UserProfile, List, Rating, Progress
-from .serializers import DjangoUserSerializer, JSONCacheSerializer, UserLoginSerializer, UserProfileSerializer, ListSerializer, RatingSerializer, ProgressSerializer
 from django.contrib.auth.models import User
-from django.contrib.auth import login, logout
-from api.tmdb import TMDB
+from .models import JSONCache, RatingMovieTv, List, Rating, Progress
+from .serializers import JSONCacheSerializer, ListSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer
 from rest_framework.views import APIView
+from rest_framework import status
 from rest_framework.response import Response
-from rest_framework import permissions, status
-from rest_framework.response import Response
-from rest_framework.generics import RetrieveAPIView
-
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from .tmdb import TMDB
 
 
 class IndexView(TemplateView):
@@ -39,67 +36,45 @@ class JSONCacheView(APIView):
             return Response(serializer.data)
 
 
-class UserLoginView(APIView):
-    serializer_class = UserLoginSerializer
-    permission_classes = (permissions.AllowAny,)
-
-    def post(self, request, format=None):
-        serializer = UserLoginSerializer(data=self.request.data,
-            context={ 'request': self.request })
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        login(request, user)
-        return Response(None, status=status.HTTP_202_ACCEPTED)
+# Views para autenticação de usuário
+# Obtenção de token de autenticação
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
-class UserLogoutView(APIView):
-    def post(self, request):
-        logout(request)
-        return Response(['success'])
-
-
-class UserRegisterView(APIView):
-    serializer_class = DjangoUserSerializer
+# View de registro de usuário
+class RegisterView(APIView):
+    permission_classes = (AllowAny,)
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
 
     def get(self, request):
         users = User.objects.all()
-        serializer = DjangoUserSerializer(users, context={"request": request}, many=True)
-        return Response([serializer.data])
+        serializer = RegisterSerializer(users, many=True)
+        return Response(serializer.data)
 
     def post(self, request):
-        serializer = DjangoUserSerializer(data=request.data)
+        serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            data = serializer.data
-            User.objects.create_user(username=data['username'], password=data['password'], email=data['email'])
-            return Response(['success'])
-        else:
-            return Response(['fail'])
+            serializer.save()
+        return Response(serializer.data)
 
 
-class UserProfileView(RetrieveAPIView):
-    permission_classes = (permissions.AllowAny,)
-    serializer_class = UserProfileSerializer
+# Endpoint de teste que só funciona se estiver autenticado
+class testEndPoint(APIView):
+    permission_classes = [IsAuthenticated]
 
-    def get_object(self):
-        return self.request.user
+    def get(self, request):
+        data = f"Congratulation {request.user}, your API just responded to GET request"
+        return Response({'response': data}, status=status.HTTP_200_OK)
 
-    def post(self, request, user_id):
-        user_profile = UserProfile.objects.get(id=user_id)
-        data = request.data
-        user_profile.profile_pic = data['profile_pic']
-        user_profile.birth_date = data['birth_date']
-        user_profile.gender = data['gender']
-        user_profile.location = data['location']
-        user_profile.language = data['language']
-        user_profile.bio = data['bio']
-        user_profile.content_completed = data['content_completed']
-        user_profile.average_rating = data['average_rating']
-        user_profile.review_number = data['review_number']
-        user_profile.save()
-        return Response(['success'])
+    def post(self, request):
+        text = request.POST.get('text')
+        data = f'Congratulation your API just responded to POST request with text: {text}'
+        return Response({'response': data}, status=status.HTTP_200_OK)
 
 
-
+# View para lists
 class ListView(APIView):
     serializer_class = ListSerializer
 
@@ -116,6 +91,7 @@ class ListView(APIView):
             return Response(serializer.data)
 
 
+# View para ratings de usuário
 class RatingView(APIView):
     serializer_class = RatingSerializer
 
@@ -135,6 +111,7 @@ class RatingView(APIView):
             return Response(serializer.data)
 
 
+# View para progressos de usuário
 class ProgressView(APIView):
     serializer_class = ProgressSerializer
 
@@ -171,14 +148,17 @@ class DetailMovieView(APIView):
 
     def get(self, request, id):
 
-        response_movie = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_movie(id)
+        response_movie = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_movie(id)
 
         return Response([response_movie])
+
 
 class DetailTvView(APIView):
 
     def get(self, request, id):
 
-        response_movie = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(id)
+        response_movie = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(id)
 
         return Response([response_movie])

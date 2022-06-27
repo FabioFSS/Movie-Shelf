@@ -1,6 +1,18 @@
+// react
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// utils
+import PrivateRoute from "./utils/PrivateRoute";
+
+// components
 import Navbar from "./components/scripts/Navbar";
+
+// contexts
+import NavProvider from "./contexts/navbar";
+import { AuthProvider } from "./contexts/AuthContext";
+
+// pages
 import Details from "./pages/Details";
 import TvShows from "./pages/TvShows";
 import TvDetails from "./pages/TvDetails";
@@ -17,16 +29,16 @@ import Reset from "./pages/Reset";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 
-import NavPrivider from "./contexts/navbar";
-
 export default function App() {
     return (
         <BrowserRouter>
-            <NavPrivider>
-                <Navbar />
-                <main>
+            <AuthProvider>
+                <NavProvider>
+                    <Navbar />
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/" element={<PrivateRoute />}>
+                            <Route path="/" element={<Home />} />
+                        </Route>
                         <Route path="/details:id" element={<Details />} />
                         <Route path="/tv" element={<TvShows />} />
                         <Route path="/tvdetails:id" element={<TvDetails />} />
@@ -43,7 +55,7 @@ export default function App() {
                             path="/progressdetailsseason"
                             element={<ProgressDetailsSeason />}
                         />
-                        
+
                         <Route path="/ratings:id" element={<Ratings />} />
                         <Route path="/ratings" element={<Ratings />} />
 
@@ -51,8 +63,8 @@ export default function App() {
                         <Route path="/settings" element={<Settings />} />
                         <Route path="/signup" element={<SignUp />} />
                     </Routes>
-                </main>
-            </NavPrivider>
+                </NavProvider>
+            </AuthProvider>
         </BrowserRouter>
     );
 }
