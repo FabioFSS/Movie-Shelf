@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
-from .models import JSONCache, RatingMovieTv, List, Rating, Progress
-from .serializers import JSONCacheSerializer, ListSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
+from .models import JSONCache, RatingMovieTv, List, Rating, Progress, UserProfile
+from .serializers import JSONCacheSerializer, ListSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer, UserProfileSerializer
 from .serializers import MyTokenObtainPairSerializer, RegisterSerializer
 from rest_framework.views import APIView
 from rest_framework import status
@@ -72,6 +72,31 @@ class testEndPoint(APIView):
         text = request.POST.get('text')
         data = f'Congratulation your API just responded to POST request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
+
+
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserProfileSerializer
+
+    def get(self, request, user_id):
+        user_profile = UserProfile.objects.get(user=user_id)
+        serializer = UserProfileSerializer(user_profile, context={"request": request})
+        return Response([serializer.data])
+
+    def post(self, request, user_id):
+        user_profile = UserProfile.objects.get(user=user_id)
+        data = request.data
+        user_profile.profile_pic = data['profile_pic']
+        user_profile.birth_date = data['birth_date']
+        user_profile.gender = data['gender']
+        user_profile.location = data['location']
+        user_profile.language = data['language']
+        user_profile.bio = data['bio']
+        user_profile.content_completed = data['content_completed']
+        user_profile.average_rating = data['average_rating']
+        user_profile.review_number = data['review_number']
+        user_profile.save()
+        return Response(['success'])
 
 
 # View para lists

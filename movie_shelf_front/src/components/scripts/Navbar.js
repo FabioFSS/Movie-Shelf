@@ -1,5 +1,5 @@
 // react
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // components
@@ -14,10 +14,24 @@ import "../styles/Navbar.css";
 // contexts
 import { NavContext } from "../../contexts/navbar";
 import AuthContext from "../../contexts/AuthContext";
+import axios from "axios";
 
 function Navbar() {
-    const { user, logoutUser } = useContext(AuthContext);
+    const { user, logoutUser, authTokens } = useContext(AuthContext);
     const { visibility } = useContext(NavContext);
+
+    const [userData, setUserData] = useState([]);
+
+    useEffect(() => {
+        if (user) {
+            axios
+                .get(`http://localhost:8000/user_profile/${user.id}`, {headers: { Authorization: `Bearer ${authTokens?.access}` }})
+                .then((res) => {
+                    console.log(res.data);
+                    setUserData(res.data);
+                });
+        }
+    }, []);
 
     return (
         <nav className="Navbar" style={{ visibility: visibility }}>
@@ -35,22 +49,27 @@ function Navbar() {
             </div>
 
             <div className="rightSide">
-                {user ? (
-                    <>
-                        <input type="text" placeholder="Search" />
-                        <AccountDropdown>
-                            <NavItem
-                                icon={user.profile_pic}
-                                className="profileImg"
-                            >
-                                <DropdownMenu></DropdownMenu>
-                            </NavItem>
-                        </AccountDropdown>
-                        <ul className="account-dropdown"></ul>
-                    </>
+                {user ?  (
+                    userData.map((item, key) => (
+                        <>
+                            <input type="text" placeholder="Search" />
+                            <AccountDropdown>
+                                <NavItem
+                                    icon={item.profile_pic}
+                                    className="profileImg"
+                                >
+                                    <DropdownMenu></DropdownMenu>
+                                </NavItem>
+                            </AccountDropdown>
+                            <ul className="account-dropdown"></ul>
+                        </>
+                    )
+                    )
+
                 ) : (
-                    <></>
-                )}
+                    <Link to='/login'>Login</Link>
+                )
+                }
             </div>
         </nav>
     );

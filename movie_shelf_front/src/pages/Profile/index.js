@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import styles from "./styles.module.css";
 import Slider from "../../components/scripts/Slider";
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ProfileStatistics from "../../components/scripts/ProfileStatistics";
+import AuthContext from "../../contexts/AuthContext";
 
 function Profile() {
-    let user_id = 2;
-    const [user, setUser] = useState([]);
+    const { user, logoutUser, authTokens } = useContext(AuthContext);
+    const [userData, setUserData] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/user/${user_id}`).then((res) => {
-            setUser(res.data);
-        });
-    }, [user_id]);
+        if (user) {
+            axios
+                .get(`http://localhost:8000/user_profile/${user.id}`, {headers: { Authorization: `Bearer ${authTokens?.access}` }})
+                .then((res) => {
+                    console.log(res.data);
+                    setUserData(res.data);
+                });
+        }
+    }, []);
 
     window.scrollTo({
         top: 0,
@@ -22,23 +28,23 @@ function Profile() {
 
     return (
         <>
-            {user.map((user) => (
+            {userData.map((userData) => (
                 <div className={styles.page_body}>
                     <ProfileBackground></ProfileBackground>
                     <div className={styles.profile_body}>
                         <ProfileHeader
-                            username={user.username}
-                            location={user.location}
-                            language={user.language}
-                            email={user.email}
-                            birth_date={user.birth_date}
-                            bio={user.bio}
-                            profile_pic={user.profile_pic}
+                            username={userData.username}
+                            location={userData.location}
+                            language={userData.language}
+                            email={userData.email}
+                            birth_date={userData.birth_date}
+                            bio={userData.bio}
+                            profile_pic={userData.profile_pic}
                         ></ProfileHeader>
                         <ProfileStatistics
-                            completed={user.content_completed}
-                            reviews={user.review_number}
-                            average_ratings={user.average_rating}
+                            completed={userData.content_completed}
+                            reviews={userData.review_number}
+                            average_ratings={userData.average_rating}
                         ></ProfileStatistics>
                         <div className={styles.sliders}>
                             <Slider title="Calendar" page={2}></Slider>
