@@ -75,3 +75,30 @@
     font-size: 20px;
     margin-top: 0px;
 }
+
+.comment {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+}
+
+.iconComment {
+    width: 30px;
+    height: 30px;
+}
+
+.iconAdd {
+    width: 40px;
+    height: 40px;
+}
+
+.buttomAdd {
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-left: 30px;
+}
+
+.buttomComment {
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
