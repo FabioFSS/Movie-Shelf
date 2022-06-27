@@ -14,28 +14,36 @@ import "../styles/Navbar.css";
 // contexts
 import { NavContext } from "../../contexts/navbar";
 import AuthContext from "../../contexts/AuthContext";
-import axios from "axios";
+
+// hooks
+import useAxios from "../../utils/useAxios";
 
 function Navbar() {
     // contexts
-    const { user, authTokens } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const { visibility } = useContext(NavContext);
 
     // states
     const [userData, setUserData] = useState([]);
 
-    // retrieves the user's data from backend server
+    // hooks
+    const api = useAxios();
+
+    // recovers from the backend the logged user's data
     useEffect(() => {
-        if (user) {
-            axios
-                .get(`http://localhost:8000/user_profile/${user.username}`, {
-                    headers: { Authorization: `Bearer ${authTokens?.access}` },
-                })
-                .then((res) => {
-                    console.log(res.data);
-                    setUserData(res.data);
-                });
-        }
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(
+                        `/user_profile/${user.username}`
+                    );
+                    setUserData(response.data);
+                } catch {
+                    setUserData("Something went wrong");
+                }
+            }
+        };
+        fetchData();
     }, []);
 
     return (

@@ -16,24 +16,34 @@ import ProfileStatistics from "../../components/scripts/ProfileStatistics";
 // contexts
 import AuthContext from "../../contexts/AuthContext";
 
+// hooks
+import useAxios from "../../utils/useAxios";
+
 function Profile() {
     // contexts
-    const { user, authTokens } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     // states
     const [userData, setUserData] = useState([]);
 
+    // hooks
+    const api = useAxios();
+
     // recovers from the backend the logged user's data
     useEffect(() => {
-        if (user) {
-            axios
-                .get(`http://localhost:8000/user_profile/${user.username}`, {
-                    headers: { Authorization: `Bearer ${authTokens?.access}` },
-                })
-                .then((res) => {
-                    setUserData(res.data);
-                });
-        }
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(
+                        `/user_profile/${user.username}`
+                    );
+                    setUserData(response.data);
+                } catch {
+                    setUserData("Something went wrong");
+                }
+            }
+        };
+        fetchData();
     }, []);
 
     window.scrollTo({
