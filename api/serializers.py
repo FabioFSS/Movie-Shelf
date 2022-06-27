@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
-from .models import JSONCache, List, Rating, Progress
+from .models import JSONCache, List, Rating, Progress, UserProfile
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -12,6 +12,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token['username'] = user.username
         token['email'] = user.email
+        token['id'] = user.id
 
         return token
 
@@ -42,6 +43,21 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    profile_pic = serializers.ImageField(max_length=None, use_url=True)
+
+    class Meta:
+        model = UserProfile
+        fields = ['user', 'profile_pic', 'birth_date', 'gender',
+                  'location', 'language', 'bio', 'content_completed',
+                  'average_rating', 'review_number']
+
+    def get_photo_url(self, obj):
+        request = self.context.get('request')
+        photo_url = obj.fingerprint.url
+        return request.build_absolute_uri(photo_url)
 
 
 class JSONCacheSerializer(serializers.ModelSerializer):
