@@ -57,7 +57,7 @@ class RegisterView(APIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
-        return Response(serializer.data)
+        return Response({'response': serializer.data}, status=status.HTTP_201_CREATED)
 
 
 # Endpoint de teste que só funciona se estiver autenticado

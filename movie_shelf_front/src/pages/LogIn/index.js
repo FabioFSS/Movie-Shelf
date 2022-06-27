@@ -43,8 +43,6 @@ export default function Scroll() {
     const handleLogin = (e) => {
         e.preventDefault();
         username.length > 0 && loginUser(username, password);
-        isVisible("visible");
-        setNav(true);
     };
 
     window.scrollTo({

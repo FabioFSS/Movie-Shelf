@@ -4,6 +4,7 @@ import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { NavContext } from "../../contexts/navbar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function Scroll() {
     const navigate = useNavigate();
@@ -12,6 +13,9 @@ export default function Scroll() {
     const [email, setEmail] = useState();
     const [password, setPasword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+
+    // contexts
+    const { registerUser } = useContext(AuthContext);
 
     const { isVisible } = useContext(NavContext);
     const [nav, setNav] = useState(true);
@@ -29,6 +33,16 @@ export default function Scroll() {
         } else {
             setTypePassword("password");
         }
+    };
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        username.length > 0 &&
+            email.length > 0 &&
+            password.length > 0 &&
+            confirmPassword.length > 0 &&
+            registerUser(username, password, confirmPassword);
+        isVisible("visible");
     };
 
     window.scrollTo({
@@ -96,21 +110,7 @@ export default function Scroll() {
                     <button
                         className={styles.button_sign_up}
                         disabled={!email || !password}
-                        onClick={() => {
-                            if (password == confirmPassword) {
-                                axios.post("http://localhost:8000/register/", {
-                                    username: username,
-                                    password: password,
-                                    email: email,
-                                }).then(
-                                    (res) => {
-                                        if (res.data[0] == 'success'){
-                                            navigate('/login')
-                                        }
-                                    }
-                                );
-                            }
-                        }}
+                        onClick={handleRegister}
                     >
                         <p>CREATE</p>
                     </button>
