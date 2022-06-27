@@ -1,6 +1,11 @@
-import styles from "../styles/ProfileStatistics.module.css";
-import StatisticsData from "./StatisticsData";
+// react
 import PropTypes from "prop-types";
+
+// styles
+import styles from "../styles/ProfileStatistics.module.css";
+
+// components
+import StatisticsData from "./StatisticsData";
 
 function ProfileStatistics({ completed, reviews, average_ratings }) {
     return (

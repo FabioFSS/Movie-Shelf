@@ -1,7 +1,10 @@
+// react
 import React from "react";
 import { FaStar, FaPlus, FaComment } from "react-icons/fa";
-import styles from "../styles/DetailMovie.module.css";
 import { useNavigate } from "react-router-dom";
+
+// styles
+import styles from "../styles/DetailMovie.module.css";
 
 export default function DetailMovie({ details, poster, reiews }) {
     const navigate = useNavigate();
@@ -21,18 +24,20 @@ export default function DetailMovie({ details, poster, reiews }) {
                     </div>
                     <div className={styles.detailsContainer}>
                         <div className={styles.comment}>
-                            <button className={styles.buttomComment}
+                            <button
+                                className={styles.buttomComment}
                                 onClick={() => {
                                     navigate(`/ratings:id=${details.id}`);
                                 }}
-                            >   
+                            >
                                 <FaComment className={styles.iconComment} />
                             </button>
-                            <button className={styles.buttomAdd}
+                            <button
+                                className={styles.buttomAdd}
                                 onClick={() => {
                                     navigate("/lists");
                                 }}
-                            >   
+                            >
                                 <FaPlus className={styles.iconAdd} />
                             </button>
                         </div>

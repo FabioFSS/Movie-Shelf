@@ -1,5 +1,8 @@
-import styles from "../styles/TVShowProgress.module.css";
+// react
 import PropTypes from "prop-types";
+
+// styles
+import styles from "../styles/TVShowProgress.module.css";
 
 function TVShowProgress({ link, title, description, banner, value }) {
     return (

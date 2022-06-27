@@ -1,9 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.contrib.auth.models import User
 from django.dispatch import receiver
 
 
+# Cache definitions
 class JSONCache(models.Model):
     add_time = models.DateTimeField('Creation time', auto_now_add=True)
     movie = models.JSONField('Movies')
@@ -14,6 +15,7 @@ class JSONCache(models.Model):
         verbose_name_plural = 'JSONCaches'
 
 
+# User profile definitions
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(
@@ -31,15 +33,19 @@ class UserProfile(models.Model):
         verbose_name = 'User Profile'
         verbose_name_plural = 'User Profiles'
 
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
 
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
+
+# User activities definitions
 class List(models.Model):
     name = models.CharField('List name', max_length=100)
     description = models.TextField('Description')

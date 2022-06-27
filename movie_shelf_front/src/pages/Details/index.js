@@ -1,9 +1,15 @@
+// react
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
+// services
 import { api, apiKey, language } from "../../services/api";
+
+// styles
+import "./styles.css";
+
+// components
 import DetailMovie from "../../components/scripts/DetailMovie";
 import Trailer from "../../components/scripts/Trailer";
-import "./styles.css";
 
 export default function Details() {
     const [movieId] = useState(window.location.href.split("=")[1]);
@@ -29,7 +35,7 @@ export default function Details() {
     //         );
 
     //         setTrailerId(res.data[0].trailer_id);
-            
+
     //     });
     // }, [movieId]);
 

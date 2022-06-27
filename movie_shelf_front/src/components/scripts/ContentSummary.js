@@ -1,5 +1,8 @@
-import styles from "../styles/ContentSummary.module.css";
+// react
 import PropTypes from "prop-types";
+
+// styles
+import styles from "../styles/ContentSummary.module.css";
 
 function ContentSummary({ link, title, banner, description }) {
     return (

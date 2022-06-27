@@ -1,14 +1,21 @@
+// react
 import React from "react";
+
+// styles
 import styles from "./styles.module.css";
+
+// components
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ContentSummary from "../../components/scripts/ContentSummary";
 import ContentBanner from "../../components/scripts/ContentBanner";
-import banner1 from "../../components/image-item/berserk.jpg";
-import banner2 from "../../components/image-item/cue.jpg";
-import banner3 from "../../components/image-item/kamikazui no nigiatari.jpg";
-import banner4 from "../../components/image-item/sabikui disco.jpg";
-import banner5 from "../../components/image-item/spyxfamily.jpg";
+
+// assets
+import banner1 from "../../assets/image-item/berserk.jpg";
+import banner2 from "../../assets/image-item/cue.jpg";
+import banner3 from "../../assets/image-item/kamikazui no nigiatari.jpg";
+import banner4 from "../../assets/image-item/sabikui disco.jpg";
+import banner5 from "../../assets/image-item/spyxfamily.jpg";
 import description_banner from "../../assets/banner.png";
 
 function ListDetails() {

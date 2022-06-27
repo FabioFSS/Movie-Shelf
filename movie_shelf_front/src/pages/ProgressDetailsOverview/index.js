@@ -1,10 +1,16 @@
+// react
 import React from "react";
+
+// styles
 import styles from "./styles.module.css";
+
+// components
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ContentBanner from "../../components/scripts/ContentBanner";
-import description_banner from "../../assets/seasons_banners/banner.jpg";
 import ContentBox from "../../components/scripts/ContentBox";
+
+// assets
 import season1 from "../../assets/seasons_banners/season1.jpg";
 import season2 from "../../assets/seasons_banners/season2.jpg";
 import season3 from "../../assets/seasons_banners/season3.jpg";
@@ -12,6 +18,7 @@ import season4 from "../../assets/seasons_banners/season4.jpg";
 import season5 from "../../assets/seasons_banners/season5.jpg";
 import season6 from "../../assets/seasons_banners/season6.jpg";
 import season7 from "../../assets/seasons_banners/season7.jpg";
+import description_banner from "../../assets/seasons_banners/banner.jpg";
 
 function ProgressDetailsOverview() {
     window.scrollTo({

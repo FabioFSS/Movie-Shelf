@@ -1,10 +1,17 @@
+// react
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
+// services
 import { api, apiKey, language } from "../../services/api";
-import DetailTv from "../../components/scripts/DetailTv";
+
+// styles
 import styles from "./styles.module.css";
 
+// components
+import DetailTv from "../../components/scripts/DetailTv";
+
 export default function TvDetails() {
+    // states
     const [tvId] = useState(window.location.href.split("=")[1]);
     const [background, setBackground] = useState(null);
     const [details, setDetails] = useState(null);
@@ -25,7 +32,7 @@ export default function TvDetails() {
     //         setPoster(
     //             `https://image.tmdb.org/t/p/w342/${res.data[0].poster}`
     //         );
-            
+
     //     });
     // }, [tvId]);
 

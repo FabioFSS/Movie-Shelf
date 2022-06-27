@@ -1,5 +1,10 @@
+// react
 import React from "react";
+
+// styles
 import styles from "./styles.module.css";
+
+// components
 import HomeHeader from "../../components/scripts/HomeHeader";
 import Slider from "../../components/scripts/Slider";
 

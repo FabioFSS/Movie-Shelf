@@ -1,22 +1,36 @@
+// react
 import React, { useState, useEffect, useContext } from "react";
+
+// other libs
 import axios from "axios";
+
+// styles
 import styles from "./styles.module.css";
+
+// components
 import Slider from "../../components/scripts/Slider";
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ProfileStatistics from "../../components/scripts/ProfileStatistics";
+
+// contexts
 import AuthContext from "../../contexts/AuthContext";
 
 function Profile() {
-    const { user, logoutUser, authTokens } = useContext(AuthContext);
+    // contexts
+    const { user, authTokens } = useContext(AuthContext);
+
+    // states
     const [userData, setUserData] = useState([]);
 
+    // recovers from the backend the logged user's data
     useEffect(() => {
         if (user) {
             axios
-                .get(`http://localhost:8000/user_profile/${user.id}`, {headers: { Authorization: `Bearer ${authTokens?.access}` }})
+                .get(`http://localhost:8000/user_profile/${user.username}`, {
+                    headers: { Authorization: `Bearer ${authTokens?.access}` },
+                })
                 .then((res) => {
-                    console.log(res.data);
                     setUserData(res.data);
                 });
         }
