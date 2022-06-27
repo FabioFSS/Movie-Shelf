@@ -43,7 +43,10 @@ export default function App() {
                             path="/progressdetailsseason"
                             element={<ProgressDetailsSeason />}
                         />
+                        
+                        <Route path="/ratings:id" element={<Ratings />} />
                         <Route path="/ratings" element={<Ratings />} />
+
                         <Route path="/reset" element={<Reset />} />
                         <Route path="/settings" element={<Settings />} />
                         <Route path="/signup" element={<SignUp />} />

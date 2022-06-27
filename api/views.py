@@ -1,5 +1,7 @@
 from django.views.generic import TemplateView
-from .models import JSONCache, UserProfile, List, Rating, Progress
+
+from api.serializer import RatingsMovieTvSerializer
+from .models import JSONCache, RatingMovieTv, UserProfile, List, Rating, Progress
 from .serializers import DjangoUserSerializer, JSONCacheSerializer, UserLoginSerializer, UserProfileSerializer, ListSerializer, RatingSerializer, ProgressSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
@@ -144,6 +146,22 @@ class ProgressView(APIView):
 
     def post(self, request):
         serializer = ProgressSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+
+class RatingsMovieTvView(APIView):
+    serializer_class = RatingsMovieTvSerializer
+
+    def get(self, request):
+        progresses = [{'idMovieTv': ratingtvmovie.idMovieTv, 'comment': ratingtvmovie.comment, 'vote': ratingtvmovie.vote, 'user_fk': ratingtvmovie.user_fk}
+                      for ratingtvmovie in RatingMovieTv.objects.all()]
+
+        return Response(progresses)
+
+    def post(self, request):
+        serializer = RatingsMovieTvSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)

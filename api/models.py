@@ -68,3 +68,14 @@ class Progress(models.Model):
     class Meta:
         verbose_name = 'Progress'
         verbose_name_plural = "Progresses"
+
+
+class RatingMovieTv(models.Model):
+    idMovieTv = models.IntegerField()
+    comment = models.TextField()
+    vote = models.IntegerField()
+    user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'RatingMovieTv'
+        verbose_name_plural = "RatingsMoviesTvs"
