@@ -119,3 +119,8 @@ class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Progress
         fields = ['count', 'user_fk']
+
+class RatingsMovieTvSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = ['idMovieTv', 'comment', 'vote', 'user_fk']
