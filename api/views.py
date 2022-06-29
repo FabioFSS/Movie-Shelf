@@ -99,7 +99,6 @@ class UserProfileView(APIView):
         return Response(['success'])
 
 
-
 class ListView(APIView):
     serializer_class = ListSerializer
 
