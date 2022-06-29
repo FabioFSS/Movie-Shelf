@@ -1,16 +1,21 @@
+// react
 import React from "react";
+
+// styles
 import styles from "./styles.module.css";
-import Navbar from "../../components/scripts/Navbar";
-import { BrowserRouter as Router } from "react-router-dom";
+
+// components
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ContentBanner from "../../components/scripts/ContentBanner";
-import description_banner from "../../assets/seasons_banners/banner.jpg";
 import ContentSummary from "../../components/scripts/ContentSummary";
+
+// assets
 import episode1 from "../../assets/lists_banners/banner2.png";
 import episode2 from "../../assets/lists_banners/banner3.png";
 import episode3 from "../../assets/lists_banners/banner4.png";
 import episode4 from "../../assets/lists_banners/banner5.png";
+import description_banner from "../../assets/seasons_banners/banner.jpg";
 
 function ProgressDetailsSeason() {
     window.scrollTo({

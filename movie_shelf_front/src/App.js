@@ -1,6 +1,18 @@
+// react
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// utils
+import PrivateRoute from "./utils/PrivateRoute";
+
+// components
 import Navbar from "./components/scripts/Navbar";
+
+// contexts
+import NavProvider from "./contexts/navbar";
+import { AuthProvider } from "./contexts/AuthContext";
+
+// pages
 import Details from "./pages/Details";
 import TvShows from "./pages/TvShows";
 import TvDetails from "./pages/TvDetails";
@@ -17,42 +29,60 @@ import Reset from "./pages/Reset";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 
-import NavPrivider from "./contexts/navbar";
-
 export default function App() {
     return (
         <BrowserRouter>
-            <NavPrivider>
-                <Navbar />
-                <main>
+            <AuthProvider>
+                <NavProvider>
+                    <Navbar />
                     <Routes>
+                        {/* Profile routes */}
+                        <Route path="/profile" element={<PrivateRoute />}>
+                            <Route path="/profile" element={<Profile />} />
+                        </Route>
+                        <Route path="/lists" element={<PrivateRoute />}>
+                            <Route path="/lists" element={<Lists />} />
+                        </Route>
+                        <Route path="/progress" element={<PrivateRoute />}>
+                            <Route path="/progress" element={<Progress />} />
+                        </Route>
+
+                        <Route
+                            path="/progressdetailsoverview"
+                            element={<PrivateRoute />}
+                        >
+                            <Route
+                                path="/progressdetailsoverview"
+                                element={<ProgressDetailsOverview />}
+                            />
+                        </Route>
+                        <Route
+                            path="/progressdetailsseason"
+                            element={<PrivateRoute />}
+                        >
+                            <Route
+                                path="/progressdetailsseason"
+                                element={<ProgressDetailsSeason />}
+                            />
+                        </Route>
+                        <Route path="/settings" element={<PrivateRoute />}>
+                            <Route path="/settings" element={<Settings />} />
+                        </Route>
+
+                        {/* Main routes */}
                         <Route path="/" element={<Home />} />
                         <Route path="/details:id" element={<Details />} />
                         <Route path="/tv" element={<TvShows />} />
                         <Route path="/tvdetails:id" element={<TvDetails />} />
                         <Route path="/listdetails" element={<ListDetails />} />
-                        <Route path="/lists" element={<Lists />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/progress" element={<Progress />} />
-                        <Route
-                            path="/progressdetailsoverview"
-                            element={<ProgressDetailsOverview />}
-                        />
-                        <Route
-                            path="/progressdetailsseason"
-                            element={<ProgressDetailsSeason />}
-                        />
-                        
                         <Route path="/ratings:id" element={<Ratings />} />
                         <Route path="/ratings" element={<Ratings />} />
-
                         <Route path="/reset" element={<Reset />} />
-                        <Route path="/settings" element={<Settings />} />
                         <Route path="/signup" element={<SignUp />} />
                     </Routes>
-                </main>
-            </NavPrivider>
+                </NavProvider>
+            </AuthProvider>
         </BrowserRouter>
     );
 }

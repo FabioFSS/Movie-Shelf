@@ -1,5 +1,8 @@
-import styles from "../styles/ContentBanner.module.css";
+// react
 import PropTypes from "prop-types";
+
+// styles
+import styles from "../styles/ContentBanner.module.css";
 
 function ContentBanner({ banner, description }) {
     return (

@@ -1,13 +1,20 @@
+// react
 import React, { useEffect, useState } from "react";
-import capa from "../../components/image-item/berserk.jpg";
+import { FaTrash } from "react-icons/fa";
+
+// other libs
+import axios from "axios";
+
+// styles
+import styles from "./styles.module.css";
+
+// assets
+import capa from "../../assets/image-item/berserk.jpg";
 import profile from "../../assets/profile.png";
 import plus from "../../assets/comments/plus.png";
 import minus from "../../assets/comments/minus.png";
 import sende from "../../assets/comments/sende.png";
 import star from "../../assets/comments/star.png";
-import { FaTrash } from "react-icons/fa";
-import styles from "./styles.module.css";
-import axios from "axios";
 
 const comments = [
     { comment: "Muito bom!" },
@@ -20,22 +27,22 @@ export default function Ratings() {
     const [movieId] = useState(window.location.href.split("=")[1]);
     const [vote, setVote] = useState(0);
     const [message, setMessage] = useState("");
-    const [visible, setVisible] = useState('hidden');
+    const [visible, setVisible] = useState("hidden");
 
     useEffect(() => {
-        movieId == undefined ? setVisible('hidden') : setVisible('visible')
-    }, [movieId])
+        movieId == undefined ? setVisible("hidden") : setVisible("visible");
+    }, [movieId]);
 
     function addComment() {
         const res = axios
             .post("http://localhost:8000/login/", {
                 idMovieTv: movieId,
-                idUser: '00000',
+                idUser: "00000",
                 comment: message,
-                vote: vote
+                vote: vote,
             })
             .then((res) => {
-                console.log(res.data)
+                console.log(res.data);
                 if (res.data[0] == "success") {
                 }
             });
@@ -73,7 +80,8 @@ export default function Ratings() {
                 <button className={styles.button} onClick={plusVote}>
                     <img src={plus} className={styles.icon_img} />
                 </button>
-                <button className={styles.button}
+                <button
+                    className={styles.button}
                     // onClick={() => {addComment}}
                 >
                     <img src={sende} className={styles.icon_img} />

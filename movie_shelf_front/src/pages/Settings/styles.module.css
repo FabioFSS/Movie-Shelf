@@ -6,13 +6,13 @@
     height: 100vh;
     width: 100vw;
     flex-direction: column;
-}    
+}
 
 .detailsNavbar {
     z-index: 900;
     width: 100vw;
-} 
-        
+}
+
 .containerSettings {
     width: 450px;
     margin-top: 50px;
@@ -20,16 +20,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;           
+    position: relative;
 }
 
-.containerSettings::before{
+.containerSettings::before {
     content: "";
     position: absolute;
     background: #002734;
     width: 100%;
     height: 100%;
-    border: 1px solid #0D5462;
+    border: 1px solid #0d5462;
     border-radius: 15px;
 }
 
@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}    
+}
 
 .nemeScreen {
     margin-right: 150px;
@@ -49,7 +49,7 @@
 .userName {
     margin-top: 20px;
 }
-            
+
 .options {
     display: flex;
     margin-top: 20px;
@@ -66,7 +66,7 @@
     height: 40px;
     width: 170px;
     background: black;
-    color:white;
+    color: white;
     margin-bottom: 10px;
     border: 0;
     border-radius: 5px;
@@ -75,7 +75,7 @@
 
 .optionSelect {
     color: white;
-}                
+}
 
 .locationContainer {
     width: 220px;
@@ -86,22 +86,22 @@
     width: 100%;
     border-radius: 5px;
     background: black;
-    color:white;
+    color: white;
     border: 0;
     margin-top: 3px;
-}        
+}
 
 .input {
     height: 40px;
     width: 350px;
     background: black;
-    color:white;
+    color: white;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 0;
     margin-top: 3px;
 }
-            
+
 .containerInternSettings {
     display: flex;
     width: 350px;
@@ -113,7 +113,7 @@
     width: 170px;
     border-radius: 5px;
     background: black;
-    color:white;
+    color: white;
     border: 0;
     margin-top: 3px;
 }
@@ -123,7 +123,7 @@
     width: 170px;
     border-radius: 5px;
     background: black;
-    color:white;
+    color: white;
     margin-bottom: 10px;
     border: 0;
     margin-top: 3px;
@@ -143,5 +143,5 @@
 }
 
 .textButton {
-    color: black
+    color: black;
 }

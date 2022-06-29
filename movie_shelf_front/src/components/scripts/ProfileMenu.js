@@ -1,3 +1,4 @@
+// styles
 import styles from "../styles/ProfileMenu.module.css";
 
 function ProfileMenu() {

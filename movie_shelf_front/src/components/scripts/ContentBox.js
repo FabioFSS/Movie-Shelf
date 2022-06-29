@@ -1,6 +1,9 @@
-import styles from "../styles/ContentBox.module.css";
+// react
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+// styles
+import styles from "../styles/ContentBox.module.css";
 
 function ContentBox({ banner, title, link }) {
     return (

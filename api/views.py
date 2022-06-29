@@ -1,15 +1,66 @@
-from django.views.generic import TemplateView
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .models import JSONCache, UserProfile, List, Rating, Progress, RatingMovieTv
-from .serializer import DjangoUserSerializer, JSONCacheSerializer, UserLoginSerializer, UserProfileSerializer, ListSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from api.tmdb import TMDB
+from .models import JSONCache, RatingMovieTv, List, Rating, Progress, UserProfile
+from .serializers import JSONCacheSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer
+from .tmdb import TMDB
+from rest_framework.views import APIView
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
+# Views para autenticação de usuário
+# Obtenção de token de autenticação
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+
+# View de registro de usuário
+class RegisterView(APIView):
+    permission_classes = (AllowAny,)
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+
+    def get(self, request):
+        users = User.objects.all()
+        serializer = RegisterSerializer(users, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = RegisterSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+        return Response({'response': serializer.data}, status=status.HTTP_201_CREATED)
+
+
+# View de atualização e recuperação das informações do usuário
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserProfileSerializer
+
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        user_profile = UserProfile.objects.get(user=user)
+        serializer = UserProfileSerializer(
+            user_profile, context={"request": request})
+        return Response([serializer.data])
+
+    def post(self, request, username):
+        user = User.objects.get(username=username)
+        user_profile = UserProfile.objects.get(user=user)
+        data = request.data
+        user_profile.profile_pic = data['profile_pic']
+        user_profile.birth_date = data['birth_date']
+        user_profile.gender = data['gender']
+        user_profile.location = data['location']
+        user_profile.language = data['language']
+        user_profile.bio = data['bio']
+        user_profile.content_completed = data['content_completed']
+        user_profile.average_rating = data['average_rating']
+        user_profile.review_number = data['review_number']
+        user_profile.save()
+        return Response(['success'])
 
 
 class JSONCacheView(APIView):
@@ -33,73 +84,9 @@ class JSONCacheView(APIView):
             return Response(serializer.data)
 
 
-class UserLoginView(APIView):
-    serializer_class = UserLoginSerializer
-    def get(self, request):
-        if request.user.is_authenticated:
-            return Response(['authenticated'])
-        else:
-            return Response(['not authenticated'])
-
-    def post(self, request):
-        username = request.data['username']
-        password = request.data['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-
-        return Response(['success'] if user else ['fail'])
-
-
-class UserLogoutView(APIView):
-    def post(self, request):
-        logout(request)
-        return Response(['success'])
-
-
-class UserRegisterView(APIView):
-    serializer_class = DjangoUserSerializer
-
-    def get(self, request):
-        users = User.objects.all()
-        serializer = DjangoUserSerializer(users, context={"request": request}, many=True)
-        return Response([serializer.data])
-
-    def post(self, request):
-        serializer = DjangoUserSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            data = serializer.data
-            User.objects.create_user(username=data['username'], password=data['password'], email=data['email'])
-            return Response(['success'])
-        else:
-            return Response(['fail'])
-
-
-class UserProfileView(APIView):
-    serializer_class = UserProfileSerializer
-
-    def get(self, request, user_id):
-        user_profile = UserProfile.objects.get(id=user_id)
-        serializer = UserProfileSerializer(user_profile, context={"request": request})
-        return Response([serializer.data])
-
-    def post(self, request, user_id):
-        user_profile = UserProfile.objects.get(id=user_id)
-        data = request.data
-        user_profile.profile_pic = data['profile_pic']
-        user_profile.birth_date = data['birth_date']
-        user_profile.gender = data['gender']
-        user_profile.location = data['location']
-        user_profile.language = data['language']
-        user_profile.bio = data['bio']
-        user_profile.content_completed = data['content_completed']
-        user_profile.average_rating = data['average_rating']
-        user_profile.review_number = data['review_number']
-        user_profile.save()
-        return Response(['success'])
-
-
+# View para lists
 class ListView(APIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
 
     def get(self, request):
@@ -115,7 +102,9 @@ class ListView(APIView):
             return Response(serializer.data)
 
 
+# View para ratings de usuário
 class RatingView(APIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = RatingSerializer
 
     def get(self, request):
@@ -134,7 +123,9 @@ class RatingView(APIView):
             return Response(serializer.data)
 
 
+# View para progressos de usuário
 class ProgressView(APIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = ProgressSerializer
 
     def get(self, request):
@@ -167,17 +158,18 @@ class RatingsMovieTvView(APIView):
 
 
 class DetailMovieView(APIView):
-
     def get(self, request, id):
 
-        response_movie = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_movie(id)
+        response_movie = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_movie(id)
 
         return Response([response_movie])
 
-class DetailTvView(APIView):
 
+class DetailTvView(APIView):
     def get(self, request, id):
 
-        response_movie = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(id)
+        response_movie = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(id)
 
         return Response([response_movie])

@@ -1,21 +1,28 @@
+// react
 import React, { useState, useContext, useEffect } from "react";
-import styles from "./styles.module.css";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+
+// styles
+import styles from "./styles.module.css";
+
+// contexts
 import { NavContext } from "../../contexts/navbar";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function Scroll() {
-    const navigate = useNavigate();
+    // contexts
+    const { registerUser } = useContext(AuthContext);
+    const { isVisible } = useContext(NavContext);
+
+    // states
     const [typePassword, setTypePassword] = useState("password");
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPasword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
-
-    const { isVisible } = useContext(NavContext);
     const [nav, setNav] = useState(true);
 
+    // makes the navbar invisible
     useEffect(() => {
         if (nav) {
             isVisible("hidden");
@@ -23,12 +30,24 @@ export default function Scroll() {
         }
     }, []);
 
+    // toggles the password visibility
     const changeTypePassword = () => {
         if (typePassword === "password") {
             setTypePassword("text");
         } else {
             setTypePassword("password");
         }
+    };
+
+    // handles the user registration
+    const handleRegister = (e) => {
+        e.preventDefault();
+        username.length > 0 &&
+            email.length > 0 &&
+            password.length > 0 &&
+            confirmPassword.length > 0 &&
+            registerUser(username, password, confirmPassword);
+        isVisible("visible");
     };
 
     window.scrollTo({
@@ -96,21 +115,7 @@ export default function Scroll() {
                     <button
                         className={styles.button_sign_up}
                         disabled={!email || !password}
-                        onClick={() => {
-                            if (password == confirmPassword) {
-                                axios.post("http://localhost:8000/register/", {
-                                    username: username,
-                                    password: password,
-                                    email: email,
-                                }).then(
-                                    (res) => {
-                                        if (res.data[0] == 'success'){
-                                            navigate('/login')
-                                        }
-                                    }
-                                );
-                            }
-                        }}
+                        onClick={handleRegister}
                     >
                         <p>CREATE</p>
                     </button>

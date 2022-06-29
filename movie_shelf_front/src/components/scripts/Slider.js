@@ -1,6 +1,13 @@
+// react
 import React, { useEffect, useState } from "react";
+
+// services
 import { api } from "../../services/api";
+
+// styles
 import styles from "../styles/Slider.module.css";
+
+// components
 import ContentBox from "./ContentBox";
 
 function Slider({ title, page, typeList }) {

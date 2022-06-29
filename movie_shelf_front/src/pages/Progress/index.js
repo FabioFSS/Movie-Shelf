@@ -1,13 +1,18 @@
+// react
 import React from "react";
+
+// styles
 import styles from "./styles.module.css";
-import Navbar from "../../components/scripts/Navbar";
-import { BrowserRouter as Router } from "react-router-dom";
+
+// components
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import TVShowProgerss from "../../components/scripts/TVShowProgress";
-import banner1 from "../../components/image-item/berserk.jpg";
-import banner2 from "../../components/image-item/cue.jpg";
-import banner3 from "../../components/image-item/sabikui disco.jpg";
+
+// assets
+import banner1 from "../../assets/image-item/berserk.jpg";
+import banner2 from "../../assets/image-item/cue.jpg";
+import banner3 from "../../assets/image-item/sabikui disco.jpg";
 
 function Progress() {
     window.scrollTo({

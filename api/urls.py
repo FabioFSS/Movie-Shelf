@@ -1,13 +1,11 @@
 from django.urls import path
-from .views import ListView, RatingView, ProgressView, JSONCacheView, IndexView, UserLoginView, UserLogoutView, UserProfileView, UserRegisterView
-from .views import DetailMovieView, DetailTvView, RatingsMovieTvView
+from .views import ListView, RatingView, ProgressView, JSONCacheView, UserProfileView
+from .views import DetailMovieView, DetailTvView, RegisterView, RatingsMovieTvView, MyTokenObtainPairView
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+)
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
-    path('user_profile/<int:user_id>', UserProfileView.as_view(), name="user_profile"),
-    path('login/', UserLoginView.as_view(), name="login"),
-    path('logout/', UserLogoutView.as_view(), name="logout"),
-    path('register/', UserRegisterView.as_view(), name="registration"),
     path('list/', ListView.as_view(), name="lists"),
     path('rating/', RatingView.as_view(), name="ratings"),
     path('progress/', ProgressView.as_view(), name="progresses"),
@@ -15,4 +13,11 @@ urlpatterns = [
     path('detailsmovie/<int:id>', DetailMovieView.as_view(), name="detailsmovie"),
     path('detailstv/<int:id>', DetailTvView.as_view(), name="detailstv"),
     path('ratings', RatingsMovieTvView.as_view(), name="ratings"),
+
+    # token authentication patterns
+    path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('register/', RegisterView.as_view(), name='auth_register'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('user_profile/<str:username>',
+         UserProfileView.as_view(), name='user_profile')
 ]

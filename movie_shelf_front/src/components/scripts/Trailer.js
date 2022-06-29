@@ -1,4 +1,7 @@
+// react
 import React, { useEffect, useRef } from "react";
+
+// styles
 import styles from "../styles/Trailer.module.css";
 
 export default function Trailer({ trailerId }) {

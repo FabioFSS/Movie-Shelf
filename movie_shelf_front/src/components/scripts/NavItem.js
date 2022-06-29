@@ -1,4 +1,7 @@
+// react
 import React, { useState } from "react";
+
+// styles
 import "../styles/NavItem.css";
 
 function NavItem(props) {

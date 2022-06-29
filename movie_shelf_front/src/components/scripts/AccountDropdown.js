@@ -1,4 +1,7 @@
+// react
 import React from "react";
+
+// styles
 import "../styles/AccountDropdown.css";
 
 function AccountDropdown(props) {

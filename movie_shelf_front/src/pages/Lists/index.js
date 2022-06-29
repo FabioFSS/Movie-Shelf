@@ -1,8 +1,15 @@
+// react
 import React from "react";
+
+// styles
 import styles from "./styles.module.css";
+
+// components
 import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ContentSummary from "../../components/scripts/ContentSummary";
+
+// assets
 import banner1 from "../../assets/lists_banners/favorites.png";
 import banner2 from "../../assets/lists_banners/banner2.png";
 import banner3 from "../../assets/lists_banners/banner3.png";

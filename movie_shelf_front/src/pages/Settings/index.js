@@ -1,6 +1,11 @@
+// react
 import React from "react";
-import imgProfile from "../../assets/profile.png";
+
+// styles
 import styles from "./styles.module.css";
+
+// assets
+import imgProfile from "../../assets/profile.png";
 
 export default function Settings() {
     window.scrollTo({

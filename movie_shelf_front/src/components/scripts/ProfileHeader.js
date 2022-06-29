@@ -1,4 +1,7 @@
+// styles
 import styles from "../styles/ProfileHeader.module.css";
+
+// components
 import ProfileData from "./ProfileData";
 import ProfileMenu from "./ProfileMenu";
 
