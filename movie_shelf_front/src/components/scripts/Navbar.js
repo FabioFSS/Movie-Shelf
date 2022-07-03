@@ -10,6 +10,7 @@ import NavItem from "./NavItem";
 // assets and styles
 import logo from "../../assets/logo.png";
 import "../styles/Navbar.css";
+import std_profile_pic from "../../assets/standard_profile_picture.png";
 
 // contexts
 import { NavContext } from "../../contexts/navbar";
@@ -20,11 +21,8 @@ import useAxios from "../../utils/useAxios";
 
 function Navbar() {
     // contexts
-    const { user } = useContext(AuthContext);
+    const { user, userData, setUserData } = useContext(AuthContext);
     const { visibility } = useContext(NavContext);
-
-    // states
-    const [userData, setUserData] = useState([]);
 
     // hooks
     const api = useAxios();
@@ -63,12 +61,16 @@ function Navbar() {
 
             <div className="rightSide">
                 {user ? (
-                    userData.map((item, key) => (
+                    userData.map((userData) => (
                         <>
                             <input type="text" placeholder="Search" />
                             <AccountDropdown>
                                 <NavItem
-                                    icon={item.profile_pic}
+                                    icon={
+                                        userData.profile_pic
+                                            ? userData.profile_pic
+                                            : std_profile_pic
+                                    }
                                     className="profileImg"
                                 >
                                     <DropdownMenu></DropdownMenu>

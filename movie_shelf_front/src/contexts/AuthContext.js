@@ -30,6 +30,8 @@ export const AuthProvider = ({ children }) => {
             : null
     );
 
+    const [userData, setUserData] = useState([]);
+
     // navigation
     const navigate = useNavigate();
 
@@ -86,6 +88,7 @@ export const AuthProvider = ({ children }) => {
         navigate("/");
         isVisible("visible");
         setNav(true);
+        window.location.reload();
     };
 
     // context data definition
@@ -97,6 +100,8 @@ export const AuthProvider = ({ children }) => {
         registerUser,
         loginUser,
         logoutUser,
+        userData,
+        setUserData
     };
 
     // sets the user if there is an authtoken

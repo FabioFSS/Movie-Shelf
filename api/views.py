@@ -56,9 +56,6 @@ class UserProfileView(APIView):
         user_profile.location = data['location']
         user_profile.language = data['language']
         user_profile.bio = data['bio']
-        user_profile.content_completed = data['content_completed']
-        user_profile.average_rating = data['average_rating']
-        user_profile.review_number = data['review_number']
         user_profile.save()
         return Response(['success'])
 

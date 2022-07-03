@@ -1,6 +1,6 @@
 // react
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
 // styles
@@ -87,9 +87,7 @@ export default function Scroll() {
                         )}
                     </div>
                     <span className={styles.span}>
-                        <a href="http://localhost:3000/reset">
-                            Forget Password
-                        </a>
+                            <Link to="/reset">Forgot password</Link>
                     </span>
                     <button
                         className={styles.buttonLogin}

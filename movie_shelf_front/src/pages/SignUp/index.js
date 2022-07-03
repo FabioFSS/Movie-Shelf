@@ -1,6 +1,7 @@
 // react
 import React, { useState, useContext, useEffect } from "react";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 // styles
 import styles from "./styles.module.css";
@@ -124,7 +125,7 @@ export default function Scroll() {
                             Already have an account?{" "}
                         </span>
                         <span className={styles.login_text}>
-                            <a href="http://localhost:3000/login">Log In</a>
+                            <Link to="/login">Log In </Link>
                         </span>
                     </div>
                 </div>
