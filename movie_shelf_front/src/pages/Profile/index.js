@@ -1,8 +1,5 @@
 // react
-import React, { useState, useEffect, useContext } from "react";
-
-// other libs
-import axios from "axios";
+import React from "react";
 
 // styles
 import styles from "./styles.module.css";
@@ -13,61 +10,23 @@ import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ProfileStatistics from "../../components/scripts/ProfileStatistics";
 
-// contexts
-import AuthContext from "../../contexts/AuthContext";
-
 function Profile() {
-    // contexts
-    const { user, authTokens } = useContext(AuthContext);
-
-    // states
-    const [userData, setUserData] = useState([]);
-
-    // recovers from the backend the logged user's data
-    useEffect(() => {
-        if (user) {
-            axios
-                .get(`http://localhost:8000/user_profile/${user.username}`, {
-                    headers: { Authorization: `Bearer ${authTokens?.access}` },
-                })
-                .then((res) => {
-                    setUserData(res.data);
-                });
-        }
-    }, []);
-
     window.scrollTo({
         top: 0,
     });
 
     return (
-        <>
-            {userData.map((userData) => (
-                <div className={styles.page_body}>
-                    <ProfileBackground></ProfileBackground>
-                    <div className={styles.profile_body}>
-                        <ProfileHeader
-                            username={userData.username}
-                            location={userData.location}
-                            language={userData.language}
-                            email={userData.email}
-                            birth_date={userData.birth_date}
-                            bio={userData.bio}
-                            profile_pic={userData.profile_pic}
-                        ></ProfileHeader>
-                        <ProfileStatistics
-                            completed={userData.content_completed}
-                            reviews={userData.review_number}
-                            average_ratings={userData.average_rating}
-                        ></ProfileStatistics>
-                        <div className={styles.sliders}>
-                            <Slider title="Calendar" page={2}></Slider>
-                            <Slider title="Recently Watched" page={1}></Slider>
-                        </div>
-                    </div>
+        <div className={styles.page_body}>
+            <ProfileBackground></ProfileBackground>
+            <div className={styles.profile_body}>
+                <ProfileHeader></ProfileHeader>
+                <ProfileStatistics></ProfileStatistics>
+                <div className={styles.sliders}>
+                    <Slider title="Calendar" page={2} typeList='tv'></Slider>
+                    <Slider title="Recently Watched" page={1} typeList='movies'></Slider>
                 </div>
-            ))}
-        </>
+            </div>
+        </div>
     );
 }
 

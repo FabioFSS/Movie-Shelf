@@ -1,5 +1,6 @@
 // react
 import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FaEnvelope } from "react-icons/fa";
 
 // styles
@@ -48,7 +49,7 @@ export default function Scroll() {
                     </div>
 
                     <button className={styles.button_send} disabled={!email}>
-                        <a href="http://localhost:3000/login">SENDE</a>
+                        <Link to='/login'>SEND</Link>
                     </button>
 
                     <div>
@@ -56,7 +57,7 @@ export default function Scroll() {
                             Have you recovered your password?{" "}
                         </span>
                         <span className={styles.text_login}>
-                            <a href="http://localhost:3000/login">Log in</a>
+                            <Link to='/login'>Log in</Link>
                         </span>
                     </div>
                 </div>

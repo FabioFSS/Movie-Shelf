@@ -1,3 +1,6 @@
+// react
+import { useContext } from "react";
+
 // styles
 import styles from "../styles/ProfileHeader.module.css";
 
@@ -5,27 +8,36 @@ import styles from "../styles/ProfileHeader.module.css";
 import ProfileData from "./ProfileData";
 import ProfileMenu from "./ProfileMenu";
 
-function ProfileHeader({
-    username,
-    location,
-    language,
-    email,
-    birth_date,
-    bio,
-    profile_pic,
-}) {
+// contexts
+import AuthContext from "../../contexts/AuthContext";
+
+// assets
+import std_profile_pic from "../../assets/standard_profile_picture.png";
+
+function ProfileHeader() {
+    // contexts
+    const { userData } = useContext(AuthContext);
+
     return (
         <div className={styles.profile_header}>
-            <ProfileData
-                username={username}
-                location={location}
-                language={language}
-                email={email}
-                birth_date={birth_date}
-                bio={bio}
-                profile_pic={profile_pic}
-            ></ProfileData>
-            <ProfileMenu></ProfileMenu>
+            {userData.map((userData) => (
+                <>
+                    <ProfileData
+                        username={userData.username}
+                        location={userData.location}
+                        language={userData.language}
+                        email={userData.email}
+                        birth_date={userData.birth_date}
+                        bio={userData.bio}
+                        profile_pic={
+                            userData.profile_pic
+                                ? userData.profile_pic
+                                : std_profile_pic
+                        }
+                    ></ProfileData>
+                    <ProfileMenu></ProfileMenu>
+                </>
+            ))}
         </div>
     );
 }

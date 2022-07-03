@@ -10,32 +10,38 @@ import NavItem from "./NavItem";
 // assets and styles
 import logo from "../../assets/logo.png";
 import "../styles/Navbar.css";
+import std_profile_pic from "../../assets/standard_profile_picture.png";
 
 // contexts
 import { NavContext } from "../../contexts/navbar";
 import AuthContext from "../../contexts/AuthContext";
-import axios from "axios";
+
+// hooks
+import useAxios from "../../utils/useAxios";
 
 function Navbar() {
     // contexts
-    const { user, authTokens } = useContext(AuthContext);
+    const { user, userData, setUserData } = useContext(AuthContext);
     const { visibility } = useContext(NavContext);
 
-    // states
-    const [userData, setUserData] = useState([]);
+    // hooks
+    const api = useAxios();
 
-    // retrieves the user's data from backend server
+    // recovers from the backend the logged user's data
     useEffect(() => {
-        if (user) {
-            axios
-                .get(`http://localhost:8000/user_profile/${user.username}`, {
-                    headers: { Authorization: `Bearer ${authTokens?.access}` },
-                })
-                .then((res) => {
-                    console.log(res.data);
-                    setUserData(res.data);
-                });
-        }
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(
+                        `/user_profile/${user.username}`
+                    );
+                    setUserData(response.data);
+                } catch {
+                    setUserData("Something went wrong");
+                }
+            }
+        };
+        fetchData();
     }, []);
 
     return (
@@ -55,12 +61,16 @@ function Navbar() {
 
             <div className="rightSide">
                 {user ? (
-                    userData.map((item, key) => (
+                    userData.map((userData) => (
                         <>
                             <input type="text" placeholder="Search" />
                             <AccountDropdown>
                                 <NavItem
-                                    icon={item.profile_pic}
+                                    icon={
+                                        userData.profile_pic
+                                            ? userData.profile_pic
+                                            : std_profile_pic
+                                    }
                                     className="profileImg"
                                 >
                                     <DropdownMenu></DropdownMenu>
