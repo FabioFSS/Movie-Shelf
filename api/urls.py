@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('list/', ListView.as_view(), name="lists"),
     path('rating/', RatingView.as_view(), name="ratings"),
-    path('progress/', ProgressView.as_view(), name="progresses"),
+    path('progress/<str:username>', ProgressView.as_view(), name="progresses"),
     path('jsoncache/', JSONCacheView.as_view(), name="jsoncache"),
     path('detailsmovie/<int:id>', DetailMovieView.as_view(), name="detailsmovie"),
     path('detailstv/<int:id>', DetailTvView.as_view(), name="detailstv"),

@@ -1,3 +1,4 @@
+from logging import Filterer
 from django.contrib.auth.models import User
 from .models import JSONCache, RatingMovieTv, List, Rating, Progress, UserProfile
 from .serializers import JSONCacheSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
@@ -122,20 +123,32 @@ class RatingView(APIView):
 
 # View para progressos de usuário
 class ProgressView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     serializer_class = ProgressSerializer
 
-    def get(self, request):
-        progresses = [{'count': progress.count, 'user_fk': progress.user_fk}
-                      for progress in Progress.objects.all()]
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        progresses = [{'content_id': progress.content_id, 'count': progress.count}
+                      for progress in Progress.objects.filter(user_fk=user)]
 
-        return Response(progresses)
+        response = []
+        for progress in progresses:
+            show_data = TMDB(
+                '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(progress['content_id'])
 
-    def post(self, request):
+            filtered_show_data = {'poster': show_data['poster'], 'name': show_data['details']
+                                  ['name'], 'max_count': show_data['details']['number_of_episodes'], 'overview': show_data['details']['overview']}
+
+            response.append(progress | filtered_show_data)
+
+        return Response(response)
+
+    def post(self, request, username):
         serializer = ProgressSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
 
 
 class RatingsMovieTvView(APIView):

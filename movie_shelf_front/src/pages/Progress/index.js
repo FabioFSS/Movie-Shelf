@@ -1,5 +1,5 @@
 // react
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 // styles
 import styles from "./styles.module.css";
@@ -14,7 +14,54 @@ import banner1 from "../../assets/image-item/berserk.jpg";
 import banner2 from "../../assets/image-item/cue.jpg";
 import banner3 from "../../assets/image-item/sabikui disco.jpg";
 
+// contexts
+import AuthContext from "../../contexts/AuthContext";
+
+// hooks
+import useAxios from "../../utils/useAxios";
+
 function Progress() {
+    // contexts
+    const { user } = useContext(AuthContext);
+
+    // hooks
+    const api = useAxios();
+
+    // states
+    const [progresses, setProgresses] = useState([]);
+
+    // recovers from the backend the logged user's data
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(
+                        `/progress/${user.username}`
+                    );
+                    setProgresses(response.data);
+                } catch {
+                    setProgresses("Something went wrong");
+                }
+            }
+        };
+        fetchData();
+    }, []);
+
+    let tvShows = [];
+
+    for (let i = 0; i < progresses.length; i++) {
+        tvShows.push(
+            <TVShowProgerss
+                link={`/tvdetails:id=${progresses[i].content_id}`}
+                title={progresses[i].name}
+                description={progresses[i].overview}
+                banner={progresses[i].poster}
+                value={progresses[i].count}
+                max={progresses[i].max_count}
+            />
+        );
+    }
+
     window.scrollTo({
         top: 0,
     });
@@ -25,29 +72,7 @@ function Progress() {
             <div className={styles.progress_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.progress_label}>Progress</h1>
-                <div className={styles.tv_shows}>
-                    <TVShowProgerss
-                        title="TV Show 1"
-                        description="Description of the next episode"
-                        banner={banner1}
-                        link="/progressdetailsoverview"
-                        value={70}
-                    ></TVShowProgerss>
-                    <TVShowProgerss
-                        title="TV Show 2"
-                        description="Description of the next episode"
-                        banner={banner2}
-                        link="/progressdetailsoverview"
-                        value={20}
-                    ></TVShowProgerss>
-                    <TVShowProgerss
-                        title="TV Show 3"
-                        description="Description of the next episode"
-                        banner={banner3}
-                        link="/progressdetailsoverview"
-                        value={35}
-                    ></TVShowProgerss>
-                </div>
+                <div className={styles.tv_shows}>{tvShows}</div>
             </div>
         </div>
     );

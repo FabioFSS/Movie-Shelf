@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 // styles
 import styles from "../styles/TVShowProgress.module.css";
 
-function TVShowProgress({ link, title, description, banner, value }) {
+
+function TVShowProgress({ link, title, description, banner, value, max }) {
     return (
         <div className={styles.progress_body}>
             <p className={styles.title}>
@@ -13,13 +14,10 @@ function TVShowProgress({ link, title, description, banner, value }) {
             <div className={styles.image_and_description}>
                 <img className={styles.banner} src={banner}></img>
                 <div className={styles.description_box}>
-                    <p className={styles.description_label}>
-                        Episode description
-                    </p>
                     <p className={styles.description_text}>{description}</p>
                     <progress
                         className={styles.progress_bar}
-                        max={100}
+                        max={max}
                         value={value}
                     ></progress>
                 </div>

@@ -22,8 +22,6 @@ import ListDetails from "./pages/ListDetails";
 import Lists from "./pages/Lists";
 import Login from "./pages/LogIn";
 import Progress from "./pages/Progress";
-import ProgressDetailsOverview from "./pages/ProgressDetailsOverview";
-import ProgressDetailsSeason from "./pages/ProgressDetailsSeason";
 import Ratings from "./pages/Ratings";
 import Reset from "./pages/Reset";
 import Settings from "./pages/Settings";
@@ -45,25 +43,6 @@ export default function App() {
                         </Route>
                         <Route path="/progress" element={<PrivateRoute />}>
                             <Route path="/progress" element={<Progress />} />
-                        </Route>
-
-                        <Route
-                            path="/progressdetailsoverview"
-                            element={<PrivateRoute />}
-                        >
-                            <Route
-                                path="/progressdetailsoverview"
-                                element={<ProgressDetailsOverview />}
-                            />
-                        </Route>
-                        <Route
-                            path="/progressdetailsseason"
-                            element={<PrivateRoute />}
-                        >
-                            <Route
-                                path="/progressdetailsseason"
-                                element={<ProgressDetailsSeason />}
-                            />
                         </Route>
                         <Route path="/settings" element={<PrivateRoute />}>
                             <Route path="/settings" element={<Settings />} />

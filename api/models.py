@@ -68,6 +68,7 @@ class Rating(models.Model):
 
 
 class Progress(models.Model):
+    content_id = models.IntegerField('Content id')
     count = models.IntegerField('Progress count')
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
 
