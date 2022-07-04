@@ -82,7 +82,7 @@ class RatingSerializer(serializers.ModelSerializer):
 class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Progress
-        fields = ['count', 'user_fk']
+        fields = ['content_id', 'count', 'user_fk']
 
 
 class RatingsMovieTvSerializer(serializers.ModelSerializer):
