@@ -74,6 +74,33 @@ class TMDB():
         return {'details': tv_detail, 'poster': poster_path,
                 'backdrop': backdrop_path, 'casts': casts}
 
+    def get_list_seasons(self, tv_id):
+
+        url1 = 'https://api.themoviedb.org/3/tv/' + \
+            str(tv_id)+'?api_key='+self.api_key+'&language='+self.language
+        try:
+            details = get(url1).json()
+        except ValueError:
+            print("Request error")
+
+        number_seasons = int(details['last_episode_to_air']['season_number'])
+
+        list_details_seasons = []
+
+        for season in range(number_seasons):
+
+            url1 = 'https://api.themoviedb.org/3/tv/' + \
+                str(tv_id)+'/season/'+str(season+1)+'?api_key='+self.api_key+'&language='+self.language
+            try:
+                response1 = get(url1).json()
+            except ValueError:
+                print("Request error")
+            poster_path = 'https://image.tmdb.org/t/p/original'+response1['poster_path']
+
+            list_details_seasons.append({'number_season': season+1, 'poster_path': poster_path})
+
+        return list_details_seasons
+
     def top_rated(self):
 
         base_url = 'https://api.themoviedb.org/3/movie/top_rated?'
@@ -103,17 +130,25 @@ class TMDB():
 
         return response
 
-    def search_movie(self, query):
+    def search(self, query):
 
         base_url = 'https://api.themoviedb.org/3/search/movie'
         url = base_url+'?api_key='+self.api_key+'&query='+str(query)
 
         try:
-            response = get(url).json()
+            movie = get(url).json()
         except ValueError:
             print("Request error")
 
-        return response
+        base_url = 'https://api.themoviedb.org/3/search/tv'
+        url = base_url+'?api_key='+self.api_key+'&query='+str(query)
+
+        try:
+            tv = get(url).json()
+        except ValueError:
+            print("Request error")
+
+        return [movie, tv]
 
     def get_details_season(self, tv_id, season_number):
 
@@ -150,6 +185,7 @@ if __name__ == '__main__':
     # print(movies.get_details_season(55, 1))
     # print(movies.get_videos(55))
     # print(movies.get_credits(55))
-    # print(movies.search_movie('spider'))
+    # print(movies.search('the boys'))
     # print(movies.get_details_episode(50, 1, 4))
-    print(movies.get_details_tv(92782))
+    # print(movies.get_details_tv(92782))
+    # print(movies.get_list_seasons(66732))

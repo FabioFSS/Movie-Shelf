@@ -18,6 +18,7 @@ export default function TvDetails() {
     const [reiews, setReviews] = useState(null);
     const [poster, setPoster] = useState(null);
 
+
     // useEffect(() => {
     //     axios.get(`http://localhost:8000/detailstv/${tvId}`).then((res) => {
 
@@ -85,7 +86,7 @@ export default function TvDetails() {
                 className={styles.backgrund_img}
                 style={{ backgroundImage: `url(${background})` }}
             />
-            <DetailTv details={details} poster={poster} reiews={reiews} />
+            <DetailTv details={details} poster={poster} reiews={reiews} tvId={tvId}/>
         </div>
     );
 }

@@ -1,0 +1,12 @@
+.page_body {
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    margin: 25px 150px;
+}
+
+.content_box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 30px;
+}

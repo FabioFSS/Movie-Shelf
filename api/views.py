@@ -183,3 +183,20 @@ class DetailTvView(APIView):
             '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(id)
 
         return Response([response_movie])
+
+
+class DetailSeasons(APIView):
+    def get(self, request, id):
+
+        response_detail_seasons = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_list_seasons(id)
+
+        return Response([response_detail_seasons])
+
+class Search(APIView):
+    def get(self, request, keyword):
+
+        search = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).search(str(keyword))
+
+        return Response([search])
