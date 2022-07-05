@@ -19,6 +19,10 @@ import AuthContext from "../../contexts/AuthContext";
 // hooks
 import useAxios from "../../utils/useAxios";
 
+import { useNavigate } from "react-router-dom";
+
+import { FaStar, FaPlus, FaComment, FaSearch } from "react-icons/fa";
+
 function Navbar() {
     // contexts
     const { user, userData, setUserData } = useContext(AuthContext);
@@ -44,6 +48,14 @@ function Navbar() {
         fetchData();
     }, []);
 
+    const [search, setSearch] = useState(undefined);
+    const navigate = useNavigate();
+
+    function handleSearch() {
+        navigate(`/search:keyword=${search}`);
+        window.location.reload();
+    }
+
     return (
         <nav className="Navbar" style={{ visibility: visibility }}>
             <div className="leftSide">
@@ -63,7 +75,17 @@ function Navbar() {
                 {user ? (
                     userData.map((userData) => (
                         <>
-                            <input type="text" placeholder="Search" />
+                            <input 
+                                type="text" 
+                                placeholder="Search" 
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
+
+                            <button className="buttonSearch" onClick={handleSearch}>
+                                <FaSearch />
+                            </button>   
+
                             <AccountDropdown>
                                 <NavItem
                                     icon={

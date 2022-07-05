@@ -28,6 +28,7 @@ import Ratings from "./pages/Ratings";
 import Reset from "./pages/Reset";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
+import Search from "./pages/Search"
 
 export default function App() {
     return (
@@ -80,6 +81,7 @@ export default function App() {
                         <Route path="/ratings" element={<Ratings />} />
                         <Route path="/reset" element={<Reset />} />
                         <Route path="/signup" element={<SignUp />} />
+                        <Route path="/search:keyword" element={<Search />} />
                     </Routes>
                 </NavProvider>
             </AuthProvider>
