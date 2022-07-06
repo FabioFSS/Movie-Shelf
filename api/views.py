@@ -172,7 +172,7 @@ class DetailTvView(APIView):
         return Response([response_movie])
 
 
-class DetailSeasons(APIView):
+class SeasonsView(APIView):
     def get(self, request, id):
 
         response_detail_seasons = TMDB(
@@ -180,7 +180,23 @@ class DetailSeasons(APIView):
 
         return Response([response_detail_seasons])
 
-class Search(APIView):
+class DetailSeasons(APIView):
+    def get(self, request, id, season_number):
+
+        detail_season = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_season(id, season_number)
+
+        return Response([detail_season])
+
+class EpisodeDetailView(APIView):
+    def get(self, request, id, season_number, episode_number):
+
+        episode_detail = TMDB(
+            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_episode(id, season_number, episode_number)
+
+        return Response([episode_detail])
+
+class SearchView(APIView):
     def get(self, request, keyword):
 
         search = TMDB(

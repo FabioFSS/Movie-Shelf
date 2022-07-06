@@ -1,0 +1,21 @@
+.wrapper_details {
+    display: flex;
+    background: #010117;
+    align-items: center;
+    flex-direction: column;
+}
+
+.backgrund_img {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+}
+
+.backgrund_img::before {
+    content: " ";
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-image: linear-gradient(to top, #010117, 70%, transparent);
+    position: absolute;
+}
