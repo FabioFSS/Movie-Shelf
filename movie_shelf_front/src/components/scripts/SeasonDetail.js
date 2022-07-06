@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaStar, FaPlus, FaComment } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-import styles from "../styles/DetailTv.module.css";
+import styles from "../styles/SeasonDetail.module.css";
 
-export default function DetailMovie({ details, poster, reiews, tvId }) {
+export default function DetailMovie({ details, poster, overview, tvId, seasonNumber, episodes }) {
+    
     const navigate = useNavigate();
-    const [detailSeasons, setDetailSeasons] = useState(undefined);
 
-    useEffect(() => {
-        axios.get(`http://localhost:8000/seasons/${tvId}`).then((res) => {
-            setDetailSeasons(res.data[0])
-        });
-    }, [tvId]);
-
-    function route(season_number) {
-        return `/seasondetail:id=${tvId}#${season_number}`
+    function route(episode_number) {
+        return `/episodedetail:id=${tvId}#${seasonNumber}-${episode_number}`
     }
     
     return (
@@ -52,46 +45,28 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                                     <FaPlus className={styles.iconAdd} />
                                 </button>
                             </div>
-                            <h1 className={styles.title}>{details.name}</h1>
-                            <p className={styles.overview}>{details.overview}</p>
-                            <div className={styles.casts}>
-                                {reiews &&
-                                    reiews.map((actor, key) => (
-                                        <div
-                                            className={styles.containerInfoCasts}
-                                            key={key}
-                                        >
-                                            <img
-                                                className={styles.imgActors}
-                                                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                                            />
-                                            <p className={styles.nameActor}>
-                                                {actor.name}
-                                            </p>
-                                        </div>
-                                    ))
-                                }
-                            </div>                            
+                            <h1 className={styles.title}>{details.name} - Season {seasonNumber}</h1>
+                            <p className={styles.overview}>{overview}</p>
                         </div>
                     </>
                 )}
             </div>
-            <h1>Seasons</h1>
+            <h1 className={styles.episodesText}>Episodes</h1>
             <div className={styles.seasonsWarapper}>
-                {detailSeasons &&
-                    detailSeasons.map((season, key) => (
+                {episodes &&
+                    episodes.map((episode, key) => (
                         <div
                             className={styles.containerSeasons}
                             key={key}
                         >
-                            <Link to={route(season.number_season)}>
+                            <Link to={route(episode.episode_number)}>
                                 <img
-                                    className={styles.seasons}
-                                    src={`${season.poster_path}`}
+                                    className={styles.episodes}
+                                    src={`https://image.tmdb.org/t/p/w342${episode.still_path}`}
                                 />
                             </Link>
                             <p className={styles.seasonNumber}>
-                                Season {season.number_season}
+                                Episode {episode.episode_number}
                             </p>
                         </div>
                     ))

@@ -16,6 +16,8 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Details from "./pages/Details";
 import TvShows from "./pages/TvShows";
 import TvDetails from "./pages/TvDetails";
+import SeasonDetail from "./pages/SeasonDetail";
+import EpisodeDetail from "./pages/EpisodeDetail";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import ListDetails from "./pages/ListDetails";
@@ -61,6 +63,8 @@ export default function App() {
                         <Route path="/reset" element={<Reset />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/search:keyword" element={<Search />} />
+                        <Route path="/seasondetail:id" element={<SeasonDetail />} />
+                        <Route path="/episodedetail:id" element={<EpisodeDetail />} />
                     </Routes>
                 </NavProvider>
             </AuthProvider>

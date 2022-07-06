@@ -167,7 +167,7 @@ class TMDB():
 
         base_url = 'https://api.themoviedb.org/3/tv'
         url = base_url+'/'+str(tv_id)+'/season/'+str(season_number) + \
-            '?api_key='+self.api_key+'&language='+self.language
+            '/episode/'+str(episode_number)+'?api_key='+self.api_key+'&language='+self.language
 
         try:
             response = get(url).json()
@@ -182,10 +182,10 @@ if __name__ == '__main__':
     movies = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
     # print(movies.top_rated())
-    # print(movies.get_details_season(55, 1))
+    # print(movies.get_details_season(66732, 1))
     # print(movies.get_videos(55))
     # print(movies.get_credits(55))
     # print(movies.search('the boys'))
-    # print(movies.get_details_episode(50, 1, 4))
+    print(movies.get_details_episode(60574, 2, 3))
     # print(movies.get_details_tv(92782))
     # print(movies.get_list_seasons(66732))
