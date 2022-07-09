@@ -56,7 +56,7 @@ export default function App() {
                         <Route path="/details:id" element={<Details />} />
                         <Route path="/tv" element={<TvShows />} />
                         <Route path="/tvdetails:id" element={<TvDetails />} />
-                        <Route path="/listdetails" element={<ListDetails />} />
+                        <Route path="/listdetails/:id" element={<ListDetails />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/ratings:id" element={<Ratings />} />
                         <Route path="/ratings" element={<Ratings />} />

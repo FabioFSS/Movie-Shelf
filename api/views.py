@@ -1,7 +1,6 @@
-from logging import Filterer
 from django.contrib.auth.models import User
-from .models import JSONCache, RatingMovieTv, List, Rating, Progress, UserProfile
-from .serializers import JSONCacheSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
+from .models import JSONCache, ListContent, RatingMovieTv, List, Rating, Progress, UserProfile
+from .serializers import JSONCacheSerializer, ListContentSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
 from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer
 from .tmdb import TMDB
 from rest_framework.views import APIView
@@ -84,17 +83,76 @@ class JSONCacheView(APIView):
 
 # View para lists
 class ListView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
 
-    def get(self, request):
-        lists = [{'name': user_list.name, 'description': user_list.description,
-                  'image': user_list.image, 'user_fk': user_list.user_fk}
-                 for user_list in List.objects.all()]
-        return Response(lists)
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        lists = List.objects.filter(user_fk=user)
+        serializer = ListSerializer(
+            lists, context={"request": request}, many=True)
+
+        return Response(serializer.data)
+
+    def post(self, request, username):
+        data = request.data
+        user = User.objects.get(username=username)
+        user_list = List(
+            name=data['name'], description=data['description'], image=data['image'], user_fk=user)
+        serializer = ListSerializer(data=user_list)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+class ListIDView(APIView):
+    # permission_classes = [IsAuthenticated]
+    serializer_class = ListSerializer
+
+    def get(self, request, list_id):
+        lists = List.objects.get(id=list_id)
+        serializer = ListSerializer(
+            lists, context={"request": request})
+
+        return Response(serializer.data)
+
+class ListContentView(APIView):
+    # permission_classes = [IsAuthenticated]
+    serializer_class = ListContentSerializer
+
+    def get(self, request, username, list_id):
+        user = User.objects.get(username=username)
+        user_list = List.objects.get(user_fk=user, id=list_id)
+        list_contents = ListContent.objects.filter(list_fk=user_list)
+        serializer = ListContentSerializer(
+            list_contents, context={"request": request}, many=True)
+
+        data = serializer.data
+
+        response = []
+        for content in data:
+            if content['content_type'] == 'tv_show':
+                show_data = TMDB(
+                    '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(content['content_id'])
+
+                filtered_content_data = {'poster': show_data['poster'], 'name': show_data['details']
+                                    ['name'], 'overview': show_data['details']['overview'], 'content_type': 'tv_show', 'content_id': content['content_id']}
+
+
+            elif content['content_type'] == 'movie':
+                movie_data = TMDB(
+                    '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details(content['content_id'])
+
+                filtered_content_data = {'poster': movie_data['poster'], 'name': movie_data['details']
+                ['name'], 'overview': movie_data['details']['overview'], 'content_type': 'movie', 'content_id': content['content_id']}
+
+
+            response.append(filtered_content_data)
+        
+        return Response(response)
+
 
     def post(self, request):
-        serializer = ListSerializer(data=request.data)
+        serializer = ListContentSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
@@ -150,7 +208,6 @@ class ProgressView(APIView):
             return Response(serializer.data)
 
 
-
 class RatingsMovieTvView(APIView):
     serializer_class = RatingsMovieTvSerializer
 
@@ -193,6 +250,7 @@ class SeasonsView(APIView):
 
         return Response([response_detail_seasons])
 
+
 class DetailSeasons(APIView):
     def get(self, request, id, season_number):
 
@@ -201,6 +259,7 @@ class DetailSeasons(APIView):
 
         return Response([detail_season])
 
+
 class EpisodeDetailView(APIView):
     def get(self, request, id, season_number, episode_number):
 
@@ -208,6 +267,7 @@ class EpisodeDetailView(APIView):
             '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_episode(id, season_number, episode_number)
 
         return Response([episode_detail])
+
 
 class SearchView(APIView):
     def get(self, request, keyword):

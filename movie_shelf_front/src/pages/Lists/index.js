@@ -1,5 +1,5 @@
 // react
-import React from "react";
+import React, {useContext, useState, useEffect} from "react";
 
 // styles
 import styles from "./styles.module.css";
@@ -11,12 +11,53 @@ import ContentSummary from "../../components/scripts/ContentSummary";
 
 // assets
 import banner1 from "../../assets/lists_banners/favorites.png";
-import banner2 from "../../assets/lists_banners/banner2.png";
-import banner3 from "../../assets/lists_banners/banner3.png";
-import banner4 from "../../assets/lists_banners/banner4.png";
-import banner5 from "../../assets/lists_banners/banner5.png";
+
+// contexts
+import AuthContext from "../../contexts/AuthContext";
+
+// hooks
+import useAxios from "../../utils/useAxios";
 
 function Lists() {
+    // contexts
+    const { user } = useContext(AuthContext);
+    
+    // hooks
+    const api = useAxios();
+
+    // states
+    const [lists, setLists] = useState([]);
+
+    // recovers from the backend the logged user's data
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(
+                        `/list/${user.username}`
+                    );
+                    setLists(response.data);
+                } catch {
+                    setLists("Something went wrong");
+                }
+            }
+        };
+        fetchData();
+    }, []);
+
+    let lists_html = [];
+
+    for (let i = 0; i < lists.length; i++) {
+        lists_html.push(
+            <ContentSummary
+                link={`/listdetails/${lists[i].id}`}
+                title={lists[i].name}
+                description={lists[i].description}
+                banner={lists[i].image}
+            />
+        );
+    }
+
     window.scrollTo({
         top: 0,
     });
@@ -28,36 +69,7 @@ function Lists() {
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.my_lists_label}>My lists</h1>
                 <div className={styles.lists}>
-                    <ContentSummary
-                        title="Favorites"
-                        description="Movies and TV Shows you like the most"
-                        banner={banner1}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Custom list 1"
-                        description="One of your custom lists"
-                        banner={banner2}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Custom list 2"
-                        description="One of your custom lists"
-                        banner={banner3}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Custom list 3"
-                        description="One of your custom lists"
-                        banner={banner4}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Custom list 4"
-                        description="One of your custom lists"
-                        banner={banner5}
-                        link="/listdetails"
-                    ></ContentSummary>
+                    {lists_html}
                 </div>
             </div>
         </div>

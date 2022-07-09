@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
@@ -55,6 +56,16 @@ class List(models.Model):
     class Meta:
         verbose_name = 'List'
         verbose_name_plural = 'Lists'
+
+class ListContent(models.Model):
+    date_added = models.DateTimeField('Date added', auto_now_add=True)
+    content_id = models.IntegerField('Content id')
+    content_type = models.CharField('Content type', max_length=10)
+    list_fk = models.ForeignKey(List, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'List content'
+        verbose_name_plural = 'List contents'
 
 
 class Rating(models.Model):
