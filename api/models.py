@@ -19,12 +19,12 @@ class JSONCache(models.Model):
 # User profile definitions
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField('Name', max_length=20, null=True, blank=True)
     profile_pic = models.ImageField(
         'Profile picture', upload_to='profile_pics/')
     birth_date = models.DateField('Date of birth', null=True)
     gender = models.CharField('Gender', max_length=10, blank=True)
     location = models.CharField('Location', max_length=10, blank=True)
-    language = models.CharField('Language', max_length=10, blank=True)
     bio = models.TextField('Biography', blank=True)
     content_completed = models.IntegerField('Content completed', default=0)
     average_rating = models.FloatField('Average rating', default=0)
