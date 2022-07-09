@@ -15,9 +15,6 @@ function ProfileMenu() {
                     <a href="/progress">Progress</a>
                 </li>
                 <li>
-                    <a href="/ratings">Ratings</a>
-                </li>
-                <li>
                     <a href="/settings">Settings</a>
                 </li>
             </ul>

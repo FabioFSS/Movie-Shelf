@@ -1,10 +1,24 @@
 // react
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // styles
 import styles from "../styles/HomeHeader.module.css";
 
 function HomeHeader() {
+    // states
+    const [search, setSearch] = useState(undefined);
+
+    // hooks
+    const navigate = useNavigate();
+
+    function handleSearch(e) {
+        if (e.key === 'Enter'){
+            navigate(`/search:keyword=${search}`);
+            window.location.reload();
+        }
+    }
+
     return (
         <div className={styles.page_body}>
             <div className={styles.background_img}></div>
@@ -17,6 +31,9 @@ function HomeHeader() {
                 <input
                     className={styles.search_box}
                     placeholder="Search for a tv show or movie"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    onKeyDown={handleSearch}
                 ></input>
             </div>
         </div>

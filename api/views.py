@@ -214,7 +214,7 @@ class UpcomingMoviesView(APIView):
 
         response = []
 
-        for movie in data['results'][:12]:
+        for movie in data['results'][:6]:
             filtered = {'name': movie['title'], 'poster':'https://image.tmdb.org/t/p/w342' + movie['poster_path'], 'id': movie['id']}
 
             response.append(filtered)
@@ -228,7 +228,7 @@ class LatestTVShowsView(APIView):
 
         response = []
 
-        for show in data['results'][:12]:
+        for show in data['results'][:6]:
             filtered = {'name': show['name'], 'poster':'https://image.tmdb.org/t/p/w342' + show['poster_path'], 'id': show['id']}
 
             response.append(filtered)
