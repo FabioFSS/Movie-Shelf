@@ -51,8 +51,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ['user', 'profile_pic', 'birth_date', 'gender',
-                  'location', 'language', 'bio', 'content_completed',
+        fields = ['user', 'name', 'profile_pic', 'birth_date', 'gender',
+                  'location', 'bio', 'content_completed',
                   'average_rating', 'review_number']
 
     def get_photo_url(self, obj):

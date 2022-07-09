@@ -23,10 +23,8 @@ function ProfileHeader() {
             {userData.map((userData) => (
                 <>
                     <ProfileData
-                        username={userData.username}
+                        username={userData.name}
                         location={userData.location}
-                        language={userData.language}
-                        email={userData.email}
                         birth_date={userData.birth_date}
                         bio={userData.bio}
                         profile_pic={

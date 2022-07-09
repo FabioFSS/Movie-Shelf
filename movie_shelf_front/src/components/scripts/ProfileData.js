@@ -5,7 +5,6 @@ function ProfileData({
     username,
     location,
     language,
-    email,
     birth_date,
     bio,
     profile_pic,
@@ -19,13 +18,19 @@ function ProfileData({
             ></img>
 
             <div className={styles.profile_texts}>
-                <p className={styles.profile_name}>{username}</p>
-                <p className={styles.profile_info}>
-                    Location/language: {location}/{language}
-                </p>
-                <p className={styles.profile_info}>Email: {email}</p>
-                <p className={styles.profile_info}>Birth date: {birth_date}</p>
-                <p className={styles.profile_info}>Biography: {bio}</p>
+                {username ? (
+                    <>
+                    <p className={styles.profile_name}>{username}</p>
+                    <p className={styles.profile_info}>
+                        Location/language: {location}/{language}
+                    </p>
+                    <p className={styles.profile_info}>Birth date: {birth_date}</p>
+                    <p className={styles.profile_info}>Biography: {bio}</p>
+                    </>
+
+                ): (
+                    <p className={styles.profile_name}>Add your name on settings</p>
+                )}
             </div>
         </div>
     );

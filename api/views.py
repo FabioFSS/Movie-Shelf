@@ -50,11 +50,11 @@ class UserProfileView(APIView):
         user = User.objects.get(username=username)
         user_profile = UserProfile.objects.get(user=user)
         data = request.data
+        user_profile.name = data['name']
         user_profile.profile_pic = data['profile_pic']
         user_profile.birth_date = data['birth_date']
         user_profile.gender = data['gender']
         user_profile.location = data['location']
-        user_profile.language = data['language']
         user_profile.bio = data['bio']
         user_profile.save()
         return Response(['success'])
