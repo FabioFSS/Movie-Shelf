@@ -83,7 +83,7 @@ class JSONCacheView(APIView):
 
 # View para lists
 class ListView(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
 
     def get(self, request, username):
@@ -105,7 +105,7 @@ class ListView(APIView):
             return Response(serializer.data)
 
 class ListIDView(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
 
     def get(self, request, list_id):
@@ -116,7 +116,7 @@ class ListIDView(APIView):
         return Response(serializer.data)
 
 class ListContentView(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = ListContentSerializer
 
     def get(self, request, username, list_id):
@@ -181,7 +181,7 @@ class RatingView(APIView):
 
 # View para progressos de usuário
 class ProgressView(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = ProgressSerializer
 
     def get(self, request, username):
@@ -214,7 +214,7 @@ class UpcomingMoviesView(APIView):
 
         response = []
 
-        for movie in data['results'][:12]:
+        for movie in data['results'][:6]:
             filtered = {'name': movie['title'], 'poster':'https://image.tmdb.org/t/p/w342' + movie['poster_path'], 'id': movie['id']}
 
             response.append(filtered)
@@ -228,7 +228,7 @@ class LatestTVShowsView(APIView):
 
         response = []
 
-        for show in data['results'][:12]:
+        for show in data['results'][:6]:
             filtered = {'name': show['name'], 'poster':'https://image.tmdb.org/t/p/w342' + show['poster_path'], 'id': show['id']}
 
             response.append(filtered)
