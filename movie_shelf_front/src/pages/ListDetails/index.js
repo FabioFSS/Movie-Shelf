@@ -1,5 +1,6 @@
 // react
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 // styles
 import styles from "./styles.module.css";
@@ -11,14 +12,83 @@ import ContentSummary from "../../components/scripts/ContentSummary";
 import ContentBanner from "../../components/scripts/ContentBanner";
 
 // assets
-import banner1 from "../../assets/image-item/berserk.jpg";
-import banner2 from "../../assets/image-item/cue.jpg";
-import banner3 from "../../assets/image-item/kamikazui no nigiatari.jpg";
-import banner4 from "../../assets/image-item/sabikui disco.jpg";
-import banner5 from "../../assets/image-item/spyxfamily.jpg";
 import description_banner from "../../assets/banner.png";
 
+// contexts
+import AuthContext from "../../contexts/AuthContext";
+
+// hooks
+import useAxios from "../../utils/useAxios";
+
 function ListDetails() {
+    // contexts
+    const { user } = useContext(AuthContext);
+    const { id } = useParams();
+
+    // hooks
+    const api = useAxios();
+
+    // states
+    const [content, setContent] = useState([]);
+    
+    // states
+    const [list, setList] = useState([]);
+
+    // recovers from the backend the logged user's data
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(
+                        `/list_content/${user.username}/${id}`
+                    );
+                    setContent(response.data);
+                } catch {
+                    setContent("Something went wrong");
+                }
+            }
+        };
+        fetchData();
+    }, []);
+
+    // recovers from the backend the logged user's data
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(
+                        `/list_id/${id}`
+                    );
+                    setList(response.data);
+                } catch {
+                    setList("Something went wrong");
+                }
+            }
+        };
+        fetchData();
+    }, []);
+
+    let content_html = [];
+
+    for (let i = 0; i < content.length; i++) {
+        let content_link
+        if (content[i].content_type == 'tv_show'){
+            content_link = `/tvdetails:id=${content[i].content_id}`
+        }
+        else{
+            content_link = `/details:id=${content[i].content_id}`
+        }
+
+        content_html.push(
+            <ContentSummary
+                link={content_link}
+                title={content[i].name}
+                description={content[i].overview}
+                banner={content[i].poster}
+            />
+        );
+    }
+
     window.scrollTo({
         top: 0,
     });
@@ -28,43 +98,12 @@ function ListDetails() {
             <ProfileBackground></ProfileBackground>
             <div className={styles.list_body}>
                 <ProfileHeader></ProfileHeader>
-                <h1 className={styles.list_name_label}>List name</h1>
+                <h1 className={styles.list_name_label}>{list.name}</h1>
                 <ContentBanner
-                    banner={description_banner}
-                    description="Description of your list"
+                    banner={list.image}
+                    description={list.description}
                 ></ContentBanner>
-                <div className={styles.content_list}>
-                    <ContentSummary
-                        title="Content 1"
-                        description="One of your contents"
-                        banner={banner1}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Content 2"
-                        description="One of your contents"
-                        banner={banner2}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Content 2"
-                        description="One of your contents"
-                        banner={banner3}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Content 3"
-                        description="One of your contents"
-                        banner={banner4}
-                        link="/listdetails"
-                    ></ContentSummary>
-                    <ContentSummary
-                        title="Content 4"
-                        description="One of your contents"
-                        banner={banner5}
-                        link="/listdetails"
-                    ></ContentSummary>
-                </div>
+                <div className={styles.content_list}>{content_html}</div>
             </div>
         </div>
     );

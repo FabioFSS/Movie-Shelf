@@ -13,3 +13,7 @@
 .lists > * {
     height: 250px;
 }
+
+.no_lists {
+    text-align: center;
+}

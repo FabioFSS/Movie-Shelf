@@ -130,6 +130,33 @@ class TMDB():
 
         return response
 
+    def upcoming_movies(self):
+        base_url = 'https://api.themoviedb.org/3/movie/upcoming?'
+
+        url = base_url+'api_key='+self.api_key + \
+            '&language='+self.language+'&page='+self.page
+
+        try:
+            response = get(url).json()
+        except ValueError:
+            print("Request error")
+
+        return response
+
+    def latest_tv_shows(self):
+        base_url = 'https://api.themoviedb.org/3/tv/airing_today?'
+
+        url = base_url+'api_key='+self.api_key + \
+            '&language='+self.language+'&page='+self.page
+
+        try:
+            response = get(url).json()
+        except ValueError:
+            print("Request error")
+
+        return response
+
+
     def search(self, query):
 
         base_url = 'https://api.themoviedb.org/3/search/movie'
