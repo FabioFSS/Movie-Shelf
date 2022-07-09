@@ -72,7 +72,13 @@ function Progress() {
             <div className={styles.progress_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.progress_label}>Progress</h1>
-                <div className={styles.tv_shows}>{tvShows}</div>
+                {tvShows.length ? (
+                    <div className={styles.tv_shows}>{tvShows}</div>
+                    
+                    ) : (
+                        
+                        <div className={styles.no_tv_shows}><p>You are watching no TV shows</p></div>
+                )}
             </div>
         </div>
     );

@@ -68,9 +68,15 @@ function Lists() {
             <div className={styles.lists_body}>
                 <ProfileHeader></ProfileHeader>
                 <h1 className={styles.my_lists_label}>My lists</h1>
-                <div className={styles.lists}>
-                    {lists_html}
-                </div>
+                {lists_html.length ? (
+                    <div className={styles.lists}>
+                        {lists_html}
+                    </div>
+                ):(
+                    <div className={styles.no_lists}>
+                        <p>No lists yet</p>
+                    </div>
+                )}
             </div>
         </div>
     );

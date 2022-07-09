@@ -207,6 +207,51 @@ class ProgressView(APIView):
             serializer.save()
             return Response(serializer.data)
 
+class UpcomingMoviesView(APIView):
+    def get(self, request):
+        data = TMDB(
+                '68e356ae11aabb4bf082a0a61801672e', 1, 0).upcoming_movies()
+
+        response = []
+
+        for movie in data['results'][:12]:
+            filtered = {'name': movie['title'], 'poster':'https://image.tmdb.org/t/p/w342' + movie['poster_path'], 'id': movie['id']}
+
+            response.append(filtered)
+
+        return Response(response)
+
+class LatestTVShowsView(APIView):
+    def get(self, request):
+        data = TMDB(
+                '68e356ae11aabb4bf082a0a61801672e', 1, 0).latest_tv_shows()
+
+        response = []
+
+        for show in data['results'][:12]:
+            filtered = {'name': show['name'], 'poster':'https://image.tmdb.org/t/p/w342' + show['poster_path'], 'id': show['id']}
+
+            response.append(filtered)
+
+        return Response(response)
+
+
+class UserRecentlyWatchedView(APIView):
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        progresses = Progress.objects.filter(user_fk=user).order_by('last_watched')
+
+        response = []
+        for progress in progresses:
+            show_data = TMDB(
+                '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(progress.content_id)
+
+            filtered_show_data = {'poster': show_data['poster'], 'name': show_data['details']
+                                  ['name'], 'content_id': progress.content_id}
+
+            response.append(filtered_show_data)
+
+        return Response(response)
 
 class RatingsMovieTvView(APIView):
     serializer_class = RatingsMovieTvSerializer
