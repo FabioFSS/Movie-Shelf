@@ -4,7 +4,6 @@ import styles from "../styles/ProfileData.module.css";
 function ProfileData({
     username,
     location,
-    language,
     birth_date,
     bio,
     profile_pic,
@@ -22,7 +21,7 @@ function ProfileData({
                     <>
                     <p className={styles.profile_name}>{username}</p>
                     <p className={styles.profile_info}>
-                        Location/language: {location}/{language}
+                        Location: {location}
                     </p>
                     <p className={styles.profile_info}>Birth date: {birth_date}</p>
                     <p className={styles.profile_info}>Biography: {bio}</p>
