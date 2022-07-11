@@ -139,9 +139,11 @@
 .button {
     background: #ffffff;
     height: 40px;
-    width: 160px;
+    width: 350px;
 }
 
 .textButton {
     color: black;
+    font-size: 20px;
+    font-weight: bold;
 }

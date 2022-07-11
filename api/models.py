@@ -23,9 +23,9 @@ class UserProfile(models.Model):
     profile_pic = models.ImageField(
         'Profile picture', upload_to='profile_pics/')
     birth_date = models.DateField('Date of birth', null=True)
-    gender = models.CharField('Gender', max_length=10, blank=True)
-    location = models.CharField('Location', max_length=10, blank=True)
-    bio = models.TextField('Biography', blank=True)
+    gender = models.CharField('Gender', max_length=10, null=True, blank=True)
+    location = models.CharField('Location', max_length=10, null=True, blank=True)
+    bio = models.TextField('Biography', null=True, blank=True)
     content_completed = models.IntegerField('Content completed', default=0)
     average_rating = models.FloatField('Average rating', default=0)
     review_number = models.IntegerField('Number of reviews', default=0)
