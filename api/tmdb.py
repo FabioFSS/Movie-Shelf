@@ -95,7 +95,7 @@ class TMDB():
                 response1 = get(url1).json()
             except ValueError:
                 print("Request error")
-            poster_path = 'https://image.tmdb.org/t/p/original'+response1['poster_path']
+            poster_path = 'https://image.tmdb.org/t/p/original/'+response1['poster_path']
 
             list_details_seasons.append({'number_season': season+1, 'poster_path': poster_path})
 

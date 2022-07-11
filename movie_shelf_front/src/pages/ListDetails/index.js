@@ -11,9 +11,6 @@ import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ContentSummary from "../../components/scripts/ContentSummary";
 import ContentBanner from "../../components/scripts/ContentBanner";
 
-// assets
-import description_banner from "../../assets/banner.png";
-
 // contexts
 import AuthContext from "../../contexts/AuthContext";
 
