@@ -23,8 +23,6 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
         } else{
             return img;
         }
-
-        // return img;
         
     }
     
