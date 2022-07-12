@@ -242,7 +242,8 @@ class AddProgressView(APIView):
 
         else:
             progress = Progress(user_fk=user, content_id=content_id, count=1)
-
+            progress.save()
+        
         return Response(['success'])
 
 

@@ -5,12 +5,25 @@ import { Link } from "react-router-dom";
 
 import styles from "../styles/SeasonDetail.module.css";
 
+import undImage from "../../assets/movie_undefined_folder.png"
+
 export default function DetailMovie({ details, poster, overview, tvId, seasonNumber, episodes }) {
     
     const navigate = useNavigate();
 
     function route(episode_number) {
         return `/episodedetail:id=${tvId}#${seasonNumber}-${episode_number}`
+    }
+
+    function validImage(img) {
+        
+
+        if (img.split("w342")[1] == "null") {
+            return undImage;
+        } else{
+            return img;
+        }
+        
     }
     
     return (
@@ -62,7 +75,7 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
                             <Link to={route(episode.episode_number)}>
                                 <img
                                     className={styles.episodes}
-                                    src={`https://image.tmdb.org/t/p/w342${episode.still_path}`}
+                                    src={validImage(`https://image.tmdb.org/t/p/w342${episode.still_path}`)}
                                 />
                             </Link>
                             <p className={styles.seasonNumber}>
