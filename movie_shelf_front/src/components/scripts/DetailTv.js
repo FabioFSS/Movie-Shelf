@@ -43,7 +43,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                                 <button
                                     className={styles.buttomComment}
                                     onClick={() => {
-                                        navigate(`/ratings:id=${details.id}`);
+                                        navigate(`/ratings:id=${details.id}#${poster}`);
                                     }}
                                 >
                                     <FaComment className={styles.iconComment} />

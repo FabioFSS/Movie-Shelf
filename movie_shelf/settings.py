@@ -85,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'movie_shelf',
-        'USER': 'django', #django
-        'PASSWORD': '852963741', #852963741
+        'USER': 'postgres', #django
+        'PASSWORD': '2496', #852963741
         'HOST': 'localhost',
         'PORT': '5432',
     }
