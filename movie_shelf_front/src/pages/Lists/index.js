@@ -10,7 +10,7 @@ import ProfileBackground from "../../components/scripts/ProfileBackground";
 import ContentSummary from "../../components/scripts/ContentSummary";
 
 // assets
-import banner1 from "../../assets/lists_banners/favorites.png";
+import std_list from '../../assets/std_list.png'
 
 // contexts
 import AuthContext from "../../contexts/AuthContext";
@@ -53,7 +53,7 @@ function Lists() {
                 link={`/listdetails/${lists[i].id}`}
                 title={lists[i].name}
                 description={lists[i].description}
-                banner={lists[i].image}
+                banner={lists[i].image ? lists[i].image : std_list}
             />
         );
     }

@@ -28,7 +28,8 @@ import Ratings from "./pages/Ratings";
 import Reset from "./pages/Reset";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
-import Search from "./pages/Search"
+import Search from "./pages/Search";
+import NewList from "./pages/NewListPage";
 
 export default function App() {
     return (
@@ -44,6 +45,19 @@ export default function App() {
                         <Route path="/lists" element={<PrivateRoute />}>
                             <Route path="/lists" element={<Lists />} />
                         </Route>
+                        <Route
+                            path="/listdetails/:id"
+                            element={<PrivateRoute />}
+                        >
+                            <Route
+                                path="/listdetails/:id"
+                                element={<ListDetails />}
+                            />
+                        </Route>
+                        <Route path="/newlist" element={<PrivateRoute />}>
+                            <Route path="/newlist" element={<NewList />} />
+                        </Route>
+
                         <Route path="/progress" element={<PrivateRoute />}>
                             <Route path="/progress" element={<Progress />} />
                         </Route>
@@ -56,15 +70,20 @@ export default function App() {
                         <Route path="/details:id" element={<Details />} />
                         <Route path="/tv" element={<TvShows />} />
                         <Route path="/tvdetails:id" element={<TvDetails />} />
-                        <Route path="/listdetails/:id" element={<ListDetails />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/ratings:id" element={<Ratings />} />
                         <Route path="/ratings" element={<Ratings />} />
                         <Route path="/reset" element={<Reset />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/search:keyword" element={<Search />} />
-                        <Route path="/seasondetail:id" element={<SeasonDetail />} />
-                        <Route path="/episodedetail:id" element={<EpisodeDetail />} />
+                        <Route
+                            path="/seasondetail:id"
+                            element={<SeasonDetail />}
+                        />
+                        <Route
+                            path="/episodedetail:id"
+                            element={<EpisodeDetail />}
+                        />
                     </Routes>
                 </NavProvider>
             </AuthProvider>

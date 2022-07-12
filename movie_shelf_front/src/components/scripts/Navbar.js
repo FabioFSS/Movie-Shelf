@@ -21,7 +21,7 @@ import useAxios from "../../utils/useAxios";
 
 import { useNavigate } from "react-router-dom";
 
-import { FaStar, FaPlus, FaComment, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 function Navbar() {
     // contexts
@@ -60,8 +60,8 @@ function Navbar() {
         <nav className="Navbar" style={{ visibility: visibility }}>
             <div className="leftSide">
                 <div className="links">
-                    <Link to="/tv">TV Shows</Link>
-                    <Link to="/">Movies</Link>
+                    {/* <Link to="/tv">TV Shows</Link>
+                    <Link to="/">Movies</Link> */}
                 </div>
             </div>
 

@@ -1,0 +1,12 @@
+.page_body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.new_list_form{
+    margin: 200px;
+}

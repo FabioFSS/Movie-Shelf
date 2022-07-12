@@ -4,9 +4,6 @@ import React, { useContext, useState } from "react";
 // styles
 import styles from "./styles.module.css";
 
-// assets
-import std_profile_pic from "../../assets/standard_profile_picture.png"
-
 // contexts
 import AuthContext from "../../contexts/AuthContext";
 
