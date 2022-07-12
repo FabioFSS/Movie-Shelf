@@ -35,3 +35,20 @@
     justify-content: space-evenly;
     padding: 20px 0px;
 }
+
+@media screen and (max-width: 800px) {
+    .stats_body {
+        margin: 0px 25px;
+    }
+    .stats_box {
+        margin: 0px 10px;
+        padding: 10px;
+    }
+    .stats_data {
+        padding: 5px 0px;
+        align-items: center;
+    }
+    .stats_label{
+        font-size: 12px;
+    }
+}

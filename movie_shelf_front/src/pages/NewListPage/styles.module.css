@@ -8,5 +8,39 @@
 }
 
 .new_list_form{
-    margin: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    width: 40%;
+    background-color: #001f30;
+    padding: 50px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.new_list_form input{
+    height: 50px;
+    width: 75%;
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 15px;
+    background-color: #01011c;
+    color: white;
+}
+.new_list_form input:focus {
+    outline: none;
+}
+
+.new_list_form input::placeholder {
+    font-size: 18px;
+}
+
+.create_button{
+    margin: 20px;
+    color: #010117;
+    height: 50px;
+    width: 50%;
+    border-radius: 10px;
 }

@@ -44,3 +44,18 @@
     position: relative;
     font-size: 16px;
 }
+
+
+@media screen and (max-width: 800px){
+    .profile_data_pic {
+        width: 75px;
+        height: 75px;
+        margin: 10px;
+    }
+    .profile_texts {
+        max-width: 100px;
+    }
+    .profile_texts p {
+        font-size: 12px;
+    }
+}

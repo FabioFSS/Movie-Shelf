@@ -27,3 +27,20 @@
 .data_value {
     font-size: 64px;
 }
+
+@media screen and (max-width: 800px) {
+    .data_body{
+        min-width: 100px;
+    }
+    .data_circle {
+        height: 50px;
+        width: 50px;
+        margin: 5px 0px;
+    }
+    .data_title{
+        font-size: 12px;
+    }
+    .data_value{
+        font-size: 12px
+    }
+}

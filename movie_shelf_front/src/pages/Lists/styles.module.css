@@ -17,3 +17,23 @@
 .no_lists {
     text-align: center;
 }
+
+.new_list_link {
+    height: 35px;
+}
+
+.lists_label_new{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .lists_body h1 {
+        padding: 5px;
+        font-size: 18px;
+    }
+    .new_list_link {
+        height: 20px;
+    }
+}
