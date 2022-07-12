@@ -59,6 +59,7 @@ function NewList() {
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <button
+                className={styles.create_button}
                     name="createbutton"
                     type="submit"
                     onClick={(e) => doSubmit(e)}

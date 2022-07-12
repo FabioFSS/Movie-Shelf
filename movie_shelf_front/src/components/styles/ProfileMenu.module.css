@@ -38,3 +38,14 @@
 .profile_menu_options li a:hover {
     background-color: #0d5462aa;
 }
+
+@media screen and (max-width: 800px) {
+    .profile_menu {
+        max-width: 125px;
+        padding: 10px;
+    }
+    .profile_menu_options {
+        font-size: 12px;
+    }
+    
+}

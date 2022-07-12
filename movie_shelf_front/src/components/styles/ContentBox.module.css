@@ -27,3 +27,14 @@
     font-weight: bold;
     margin: 10px;
 }
+
+@media screen and (max-width: 800px){
+    .banner_image {
+        height: 125px;
+        width: 75px;
+    }
+    .banner_title {
+        font-size: 12px;
+        max-width: 75px;
+    }
+}
