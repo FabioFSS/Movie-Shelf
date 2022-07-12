@@ -1,9 +1,11 @@
 // react
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 
 // other libs
 import axios from "axios";
+import AuthContext from "../../contexts/AuthContext";
+import useAxios from "../../utils/useAxios";
 
 // styles
 import styles from "./styles.module.css";
@@ -23,30 +25,59 @@ const comments = [
     { comment: "Não recomendo." },
 ];
 
+
+
 export default function Ratings() {
-    const [movieId] = useState(window.location.href.split("=")[1]);
+    const [movieId] = useState(window.location.href.split("=")[1].split("#")[0]);
+    const [poster] = useState(window.location.href.split("=")[1].split("#")[1]);
     const [vote, setVote] = useState(0);
     const [message, setMessage] = useState("");
     const [visible, setVisible] = useState("hidden");
-
+    const [comment, setComments] = useState(undefined);
+    
     useEffect(() => {
         movieId == undefined ? setVisible("hidden") : setVisible("visible");
     }, [movieId]);
 
-    function addComment() {
-        const res = axios
-            .post("http://localhost:8000/login/", {
-                idMovieTv: movieId,
-                idUser: "00000",
-                comment: message,
-                vote: vote,
-            })
-            .then((res) => {
-                console.log(res.data);
-                if (res.data[0] == "success") {
-                }
-            });
+    const { userData } = useContext(AuthContext);
+
+    const { user } = useContext(AuthContext);
+
+    const api = useAxios();
+
+    const addReview = async () => {
+
+        const baseURL = `/reviews/${movieId}`;
+
+        api.post(baseURL, {
+            note: vote,
+            comment: message,
+            movie_tv_id: movieId,
+            user_fk: user.user_id,
+        })
+        .then((response) => {
+            if (response.status == 200) {
+                alert("Salvo com sucesso!");
+            }else {
+                alert("Ops, algo deu errado!!");
+            }
+        });
+                
     }
+    
+    console.log(comment);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(`/reviews/${movieId}`);
+                setComments(response.data);
+            } catch {
+                alert("Algo deu errado!")
+            }
+        };
+        fetchData();
+    }, [message]);
 
     window.scrollTo({
         top: 0,
@@ -82,34 +113,22 @@ export default function Ratings() {
                 </button>
                 <button
                     className={styles.button}
-                    // onClick={() => {addComment}}
+                    onClick={addReview}
                 >
                     <img src={sende} className={styles.icon_img} />
                 </button>
             </div>
             <div className={styles.cotainer_cards}>
-                {comments.map((item, key) => (
+                {comment && comment[0].map((item, key) => (
                     <div className={styles.container_ratings} key={key}>
-                        <img src={capa} className={styles.folder_rating} />
+                        <img src={poster} className={styles.folder_rating} />
                         <div className={styles.container_info_card}>
-                            <div className={styles.info_card}>
-                                <img
-                                    src={profile}
-                                    className={styles.profile_img}
-                                />
-                                <p className={styles.name_user}>Name User</p>
-                                <FaTrash
-                                    size={20}
-                                    color="white"
-                                    className={styles.icons_trash}
-                                />
-                            </div>
                             <p className={styles.comments_card}>
                                 {item.comment}
                             </p>
                             <div className={styles.vote_image}>
                                 <img src={star} className={styles.icon_vote} />
-                                <p className={styles.text_vote}>{vote}/10</p>
+                                <p className={styles.text_vote}>{item.note}/10</p>
                             </div>
                         </div>
                     </div>

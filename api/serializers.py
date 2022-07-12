@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
-from .models import JSONCache, List, ListContent, Rating, Progress, UserProfile
+from .models import JSONCache, List, ListContent, Rating, Progress, UserProfile, Review
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -89,6 +89,11 @@ class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = ['value', 'description', 'user_fk']
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['note', 'comment', 'movie_tv_id', 'user_fk']
 
 
 class ProgressSerializer(serializers.ModelSerializer):
