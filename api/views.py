@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
-from .models import JSONCache, ListContent, RatingMovieTv, List, Rating, Progress, UserProfile
+from .models import JSONCache, ListContent, RatingMovieTv, List, Rating, Progress, UserProfile, Review
 from .serializers import JSONCacheSerializer, ListContentSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
-from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer, ReviewSerializer
 from .tmdb import TMDB
 from rest_framework.views import APIView
 from rest_framework import status
@@ -173,6 +173,25 @@ class RatingView(APIView):
     def post(self, request):
 
         serializer = RatingSerializer(data=request.data)
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+
+# View para ratings de usuário
+class ReviewView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ReviewSerializer
+
+    def get(self, request, movie_tv_id):
+        review = Review.objects.filter(movie_tv_id=movie_tv_id)
+        serializer = ReviewSerializer(
+            review, context={"request": request}, many=True)
+        return Response([serializer.data])
+
+    def post(self, request, movie_tv_id):
+        serializer = ReviewSerializer(data=request.data)
 
         if serializer.is_valid(raise_exception=True):
             serializer.save()

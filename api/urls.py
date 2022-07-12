@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import LatestTVShowsView, ListContentView, ListIDView, ListView, RatingView, ProgressView, JSONCacheView, UpcomingMoviesView, UserProfileView, UserRecentlyWatchedView 
 from .views import DetailMovieView, DetailTvView, RegisterView, RatingsMovieTvView, MyTokenObtainPairView
-from .views import SeasonsView, SearchView, DetailSeasons, EpisodeDetailView
+from .views import SeasonsView, SearchView, DetailSeasons, EpisodeDetailView, ReviewView
 
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -25,6 +25,7 @@ urlpatterns = [
     path('detailseason/<int:id>/<int:season_number>', DetailSeasons.as_view(), name="detailseason"),
     path('detailepisode/<int:id>/<int:season_number>/<int:episode_number>', EpisodeDetailView.as_view(), name="detailepisode"),
     path('ratings', RatingsMovieTvView.as_view(), name="ratings"),
+    path('reviews/<int:movie_tv_id>', ReviewView.as_view(), name="reviews"),
 
     # token authentication patterns
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),

@@ -78,6 +78,17 @@ class Rating(models.Model):
         verbose_name_plural = 'Ratings'
 
 
+class Review(models.Model):
+    note = models.FloatField('Review note')
+    comment = models.TextField('Comment')
+    movie_tv_id = models.IntegerField('Id')
+    user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Review'
+        verbose_name_plural = 'Reviews'
+
+
 class Progress(models.Model):
     content_id = models.IntegerField('Content id')
     count = models.IntegerField('Progress count')
