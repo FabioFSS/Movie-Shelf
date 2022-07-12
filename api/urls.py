@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import LatestTVShowsView, ListContentView, ListIDView, ListView, RatingView, ProgressView, JSONCacheView, UpcomingMoviesView, UserProfileView, UserRecentlyWatchedView
-from .views import DetailMovieView, DetailTvView, RegisterView, RatingsMovieTvView, MyTokenObtainPairView
+from .views import DetailMovieView, DetailTvView, RegisterView, RatingsMovieTvView, MyTokenObtainPairView, AddProgressView
 from .views import SeasonsView, SearchView, DetailSeasons, EpisodeDetailView, ReviewView
 
 from rest_framework_simplejwt.views import (
@@ -17,6 +17,7 @@ urlpatterns = [
     path('recentlywatched/<str:username>',
          UserRecentlyWatchedView.as_view(), name="userrecentlywatched"),
     path('progress/<str:username>', ProgressView.as_view(), name="progresses"),
+    path('addprogress/<str:username>/<int:progress_id>/<int:content_id>', AddProgressView.as_view(), name="addprogress"),
     path('jsoncache/', JSONCacheView.as_view(), name="jsoncache"),
     path('latesttvshows/', LatestTVShowsView.as_view(), name="latesttvshows"),
     path('upcomingmovies/', UpcomingMoviesView.as_view(), name="upcomingmovies"),

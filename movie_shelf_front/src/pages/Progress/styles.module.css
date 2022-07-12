@@ -10,6 +10,13 @@
     padding: 25px;
 }
 
-.no_tv_shows{
+.no_tv_shows {
     text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .progress_label {
+        padding: 5px;
+        font-size: 18px;
+    }
 }

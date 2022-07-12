@@ -62,9 +62,45 @@
     margin: 20px 0;
 }
 
-.progress_bar {
+.progress {
     position: absolute;
     width: 95%;
     height: 10%;
     bottom: 10%;
+}
+
+.progress_bar {
+    width: 95%;
+    bottom: 10%;
+}
+.add_button{
+    color:#002734;
+    width: 25px;
+    height: 25px;
+    margin: 15px;
+}
+
+@media screen and (max-width: 800px) {
+    .progress_body {
+        margin: 15px 25px;
+    }
+    .title {
+        font-size: 16px;
+        margin: 5px;
+    }
+    .banner {
+        height: 150px;
+        width: 100px;
+    }
+    .description_label {
+        font-size: 16px;
+    }
+    .description_box {
+        margin: 0px 5px;
+        padding: 5px;
+    }
+    .description_text {
+        margin: 5px 0;
+        font-size: 12px;
+    }
 }

@@ -58,6 +58,8 @@ function Progress() {
                 banner={progresses[i].poster}
                 value={progresses[i].count}
                 max={progresses[i].max_count}
+                id={progresses[i].id}
+                content_id={progresses[i].content_id}
             />
         );
     }
