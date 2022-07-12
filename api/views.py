@@ -207,7 +207,7 @@ class ProgressView(APIView):
 
     def get(self, request, username):
         user = User.objects.get(username=username)
-        progresses = [{'content_id': progress.content_id, 'count': progress.count}
+        progresses = [{'content_id': progress.content_id, 'count': progress.count, 'id': progress.id}
                       for progress in Progress.objects.filter(user_fk=user)]
 
         response = []
@@ -227,6 +227,23 @@ class ProgressView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
+
+class AddProgressView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ProgressSerializer
+
+    def post(self, request, username, progress_id, content_id):
+        user = User.objects.get(username=username)
+        progress = Progress.objects.get(id=progress_id)
+        if progress:
+            progress.count += 1
+            progress.save()
+
+        else:
+            progress = Progress(user_fk=user, content_id=content_id, count=1)
+
+        return Response(['success'])
 
 
 class UpcomingMoviesView(APIView):
