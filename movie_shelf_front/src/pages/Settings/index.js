@@ -1,5 +1,5 @@
 // react
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // styles
 import styles from "./styles.module.css";
@@ -24,11 +24,21 @@ function Settings() {
     const [location, setLocation] = useState(null);
     const [bio, setBio] = useState(null);
 
+    useEffect(() => {
+        if(userData[0]) {
+            setName(userData[0].name == undefined ? null : userData[0].name);
+            setBirthDate(userData[0].birth_date == undefined ? null : userData[0].birth_date);
+            setGender(userData[0].gender == undefined ? null : userData[0].gender);
+            setLocation(userData[0].location == undefined ? null : userData[0].location);
+            setBio(userData[0].bio == undefined ? null : userData[0].bio);
+            console.log(gender)
+        }
+    }, [userData])
+
     window.scrollTo({
         top: 0,
     });
 
-    console.log(gender)
     const updateUser = async () => {
 
         const baseURL = `/user_profile/${user.username}`;
@@ -94,7 +104,7 @@ function Settings() {
                                     <input
                                         className={styles.inputAge}
                                         type="text"
-                                        placeholder="Birth date"
+                                        placeholder="year-month-day"
                                         value={birth_date}
                                         onChange={(e) => setBirthDate(e.target.value)}
                                     />
@@ -103,19 +113,19 @@ function Settings() {
                                     <h3 className={styles.userGender}>
                                         Gender
                                     </h3>
-                                    <select className={styles.select} onChange={(e) => setGender(e.target.value)}>
+                                    <select 
+                                        className={styles.select} 
+                                        onChange={(e) => setGender(e.target.value)}
+                                        defaultValue={gender}
+                                    >
                                         <option
                                             value={gender}
                                             className={styles.optionSelect}
-                                        >
-                                            M
-                                        </option>
+                                        >M</option>
                                         <option
                                             value={gender}
                                             className={styles.optionSelect}
-                                        >
-                                            W
-                                        </option>
+                                        >W</option>
                                     </select>
                                 </div>
                             </div>
