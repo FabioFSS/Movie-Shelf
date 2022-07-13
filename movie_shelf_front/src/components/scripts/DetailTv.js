@@ -17,7 +17,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
     const navigate = useNavigate();
     const [detailSeasons, setDetailSeasons] = useState(undefined);
     const [progress, setProgress] = useState([]);
-    const [addTv, setaddTv] = useState(false);
+    const [addTv, setaddTv] = useState(true);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/seasons/${tvId}`).then((res) => {
@@ -50,7 +50,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
     useEffect(() => {
         (() => {
             for (let i=0; i < progress.length; i++) {
-                if (progress[i].content_id == tvId) setaddTv(true) 
+                progress[i].content_id == tvId ? setaddTv(true) : setaddTv(false) 
             }
         })();
     }, [progress]);
