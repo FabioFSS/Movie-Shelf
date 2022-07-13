@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FaStar, FaPlus, FaComment } from "react-icons/fa";
+import React, { useEffect, useState, useContext } from "react";
+import { FaStar, FaPlus, FaComment, FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -9,9 +9,15 @@ import plus_icon from "../../assets/plus_icon.png";
 
 import styles from "../styles/DetailTv.module.css";
 
+import AuthContext from "../../contexts/AuthContext";
+import useAxios from "../../utils/useAxios";
+
+
 export default function DetailMovie({ details, poster, reiews, tvId }) {
     const navigate = useNavigate();
     const [detailSeasons, setDetailSeasons] = useState(undefined);
+    const [progress, setProgress] = useState([]);
+    const [addTv, setaddTv] = useState(false);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/seasons/${tvId}`).then((res) => {
@@ -21,6 +27,52 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
 
     function route(season_number) {
         return `/seasondetail:id=${tvId}#${season_number}`;
+    }
+
+    const { user } = useContext(AuthContext);
+
+    const api = useAxios();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await api.get(`/progress/${user.username}`);
+                    setProgress(response.data);
+                } catch {
+                    alert("Something went wrong");
+                }
+            }
+        };
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        (() => {
+            for (let i=0; i < progress.length; i++) {
+                if (progress[i].content_id == tvId) setaddTv(true) 
+            }
+        })();
+    }, [progress]);
+
+    const createProgress = async () => {
+
+        const baseURL = `progress/${user.username}`;
+
+        api.post(baseURL, {
+            content_id: tvId, 
+            count: 0, 
+            user_fk: user.id
+        })
+        .then((response) => {
+            if (response.status == 200) {
+                setaddTv(true)
+                alert("Progresso Criado!");
+            }else {
+                alert("Ops, algo deu errado!!");
+            }
+        });
+                
     }
 
     return (
@@ -47,6 +99,13 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                                     }}
                                 >
                                     <FaComment className={styles.iconComment} />
+                                </button>
+                                <button
+                                    className={styles.buttomAddProgress}
+                                    onClick={createProgress}
+                                    disabled={addTv}
+                                >
+                                    <FaCheck className={styles.iconComment} />
                                 </button>
                                 <button className={styles.buttomAdd}>
                                     <NavItem icon={plus_icon}>
