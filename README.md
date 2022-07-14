@@ -88,16 +88,21 @@ http://localhost:3000/
 
 Screenshots
 
-![front page]()
-![front page]()
-![front page]()
-![front page]()
-![front page]()
-![front page]()
-![front page]()
-![front page]()
-![front page]()
-![front page]()
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/login.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/signup.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/home.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/profile.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/lists.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/lists_detail.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/progress.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/reviews.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_movies.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_tv_shows.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/settings.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_movies.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_tv_shows.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_season.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_episode.png)
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
