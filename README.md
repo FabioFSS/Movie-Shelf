@@ -86,22 +86,37 @@ After opening the browser, use the following url to access the application's hom
 http://localhost:3000/
 ```
 
-Screenshots
+### Screenshots
 
+#### Login
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/login.png)
+#### SignUp
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/signup.png)
+#### Home
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/home.png)
+#### Profile
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/profile.png)
+#### Lists
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/lists.png)
+#### Lists Detail
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/lists_detail.png)
+#### Progress
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/progress.png)
+#### Reviews
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/reviews.png)
+#### Results Search Movies
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_movies.png)
+#### Results Search Tv Shows
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_tv_shows.png)
+#### Settings User
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/settings.png)
+#### Movie Detail
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/movie_detail.png)
+#### Tv Show Detail
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_tv_shows.png)
+#### Season Detail
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_season.png)
+#### Episode Detail
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_episode.png)
 
 ## ⛏️ Built Using <a name = "built_using"></a>
