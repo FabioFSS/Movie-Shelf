@@ -104,11 +104,11 @@ http://localhost:3000/
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/progress.png)
 #### Reviews
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/reviews.png)
-#### Results Search Movies
+#### Results Movies Search
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_movies.png)
-#### Results Search Tv Shows
+#### Results Tv Shows Search
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_tv_shows.png)
-#### Settings User
+#### User Settings
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/settings.png)
 #### Movie Detail
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/movie_detail.png)
