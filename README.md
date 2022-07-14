@@ -62,6 +62,17 @@ Install the dependecies using the following command
 pip install -r requirements.txt
 ```
 
+#### Database
+Have a postgresql database installed and configured as follows
+
+```
+NAME: movie_shelf
+USER: django
+PASSWORD: 852963741
+HOST: localhost
+PORT: 5432
+```
+
 ## 🔧 Running the tests <a name = "tests"></a>
 
 #### React
@@ -74,6 +85,17 @@ npm start
 
 #### Django
 
+Execute o seguinte comando na pasta movie_shelf para gerar as migrações
+```
+python manage.py makemigrations
+```
+
+Now run the following command in the movie_shelf folder to do the migrations in the database
+
+```
+python manage.py migrate
+```
+
 Run the application front-end by opening the terminal on the root folder and running the following command
 
 ```
@@ -85,6 +107,8 @@ After opening the browser, use the following url to access the application's hom
 ```
 http://localhost:3000/
 ```
+
+If the screen turns blue without any information, press F5
 
 ### Screenshots
 
