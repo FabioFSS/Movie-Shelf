@@ -68,7 +68,7 @@ function Settings() {
                     <div className={styles.containerSettings}>
                         <div className={styles.divTransparence}>
                             <h1 className={styles.nemeScreen}>Settings</h1>
-                            <div>
+                            <div className={styles.internoDiv}>
                                 <h3 className={styles.userName}>Name</h3>
                                 <input
                                     className={styles.input}
@@ -78,7 +78,7 @@ function Settings() {
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className={styles.internoDiv}>
                                 <h3 className={styles.userName}>Bio</h3>
                                 <input
                                     className={styles.input}
@@ -88,7 +88,7 @@ function Settings() {
                                     onChange={(e) => setBio(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className={styles.internoDiv}>
                                 <h3 className={styles.userEmail}>Location</h3>
                                 <input
                                     className={styles.input}
@@ -99,8 +99,8 @@ function Settings() {
                                 />
                             </div>
                             <div className={styles.containerInternSettings}>
-                                <div>
-                                    <h3 className={styles.userAge}>Birth date</h3>
+                                <div className={styles.divInputDate}>
+                                    <h3>Birth date</h3>
                                     <input
                                         className={styles.inputAge}
                                         type="text"
@@ -109,10 +109,8 @@ function Settings() {
                                         onChange={(e) => setBirthDate(e.target.value)}
                                     />
                                 </div>
-                                <div>
-                                    <h3 className={styles.userGender}>
-                                        Gender
-                                    </h3>
+                                <div className={styles.divSelect}>
+                                    <h3>Gender</h3>
                                     <select 
                                         className={styles.select} 
                                         onChange={(e) => setGender(e.target.value)}
@@ -129,11 +127,9 @@ function Settings() {
                                     </select>
                                 </div>
                             </div>
-                            <div className={styles.caintainerButtons}>
-                                <button className={styles.button} onClick={updateUser}>
-                                    <p className={styles.textButton}>SAVE</p>
-                                </button>
-                            </div>
+                            <button className={styles.button} onClick={updateUser}>
+                                <p className={styles.textButton}>SAVE</p>
+                            </button>
                         </div>
                     </div>
                 </>

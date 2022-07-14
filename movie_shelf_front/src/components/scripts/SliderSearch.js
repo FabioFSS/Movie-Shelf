@@ -1,31 +1,30 @@
 // react
 import React, { useEffect, useState } from "react";
 
-// services
-import { api } from "../../services/api";
-
 // styles
 import styles from "../styles/SliderSearch.module.css";
 
 // components
 import ContentBox from "./ContentBox";
 
-import axios from "axios";
+import useAxios from "../../utils/useAxios";
 
 function Slider({ title, page, typeList, keyword }) {
     const [movies, setMovies] = useState(null);
     const [search] = useState(keyword);
 
+    const api = useAxios();
+
     useEffect(() => {
         if (typeList == "movies") {
 
-            axios.get(`http://localhost:8000/search/${search}`).then((res) => {
+            api.get(`/search/${search}`).then((res) => {
                 setMovies(res.data[0][0].results);
             });        
 
         } else if (typeList == "tv") {
 
-            axios.get(`http://localhost:8000/search/${search}`).then((res) => {
+            api.get(`/search/${search}`).then((res) => {
                 setMovies(res.data[0][1].results);
             });
         } else {

@@ -14,9 +14,10 @@
 }
 
 .containerSettings {
-    width: 450px;
+    width: 90%;
+    max-width: 400px;
     margin-top: 50px;
-    height: 600px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,13 +28,16 @@
     content: "";
     position: absolute;
     background: #002734;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    max-width: 400px;
+    height: 500px;
     border: 1px solid #0d5462;
     border-radius: 15px;
 }
 
 .divTransparence {
+    width: 100%;
+    max-width: 450px;
     position: absolute;
     display: flex;
     align-items: center;
@@ -42,8 +46,7 @@
 }
 
 .nemeScreen {
-    margin-right: 150px;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .userName {
@@ -53,13 +56,6 @@
 .options {
     display: flex;
     margin-top: 20px;
-}
-
-.imgProfile {
-    width: 150px;
-    height: 150px;
-    margin-right: 30px;
-    border-radius: 20px;
 }
 
 .select {
@@ -92,8 +88,9 @@
 }
 
 .input {
+    max-width: 450px;
     height: 40px;
-    width: 350px;
+    width: 100%;
     background: black;
     color: white;
     margin-bottom: 10px;
@@ -104,13 +101,13 @@
 
 .containerInternSettings {
     display: flex;
-    width: 350px;
+    width: 80%;
     justify-content: space-between;
 }
 
 .inputAge {
     height: 40px;
-    width: 170px;
+    width: 97%;
     border-radius: 5px;
     background: black;
     color: white;
@@ -120,7 +117,7 @@
 
 .select {
     height: 40px;
-    width: 170px;
+    width: 97%;
     border-radius: 5px;
     background: black;
     color: white;
@@ -131,7 +128,7 @@
 
 .caintainerButtons {
     margin-top: 20px;
-    width: 350px;
+    width: 80%;
     display: flex;
     justify-content: space-between;
 }
@@ -139,11 +136,28 @@
 .button {
     background: #ffffff;
     height: 40px;
-    width: 350px;
+    margin-top: 10px;
+    width: 80%;
 }
 
 .textButton {
     color: black;
     font-size: 20px;
     font-weight: bold;
+}
+
+.internoDiv {
+    width: 80%;
+}
+
+.divInputDate {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.divSelect {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
 }

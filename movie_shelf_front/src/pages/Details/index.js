@@ -1,11 +1,10 @@
 // react
 import React, { useState, useEffect } from "react";
 
-// services
-import { api, apiKey, language } from "../../services/api";
-
 // styles
 import "./styles.css";
+
+import useAxios from "../../utils/useAxios";
 
 // components
 import DetailMovie from "../../components/scripts/DetailMovie";
@@ -19,68 +18,31 @@ export default function Details() {
     const [reiews, setReviews] = useState(null);
     const [poster, setPoster] = useState(null);
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8000/detailsmovie/${movieId}`).then((res) => {
+    const api = useAxios();
 
-    //         setDetails(res.data[0].details);
+    useEffect(() => {
+        api.get(`/detailsmovie/${movieId}`).then((res) => {
 
-    //         setReviews(res.data[0].casts.slice(0, 5));
+            setDetails(res.data[0].details);
 
-    //         setBackground(
-    //             `https://image.tmdb.org/t/p/original/${res.data[0].backdrop}`
-    //         );
+            setReviews(res.data[0].casts.slice(0, 5));
 
-    //         setPoster(
-    //             `https://image.tmdb.org/t/p/w342/${res.data[0].poster}`
-    //         );
+            setBackground(
+                `https://image.tmdb.org/t/p/original/${res.data[0].backdrop}`
+            );
 
-    //         setTrailerId(res.data[0].trailer_id);
+            setPoster(
+                `https://image.tmdb.org/t/p/w342/${res.data[0].poster}`
+            );
 
-    //     });
-    // }, [movieId]);
+            setTrailerId(res.data[0].trailer_id);
+
+        });
+    }, [movieId]);
 
     window.scrollTo({
         top: 0,
     });
-
-    useEffect(() => {
-        (async () => {
-            const response = (
-                await api.get(
-                    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=${language}`
-                )
-            ).data;
-            setDetails(response);
-            setBackground(
-                `https://image.tmdb.org/t/p/original/${response.backdrop_path}`
-            );
-            setPoster(
-                `https://image.tmdb.org/t/p/w342/${response.poster_path}`
-            );
-        })();
-    }, [movieId]);
-
-    useEffect(() => {
-        (async () => {
-            const response = (
-                await api.get(
-                    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}&language=${language}`
-                )
-            ).data;
-            setReviews(response.cast.slice(0, 5));
-        })();
-    }, [movieId]);
-
-    useEffect(() => {
-        (async () => {
-            const response = (
-                await api.get(
-                    `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=${language}`
-                )
-            ).data;
-            setTrailerId(response.results[0].key);
-        })();
-    }, [movieId]);
 
     return (
         <div className="wrapper-details">

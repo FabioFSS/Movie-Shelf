@@ -8,8 +8,10 @@
 }
 
 .container_signup {
-    width: 400px;
-    height: 720px;
+    width: 88%;
+    max-width: 400px;
+    height: 95%;
+    max-height: 720px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -22,15 +24,18 @@
     content: "";
     position: absolute;
     background: #002734;
-    width: 400px;
-    height: 720px;
+    width: 88%;
+    max-width: 400px;
+    height: 80%;
+    max-height: 720px;
     border: 1px solid #0d5462;
     border-radius: 15px;
 }
 
 .content {
-    width: 80%;
-    height: 60%;
+    width: 90%;
+    height: 100%;
+    max-height: 70%;
     max-width: 300px;
     display: flex;
     flex-direction: column;
@@ -93,9 +98,7 @@
     border: none;
     color: white;
     font-weight: bold;
-    height: 50px;
-    opacity: 0.9;
-    margin: 20px 0;
+    height: 45px;
 }
 
 .login_text {

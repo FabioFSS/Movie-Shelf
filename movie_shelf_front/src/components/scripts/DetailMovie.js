@@ -25,6 +25,7 @@ export default function DetailMovie({ details, poster, reiews }) {
                             </p>
                         </div>
                     </div>
+                    
                     <div className={styles.detailsContainer}>
                         <div className={styles.comment}>
                             <button
