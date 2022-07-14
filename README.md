@@ -99,7 +99,7 @@ Screenshots
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_movies.png)
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/search_tv_shows.png)
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/settings.png)
-![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_movies.png)
+![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/movie_detail.png)
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_tv_shows.png)
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_season.png)
 ![front page](https://raw.githubusercontent.com/FabioFSS/Movie-Shelf/main/screenshots/detail_episode.png)
