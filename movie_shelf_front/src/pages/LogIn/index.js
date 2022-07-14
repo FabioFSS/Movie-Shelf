@@ -1,7 +1,7 @@
 // react
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
 
 // styles
 import styles from "./styles.module.css";
@@ -47,6 +47,11 @@ export default function Scroll() {
         username.length > 0 && loginUser(username, password);
     };
 
+    const home = () => {
+        navigate('/');
+        isVisible("visible");
+    }
+
     window.scrollTo({
         top: 0,
     });
@@ -55,6 +60,7 @@ export default function Scroll() {
         <div className={styles.wrapperLogin}>
             <div className={styles.containerLogin}>
                 <div className={styles.content}>
+                    <FaHome onClick={home}/>
                     <h1 className={styles.pageName}>Log in</h1>
                     <span className={styles.infoLogin}>
                         Get login to access your account
