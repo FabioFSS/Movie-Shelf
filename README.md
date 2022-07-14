@@ -36,6 +36,7 @@ These instructions will get you a copy of the project up and running on your loc
 python - https://www.python.org/downloads/
 django - https://www.djangoproject.com/download/
 node.js - https://nodejs.org/pt-br/download/?msclkid=923a22f3cc6b11ec8427a774fba05166
+postgresql - https://www.postgresql.org/download/
 ```
 
 ### Installing
