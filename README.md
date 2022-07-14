@@ -86,37 +86,6 @@ After opening the browser, use the following url to access the application's hom
 http://localhost:3000/
 ```
 
-The front page should open automatically on your standard web browser, and you should see something like this.
-
-![front page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/front_page.png?raw=true)
-
-## 🎈 Pages <a name="Pages"></a>
-
-Aside from the front page of the website, we have made a few other pages from listed bellow.
-
-Login - A page for the user to login with his credentials.
-![login page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/login_page.png?raw=true)
-
-Reset - A reset page for the user that is reset his credentials.
-![reset page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/reset_page.png?raw=true)
-
-Signup - A signup page for the to sign up.
-![signup page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/signup_page.png?raw=true)
-
-Profile - A profile page for the user that is logged in.
-![profile page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/profile_page.png?raw=true)
-
-Lists - A page that shows all the user lists and the favorites list.
-![lists page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/lists_page.png?raw=true)
-
-Progress - A page that shows user progress on tv shows.
-![progress page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/progress_page.png?raw=true)
-
-Details - A page that show the details of the movies or tv shows you want.
-![details page](https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/details_page.png?raw=true)
-
-More pages will be added as you can see on our project page on [figma](https://www.figma.com/file/XxM1qbxqN5B1RfbDEyTjPO/Movie-Shelf?node-id=0%3A1).
-
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 -   [NodeJs](https://nodejs.org/en/) - Server Environment
