@@ -3,6 +3,7 @@
     background: #010117;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .backgrundImg {

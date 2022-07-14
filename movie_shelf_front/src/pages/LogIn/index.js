@@ -86,9 +86,9 @@ export default function Scroll() {
                             <FaEyeSlash onClick={changeTypePassword} />
                         )}
                     </div>
-                    <span className={styles.span}>
+                    {/* <span className={styles.span}>
                             <Link to="/reset">Forgot password</Link>
-                    </span>
+                    </span> */}
                     <button
                         className={styles.buttonLogin}
                         disabled={!username || !password}
