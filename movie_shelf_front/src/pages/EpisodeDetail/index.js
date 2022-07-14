@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
 // components
 import DetailTv from "../../components/scripts/EpisodeDetail";
 
-import axios from "axios";
+import useAxios from "../../utils/useAxios";
 
 export default function EpisodeDetail() {
 
@@ -21,8 +21,10 @@ export default function EpisodeDetail() {
     const [detail, setDetail] = useState(null);
     const [background, setBackground] = useState(null);
 
+    const api2 = useAxios();
+
     useEffect(() => {
-        axios.get(`http://localhost:8000/detailepisode/${tvId}/${season_number}/${episode}`).then((res) => {
+        api2.get(`/detailepisode/${tvId}/${season_number}/${episode}`).then((res) => {
             setDetail(res.data[0])
         });
         

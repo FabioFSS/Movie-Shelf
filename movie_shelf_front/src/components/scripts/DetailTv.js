@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { FaStar, FaPlus, FaComment, FaCheck } from "react-icons/fa";
+import { FaStar, FaComment, FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import ListDropdown from "./ListDropdown";
 import NavItem from "./NavItem";
 import plus_icon from "../../assets/plus_icon.png";
@@ -19,8 +18,10 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
     const [progress, setProgress] = useState([]);
     const [addTv, setaddTv] = useState(true);
 
+    const api = useAxios();
+
     useEffect(() => {
-        axios.get(`http://localhost:8000/seasons/${tvId}`).then((res) => {
+        api.get(`/seasons/${tvId}`).then((res) => {
             setDetailSeasons(res.data[0]);
         });
     }, [tvId]);
@@ -31,7 +32,6 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
 
     const { user } = useContext(AuthContext);
 
-    const api = useAxios();
 
     useEffect(() => {
         const fetchData = async () => {

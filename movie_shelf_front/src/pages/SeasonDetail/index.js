@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
 // components
 import DetailTv from "../../components/scripts/SeasonDetail";
 
-import axios from "axios";
+import useAxios from "../../utils/useAxios";
 
 export default function SeasonDetail() {
     // states
@@ -24,8 +24,14 @@ export default function SeasonDetail() {
     const [numberEpisodes, setNumberEpisodes] = useState(null);
     const [episodes, setEpisodes] = useState(null);
 
+    const api = useAxios();
+
+    window.scrollTo({
+        top: 0,
+    });
+
     useEffect(() => {
-        axios.get(`http://localhost:8000/detailseason/${tvId}/${season_number}`).then((res) => {
+        api.get(`/detailseason/${tvId}/${season_number}`).then((res) => {
             setPoster(`https://image.tmdb.org/t/p/w342${res.data[0].poster_path}`);
             setOverview(res.data[0].overview);
             setSeasonNumber(res.data[0].season_number);
@@ -34,19 +40,6 @@ export default function SeasonDetail() {
         });
     }, [tvId]);
 
-    window.scrollTo({
-        top: 0,
-    });
-
-    useEffect(() => {
-        (async () => {
-            const response = await api.get(
-                `trending/tv/week?api_key=68e356ae11aabb4bf082a0a61801672e&language=en-US&page=1`
-            );
-            const data = response.data.results.slice(0, 6);
-            //   console.log(data)
-        })();
-    }, []);
 
     useEffect(() => {
         (async () => {
@@ -59,8 +52,6 @@ export default function SeasonDetail() {
             setBackground(
                 `https://image.tmdb.org/t/p/original/${response.backdrop_path}`
             );
-            
-            // console.log(response.last_episode_to_air.season_number)
         })();
     }, []);
 

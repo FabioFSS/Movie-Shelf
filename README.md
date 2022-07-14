@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/main/readme_assets/logo.png?raw=true" alt="Project logo"></a>
+ <img width=200px height=200px src="https://github.com/FabioFSS/Movie-Shelf/blob/main/screenshots/logo.png?raw=true" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Movie Shelf</h3>
@@ -85,6 +85,19 @@ After opening the browser, use the following url to access the application's hom
 ```
 http://localhost:3000/
 ```
+
+Screenshots
+
+![front page]()
+![front page]()
+![front page]()
+![front page]()
+![front page]()
+![front page]()
+![front page]()
+![front page]()
+![front page]()
+![front page]()
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
