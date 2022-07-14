@@ -54,7 +54,7 @@ npm install --force
 
 #### Django
 
-After cloning the repository, open a terminal on the "/movie_shelf_front" directory and follow the next steps
+After cloning the repository, open a terminal in the project's root directory, where the requirements.txt file is located and follow the next steps
 
 Install the dependecies using the following command
 

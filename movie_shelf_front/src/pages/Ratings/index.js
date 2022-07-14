@@ -46,6 +46,7 @@ export default function Ratings() {
         .then((response) => {
             if (response.status == 200) {
                 alert("Salvo com sucesso!");
+                window.location.reload();
             }else {
                 alert("Ops, algo deu errado!!");
             }
