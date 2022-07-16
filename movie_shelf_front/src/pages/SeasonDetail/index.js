@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 // services
-import { api, apiKey, language } from "../../services/api";
+import { apiKey, language } from "../../services/api";
 
 // styles
 import styles from "./styles.module.css";
@@ -21,7 +21,6 @@ export default function SeasonDetail() {
     const [details, setDetails] = useState(null);
     const [poster, setPoster] = useState(null);
     const [seasonNumber, setSeasonNumber] = useState(null);
-    const [numberEpisodes, setNumberEpisodes] = useState(null);
     const [episodes, setEpisodes] = useState(null);
 
     const api = useAxios();
@@ -35,7 +34,6 @@ export default function SeasonDetail() {
             setPoster(`https://image.tmdb.org/t/p/w342${res.data[0].poster_path}`);
             setOverview(res.data[0].overview);
             setSeasonNumber(res.data[0].season_number);
-            setNumberEpisodes(res.data[0].episodes.length);
             setEpisodes(res.data[0].episodes);
         });
     }, [tvId]);

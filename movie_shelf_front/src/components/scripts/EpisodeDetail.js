@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import styles from "../styles/EpisodeDetail.module.css";
 
+import undImage from "../../assets/movie_undefined_folder.png"
+
 export default function DetailEpisode({ details }) {
 
     const [detail, setDetail] = useState(undefined);
@@ -13,7 +15,15 @@ export default function DetailEpisode({ details }) {
         setDetail(details)
     }, [details])
     
-    console.log(detail)
+    function validImage(img) {       
+
+        if (img.split("w342")[1] == "null") {
+            return undImage;
+        } else{
+            return img;
+        }
+        
+    }
 
 
     return (
@@ -22,7 +32,7 @@ export default function DetailEpisode({ details }) {
                 {detail && (
                     <>
                         <div className={styles.containerPoster}>
-                            <img className={styles.poster} src={`https://image.tmdb.org/t/p/w342${detail.still_path}`} />
+                            <img className={styles.poster} src={validImage(`https://image.tmdb.org/t/p/w342${detail.still_path}`)} />
                             <div className={styles.containerVote}>
                                 <FaStar size={40} color={styles.yellow} />
                                 <p className={styles.vote}>

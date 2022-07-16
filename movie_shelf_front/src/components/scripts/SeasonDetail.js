@@ -15,8 +15,7 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
         return `/episodedetail:id=${tvId}#${seasonNumber}-${episode_number}`
     }
 
-    function validImage(img) {
-        
+    function validImage(img) {       
 
         if (img.split("w342")[1] == "null") {
             return undImage;
