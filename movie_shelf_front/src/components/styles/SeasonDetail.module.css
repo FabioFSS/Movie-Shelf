@@ -2,18 +2,22 @@
     display: flex;
     position: absolute;
     flex-direction: column;
+    max-width: 1200px;
+    width: 100%; 
 }
 
 .containerMovie {
     display: flex;
-    width: 1200px;
+    flex-wrap: wrap;
+    width: 100%;
     margin-top: 150px;    
 }
 
 .containerPoster {
     background: #0d5462;
     margin-right: 34px;
-    height: 500px;
+    max-width: 300px;
+    width: 100%;
     border-radius: 20px;
     text-align: center;
     
@@ -40,8 +44,8 @@
 }
 
 .detailsContainer {
-    width: 800px;
-    margin-left: 57px;    
+    max-width: 800px;
+    width: 100%;
 }
 
 .title {
@@ -116,7 +120,8 @@
     display: flex;
     margin-top: 50px;
     flex-wrap: wrap;
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
 }
 .containerSeasons {
     margin-right: 14px;

@@ -86,7 +86,7 @@ npm start
 
 #### Django
 
-Execute o seguinte comando na pasta movie_shelf para gerar as migrações
+Run the following command in the movie_shelf folder to generate the migrations
 ```
 python manage.py makemigrations
 ```

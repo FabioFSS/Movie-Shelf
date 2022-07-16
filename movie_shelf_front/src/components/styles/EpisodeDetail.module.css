@@ -2,18 +2,22 @@
     display: flex;
     position: absolute;
     flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .containerMovie {
     display: flex;
-    width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
     margin-top: 150px;    
 }
 
 .containerPoster {
     background: #0d5462;
     margin-right: 34px;
-    height: 230px;
+    /* height: 230px; */
+    max-width: 400px;
     border-radius: 20px;
     text-align: center;
     
@@ -21,6 +25,8 @@
 
 .poster {
     border-radius: 20px;
+    max-width: 400px;
+    max-height: 200px;
     width: 100%;
 }
 
@@ -39,8 +45,8 @@
 }
 
 .detailsContainer {
-    width: 800px;
-    margin-left: 57px;    
+    max-width: 820px;
+    width: 100%;
 }
 
 .title {
