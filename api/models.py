@@ -7,8 +7,6 @@ from .tmdb import TMDB
 tmdb_handler = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
 # User profile definitions
-
-
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=20, null=True, blank=True)

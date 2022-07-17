@@ -12,16 +12,18 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 tmdb_handler = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
-# Views para autenticação de usuário
-# Obtenção de token de autenticação
-
 
 class MyTokenObtainPairView(TokenObtainPairView):
+    '''View for user authentication and getting authentication tokens. 
+    '''
+
     serializer_class = MyTokenObtainPairSerializer
 
 
-# View de registro de usuário
 class RegisterView(APIView):
+    '''View for registering an user.
+    '''
+
     permission_classes = (AllowAny,)
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
@@ -38,8 +40,10 @@ class RegisterView(APIView):
         return Response({'response': serializer.data}, status=status.HTTP_201_CREATED)
 
 
-# View de atualização e recuperação das informações do usuário
 class UserProfileView(APIView):
+    '''View for updating and recovering user info.
+    '''
+
     permission_classes = [IsAuthenticated]
     serializer_class = UserProfileSerializer
 
@@ -64,10 +68,11 @@ class UserProfileView(APIView):
         user_profile.save()
         return Response(['success'])
 
-# View para lists
-
 
 class ListView(APIView):
+    '''View for lists.
+    '''
+
     permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
 
@@ -90,6 +95,9 @@ class ListView(APIView):
 
 
 class ListIDView(APIView):
+    '''View for list by id.
+    '''
+
     permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
 
@@ -102,6 +110,9 @@ class ListIDView(APIView):
 
 
 class ListContentView(APIView):
+    '''View for the content of a list.
+    '''
+
     permission_classes = [IsAuthenticated]
     serializer_class = ListContentSerializer
 
@@ -144,8 +155,10 @@ class ListContentView(APIView):
         return Response(['success'])
 
 
-# View para ratings de usuário
 class ReviewView(APIView):
+    '''View for user rating.
+    '''
+
     permission_classes = [IsAuthenticated]
     serializer_class = ReviewSerializer
 
@@ -163,8 +176,10 @@ class ReviewView(APIView):
             return Response(serializer.data)
 
 
-# View para progressos de usuário
 class ProgressView(APIView):
+    '''View for user progress.
+    '''
+
     permission_classes = [IsAuthenticated]
     serializer_class = ProgressSerializer
 
@@ -175,8 +190,7 @@ class ProgressView(APIView):
 
         response = []
         for progress in progresses:
-            show_data = TMDB(
-                '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(progress['content_id'])
+            show_data = tmdb_handler.get_details_tv(progress['content_id'])
 
             filtered_show_data = {'poster': show_data['poster'], 'name': show_data['details']
                                   ['name'], 'max_count': show_data['details']['number_of_episodes'], 'overview': show_data['details']['overview']}
@@ -193,6 +207,9 @@ class ProgressView(APIView):
 
 
 class AddProgressView(APIView):
+    '''View for adding user progress.
+    '''
+
     permission_classes = [IsAuthenticated]
     serializer_class = ProgressSerializer
 
@@ -211,6 +228,9 @@ class AddProgressView(APIView):
 
 
 class UpcomingMoviesView(APIView):
+    '''View for getting upcoming movies.
+    '''
+
     def get(self, request):
         data = tmdb_handler.upcoming_movies()
 
@@ -226,6 +246,9 @@ class UpcomingMoviesView(APIView):
 
 
 class LatestTVShowsView(APIView):
+    '''View for airing today TV shows.
+    '''
+
     def get(self, request):
         data = tmdb_handler.latest_tv_shows()
 
@@ -241,6 +264,9 @@ class LatestTVShowsView(APIView):
 
 
 class UserRecentlyWatchedView(APIView):
+    '''View for recently watched shows by an user.
+    '''
+
     def get(self, request, username):
         user = User.objects.get(username=username)
         progresses = Progress.objects.filter(
@@ -248,8 +274,7 @@ class UserRecentlyWatchedView(APIView):
 
         response = []
         for progress in progresses:
-            show_data = TMDB(
-                '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(progress.content_id)
+            show_data = tmdb_handler.get_details_tv(progress.content_id)
 
             filtered_show_data = {'poster': show_data['poster'], 'name': show_data['details']
                                   ['name'], 'content_id': progress.content_id}
@@ -260,6 +285,9 @@ class UserRecentlyWatchedView(APIView):
 
 
 class DetailMovieView(APIView):
+    '''View for a movie details.
+    '''
+
     def get(self, request, id):
 
         response_movie = tmdb_handler.get_details_movie(id)
@@ -268,6 +296,9 @@ class DetailMovieView(APIView):
 
 
 class DetailTvView(APIView):
+    '''View for a TV show details.
+    '''
+
     def get(self, request, id):
 
         response_movie = tmdb_handler.get_details_tv(id)
@@ -276,6 +307,9 @@ class DetailTvView(APIView):
 
 
 class SeasonsView(APIView):
+    '''View for TV show seasons.
+    '''
+
     def get(self, request, id):
 
         response_detail_seasons = tmdb_handler.get_list_seasons(id)
@@ -284,6 +318,9 @@ class SeasonsView(APIView):
 
 
 class DetailSeasons(APIView):
+    '''View for details of a season.
+    '''
+
     def get(self, request, id, season_number):
 
         detail_season = tmdb_handler.get_details_season(id, season_number)
@@ -292,6 +329,9 @@ class DetailSeasons(APIView):
 
 
 class EpisodeDetailView(APIView):
+    '''View for details of an episode.
+    '''
+
     def get(self, request, id, season_number, episode_number):
 
         episode_detail = tmdb_handler.get_details_episode(
@@ -301,6 +341,9 @@ class EpisodeDetailView(APIView):
 
 
 class SearchView(APIView):
+    '''View for searching content.
+    '''
+
     def get(self, request, keyword):
 
         search = tmdb_handler.search(str(keyword))
