@@ -79,6 +79,7 @@ class ListSerializer(serializers.ModelSerializer):
         photo_url = obj.fingerprint.url
         return request.build_absolute_uri(photo_url)
 
+
 class ListContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ListContent
@@ -89,6 +90,7 @@ class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = ['value', 'description', 'user_fk']
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:

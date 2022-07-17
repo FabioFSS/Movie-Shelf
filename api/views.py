@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from .models import JSONCache, ListContent, RatingMovieTv, List, Rating, Progress, UserProfile, Review
-from .serializers import JSONCacheSerializer, ListContentSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
-from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer, ReviewSerializer
+from .serializers import JSONCacheSerializer, ListContentSerializer, RatingSerializer, ProgressSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer
+from .serializers import ReviewSerializer, RatingsMovieTvSerializer
 from .tmdb import TMDB
 from rest_framework.views import APIView
 from rest_framework import status
@@ -243,7 +244,7 @@ class AddProgressView(APIView):
         else:
             progress = Progress(user_fk=user, content_id=content_id, count=1)
             progress.save()
-        
+
         return Response(['success'])
 
 

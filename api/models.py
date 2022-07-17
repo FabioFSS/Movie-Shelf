@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
@@ -24,7 +23,8 @@ class UserProfile(models.Model):
         'Profile picture', upload_to='profile_pics/')
     birth_date = models.DateField('Date of birth', null=True)
     gender = models.CharField('Gender', max_length=10, null=True, blank=True)
-    location = models.CharField('Location', max_length=10, null=True, blank=True)
+    location = models.CharField(
+        'Location', max_length=10, null=True, blank=True)
     bio = models.TextField('Biography', null=True, blank=True)
     content_completed = models.IntegerField('Content completed', default=0)
     average_rating = models.FloatField('Average rating', default=0)
@@ -56,6 +56,7 @@ class List(models.Model):
     class Meta:
         verbose_name = 'List'
         verbose_name_plural = 'Lists'
+
 
 class ListContent(models.Model):
     date_added = models.DateTimeField('Date added', auto_now_add=True)
