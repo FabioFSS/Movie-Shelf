@@ -12,6 +12,8 @@
     align-items: center;
     justify-content: center;
     transition: filter 100ms;
+    cursor: pointer;
+
 }
 
 .icon-button:hover {

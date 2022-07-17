@@ -121,7 +121,7 @@ function Home() {
     for (let i = 0; i < topRatedTV.length; i++) {
         top_rated_tv_boxes.push(
             <ContentBox
-                link={`/details:id=${topRatedTV[i].id}`}
+                link={`/tvdetails:id=${topRatedTV[i].id}`}
                 title={topRatedTV[i].name}
                 banner={topRatedTV[i].poster}
             />

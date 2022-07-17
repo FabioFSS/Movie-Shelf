@@ -25,6 +25,9 @@
     position: absolute;
     right: 250px;
     background-color: #001f30;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 .no_lists {

@@ -104,17 +104,20 @@
     border-radius: 100px;
     background-color: rgba(0, 0, 0, 0.4);
     margin-left: 30px;
+    cursor: pointer;
 }
 
 .buttomAddProgress {
     border-radius: 100px;
     background-color: rgba(0, 0, 0, 0.4);
     margin-left: 30px;
+    cursor: pointer;
 }
 
 .buttomComment {
     border-radius: 100px;
     background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 .seasonsWarapper { 
