@@ -22,7 +22,6 @@ export default function Details() {
 
     useEffect(() => {
         api.get(`/detailsmovie/${movieId}`).then((res) => {
-
             setDetails(res.data[0].details);
 
             setReviews(res.data[0].casts.slice(0, 5));
@@ -31,12 +30,9 @@ export default function Details() {
                 `https://image.tmdb.org/t/p/original/${res.data[0].backdrop}`
             );
 
-            setPoster(
-                `https://image.tmdb.org/t/p/w342/${res.data[0].poster}`
-            );
+            setPoster(`https://image.tmdb.org/t/p/w342/${res.data[0].poster}`);
 
             setTrailerId(res.data[0].trailer_id);
-
         });
     }, [movieId]);
 

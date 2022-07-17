@@ -23,7 +23,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
         api.get(`/seasons/${tvId}`).then((res) => {
             setDetailSeasons(res.data[0]);
         });
-    }, [tvId, api]);
+    }, [tvId]);
 
     function route(season_number) {
         return `/seasondetail:id=${tvId}#${season_number}`;
@@ -45,7 +45,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
             }
         };
         fetchData();
-    }, [api, user]);
+    }, [user]);
 
     useEffect(() => {
         (() => {
@@ -55,7 +55,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                     : setaddTv(false);
             }
         })();
-    }, [progress.concat, tvId, progress]);
+    }, [tvId, progress]);
 
     const createProgress = async () => {
         const baseURL = `progress/${user.username}`;
@@ -67,9 +67,9 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
         }).then((response) => {
             if (response.status === 200) {
                 setaddTv(true);
-                alert("Progresso Criado!");
+                alert("Show added to progress page!");
             } else {
-                alert("Ops, algo deu errado!!");
+                alert("Something went wrong.");
             }
         });
     };
@@ -80,7 +80,11 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                 {details && (
                     <>
                         <div className={styles.containerPoster}>
-                            <img alt="poster" className={styles.poster} src={poster} />
+                            <img
+                                alt="poster"
+                                className={styles.poster}
+                                src={poster}
+                            />
                             <div className={styles.containerVote}>
                                 <FaStar size={40} color={styles.yellow} />
                                 <p className={styles.vote}>

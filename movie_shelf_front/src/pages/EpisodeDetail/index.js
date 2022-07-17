@@ -28,7 +28,7 @@ export default function EpisodeDetail() {
             setDetail(res.data[0])
         });
         
-    }, [tvId, api2, episode, season_number]);
+    }, [tvId, episode, season_number]);
 
     useEffect(() => {
         (async () => {

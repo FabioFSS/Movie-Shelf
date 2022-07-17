@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useContext } from "react";
 
 // other libs
-import axios from "axios";
 import AuthContext from "../../contexts/AuthContext";
 import useAxios from "../../utils/useAxios";
 
@@ -24,10 +23,8 @@ export default function Ratings() {
     const [comment, setComments] = useState(undefined);
     
     useEffect(() => {
-        movieId == undefined ? setVisible("hidden") : setVisible("visible");
+        movieId === undefined ? setVisible("hidden") : setVisible("visible");
     }, [movieId]);
-
-    const { userData } = useContext(AuthContext);
 
     const { user } = useContext(AuthContext);
 
@@ -44,7 +41,7 @@ export default function Ratings() {
             user_fk: user.user_id,
         })
         .then((response) => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 alert("Salvo com sucesso!");
                 window.location.reload();
             }else {
@@ -64,7 +61,7 @@ export default function Ratings() {
             }
         };
         fetchData();
-    }, [message]);
+    }, [message, movieId]);
 
     window.scrollTo({
         top: 0,
@@ -90,31 +87,31 @@ export default function Ratings() {
                 />
                 <div className={styles.container_vote}>
                     <p className={styles.vote}>{vote}</p>
-                    <img src={star} className={styles.icon_vote} />
+                    <img src={star} className={styles.icon_vote} alt="star" />
                 </div>
                 <button className={styles.button} onClick={minusVote}>
-                    <img src={minus} className={styles.icon_img} />
+                    <img src={minus} className={styles.icon_img} alt="minus" />
                 </button>
                 <button className={styles.button} onClick={plusVote}>
-                    <img src={plus} className={styles.icon_img} />
+                    <img src={plus} className={styles.icon_img} alt="plus" />
                 </button>
                 <button
                     className={styles.button}
                     onClick={addReview}
                 >
-                    <img src={sende} className={styles.icon_img} />
+                    <img src={sende} className={styles.icon_img} alt="send" />
                 </button>
             </div>
             <div className={styles.cotainer_cards}>
                 {comment && comment[0].map((item, key) => (
                     <div className={styles.container_ratings} key={key}>
-                        <img src={poster} className={styles.folder_rating} />
+                        <img src={poster} className={styles.folder_rating} alt="poster" />
                         <div className={styles.container_info_card}>
                             <p className={styles.comments_card}>
                                 {item.comment}
                             </p>
                             <div className={styles.vote_image}>
-                                <img src={star} className={styles.icon_vote} />
+                                <img src={star} className={styles.icon_vote} alt="star" />
                                 <p className={styles.text_vote}>{item.note}/10</p>
                             </div>
                         </div>

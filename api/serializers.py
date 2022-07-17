@@ -1,11 +1,10 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
-from .models import JSONCache, List, ListContent, Rating, Progress, UserProfile, Review
+from .models import List, ListContent, Progress, UserProfile, Review
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
-# Serializador para obtenção de tokens de autenticação
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -17,7 +16,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 
-# Serializador para registro e validação do usuário
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True, required=True, validators=[validate_password])
@@ -45,7 +43,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-# Serializador para as informações de um perfil de usuário
 class UserProfileSerializer(serializers.ModelSerializer):
     profile_pic = serializers.ImageField(max_length=None, use_url=True)
 
@@ -59,12 +56,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         photo_url = obj.fingerprint.url
         return request.build_absolute_uri(photo_url)
-
-
-class JSONCacheSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = JSONCache
-        fields = ['movie', 'tv_shows']
 
 
 class ListSerializer(serializers.ModelSerializer):
@@ -86,12 +77,6 @@ class ListContentSerializer(serializers.ModelSerializer):
         fields = ['date_added', 'content_id', 'content_type', 'list_fk']
 
 
-class RatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = ['value', 'description', 'user_fk']
-
-
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
@@ -102,9 +87,3 @@ class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Progress
         fields = ['content_id', 'count', 'user_fk']
-
-
-class RatingsMovieTvSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = ['idMovieTv', 'comment', 'vote', 'user_fk']

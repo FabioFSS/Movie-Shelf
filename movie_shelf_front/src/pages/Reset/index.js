@@ -22,7 +22,7 @@ export default function Scroll() {
             isVisible("hidden");
             setNav(false);
         }
-    }, []);
+    }, [isVisible, nav]);
 
     window.scrollTo({
         top: 0,

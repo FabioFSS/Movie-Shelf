@@ -29,7 +29,7 @@ export default function Scroll() {
             isVisible("hidden");
             setNav(false);
         }
-    }, []);
+    }, [isVisible, nav]);
 
     // toggles the password visibility
     const changeTypePassword = () => {

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 
 // styles
 import styles from "./styles.module.css";
-
 import useAxios from "../../utils/useAxios";
 
 // components

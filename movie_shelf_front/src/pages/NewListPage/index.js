@@ -1,5 +1,5 @@
 // react
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 
 // styles
 import styles from "./styles.module.css";
@@ -17,7 +17,7 @@ function NewList() {
     // states
     const [name, setName] = useState([]);
     const [description, setDescription] = useState([]);
-    const [image, setImage] = useState(null);
+    const [image] = useState(null);
 
     const api = useAxios();
 
@@ -29,7 +29,7 @@ function NewList() {
             description,
             image,
         }).then((response) => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 alert("Saved successfully.");
             } else {
                 alert("Something went wrong.");

@@ -7,6 +7,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 // components
 import Navbar from "./components/scripts/Navbar";
+import Footer from "./components/scripts/Footer"
 
 // contexts
 import NavProvider from "./contexts/navbar";
@@ -85,6 +86,7 @@ export default function App() {
                             element={<EpisodeDetail />}
                         />
                     </Routes>
+                    <Footer/>
                 </NavProvider>
             </AuthProvider>
         </BrowserRouter>

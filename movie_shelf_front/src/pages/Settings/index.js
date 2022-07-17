@@ -18,7 +18,7 @@ function Settings() {
     const api = useAxios();
 
     const [name, setName] = useState(null);
-    const [profile_pic, setProfilePic] = useState(null);
+    const [profile_pic] = useState(null);
     const [birth_date, setBirthDate] = useState(null);
     const [gender, setGender] = useState(null);
     const [location, setLocation] = useState(null);
@@ -26,14 +26,14 @@ function Settings() {
 
     useEffect(() => {
         if(userData[0]) {
-            setName(userData[0].name == undefined ? null : userData[0].name);
-            setBirthDate(userData[0].birth_date == undefined ? null : userData[0].birth_date);
-            setGender(userData[0].gender == undefined ? null : userData[0].gender);
-            setLocation(userData[0].location == undefined ? null : userData[0].location);
-            setBio(userData[0].bio == undefined ? null : userData[0].bio);
+            setName(userData[0].name === undefined ? null : userData[0].name);
+            setBirthDate(userData[0].birth_date === undefined ? null : userData[0].birth_date);
+            setGender(userData[0].gender === undefined ? null : userData[0].gender);
+            setLocation(userData[0].location === undefined ? null : userData[0].location);
+            setBio(userData[0].bio === undefined ? null : userData[0].bio);
             console.log(gender)
         }
-    }, [userData])
+    }, [userData, gender])
 
     window.scrollTo({
         top: 0,
@@ -52,7 +52,7 @@ function Settings() {
             bio
         })
         .then((response) => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 alert("Saved successfully!");
             }else {
                 alert("Something went wrong.");
