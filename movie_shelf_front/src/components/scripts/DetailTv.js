@@ -11,7 +11,6 @@ import styles from "../styles/DetailTv.module.css";
 import AuthContext from "../../contexts/AuthContext";
 import useAxios from "../../utils/useAxios";
 
-
 export default function DetailMovie({ details, poster, reiews, tvId }) {
     const navigate = useNavigate();
     const [detailSeasons, setDetailSeasons] = useState(undefined);
@@ -24,7 +23,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
         api.get(`/seasons/${tvId}`).then((res) => {
             setDetailSeasons(res.data[0]);
         });
-    }, [tvId]);
+    }, [tvId, api]);
 
     function route(season_number) {
         return `/seasondetail:id=${tvId}#${season_number}`;
@@ -32,12 +31,13 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
 
     const { user } = useContext(AuthContext);
 
-
     useEffect(() => {
         const fetchData = async () => {
             if (user) {
                 try {
-                    const response = await api.get(`/progress/${user.username}`);
+                    const response = await api.get(
+                        `/progress/${user.username}`
+                    );
                     setProgress(response.data);
                 } catch {
                     alert("Something went wrong");
@@ -45,35 +45,34 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
             }
         };
         fetchData();
-    }, []);
+    }, [api, user]);
 
     useEffect(() => {
         (() => {
-            for (let i=0; i < progress.length; i++) {
-                progress[i].content_id == tvId ? setaddTv(true) : setaddTv(false) 
+            for (let i = 0; i < progress.length; i++) {
+                progress[i].content_id === tvId
+                    ? setaddTv(true)
+                    : setaddTv(false);
             }
         })();
-    }, [progress]);
+    }, [progress.concat, tvId, progress]);
 
     const createProgress = async () => {
-
         const baseURL = `progress/${user.username}`;
 
         api.post(baseURL, {
-            content_id: tvId, 
-            count: 0, 
-            user_fk: user.id
-        })
-        .then((response) => {
-            if (response.status == 200) {
-                setaddTv(true)
+            content_id: tvId,
+            count: 0,
+            user_fk: user.id,
+        }).then((response) => {
+            if (response.status === 200) {
+                setaddTv(true);
                 alert("Progresso Criado!");
-            }else {
+            } else {
                 alert("Ops, algo deu errado!!");
             }
         });
-                
-    }
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -81,7 +80,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                 {details && (
                     <>
                         <div className={styles.containerPoster}>
-                            <img className={styles.poster} src={poster} />
+                            <img alt="poster" className={styles.poster} src={poster} />
                             <div className={styles.containerVote}>
                                 <FaStar size={40} color={styles.yellow} />
                                 <p className={styles.vote}>
@@ -95,7 +94,9 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                                 <button
                                     className={styles.buttomComment}
                                     onClick={() => {
-                                        navigate(`/ratings:id=${details.id}#${poster}`);
+                                        navigate(
+                                            `/ratings:id=${details.id}#${poster}`
+                                        );
                                     }}
                                 >
                                     <FaComment className={styles.iconComment} />
@@ -130,6 +131,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                                             key={key}
                                         >
                                             <img
+                                                alt="actor"
                                                 className={styles.imgActors}
                                                 src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                                             />
@@ -150,6 +152,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
                         <div className={styles.containerSeasons} key={key}>
                             <Link to={route(season.number_season)}>
                                 <img
+                                    alt="season poster"
                                     className={styles.seasons}
                                     src={`${season.poster_path}`}
                                 />

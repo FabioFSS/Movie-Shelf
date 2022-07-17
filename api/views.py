@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from .models import JSONCache, ListContent, RatingMovieTv, List, Rating, Progress, UserProfile, Review
-from .serializers import JSONCacheSerializer, ListContentSerializer, RatingSerializer, ProgressSerializer, RatingsMovieTvSerializer
-from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer, ReviewSerializer
+from .serializers import JSONCacheSerializer, ListContentSerializer, RatingSerializer, ProgressSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer
+from .serializers import ReviewSerializer, RatingsMovieTvSerializer
 from .tmdb import TMDB
 from rest_framework.views import APIView
 from rest_framework import status
@@ -9,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
+tmdb_handler = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
 # Views para autenticação de usuário
 # Obtenção de token de autenticação
@@ -42,6 +44,7 @@ class UserProfileView(APIView):
     def get(self, request, username):
         user = User.objects.get(username=username)
         user_profile = UserProfile.objects.get(user=user)
+        user_profile.update_statistics()
         serializer = UserProfileSerializer(
             user_profile, context={"request": request})
         return Response([serializer.data])
@@ -69,10 +72,8 @@ class JSONCacheView(APIView):
         return Response(json_table_data)
 
     def post(self, request):
-        response_movie = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated()
-        response_tv_shows = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).top_rated_tv()
+        response_movie = tmdb_handler.top_rated()
+        response_tv_shows = tmdb_handler.top_rated_tv()
         data = JSONCache(movie=response_movie, tv_shows=response_tv_shows)
 
         serializer = JSONCacheSerializer(data=request.data)
@@ -132,15 +133,13 @@ class ListContentView(APIView):
         response = []
         for content in data:
             if content['content_type'] == 'tv_show':
-                show_data = TMDB(
-                    '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(content['content_id'])
+                show_data = tmdb_handler.get_details_tv(content['content_id'])
 
                 filtered_content_data = {'poster': show_data['poster'], 'name': show_data['details']
                                          ['name'], 'overview': show_data['details']['overview'], 'content_type': 'tv_show', 'content_id': content['content_id']}
 
             elif content['content_type'] == 'movie':
-                movie_data = TMDB(
-                    '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_movie(content['content_id'])
+                movie_data = tmdb_handler.get_details_movie(content['content_id'])
 
                 filtered_content_data = {'poster': movie_data['poster'], 'name': movie_data['details']
                                          ['title'], 'overview': movie_data['details']['overview'], 'content_type': 'movie', 'content_id': content['content_id']}
@@ -243,14 +242,13 @@ class AddProgressView(APIView):
         else:
             progress = Progress(user_fk=user, content_id=content_id, count=1)
             progress.save()
-        
+
         return Response(['success'])
 
 
 class UpcomingMoviesView(APIView):
     def get(self, request):
-        data = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).upcoming_movies()
+        data = tmdb_handler.upcoming_movies()
 
         response = []
 
@@ -265,8 +263,7 @@ class UpcomingMoviesView(APIView):
 
 class LatestTVShowsView(APIView):
     def get(self, request):
-        data = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).latest_tv_shows()
+        data = tmdb_handler.latest_tv_shows()
 
         response = []
 
@@ -317,8 +314,7 @@ class RatingsMovieTvView(APIView):
 class DetailMovieView(APIView):
     def get(self, request, id):
 
-        response_movie = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_movie(id)
+        response_movie = tmdb_handler.get_details_movie(id)
 
         return Response([response_movie])
 
@@ -326,8 +322,7 @@ class DetailMovieView(APIView):
 class DetailTvView(APIView):
     def get(self, request, id):
 
-        response_movie = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_tv(id)
+        response_movie = tmdb_handler.get_details_tv(id)
 
         return Response([response_movie])
 
@@ -335,8 +330,7 @@ class DetailTvView(APIView):
 class SeasonsView(APIView):
     def get(self, request, id):
 
-        response_detail_seasons = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_list_seasons(id)
+        response_detail_seasons = tmdb_handler.get_list_seasons(id)
 
         return Response([response_detail_seasons])
 
@@ -344,8 +338,7 @@ class SeasonsView(APIView):
 class DetailSeasons(APIView):
     def get(self, request, id, season_number):
 
-        detail_season = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_season(id, season_number)
+        detail_season = tmdb_handler.get_details_season(id, season_number)
 
         return Response([detail_season])
 
@@ -353,8 +346,7 @@ class DetailSeasons(APIView):
 class EpisodeDetailView(APIView):
     def get(self, request, id, season_number, episode_number):
 
-        episode_detail = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).get_details_episode(id, season_number, episode_number)
+        episode_detail = tmdb_handler.get_details_episode(id, season_number, episode_number)
 
         return Response([episode_detail])
 
@@ -362,7 +354,6 @@ class EpisodeDetailView(APIView):
 class SearchView(APIView):
     def get(self, request, keyword):
 
-        search = TMDB(
-            '68e356ae11aabb4bf082a0a61801672e', 1, 0).search(str(keyword))
+        search = tmdb_handler.search(str(keyword))
 
         return Response([search])

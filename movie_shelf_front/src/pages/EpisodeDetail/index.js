@@ -28,7 +28,7 @@ export default function EpisodeDetail() {
             setDetail(res.data[0])
         });
         
-    }, [tvId]);
+    }, [tvId, api2, episode, season_number]);
 
     useEffect(() => {
         (async () => {
@@ -41,7 +41,7 @@ export default function EpisodeDetail() {
                 `https://image.tmdb.org/t/p/original/${response.backdrop_path}`
             );
         })();
-    }, []);
+    }, [tvId]);
 
     window.scrollTo({
         top: 0,

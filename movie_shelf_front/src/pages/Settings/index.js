@@ -53,9 +53,9 @@ function Settings() {
         })
         .then((response) => {
             if (response.status == 200) {
-                alert("Salvo com sucesso!");
+                alert("Saved successfully!");
             }else {
-                alert("Ops, algo deu errado!!");
+                alert("Something went wrong.");
             }
         });
                 
@@ -73,7 +73,7 @@ function Settings() {
                                 <input
                                     className={styles.input}
                                     type="text"
-                                    placeholder="name"
+                                    placeholder="Name"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
@@ -83,7 +83,7 @@ function Settings() {
                                 <input
                                     className={styles.input}
                                     type="text"
-                                    placeholder="Yuor bio"
+                                    placeholder="Your bio"
                                     value={bio}
                                     onChange={(e) => setBio(e.target.value)}
                                 />
@@ -93,7 +93,7 @@ function Settings() {
                                 <input
                                     className={styles.input}
                                     type="text"
-                                    placeholder="location"
+                                    placeholder="Location"
                                     value={location}
                                     onChange={(e) => setLocation(e.target.value)}
                                 />
@@ -104,7 +104,7 @@ function Settings() {
                                     <input
                                         className={styles.inputAge}
                                         type="text"
-                                        placeholder="year-month-day"
+                                        placeholder="YYYY-MM-DD"
                                         value={birth_date}
                                         onChange={(e) => setBirthDate(e.target.value)}
                                     />

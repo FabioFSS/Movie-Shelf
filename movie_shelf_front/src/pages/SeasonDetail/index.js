@@ -36,7 +36,7 @@ export default function SeasonDetail() {
             setSeasonNumber(res.data[0].season_number);
             setEpisodes(res.data[0].episodes);
         });
-    }, [tvId]);
+    }, [tvId, api, season_number]);
 
 
     useEffect(() => {
@@ -51,7 +51,7 @@ export default function SeasonDetail() {
                 `https://image.tmdb.org/t/p/original/${response.backdrop_path}`
             );
         })();
-    }, []);
+    }, [api, tvId]);
 
     return (
         <div className={styles.wrapper_details}>

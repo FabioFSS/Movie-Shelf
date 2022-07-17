@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaStar, FaPlus, FaComment } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 import styles from "../styles/EpisodeDetail.module.css";
 
@@ -17,7 +15,7 @@ export default function DetailEpisode({ details }) {
     
     function validImage(img) {       
 
-        if (img.split("w342")[1] == "null") {
+        if (img.split("w342")[1] === "null") {
             return undImage;
         } else{
             return img;
@@ -32,7 +30,7 @@ export default function DetailEpisode({ details }) {
                 {detail && (
                     <>
                         <div className={styles.containerPoster}>
-                            <img className={styles.poster} src={validImage(`https://image.tmdb.org/t/p/w342${detail.still_path}`)} />
+                            <img alt="episode poster" className={styles.poster} src={validImage(`https://image.tmdb.org/t/p/w342${detail.still_path}`)} />
                             <div className={styles.containerVote}>
                                 <FaStar size={40} color={styles.yellow} />
                                 <p className={styles.vote}>
