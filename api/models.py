@@ -6,19 +6,9 @@ from .tmdb import TMDB
 
 tmdb_handler = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
-
-# Cache definitions
-class JSONCache(models.Model):
-    add_time = models.DateTimeField('Creation time', auto_now_add=True)
-    movie = models.JSONField('Movies')
-    tv_shows = models.JSONField('TV shows')
-
-    class Meta:
-        verbose_name = 'JSONCache'
-        verbose_name_plural = 'JSONCaches'
-
-
 # User profile definitions
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=20, null=True, blank=True)
@@ -100,16 +90,6 @@ class ListContent(models.Model):
         verbose_name_plural = 'List contents'
 
 
-class Rating(models.Model):
-    value = models.FloatField('Rating value')
-    description = models.TextField('Description')
-    user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Rating'
-        verbose_name_plural = 'Ratings'
-
-
 class Review(models.Model):
     note = models.FloatField('Review note')
     comment = models.TextField('Comment')
@@ -130,14 +110,3 @@ class Progress(models.Model):
     class Meta:
         verbose_name = 'Progress'
         verbose_name_plural = "Progresses"
-
-
-class RatingMovieTv(models.Model):
-    idMovieTv = models.IntegerField()
-    comment = models.TextField()
-    vote = models.IntegerField()
-    user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'RatingMovieTv'
-        verbose_name_plural = "RatingsMoviesTvs"

@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
-from .models import JSONCache, ListContent, RatingMovieTv, List, Rating, Progress, UserProfile, Review
-from .serializers import JSONCacheSerializer, ListContentSerializer, RatingSerializer, ProgressSerializer
-from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer, ListSerializer
-from .serializers import ReviewSerializer, RatingsMovieTvSerializer
+from .models import ListContent, List, Progress, UserProfile, Review
+from .serializers import ListContentSerializer, ProgressSerializer, ListSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer
+from .serializers import ReviewSerializer
 from .tmdb import TMDB
 from rest_framework.views import APIView
 from rest_framework import status
@@ -14,6 +14,8 @@ tmdb_handler = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
 # Views para autenticação de usuário
 # Obtenção de token de autenticação
+
+
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
@@ -62,27 +64,9 @@ class UserProfileView(APIView):
         user_profile.save()
         return Response(['success'])
 
-
-class JSONCacheView(APIView):
-    serializer_class = JSONCacheSerializer
-
-    def get(self, request):
-        json_table_data = [{"movie": json_table_data.movie, "tv_shows": json_table_data.tv_shows}
-                           for json_table_data in JSONCache.objects.all()]
-        return Response(json_table_data)
-
-    def post(self, request):
-        response_movie = tmdb_handler.top_rated()
-        response_tv_shows = tmdb_handler.top_rated_tv()
-        data = JSONCache(movie=response_movie, tv_shows=response_tv_shows)
-
-        serializer = JSONCacheSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            data.save()
-            return Response(serializer.data)
-
-
 # View para lists
+
+
 class ListView(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ListSerializer
@@ -139,7 +123,8 @@ class ListContentView(APIView):
                                          ['name'], 'overview': show_data['details']['overview'], 'content_type': 'tv_show', 'content_id': content['content_id']}
 
             elif content['content_type'] == 'movie':
-                movie_data = tmdb_handler.get_details_movie(content['content_id'])
+                movie_data = tmdb_handler.get_details_movie(
+                    content['content_id'])
 
                 filtered_content_data = {'poster': movie_data['poster'], 'name': movie_data['details']
                                          ['title'], 'overview': movie_data['details']['overview'], 'content_type': 'movie', 'content_id': content['content_id']}
@@ -157,27 +142,6 @@ class ListContentView(APIView):
 
         list_content.save()
         return Response(['success'])
-
-
-# View para ratings de usuário
-class RatingView(APIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = RatingSerializer
-
-    def get(self, request):
-        ratings = [{'value': rating.value, 'description': rating.description,
-                    'user_fk': rating.user_fk}
-                   for rating in Rating.objects.all()]
-
-        return Response(ratings)
-
-    def post(self, request):
-
-        serializer = RatingSerializer(data=request.data)
-
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
 
 
 # View para ratings de usuário
@@ -295,22 +259,6 @@ class UserRecentlyWatchedView(APIView):
         return Response(response)
 
 
-class RatingsMovieTvView(APIView):
-    serializer_class = RatingsMovieTvSerializer
-
-    def get(self, request):
-        progresses = [{'idMovieTv': ratingtvmovie.idMovieTv, 'comment': ratingtvmovie.comment, 'vote': ratingtvmovie.vote, 'user_fk': ratingtvmovie.user_fk}
-                      for ratingtvmovie in RatingMovieTv.objects.all()]
-
-        return Response(progresses)
-
-    def post(self, request):
-        serializer = RatingsMovieTvSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
-
-
 class DetailMovieView(APIView):
     def get(self, request, id):
 
@@ -346,7 +294,8 @@ class DetailSeasons(APIView):
 class EpisodeDetailView(APIView):
     def get(self, request, id, season_number, episode_number):
 
-        episode_detail = tmdb_handler.get_details_episode(id, season_number, episode_number)
+        episode_detail = tmdb_handler.get_details_episode(
+            id, season_number, episode_number)
 
         return Response([episode_detail])
 

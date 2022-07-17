@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import LatestTVShowsView, ListContentView, ListIDView, ListView, RatingView, AddProgressView
-from .views import ProgressView, JSONCacheView, UpcomingMoviesView, UserProfileView, UserRecentlyWatchedView
-from .views import DetailMovieView, DetailTvView, RegisterView, RatingsMovieTvView, MyTokenObtainPairView
+from .views import LatestTVShowsView, ListContentView, ListIDView, ListView, AddProgressView
+from .views import ProgressView, UpcomingMoviesView, UserProfileView, UserRecentlyWatchedView
+from .views import DetailMovieView, DetailTvView, RegisterView, MyTokenObtainPairView
 from .views import SeasonsView, SearchView, DetailSeasons, EpisodeDetailView, ReviewView
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -11,13 +11,11 @@ urlpatterns = [
     path('list_id/<int:list_id>', ListIDView.as_view(), name="listid"),
     path('list_content/<str:username>/<int:list_id>',
          ListContentView.as_view(), name="listcontentview"),
-    path('rating/', RatingView.as_view(), name="ratings"),
     path('recentlywatched/<str:username>',
          UserRecentlyWatchedView.as_view(), name="userrecentlywatched"),
     path('progress/<str:username>', ProgressView.as_view(), name="progresses"),
     path('addprogress/<str:username>/<int:progress_id>/<int:content_id>',
          AddProgressView.as_view(), name="addprogress"),
-    path('jsoncache/', JSONCacheView.as_view(), name="jsoncache"),
     path('latesttvshows/', LatestTVShowsView.as_view(), name="latesttvshows"),
     path('upcomingmovies/', UpcomingMoviesView.as_view(), name="upcomingmovies"),
     path('detailsmovie/<int:id>', DetailMovieView.as_view(), name="detailsmovie"),
@@ -28,7 +26,6 @@ urlpatterns = [
          DetailSeasons.as_view(), name="detailseason"),
     path('detailepisode/<int:id>/<int:season_number>/<int:episode_number>',
          EpisodeDetailView.as_view(), name="detailepisode"),
-    path('ratings', RatingsMovieTvView.as_view(), name="ratings"),
     path('reviews/<int:movie_tv_id>', ReviewView.as_view(), name="reviews"),
 
     # token authentication patterns

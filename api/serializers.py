@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
-from .models import JSONCache, List, ListContent, Rating, Progress, UserProfile, Review
+from .models import List, ListContent, Progress, UserProfile, Review
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -61,12 +61,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         return request.build_absolute_uri(photo_url)
 
 
-class JSONCacheSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = JSONCache
-        fields = ['movie', 'tv_shows']
-
-
 class ListSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(max_length=None, use_url=True)
 
@@ -86,12 +80,6 @@ class ListContentSerializer(serializers.ModelSerializer):
         fields = ['date_added', 'content_id', 'content_type', 'list_fk']
 
 
-class RatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = ['value', 'description', 'user_fk']
-
-
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
@@ -102,9 +90,3 @@ class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Progress
         fields = ['content_id', 'count', 'user_fk']
-
-
-class RatingsMovieTvSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = ['idMovieTv', 'comment', 'vote', 'user_fk']
