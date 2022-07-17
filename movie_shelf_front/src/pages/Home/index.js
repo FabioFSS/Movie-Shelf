@@ -19,6 +19,8 @@ function Home() {
     // states
     const [latestTV, setLatestTV] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([])
+    const [topRatedMovies, setTopRatedMovies] = useState([])
+    const [topRatedTV, setTopRatedTV] = useState([])
     
     // recovers from the backend the logged user's data
     useEffect(() => {
@@ -74,6 +76,58 @@ function Home() {
         );
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(
+                    `/topratedmovies/`
+                );
+                setTopRatedMovies(response.data);
+            } catch {
+                setTopRatedMovies("Something went wrong");
+            }
+        };
+        fetchData();
+    }, []);
+
+    let top_rated_movies_boxes = [];
+
+    for (let i = 0; i < topRatedMovies.length; i++) {
+        top_rated_movies_boxes.push(
+            <ContentBox
+                link={`/details:id=${topRatedMovies[i].id}`}
+                title={topRatedMovies[i].name}
+                banner={topRatedMovies[i].poster}
+            />
+        );
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(
+                    `/topratedtvshows/`
+                );
+                setTopRatedTV(response.data);
+            } catch {
+                setTopRatedTV("Something went wrong");
+            }
+        };
+        fetchData();
+    }, []);
+
+    let top_rated_tv_boxes = [];
+
+    for (let i = 0; i < topRatedTV.length; i++) {
+        top_rated_tv_boxes.push(
+            <ContentBox
+                link={`/details:id=${topRatedTV[i].id}`}
+                title={topRatedTV[i].name}
+                banner={topRatedTV[i].poster}
+            />
+        );
+    }
+
     window.scrollTo({
         top: 0,
     });
@@ -81,7 +135,9 @@ function Home() {
     return (
         <div className={styles.page_body}>
             <HomeHeader></HomeHeader>
+            <Slider title="Top Rated shows" boxes={top_rated_movies_boxes} ></Slider>
             <Slider title="Upcoming movies" boxes={upcoming_movies_boxes} ></Slider>
+            <Slider title="Top Rated TV shows" boxes={top_rated_tv_boxes} ></Slider>
             <Slider title="Latest TV shows" boxes={latest_tv_boxes} ></Slider>
         </div>
     );
