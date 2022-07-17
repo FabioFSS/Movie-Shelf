@@ -19,16 +19,18 @@
 
 .banner_image {
     height: 350px;
+    width: 225px;
     border-radius: 15px;
 }
 
 .banner_title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin: 10px;
+    max-width: 225px;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
     .banner_image {
         height: 125px;
         width: 75px;
