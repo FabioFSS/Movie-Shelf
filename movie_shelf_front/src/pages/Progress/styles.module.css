@@ -2,6 +2,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 200px;
+    min-height: 95vh;
 }
 
 .progress_label {

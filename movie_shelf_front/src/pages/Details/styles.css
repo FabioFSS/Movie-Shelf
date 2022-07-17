@@ -4,6 +4,8 @@
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-bottom: 200px;
+    min-height: 95vh;
 }
 
 .backgrundImg {

@@ -46,7 +46,7 @@ function ListDetails() {
             }
         };
         fetchData();
-    }, [api, id, user]);
+    }, [id, user]);
 
     // recovers from the backend the logged user's data
     useEffect(() => {

@@ -5,6 +5,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-bottom: 200px;
+    min-height: 95vh;
 }
 
 .new_list_form{
