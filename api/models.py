@@ -2,6 +2,9 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.dispatch import receiver
+from .tmdb import TMDB
+
+tmdb_handler = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
 
 # Cache definitions
@@ -33,6 +36,34 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = 'User Profile'
         verbose_name_plural = 'User Profiles'
+
+    def update_statistics(self):
+        progresses = Progress.objects.filter(user_fk=self.user)
+        completed = 0
+
+        for progress in progresses:
+            details = tmdb_handler.get_details_tv(progress.content_id)
+
+            if details['details']['number_of_episodes'] <= progress.count:
+                completed += 1
+
+        ratings = Review.objects.filter(user_fk=self.user)
+        number_of_reviews = len(ratings)
+
+        rating_sum = 0
+        rating_count = 0
+        for rating in ratings:
+            rating_sum = rating.note
+            rating_count += 1
+
+        if len(ratings) > 0:
+            average_rating = rating_sum/len(ratings)
+        else:
+            average_rating = 0
+
+        self.content_completed = completed
+        self.review_number = number_of_reviews
+        self.average_rating = average_rating
 
 
 @receiver(post_save, sender=User)

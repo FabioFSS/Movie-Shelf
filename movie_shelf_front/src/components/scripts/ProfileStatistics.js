@@ -26,7 +26,7 @@ function ProfileStatistics() {
                         <p className={styles.stats_label}>Statistics</p>
                         <div className={styles.stats_data}>
                             <StatisticsData
-                                title="Movies/TV Shows completed"
+                                title="TV Shows completed"
                                 value={userData.content_completed}
                                 style={{ "background-color": "#0D5462" }}
                             ></StatisticsData>
