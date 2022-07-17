@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from requests import delete
 from .models import ListContent, List, Progress, UserProfile, Review
 from .serializers import ListContentSerializer, ProgressSerializer, ListSerializer
 from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer
@@ -107,6 +108,12 @@ class ListIDView(APIView):
             lists, context={"request": request})
 
         return Response(serializer.data)
+
+    def delete(self, request, list_id):
+        lists = List.objects.get(id=list_id)
+        lists.delete()
+
+        return Response(['success'])
 
 
 class ListContentView(APIView):

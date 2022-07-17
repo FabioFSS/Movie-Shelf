@@ -45,16 +45,26 @@ function Lists() {
         fetchData();
     }, []);
 
+    const DeleteList = (id) => {
+        api.delete(`/list_id/${id}`);
+        window.location.reload();
+    }
+
     let lists_html = [];
 
     for (let i = 0; i < lists.length; i++) {
         lists_html.push(
-            <ContentSummary
-                link={`/listdetails/${lists[i].id}`}
-                title={lists[i].name}
-                description={lists[i].description}
-                banner={lists[i].image ? lists[i].image : std_list}
-            />
+            <>
+                <button onClick={() => {
+                    DeleteList(lists[i].id);
+                }} >Delete</button>
+                <ContentSummary
+                    link={`/listdetails/${lists[i].id}`}
+                    title={lists[i].name}
+                    description={lists[i].description}
+                    banner={lists[i].image ? lists[i].image : std_list}
+                />
+            </>
         );
     }
 
