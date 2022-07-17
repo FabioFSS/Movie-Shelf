@@ -17,7 +17,7 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
 
     function validImage(img) {       
 
-        if (img.split("w342")[1] == "null") {
+        if (img.split("w342")[1] === "null") {
             return undImage;
         } else{
             return img;
@@ -31,7 +31,7 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
                 {details && (
                     <>
                         <div className={styles.containerPoster}>
-                            <img className={styles.poster} src={poster} />
+                            <img className={styles.poster} src={poster} alt='season poster' />
                             <div className={styles.containerVote}>
                                 <FaStar size={40} color={styles.yellow} />
                                 <p className={styles.vote}>
@@ -73,6 +73,7 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
                         >
                             <Link to={route(episode.episode_number)}>
                                 <img
+                                    alt="episode poster"
                                     className={styles.episodes}
                                     src={validImage(`https://image.tmdb.org/t/p/w342${episode.still_path}`)}
                                 />

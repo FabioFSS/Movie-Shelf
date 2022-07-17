@@ -1,6 +1,6 @@
 // react
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
 
 // styles
@@ -30,7 +30,7 @@ export default function Scroll() {
             isVisible("hidden");
             setNav(false);
         }
-    }, []);
+    }, [nav, isVisible]);
 
     // toggles the password visibility
     const changeTypePassword = () => {
