@@ -9,11 +9,6 @@ import ProfileHeader from "../../components/scripts/ProfileHeader";
 import ProfileBackground from "../../components/scripts/ProfileBackground";
 import TVShowProgerss from "../../components/scripts/TVShowProgress";
 
-// assets
-import banner1 from "../../assets/image-item/berserk.jpg";
-import banner2 from "../../assets/image-item/cue.jpg";
-import banner3 from "../../assets/image-item/sabikui disco.jpg";
-
 // contexts
 import AuthContext from "../../contexts/AuthContext";
 
@@ -45,7 +40,7 @@ function Progress() {
             }
         };
         fetchData();
-    }, []);
+    }, [user]);
 
     let tvShows = [];
 

@@ -46,7 +46,7 @@ function ListDetails() {
             }
         };
         fetchData();
-    }, []);
+    }, [api, id, user]);
 
     // recovers from the backend the logged user's data
     useEffect(() => {
@@ -63,13 +63,13 @@ function ListDetails() {
             }
         };
         fetchData();
-    }, []);
+    }, [id, user]);
 
     let content_html = [];
 
     for (let i = 0; i < content.length; i++) {
         let content_link
-        if (content[i].content_type == 'tv_show'){
+        if (content[i].content_type === 'tv_show'){
             content_link = `/tvdetails:id=${content[i].content_id}`
         }
         else{

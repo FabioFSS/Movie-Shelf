@@ -42,7 +42,7 @@ function Profile() {
             }
         };
         fetchData();
-    }, []);
+    }, [user]);
 
     let boxes = [];
 
