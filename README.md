@@ -15,12 +15,9 @@
 
 -   [About](#about)
 -   [Getting Started](#getting_started)
--   [Usage](#usage)
--   [Built Using](#built_using)
--   [TODO](../TODO.md)
+-   [Running the testes](#tests)
 -   [Contributing](../CONTRIBUTING.md)
 -   [Authors](#authors)
--   [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -35,7 +32,7 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 python - https://www.python.org/downloads/
 django - https://www.djangoproject.com/download/
-node.js - https://nodejs.org/pt-br/download/?msclkid=923a22f3cc6b11ec8427a774fba05166
+node.js - https://nodejs.org/pt-br/download/
 postgresql - https://www.postgresql.org/download/
 ```
 
