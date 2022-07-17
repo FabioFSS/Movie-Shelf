@@ -262,6 +262,40 @@ class LatestTVShowsView(APIView):
 
         return Response(response)
 
+class TopRatedTVShowsView(APIView):
+    '''View for top rated TV shows.
+    '''
+
+    def get(self, request):
+        data = tmdb_handler.top_rated_tv()
+
+        response = []
+
+        for show in data['results'][:6]:
+            filtered = {
+                'name': show['name'], 'poster': 'https://image.tmdb.org/t/p/w342' + show['poster_path'], 'id': show['id']}
+
+            response.append(filtered)
+
+        return Response(response)
+
+class TopRatedMoviesView(APIView):
+    '''View for getting top rated movies.
+    '''
+
+    def get(self, request):
+        data = tmdb_handler.top_rated()
+
+        response = []
+
+        for movie in data['results'][:6]:
+            filtered = {
+                'name': movie['title'], 'poster': 'https://image.tmdb.org/t/p/w342' + movie['poster_path'], 'id': movie['id']}
+
+            response.append(filtered)
+
+        return Response(response)
+
 
 class UserRecentlyWatchedView(APIView):
     '''View for recently watched shows by an user.
