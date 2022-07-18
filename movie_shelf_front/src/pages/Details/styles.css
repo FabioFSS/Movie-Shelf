@@ -9,14 +9,14 @@
 }
 
 .backgrundImg {
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     background-size: cover;
 }
 
 .backgrundImg::before {
     content: " ";
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     background-size: cover;
     background-image: linear-gradient(to top, #010117, 70%, transparent);
