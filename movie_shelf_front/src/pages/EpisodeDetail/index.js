@@ -12,11 +12,15 @@ import DetailTv from "../../components/scripts/EpisodeDetail";
 
 import useAxios from "../../utils/useAxios";
 
+import { useParams } from "react-router-dom";
+
 export default function EpisodeDetail() {
 
-    const [tvId] = useState(window.location.href.split("=")[1].split("#")[0]);
-    const [season_number] = useState(window.location.href.split("=")[1].split("#")[1].split("")[0]);
-    const [episode] = useState(window.location.href.split("=")[1].split("#")[1].split("-")[1]);
+    // const [tvId] = useState(window.location.href.split("=")[1].split("#")[0]);
+    // const [season_number] = useState(window.location.href.split("=")[1].split("#")[1].split("")[0]);
+    // const [episode] = useState(window.location.href.split("=")[1].split("#")[1].split("-")[1]);
+
+    const { tvId, season_number, episode } = useParams();
 
     const [detail, setDetail] = useState(null);
     const [background, setBackground] = useState(null);

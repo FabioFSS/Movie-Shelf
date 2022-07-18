@@ -12,7 +12,7 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
     const navigate = useNavigate();
 
     function route(episode_number) {
-        return `/episodedetail:id=${tvId}#${seasonNumber}-${episode_number}`
+        return `/episodedetail/${tvId}/${seasonNumber}/${episode_number}`
     }
 
     function validImage(img) {       
@@ -26,42 +26,44 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
     }
     
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.containerMovie}>
-                {details && (
-                    <>
-                        <div className={styles.containerPoster}>
-                            <img className={styles.poster} src={poster} alt='season poster' />
-                            <div className={styles.containerVote}>
-                                <FaStar size={40} color={styles.yellow} />
-                                <p className={styles.vote}>
-                                    {details.vote_average}
-                                </p>
+        <>
+            <div className={styles.wrapper}>
+                <div className={styles.containerMovie}>
+                    {details && (
+                        <>
+                            <div className={styles.containerPoster}>
+                                <img className={styles.poster} src={poster} alt='season poster' />
+                                <div className={styles.containerVote}>
+                                    <FaStar size={40} color={styles.yellow} />
+                                    <p className={styles.vote}>
+                                        {details.vote_average}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div className={styles.detailsContainer}>
-                            <div className={styles.comment}>
-                                <button className={styles.buttomComment}
-                                    onClick={() => {
-                                        navigate(`/ratings:id=${details.id}`);
-                                    }}
-                                >   
-                                    <FaComment className={styles.iconComment} />
-                                </button>
-                                <button className={styles.buttomAdd}
-                                    onClick={() => {
-                                        navigate("/lists");
-                                    }}
-                                >   
-                                    <FaPlus className={styles.iconAdd} />
-                                </button>
+                            
+                            <div className={styles.detailsContainer}>
+                                <div className={styles.comment}>
+                                    <button className={styles.buttomComment}
+                                        onClick={() => {
+                                            navigate(`/ratings:id=${details.id}`);
+                                        }}
+                                    >   
+                                        <FaComment className={styles.iconComment} />
+                                    </button>
+                                    <button className={styles.buttomAdd}
+                                        onClick={() => {
+                                            navigate("/lists");
+                                        }}
+                                    >   
+                                        <FaPlus className={styles.iconAdd} />
+                                    </button>
+                                </div>
+                                <h1 className={styles.title}>{details.name} - Season {seasonNumber}</h1>
+                                <p className={styles.overview}>{overview}</p>
                             </div>
-                            <h1 className={styles.title}>{details.name} - Season {seasonNumber}</h1>
-                            <p className={styles.overview}>{overview}</p>
-                        </div>
-                    </>
-                )}
+                        </>
+                    )}
+                </div>
             </div>
             <h1 className={styles.episodesText}>Episodes</h1>
             <div className={styles.seasonsWarapper}>
@@ -85,6 +87,6 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
                     ))
                 }
             </div>
-        </div>
+        </>
     );
 }

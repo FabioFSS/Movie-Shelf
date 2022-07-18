@@ -3,7 +3,8 @@
     position: absolute;
     flex-direction: column;
     max-width: 1200px;
-    width: 100%; 
+    width: 100%;
+    z-index: 999;
 }
 
 .containerMovie {
@@ -118,7 +119,7 @@
 
 .seasonsWarapper { 
     display: flex;
-    margin-top: 50px;
+    margin-top: 10px;
     flex-wrap: wrap;
     max-width: 1200px;
     width: 100%;
@@ -141,5 +142,5 @@
 }
 
 .episodesText {
- margin-top: 50px;
+    margin-top: 10px;  
 }

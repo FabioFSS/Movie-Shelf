@@ -106,15 +106,17 @@ export default function Ratings() {
                 {comment && comment[0].map((item, key) => (
                     <div className={styles.container_ratings} key={key}>
                         <img src={poster} className={styles.folder_rating} alt="poster" />
-                        <div className={styles.container_info_card}>
+                        <div className={styles.comments_note_container}>
                             <p className={styles.comments_card}>
                                 {item.comment}
                             </p>
-                            <div className={styles.vote_image}>
-                                <img src={star} className={styles.icon_vote} alt="star" />
-                                <p className={styles.text_vote}>{item.note}/10</p>
+                            <div className={styles.container_info_card}>
+                                <div className={styles.vote_image}>
+                                    <img src={star} className={styles.icon_vote} alt="star" />
+                                    <p className={styles.text_vote}>{item.note}/10</p>
+                                </div>
                             </div>
-                        </div>
+                        </div>    
                     </div>
                 ))}
             </div>

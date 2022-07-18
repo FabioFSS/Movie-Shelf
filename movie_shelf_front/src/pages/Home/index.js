@@ -135,7 +135,7 @@ function Home() {
     return (
         <div className={styles.page_body}>
             <HomeHeader></HomeHeader>
-            <Slider title="Top Rated shows" boxes={top_rated_movies_boxes} ></Slider>
+            <Slider title="Top Rated movies" boxes={top_rated_movies_boxes} ></Slider>
             <Slider title="Upcoming movies" boxes={upcoming_movies_boxes} ></Slider>
             <Slider title="Top Rated TV shows" boxes={top_rated_tv_boxes} ></Slider>
             <Slider title="Latest TV shows" boxes={latest_tv_boxes} ></Slider>
