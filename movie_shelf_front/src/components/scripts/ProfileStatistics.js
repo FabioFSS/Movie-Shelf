@@ -37,7 +37,7 @@ function ProfileStatistics() {
                             ></StatisticsData>
                             <StatisticsData
                                 title="Average Rating"
-                                value={userData.average_rating}
+                                value={userData.average_rating.toFixed(2)}
                                 style={{ "background-color": "#61440D" }}
                             ></StatisticsData>
                         </div>

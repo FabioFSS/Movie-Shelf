@@ -207,11 +207,16 @@ class ProgressView(APIView):
         return Response(response)
 
     def post(self, request, username):
-        serializer = ProgressSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
+        data = request.data
+        user = User.objects.get(username=username)
+        progress = Progress.objects.filter(user_fk=user, content_id=data['content_id'])
+        if not progress:
+            serializer = ProgressSerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response(serializer.data, status=400)
 
+        return Response(['fail'])
 
 class AddProgressView(APIView):
     '''View for adding user progress.
