@@ -12,7 +12,7 @@ export default function DetailMovie({ details, poster, overview, tvId, seasonNum
     const navigate = useNavigate();
 
     function route(episode_number) {
-        return `/episodedetail:id=${tvId}#${seasonNumber}-${episode_number}`
+        return `/episodedetail/${tvId}/${seasonNumber}/${episode_number}`
     }
 
     function validImage(img) {       

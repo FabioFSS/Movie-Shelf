@@ -78,11 +78,11 @@ export default function App() {
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/search:keyword" element={<Search />} />
                         <Route
-                            path="/seasondetail:id"
+                            path="/seasondetail/:tvId/:season_number"
                             element={<SeasonDetail />}
                         />
                         <Route
-                            path="/episodedetail:id"
+                            path="/episodedetail/:tvId/:season_number/:episode"
                             element={<EpisodeDetail />}
                         />
                     </Routes>

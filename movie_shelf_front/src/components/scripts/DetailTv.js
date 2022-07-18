@@ -26,7 +26,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
     }, [tvId]);
 
     function route(season_number) {
-        return `/seasondetail:id=${tvId}#${season_number}`;
+        return `/seasondetail/${tvId}/${season_number}`;
     }
 
     const { user } = useContext(AuthContext);
