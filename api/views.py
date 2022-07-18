@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from requests import delete
 from .models import ListContent, List, Progress, UserProfile, Review
 from .serializers import ListContentSerializer, ProgressSerializer, ListSerializer
 from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer
@@ -107,6 +108,12 @@ class ListIDView(APIView):
             lists, context={"request": request})
 
         return Response(serializer.data)
+
+    def delete(self, request, list_id):
+        lists = List.objects.get(id=list_id)
+        lists.delete()
+
+        return Response(['success'])
 
 
 class ListContentView(APIView):
@@ -257,6 +264,40 @@ class LatestTVShowsView(APIView):
         for show in data['results'][:6]:
             filtered = {
                 'name': show['name'], 'poster': 'https://image.tmdb.org/t/p/w342' + show['poster_path'], 'id': show['id']}
+
+            response.append(filtered)
+
+        return Response(response)
+
+class TopRatedTVShowsView(APIView):
+    '''View for top rated TV shows.
+    '''
+
+    def get(self, request):
+        data = tmdb_handler.top_rated_tv()
+
+        response = []
+
+        for show in data['results'][:6]:
+            filtered = {
+                'name': show['name'], 'poster': 'https://image.tmdb.org/t/p/w342' + show['poster_path'], 'id': show['id']}
+
+            response.append(filtered)
+
+        return Response(response)
+
+class TopRatedMoviesView(APIView):
+    '''View for getting top rated movies.
+    '''
+
+    def get(self, request):
+        data = tmdb_handler.top_rated()
+
+        response = []
+
+        for movie in data['results'][:6]:
+            filtered = {
+                'name': movie['title'], 'poster': 'https://image.tmdb.org/t/p/w342' + movie['poster_path'], 'id': movie['id']}
 
             response.append(filtered)
 

@@ -20,15 +20,15 @@ export default function TvDetails() {
 
     useEffect(() => {
         api.get(`/detailstv/${tvId}`).then((res) => {
-
             setDetails(res.data[0].details);
 
             setReviews(res.data[0].casts.slice(0, 5));
 
-            setBackground(`https://image.tmdb.org/t/p/original/${res.data[0].backdrop}`);
+            setBackground(
+                `https://image.tmdb.org/t/p/original/${res.data[0].backdrop}`
+            );
 
             setPoster(`https://image.tmdb.org/t/p/w342/${res.data[0].poster}`);
-
         });
     }, [tvId]);
 
@@ -42,7 +42,12 @@ export default function TvDetails() {
                 className={styles.backgrund_img}
                 style={{ backgroundImage: `url(${background})` }}
             />
-            <DetailTv details={details} poster={poster} reiews={reiews} tvId={tvId}/>
+                <DetailTv
+                    details={details}
+                    poster={poster}
+                    reiews={reiews}
+                    tvId={tvId}
+                />
         </div>
     );
 }

@@ -15,7 +15,7 @@ export default function DetailMovie({ details, poster, reiews, tvId }) {
     const navigate = useNavigate();
     const [detailSeasons, setDetailSeasons] = useState(undefined);
     const [progress, setProgress] = useState([]);
-    const [addTv, setaddTv] = useState(true);
+    const [addTv, setaddTv] = useState(false);
 
     const api = useAxios();
 

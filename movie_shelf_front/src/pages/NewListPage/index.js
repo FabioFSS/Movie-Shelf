@@ -1,5 +1,6 @@
 // react
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // styles
 import styles from "./styles.module.css";
@@ -20,6 +21,7 @@ function NewList() {
     const [image] = useState(null);
 
     const api = useAxios();
+    const navigate = useNavigate();
 
     const doSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +32,7 @@ function NewList() {
             image,
         }).then((response) => {
             if (response.status === 200) {
-                alert("Saved successfully.");
+                navigate('/lists')
             } else {
                 alert("Something went wrong.");
             }

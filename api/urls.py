@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LatestTVShowsView, ListContentView, ListIDView, ListView, AddProgressView
+from .views import LatestTVShowsView, ListContentView, ListIDView, ListView, AddProgressView, TopRatedMoviesView, TopRatedTVShowsView
 from .views import ProgressView, UpcomingMoviesView, UserProfileView, UserRecentlyWatchedView
 from .views import DetailMovieView, DetailTvView, RegisterView, MyTokenObtainPairView
 from .views import SeasonsView, SearchView, DetailSeasons, EpisodeDetailView, ReviewView
@@ -18,6 +18,8 @@ urlpatterns = [
          AddProgressView.as_view(), name="addprogress"),
     path('latesttvshows/', LatestTVShowsView.as_view(), name="latesttvshows"),
     path('upcomingmovies/', UpcomingMoviesView.as_view(), name="upcomingmovies"),
+    path('topratedtvshows/', TopRatedTVShowsView.as_view(), name="topratedtvshows"),
+    path('topratedmovies/', TopRatedMoviesView.as_view(), name="topratedmovies"),
     path('detailsmovie/<int:id>', DetailMovieView.as_view(), name="detailsmovie"),
     path('detailstv/<int:id>', DetailTvView.as_view(), name="detailstv"),
     path('search/<str:keyword>', SearchView.as_view(), name="search"),

@@ -3,6 +3,8 @@
     background: #010117;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 200px;
+    min-height: 95vh;
 }
 
 .backgrund_img {
