@@ -7,6 +7,15 @@
     padding: 20px;
 }
 
+.dropdown button{
+    background-color: #001f30;
+    width: 100px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .menu-item {
     text-decoration: none;
     height: 50px;

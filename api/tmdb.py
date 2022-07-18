@@ -121,7 +121,6 @@ class TMDB():
         url = base_url+'api_key='+self.api_key + \
             '&language='+self.language+'&page='+self.page
 
-        print('antes\n')
 
         try:
             response = get(url).json()
