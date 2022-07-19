@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from requests import delete
 from .models import ListContent, List, Progress, UserProfile, Review
 from .serializers import ListContentSerializer, ProgressSerializer, ListSerializer
 from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer
