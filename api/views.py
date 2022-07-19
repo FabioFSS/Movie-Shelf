@@ -14,7 +14,7 @@ tmdb_handler = TMDB('68e356ae11aabb4bf082a0a61801672e', 1, 0)
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
-    '''View for user authentication and getting authentication tokens. 
+    '''View for user authentication and getting authentication tokens.
     '''
 
     serializer_class = MyTokenObtainPairSerializer
@@ -208,7 +208,8 @@ class ProgressView(APIView):
     def post(self, request, username):
         data = request.data
         user = User.objects.get(username=username)
-        progress = Progress.objects.filter(user_fk=user, content_id=data['content_id'])
+        progress = Progress.objects.filter(
+            user_fk=user, content_id=data['content_id'])
         if not progress:
             serializer = ProgressSerializer(data=request.data)
             if serializer.is_valid(raise_exception=True):
@@ -216,6 +217,7 @@ class ProgressView(APIView):
                 return Response(serializer.data, status=400)
 
         return Response(['fail'])
+
 
 class AddProgressView(APIView):
     '''View for adding user progress.
@@ -273,6 +275,7 @@ class LatestTVShowsView(APIView):
 
         return Response(response)
 
+
 class TopRatedTVShowsView(APIView):
     '''View for top rated TV shows.
     '''
@@ -289,6 +292,7 @@ class TopRatedTVShowsView(APIView):
             response.append(filtered)
 
         return Response(response)
+
 
 class TopRatedMoviesView(APIView):
     '''View for getting top rated movies.
