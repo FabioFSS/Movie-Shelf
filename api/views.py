@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from requests import delete
 from .models import ListContent, List, Progress, UserProfile, Review
 from .serializers import ListContentSerializer, ProgressSerializer, ListSerializer
 from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, UserProfileSerializer
@@ -242,6 +241,8 @@ class AddProgressView(APIView):
 class UpcomingMoviesView(APIView):
     '''View for getting upcoming movies.
     '''
+
+    permission_classes = [AllowAny]
 
     def get(self, request):
         data = tmdb_handler.upcoming_movies()
